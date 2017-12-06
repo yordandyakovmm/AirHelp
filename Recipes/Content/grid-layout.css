@@ -1,0 +1,45 @@
+﻿ /*#de9602 #fdd021 #fef266 #cfbcae #564037*/ 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 200px auto 300px;
+    grid-template-rows: 200px auto;
+    grid-template-areas: "login logo advert" 
+                         ". content advert";
+    grid-gap: 10px;
+    background-color: #fff;
+    color: #444;
+}
+
+.box{
+    border-radius: 5px;
+    padding: 20px;
+    /*font-size: 150%;*/
+}
+
+
+
+.login {
+    background-color: #cfbcae;
+    color: black;
+    grid-area: login;
+}
+.logo {
+    background-color: #de9602;
+    color: black;
+    grid-area: logo;
+}
+.content {
+    background-color: #fdd021;
+    color: black;
+    grid-area: content;
+}
+.advert {
+    background-color: #fef266;
+    color: black;
+    grid-area: advert;
+}
