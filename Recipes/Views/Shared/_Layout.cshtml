@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/Content/grid-layout.css" rel="stylesheet" />
 
-    @*<link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <script src="~/Scripts/bootstrap.js"></script>*@
+    <link href="https://fonts.googleapis.com/css?family=Armata|Libre+Barcode+128+Text|Voces" rel="stylesheet">
 
-    @*<script src="~/Scripts/jquery-1.12.4.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>*@
-    
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -19,39 +15,37 @@
     <script src="~/Scripts/main.js"></script>
 
     @*<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">*@
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">*@
 
 </head>
 <body>
     <div class="main-layout">
 
-        <div class="box login container-vertical">
+        <div class="logo">
 
-            @if (ViewBag.user != null)
-            {
-                
-                    <img class="container-top" src="@ViewBag.user.PictureUrl" />
-                    <div class="btn-group container-bottom">
-                        <a class='btn btn-primary disabled'><i class="fa fa-facebook" style="width:16px; height:17px"></i></a>
-                        <a class='btn btn-primary ' href='/Login/LogOut' style="width:6em"> LogOut</a>
-                    </div>
-              
-
-            }
-            else
-            {
-                <div class="container-top">
-                    <div class="btn-group">
-                        <a class='btn btn-primary disabled'><i class="fa fa-facebook" style="width:16px; height:17px"></i></a>
-                        <a class='btn btn-primary ' href='/Login/Facebook' style="width:6em"> LogIn  </a>
-                    </div>
+            <div class="logo-flex-container">
+                <div class="logo-image">
+                    <a href="#"><span style="color:#555">AIR-</span><span style="color:#333">Help</span> </a>
                 </div>
-            }
+                <div class="logo-menu">
+                    <span class=""><a href="#">Често задавани въпроси</a></span>
+                    <span><a href="#">Контакти</a></span>
+                    <span><a href="#">Галерия</a></span>
+                    <span><a href="#">За нас</a></span>
+
+                </div>
+            </div>
+
+
         </div>
-        <div class="box logo">LOGO</div>
-        <div class="box content">@RenderBody()</div>
-        <div class="box advert">Място за вашата реклама</div>
+
+        <div class="big-image">***</div>
+        <div class="content-1">@RenderBody()</div>
+
+
+
+
     </div>
 
 

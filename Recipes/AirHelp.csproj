@@ -217,6 +217,17 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Assets\097dca49-adobestock-114320247-compressor.jpeg" />
+    <Content Include="Content\Assets\88db8d1d-checkmark_01j01j01j01j000000.png" />
+    <Content Include="Content\Assets\cc-icon-01.svg" />
+    <Content Include="Content\Assets\cc-icon-02.svg" />
+    <Content Include="Content\Assets\cc-icon-03.svg" />
+    <Content Include="Content\Assets\cc-social-networks-fb.svg" />
+    <Content Include="Content\Assets\cc-social-networks-in.svg" />
+    <Content Include="Content\Assets\cc-social-networks-tw.svg" />
+    <Content Include="Content\Assets\d192862f-pexels-delayed-4-compressor.jpg" />
+    <Content Include="Content\Assets\d7695122e7a4a030ff228251a69d1f7ff6239797.jpg" />
+    <Content Include="Content\Assets\f2227a22-screen-shot-2017-11-20-at-8-35-42-pm_03z00x03z00x000000.png" />
     <Content Include="Content\Assets\facebook-logout-button-851580_650602211663185_74135741_n.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -341,15 +352,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51199</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51199/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>True</UseCustomServer>
-          <CustomServerUrl>https://cooking.bg</CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

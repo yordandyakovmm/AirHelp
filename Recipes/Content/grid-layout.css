@@ -1,45 +1,96 @@
-﻿ /*#de9602 #fdd021 #fef266 #cfbcae #564037*/ 
+﻿/*#de9602 #fdd021 #fef266 #cfbcae #564037*/
 * {
     margin: 0;
     padding: 0;
 }
 
+.main-layout a:hover {
+    text-decoration: none;
+}
+
 .main-layout {
     display: grid;
-    grid-template-columns: 200px auto 300px;
-    grid-template-rows: 200px auto;
-    grid-template-areas: "login logo advert" 
-                         ". content advert";
-    grid-gap: 10px;
-    background-color: #fff;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px auto 300px;
+    grid-gap: 0px;
+    background-color: #fafafa;
     color: #444;
 }
 
-.box{
-    border-radius: 5px;
-    padding: 20px;
-    /*font-size: 150%;*/
-}
-
-
-
-.login {
-    background-color: #cfbcae;
-    color: black;
-    grid-area: login;
-}
 .logo {
-    background-color: #de9602;
+    background-color: #eee;
     color: black;
-    grid-area: logo;
+    display: flex;
 }
-.content {
-    background-color: #fdd021;
+
+.big-image {
+    background-color: #d1cf60;
     color: black;
-    grid-area: content;
 }
-.advert {
-    background-color: #fef266;
+
+.content-1 {
+    background-color: #a2a2a2;
     color: black;
-    grid-area: advert;
 }
+
+
+.logo-flex-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.logo-image {
+    display: flex;
+    align-items: center;
+}
+
+    .logo-image a {
+        font-family: 'Armata', sans-serif;
+        font-size: 23px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+.logo-menu a {
+    color: #444;
+    font-family: 'Armata', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+
+.logo-menu {
+    display: flex;
+    align-items: center;
+}
+
+.logo-menu > span {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 15px;
+}
+
+    .logo-menu > span:hover {
+        color: #999;        
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-bottom-color: coral;
+    }
+
+.test {
+    border-color: red;
+    border-width: 4px;
+    border-style: solid;
+}
+
+
+
+
+
+/*font-family: 'Armata', sans-serif; font-family: 'Voces', cursive; font-family: 'Libre Barcode 128 Text', cursive;*/
+
