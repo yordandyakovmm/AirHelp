@@ -229,6 +229,8 @@
     <Content Include="Content\Assets\d7695122e7a4a030ff228251a69d1f7ff6239797.jpg" />
     <Content Include="Content\Assets\f2227a22-screen-shot-2017-11-20-at-8-35-42-pm_03z00x03z00x000000.png" />
     <Content Include="Content\Assets\facebook-logout-button-851580_650602211663185_74135741_n.png" />
+    <Content Include="Content\Assets\logo.png" />
+    <Content Include="Content\Assets\logoRed.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\grid-layout.css" />

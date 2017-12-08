@@ -11,21 +11,22 @@
 .main-layout {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 80px auto 300px;
+    grid-template-rows: 70px 700px 300px;
     grid-gap: 0px;
     background-color: #fafafa;
     color: #444;
 }
 
 .logo {
-    background-color: #eee;
+    background-color: #f3f3f3;
     color: black;
     display: flex;
 }
 
 .big-image {
-    background-color: #d1cf60;
-    color: black;
+    background-image: url('Assets/d192862f-pexels-delayed-4-compressor.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 }
 
 .content-1 {
@@ -49,15 +50,15 @@
 
     .logo-image a {
         font-family: 'Armata', sans-serif;
-        font-size: 23px;
-        font-weight: 600;
+        font-size: 24px;
+        font-weight: 800;
         text-decoration: none;
     }
 
 .logo-menu a {
     color: #444;
     font-family: 'Armata', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     text-decoration: none;
 }
