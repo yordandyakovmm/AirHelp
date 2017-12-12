@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/css/grid-layout.css" rel="stylesheet" />
+
+    <link href="https://fonts.googleapis.com/css?family=Armata|Libre+Barcode+128+Text|Voces" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/main.js"></script>
+
+    @*<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">*@
+
+</head>
+<body>
+    <div class="main-layout">
+
+        <div class="logo">
+
+            <div class="logo-flex-container">
+                <div class="logo-image">
+                    <a href="#">
+                        <img src="~/Content/Assets/Logo1.png"  style="height:50px;"/>
+                    </a>
+                </div>
+                <div class="logo-menu">
+                    <span class=""><a href="#">ВЪПРОСИ</a></span>
+                    <span><a href="#">ПОДАЙ ИСК</a></span>
+                    <span><a href="#">ЗА НАС</a></span>
+                    <span><a href="#">КОНТАКТИ</a></span>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="big-image"></div>
+        <div class="content-1">@RenderBody()</div>
+
+
+
+
+    </div>
+
+
+
+</body>
+</html>

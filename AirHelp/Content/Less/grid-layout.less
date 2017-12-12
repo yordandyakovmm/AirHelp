@@ -1,0 +1,88 @@
+﻿@background-color: #fafafa;
+
+@logo-background-color: #f3f3f3;
+@logo-text-color: #000;
+
+@big-image-url: '/Content/Assets/d192862f-pexels-delayed-4-compressor.jpg';
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 70px 700px 300px;
+    grid-gap: 0px;
+    background-color: @background-color;
+
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+.logo {
+    background-color: @logo-background-color;
+    color: @logo-text-color;
+    display: flex;
+}
+
+.big-image {
+    background-image: url('@{big-image-url}');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+
+
+.logo-flex-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.logo-image {
+    display: flex;
+    align-items: center;
+
+    a {
+        font-family: 'Armata', sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        text-decoration: none;
+    }
+}
+
+
+
+.logo-menu {
+    display: flex;
+    align-items: center;
+
+    a {
+        color: #444;
+        font-family: 'Armata', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    > span {
+        display: flex;
+        align-items: center;
+        margin: 0 0 0 15px;
+
+        &:hover {
+            color: #999;
+            border-bottom-style: solid;
+            border-bottom-width: 2px;
+            border-bottom-color: coral;
+        }
+    }
+}
+
+/*font-family: 'Armata', sans-serif; font-family: 'Voces', cursive; font-family: 'Libre Barcode 128 Text', cursive;*/
+
