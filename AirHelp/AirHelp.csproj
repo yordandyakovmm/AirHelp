@@ -217,7 +217,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Assets\097dca49-adobestock-114320247-compressor.jpeg" />
     <Content Include="Content\Assets\285053.png" />
     <Content Include="Content\Assets\4c58fcdb.png" />
     <Content Include="Content\Assets\59919.png" />
@@ -225,9 +224,6 @@
     <Content Include="Content\Assets\Icon\cc-icon-01.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-02.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-03.svg" />
-    <Content Include="Content\Assets\cc-social-networks-fb.svg" />
-    <Content Include="Content\Assets\cc-social-networks-in.svg" />
-    <Content Include="Content\Assets\cc-social-networks-tw.svg" />
     <Content Include="Content\Assets\d192862f-pexels-delayed-4-compressor.jpg" />
     <Content Include="Content\Assets\yellow-cloud-plaine.jpg" />
     <Content Include="Content\Assets\five-green-stars.png" />
@@ -242,6 +238,10 @@
     <Content Include="Content\css\grid-layout.min.css">
       <DependentUpon>grid-layout.css</DependentUpon>
     </Content>
+    <Content Include="Content\css\input-style.css" />
+    <Content Include="Content\css\input-style.min.css">
+      <DependentUpon>input-style.css</DependentUpon>
+    </Content>
     <Content Include="Content\grid-layout.css" />
     <Content Include="Content\Assets\Logo\Logo1.png" />
     <None Include="compilerconfig.json" />
@@ -251,7 +251,14 @@
     <Content Include="Content\Docs\eu_complaint_form_bg-261.pdf" />
     <Content Include="Content\Docs\eu_complaint_form_en.pdf" />
     <Content Include="Content\Docs\eu_complaint_form_bg.pdf" />
+    <Content Include="Content\Less\input-style.less" />
     <None Include="Content\Less\grid-layout.less" />
+    <Content Include="Content\Less\grid-layout - Copy.css">
+      <DependentUpon>input-style.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\grid-layout - Copy.min.css">
+      <DependentUpon>grid-layout - Copy.css</DependentUpon>
+    </Content>
     <Content Include="Content\Less\grid-layout.css">
       <DependentUpon>grid-layout.less</DependentUpon>
     </Content>
@@ -338,6 +345,7 @@
     <Content Include="Views\Index\Contact.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Index\Edit.cshtml" />
+    <Content Include="Views\Index\RegisterClaim.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -47,9 +47,9 @@ namespace Recipes.Controllers
         [Route("recipes/{category}/{item}")]
         public ActionResult Spliter(string category, string item)
         {
-            var contex = new DAL.AirHelpDBContext();
-            var count = contex.Users.Count();
-            return View("Index");
+            //var contex = new DAL.AirHelpDBContext();
+            //var count = contex.Users.Count();
+            return View("RegisterClaim");
 
 
         }
