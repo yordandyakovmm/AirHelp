@@ -248,6 +248,9 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\Docs\eu_complaint_form_bg-261.pdf" />
+    <Content Include="Content\Docs\eu_complaint_form_en.pdf" />
+    <Content Include="Content\Docs\eu_complaint_form_bg.pdf" />
     <None Include="Content\Less\grid-layout.less" />
     <Content Include="Content\Less\grid-layout.css">
       <DependentUpon>grid-layout.less</DependentUpon>
