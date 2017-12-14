@@ -94,7 +94,7 @@ a:hover {
     grid-template: "Content";
     
     display: grid;
-    grid-template-columns: auto 800px auto;
+    grid-template-columns: auto 1000px auto;
     grid-template-areas : "left center rigth"
 }
 
@@ -104,12 +104,15 @@ a:hover {
     background-color: aquamarine;
 }
 
-.conter-content {
-    grid-area: ceter;
+.center-content {
+    grid-area: center;
     background: linear-gradient(30);
     background-color: azure;
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
+    padding: 5px 10px;
+    /*justify-content:center;
+    align-items: flex-start;*/
 }
 
 .rigth-content {
@@ -118,23 +121,25 @@ a:hover {
     
 }
 
-.form-row{
+.form-row {
     display: flex;
     flex-flow: row;
     justify-content: space-around;
     align-content: space-around;
+       
 }
 
-.form-box { 
-    width:300px;
+.form-box {
+    width: 50%;
     display: flex;
     flex-flow: column;
 
-    label{
-        justify-content:flex-start;
+    label {
+        /*justify-content: space-around;*/
     }
-    input[type="text"]{
-        justify-content:flex-start;
+
+    input[type="text"] {
+        /*justify-content: space-around;*/
     }
 }
 /*font-family: 'Armata', sans-serif; font-family: 'Voces', cursive; font-family: 'Libre Barcode 128 Text', cursive;*/

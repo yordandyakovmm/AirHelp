@@ -1,17 +1,43 @@
-﻿label {
-    font-family: 'Armata', sans-serif;
+﻿#font(){
+    font-family: PT Sans, sans-serif;
+    color: rgb(20, 26, 48);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+label {
+    #font;
     padding-left: 10px;
-    font-size: 16px;
-    font-weight: 600;
     justify-content: flex-start;
 }
 
 input[type="text"] {
-    width: 100%;
+    width: 85%;
     padding: 12px 20px;
-    margin: 8px 0;
+    /*margin: 8px 0;*/
     box-sizing: border-box;
-    border: 2px solid rgba(0, 0, 0, 0);
-    border-radius: 4px;
-    c
+    border: 1px solid rgb(0, 159, 227);
+    border-radius: 2px;
+    #font;
+}
+
+.form-hedar {
+    #font;
+    font-weight: 700;
+    font-size: 30px;
+    margin: 20px 0 0 0;
+}
+
+.form-subheder {
+    #font;
+    font-weight: 700;
+    font-size: 24px;
+    color: rgb(0, 159, 227);
+    margin: 20px 0 5px 0;
+}
+
+.form-subtext {
+    #font;
+    font-size: 14px;
+    /*margin: 0 5px;*/
 }
