@@ -1,10 +1,16 @@
 ﻿label {
+  font-family: PT Sans, sans-serif;
+  color: #141a30;
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0 0 5px 0;
   padding-left: 10px;
   justify-content: flex-start;
+  font-weight: 600;
 }
 input[type="text"] {
   width: 85%;
-  padding: 12px 20px;
+  padding: 12px 30px 12px 20px;
   /*margin: 8px 0;*/
   box-sizing: border-box;
   border: 1px solid #009fe3;
@@ -20,7 +26,7 @@ input[type="text"] {
   font-size: 15px;
   font-weight: 400;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 35px;
   margin: 20px 0 0 0;
 }
 .form-subheder {
@@ -46,6 +52,25 @@ input[type="text"] {
   color: red;
 }
 .error input + .icon::before {
-  content: '\e208';
-  margin-left: -32px;
+  content: '\e101';
+  margin-left: -30px;
+  color: red;
+}
+.lSuggestoin {
+  width: 85%;
+  box-sizing: border-box;
+  border-style: none solid solid solid;
+  border-width: 1px;
+  border-color: #009fe3;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  list-style-type: none;
+  font-family: PT Sans, sans-serif;
+  color: #141a30;
+  font-size: 15px;
+  font-weight: 400;
+  /*position: absolute;*/
+}
+.lSuggestoin li {
+  padding: 12px 0 12px 20px;
 }
