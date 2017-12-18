@@ -4,9 +4,17 @@
     font-size: 15px;
     font-weight: 400;
 }
-
+#ifont(){
+    font-family: 'icomoon'; 
+    font-style: normal; 
+    speak: none; 
+    font-weight: normal; 
+    -webkit-font-smoothing: antialiased; 
+    font-smoothing: antialiased; 
+    text-rendering: optimizeLegibility; 
+}    
+    
 label {
-    #font;
     padding-left: 10px;
     justify-content: flex-start;
 }
@@ -40,4 +48,16 @@ input[type="text"] {
     #font;
     font-size: 14px;
     /*margin: 0 5px;*/
+}
+
+.error {
+    input {
+        border-color: red;
+        color: red;
+
+        + .icon::before {
+            content: '\e208';
+            margin-left: -32px;
+        }
+    }
 }

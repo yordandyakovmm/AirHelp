@@ -1,8 +1,4 @@
 ﻿label {
-  font-family: PT Sans, sans-serif;
-  color: #141a30;
-  font-size: 15px;
-  font-weight: 400;
   padding-left: 10px;
   justify-content: flex-start;
 }
@@ -44,4 +40,12 @@ input[type="text"] {
   font-weight: 400;
   font-size: 14px;
   /*margin: 0 5px;*/
+}
+.error input {
+  border-color: red;
+  color: red;
+}
+.error input + .icon::before {
+  content: '\e208';
+  margin-left: -32px;
 }
