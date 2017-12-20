@@ -1,4 +1,7 @@
-﻿#font() {
+﻿@border-blue-color: rgb(0, 159, 227);
+@blue-color: #009fe3; 
+
+#font() {
     font-family: PT Sans, sans-serif;
     color: rgb(20, 26, 48);
     font-size: 15px;
@@ -28,7 +31,7 @@ input[type="text"] {
     padding: 12px 30px 12px 20px;
     /*margin: 8px 0;*/
     box-sizing: border-box;
-    border: 1px solid rgb(0, 159, 227);
+    border: 1px solid @border-blue-color;
     border-radius: 2px;
     #font;
 }
@@ -44,7 +47,7 @@ input[type="text"] {
     #font;
     font-weight: 700;
     font-size: 24px;
-    color: rgb(0, 159, 227);
+    color: @border-blue-color;
     margin: 20px 0 5px 0;
 }
 
@@ -58,6 +61,7 @@ input[type="text"] {
     input {
         border-color: red;
         color: red;
+
         + .icon::before {
             content: '\e101';
             margin-left: -30px;
@@ -67,14 +71,14 @@ input[type="text"] {
 }
 
 .lSuggestoin {
-    position: absolute;
+    //position: absolute;
     margin: -1px 0 0 0;
     background-color: white;
     width: 370px;
     box-sizing: border-box;
     border-style: none solid solid solid;
     border-width: 1px;
-    border-color: rgb(0, 159, 227);
+    border-color: @border-blue-color;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     list-style-type: none;
@@ -83,5 +87,27 @@ input[type="text"] {
     li {
         padding: 12px 0 12px 20px;
     }
-    /*position: absolute;*/
+}
+
+input[type=radio] {
+    display: none;
+}
+
+.radio {
+    margin: 10px 20px 0 0;
+    &.selected::after {
+        background-color: @blue-color;
+    }
+    &::after {
+        margin: 2px 0 0 0;
+        content: '';
+        width: 20px;
+        height: 20px;
+        border: 1px solid @blue-color;
+        padding: 4px;
+        box-sizing: border-box;
+        background-clip: content-box;
+        display: block;
+        border-radius:100%;
+    }
 }

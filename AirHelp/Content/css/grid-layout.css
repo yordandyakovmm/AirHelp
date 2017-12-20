@@ -88,11 +88,10 @@ a:hover {
   background-color: aquamarine;
 }
 .form-row {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-    align-content: space-around;
-    margin-top: 25px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-content: space-around;
 }
 .form-box {
   width: 50%;
