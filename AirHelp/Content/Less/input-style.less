@@ -71,7 +71,8 @@ input[type="text"] {
 }
 
 .lSuggestoin {
-    //position: absolute;
+    color: @blue-color;
+    position: absolute;
     margin: -1px 0 0 0;
     background-color: white;
     width: 370px;
@@ -82,11 +83,21 @@ input[type="text"] {
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     list-style-type: none;
+    display: none;
     #font;
 
     li {
+        &.selected{
+            color: #fff;
+            background-color: @blue-color;
+        }
         padding: 12px 0 12px 20px;
+        &:hover{
+            color: darkblue;
+            background-color: lightgray;
+        }
     }
+    
 }
 
 input[type=radio] {
@@ -99,7 +110,7 @@ input[type=radio] {
         background-color: @blue-color;
     }
     &::after {
-        margin: 2px 0 0 0;
+        margin: 5px 0 0 0;
         content: '';
         width: 20px;
         height: 20px;

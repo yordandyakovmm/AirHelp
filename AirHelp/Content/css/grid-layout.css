@@ -88,6 +88,7 @@ a:hover {
   background-color: aquamarine;
 }
 .form-row {
+  margin: 15px 0 0 0;
   display: flex;
   flex-flow: row;
   justify-content: space-around;
