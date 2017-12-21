@@ -52,7 +52,7 @@ input[type="text"] {
   color: red;
 }
 .error input + .icon::before {
-  content: '\e101';
+  content: '\e014';
   margin-left: -30px;
   color: red;
 }
