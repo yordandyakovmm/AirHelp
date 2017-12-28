@@ -107,3 +107,34 @@ input[type=radio] {
   display: block;
   border-radius: 100%;
 }
+button:focus {
+  outline: none;
+}
+button:hover,
+li:hover {
+  cursor: pointer;
+}
+button.bDelete {
+  border-style: none;
+  background-color: rgba(0, 0, 0, 0);
+  margin-left: 10px;
+}
+button.bDelete i::before {
+  color: #009fe3;
+  font-size: 18px;
+  font-weight: 600;
+  content: '\e020';
+}
+button.bAdd {
+  border-style: none;
+  background-color: rgba(0, 0, 0, 0);
+  margin-left: 0;
+  height: 43px;
+  width: 50px;
+}
+button.bAdd i::before {
+  color: #009fe3;
+  font-size: 25px;
+  font-weight: 600;
+  content: '\e081';
+}

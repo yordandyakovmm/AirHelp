@@ -99,3 +99,13 @@ a:hover {
   display: flex;
   flex-flow: column;
 }
+.form-box-connection {
+  width: 60%;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  margin: 8px 0 0 0;
+}
+.form-box-connection:first-child button.bDelete {
+  display: none;
+}
