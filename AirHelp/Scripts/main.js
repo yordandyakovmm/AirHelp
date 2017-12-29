@@ -37,12 +37,13 @@ function cbBlur(_this) {
     var $dropDown = $this.parent().find('.lSuggestoin');
     if (($this.parent().find('li:hover').length) == 0) {
         $dropDown.hide();
+        $this.removeClass('remove-shadow')
     }
 }
 
 function menuItemClick(_this) {
     var $parent = $(_this).parent();
-    $parent.parent().find('input').val($(_this).text());
+    $parent.parent().find('input').val($(_this).text()).removeClass('remove-shadow');
     $parent.hide();
 }
 
@@ -57,6 +58,7 @@ function ddKeyUp(_this ,e) {
         if ($selected.length > 0) {
             $this.parent().find('input').val($selected.text());
         }
+        $this.removeClass('remove-shadow');
         $dropDown.hide();
     }
     // up
@@ -87,8 +89,11 @@ function ddKeyUp(_this ,e) {
         $dropDown.find('li').removeClass('selected');
         $dropDown.find('li').first().addClass('selected');
         $dropDown.show();
+        $this.addClass('remove-shadow');
+        $this.parent().parent().removeClass('error');
     }
     else {
         $dropDown.hide();
+        $this.removeClass('remove-shadow');
     }
 }

@@ -12,18 +12,19 @@
                     <input type="text" id="iFirstName" placeholder="Име" /><i class="icon"></i>
                 </div>
             </div>
-            <div class="form-box">
+            <div class="form-box success">
                 <label>Фамиля</label>
                 <div>
-                    <input type="text" id="iLastName" placeholder="Фамилия" />
+                    <input type="text" id="iLastName" placeholder="Фамилия" /><i class="icon"></i>
                 </div>
             </div>
         </div>
         <div class="form-row">
-            <div class="form-box">
+            <div class="form-box error">
                 <label>Начално летище</label>
                 <div>
                     <input type="text" id="cbDepartureAirports" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)"  placeholder="Начално летище" /><i class="icon"></i>
+                    <i class="icon"></i>
                     <ul class="lSuggestoin">
                         <li index='1' onclick="menuItemClick(this)">Lorem</li>
                         <li index='2' onclick="menuItemClick(this)">Ipsum</li>
@@ -37,6 +38,7 @@
                 <label>Крайно летище</label>
                 <div>
                     <input type="text" id="cbDestinationAirports" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Крайно летище" />
+                    <i class="icon"></i>
                     <ul class="lSuggestoin">
                         <li index='1' onclick="menuItemClick(this)">Lorem</li>
                         <li index='2' onclick="menuItemClick(this)">Ipsum</li>
@@ -68,6 +70,7 @@
             <div class="form-box-connection">
                 <div>
                     <input type="text" id="cbConnectionAirports" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" /><i class="icon"></i>
+                    <i class="icon"></i>
                     <ul class="lSuggestoin">
                         <li index='1' onclick="menuItemClick(this)">Lorem</li>
                         <li index='2' onclick="menuItemClick(this)">Ipsum</li>

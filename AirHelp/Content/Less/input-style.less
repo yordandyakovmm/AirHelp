@@ -1,5 +1,5 @@
 ﻿@border-blue-color: rgb(0, 159, 227);
-@blue-color: #009fe3; 
+@blue-color: #009fe3;
 
 #font() {
     font-family: PT Sans, sans-serif;
@@ -34,6 +34,53 @@ input[type="text"] {
     border: 1px solid @border-blue-color;
     border-radius: 2px;
     #font;
+    outline: none;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 8px @blue-color;
+    }
+}
+
+input.remove-shadow:focus {
+    outline: none;
+    
+    box-shadow: none !important;
+}
+
+.success {
+    input {
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 8px @blue-color;
+        }
+
+        border-color: @blue-color;
+
+        + .icon::before {
+            content: '\e084';
+            margin-left: -30px;
+            color: @blue-color;
+        }
+    }
+}
+
+.error {
+    input {
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(200, 10, 10, 1);
+        }
+
+        border-color: red;
+        color: red;
+
+        + .icon::before {
+            content: '\e014';
+            margin-left: -30px;
+            color: red;
+        }
+    }
 }
 
 .form-hedar {
@@ -57,18 +104,7 @@ input[type="text"] {
     /*margin: 0 5px;*/
 }
 
-.error {
-    input {
-        border-color: red;
-        color: red;
 
-        + .icon::before {
-            content: '\e014';
-            margin-left: -30px;
-            color: red;
-        }
-    }
-}
 
 .lSuggestoin {
     color: @blue-color;
@@ -85,19 +121,23 @@ input[type="text"] {
     list-style-type: none;
     display: none;
     #font;
+    outline: none;
+    border-top-style: none;
+    //box-shadow: 0 0 8px @blue-color;
 
     li {
-        &.selected{
+        &.selected {
             color: #fff;
             background-color: @blue-color;
         }
+
         padding: 12px 0 12px 20px;
-        &:hover{
+
+        &:hover {
             color: darkblue;
             background-color: lightgray;
         }
     }
-    
 }
 
 input[type=radio] {
@@ -106,9 +146,11 @@ input[type=radio] {
 
 .radio {
     margin: 10px 20px 0 0;
+
     &.selected::after {
         background-color: @blue-color;
     }
+
     &::after {
         margin: 5px 0 0 0;
         content: '';
@@ -119,7 +161,7 @@ input[type=radio] {
         box-sizing: border-box;
         background-clip: content-box;
         display: block;
-        border-radius:100%;
+        border-radius: 100%;
     }
 }
 
@@ -127,7 +169,7 @@ button:focus {
     outline: none;
 }
 
-button, li {
+button, li, .radio {
     &:hover {
         cursor: pointer;
     }
@@ -145,12 +187,14 @@ button.bDelete {
         content: '\e020'
     }
 }
+
 button.bAdd {
     border-style: none;
     background-color: rgba(0,0,0,0);
     margin-left: 0;
     height: 43px;
     width: 50px;
+
     i::before {
         color: @blue-color;
         font-size: 25px;

@@ -19,6 +19,40 @@ input[type="text"] {
   color: #141a30;
   font-size: 15px;
   font-weight: 400;
+  outline: none;
+}
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 8px #009fe3;
+}
+input.remove-shadow:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+.success input {
+  border-color: #009fe3;
+}
+.success input:focus {
+  outline: none;
+  box-shadow: 0 0 8px #009fe3;
+}
+.success input + .icon::before {
+  content: '\e084';
+  margin-left: -30px;
+  color: #009fe3;
+}
+.error input {
+  border-color: red;
+  color: red;
+}
+.error input:focus {
+  outline: none;
+  box-shadow: 0 0 8px #c80a0a;
+}
+.error input + .icon::before {
+  content: '\e014';
+  margin-left: -30px;
+  color: red;
 }
 .form-hedar {
   font-family: PT Sans, sans-serif;
@@ -47,15 +81,6 @@ input[type="text"] {
   font-size: 14px;
   /*margin: 0 5px;*/
 }
-.error input {
-  border-color: red;
-  color: red;
-}
-.error input + .icon::before {
-  content: '\e014';
-  margin-left: -30px;
-  color: red;
-}
 .lSuggestoin {
   color: #009fe3;
   position: absolute;
@@ -74,6 +99,8 @@ input[type="text"] {
   color: #141a30;
   font-size: 15px;
   font-weight: 400;
+  outline: none;
+  border-top-style: none;
 }
 .lSuggestoin li {
   padding: 12px 0 12px 20px;
@@ -111,7 +138,8 @@ button:focus {
   outline: none;
 }
 button:hover,
-li:hover {
+li:hover,
+.radio:hover {
   cursor: pointer;
 }
 button.bDelete {
