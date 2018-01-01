@@ -1,7 +1,9 @@
 ﻿$(document).ready(function () {
 
-    
+    $.datepicker.setDefaults($.datepicker.regional['bg']);
 
+    $('#iDate').datepicker({ dateFormat: 'dd.mm.yy' });
+    $('#iDate').datepicker($.datepicker.regional['bg']);
     $('input[type=radio]').change(function () {
 
         if ($(this).is('#rYes:checked')) {
@@ -97,3 +99,17 @@ function ddKeyUp(_this ,e) {
         $this.removeClass('remove-shadow');
     }
 }
+
+function uploadClick(obj) {
+    $(obj).parent().find('input[type="file"]').click();
+} 
+
+function uploadChange(obj) {
+    var fileName = obj.files[0].name.split('.')[0];
+    var $parent = $(obj).parent();
+    if (fileName.length > 20) {
+        fileName = fileName.substring(0, 20) + '...';
+    }
+    $parent.find('label').text(fileName);
+    $parent.find('button').addClass('success');
+} 

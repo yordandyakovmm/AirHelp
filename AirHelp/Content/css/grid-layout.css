@@ -109,3 +109,6 @@ a:hover {
 .form-box-connection:first-child button.bDelete {
   display: none;
 }
+.upload-box div {
+  margin-top: 10px;
+}
