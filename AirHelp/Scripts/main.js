@@ -15,19 +15,8 @@
 
     $('#iDate').datepicker({ dateFormat: 'dd.mm.yy' });
     $('#iDate').datepicker($.datepicker.regional['bg']);
-    $('input[type=radio]').change(function () {
 
-        if ($(this).is('#rYes:checked')) {
-            $('#connectionAirPorts').show();
-            $('#rYes').parent().addClass('selected');
-            $('#rNo').parent().removeClass('selected');
-        }
-        else {
-            $('#connectionAirPorts').hide();
-            $('#rYes').parent().removeClass('selected');
-            $('#rNo').parent().addClass('selected');
-        }
-    });
+    
 
     function addCbAiports(addButton) {
         var $this = $(addButton);
@@ -124,3 +113,17 @@ function uploadChange(obj) {
     $parent.find('label').text(fileName);
     $parent.find('button').addClass('success');
 } 
+
+ function radioChange(obj) {
+
+     $(obj).parent().parent().find('label').removeClass('selected');
+     $(obj).parent().addClass('selected');
+
+     if ($(obj).is('#rYes:checked')) {
+        $('#connectionAirPorts').show();
+
+    }
+    else {
+        $('#connectionAirPorts').hide();
+    }
+}

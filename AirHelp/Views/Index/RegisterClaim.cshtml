@@ -92,11 +92,11 @@
             <div class="form-row" style="justify-content:flex-start">
 
                 <label class="radio">
-                    <input type="radio" id="rYes" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)"  id="rYes" name="hasConnection">
                     <span>Yes</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" id="rNo" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" id="rNo" name="hasConnection">
                     <span>No</span>
                 </label>
             </div>
@@ -126,35 +126,48 @@
             <div class="form-row" style="justify-content:flex-start">
 
                 <label class="radio">
-                    <input type="radio" id="rYes" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
                     <span>Технически проблем</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" id="rNo" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
                     <span>Повлиян от други полети</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" id="rNo" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)"  name="hasConnection">
                     <span>Стачка</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" id="rNo" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
                     <span>Лошо време</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" id="rNo" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
                     <span>По вина на летището</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" id="rNo" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
                     <span>По вина на летището</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" id="rNo" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
                     <span>Не беше дадена причина</span>
                 </label>
             </div>
+            <div class="form-subheder">
+                Полетат Ви закъсня ли с повече от 3 часа ?
+            </div>
+             <div class="form-row" style="justify-content:flex-start">
 
+                <label class="radio">
+                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
+                    <span>Yes</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
+                    <span>No</span>
+                </label>
+            </div>
             <div class="form-row" id="AirCompany" style="flex-flow: column;">
                 <div class="form-box-width">
                     <label>Въздушен превозвач</label>
