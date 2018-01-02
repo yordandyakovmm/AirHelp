@@ -58,26 +58,58 @@ button.upload + .icon::before {
   color: #1e201e;
 }
 button.submit {
-  width: 300px;
+  width: 380px;
   padding: 12px 5px 12px 5px;
   box-sizing: border-box;
   border: 0px none;
   border-radius: 4px;
   font-family: PT Sans, sans-serif;
   color: #141a30;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
   outline: none;
   border-color: #009fe3;
-  background-color: dodgerblue;
+  background-color: #667292;
   color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 button.submit:hover {
-  background-color: aqua;
+  background-color: #8d9db6;
 }
-button.submit + .icon::after {
-  content: '\e173"';
-  margin-left: 30px;
+button.submit .icon::before {
+  font-size: 22px;
+  content: '\e084';
+  margin-right: 15px;
+  color: white;
+}
+button.reset {
+  width: 380px;
+  padding: 12px 5px 12px 5px;
+  box-sizing: border-box;
+  border: 0px none;
+  border-radius: 4px;
+  font-family: PT Sans, sans-serif;
+  color: #141a30;
+  font-size: 22px;
+  font-weight: 500;
+  outline: none;
+  border-color: #009fe3;
+  background-color: #667292;
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: #87bdd8;
+}
+button.reset:hover {
+  background-color: #b7d7e8;
+}
+button.reset .icon::before {
+  font-size: 22px;
+  content: '\e014';
+  margin-right: 15px;
   color: white;
 }
 .success input {
