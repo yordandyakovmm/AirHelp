@@ -1,5 +1,16 @@
 ﻿$(document).ready(function () {
 
+
+    // initialize width of position absolute elements
+    $('.lSuggestoin').each(function (el) {
+        $(this).width($(this).parent().find('input').width()+50);
+    });
+    $(window).resize(function () {
+        $('.lSuggestoin').each(function (el) {
+            $(this).width($(this).parent().find('input').width()+50);
+        });
+    });
+
     $.datepicker.setDefaults($.datepicker.regional['bg']);
 
     $('#iDate').datepicker({ dateFormat: 'dd.mm.yy' });

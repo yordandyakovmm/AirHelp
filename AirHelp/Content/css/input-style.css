@@ -32,6 +32,24 @@ input.remove-shadow:focus {
   outline: none;
   box-shadow: none !important;
 }
+textarea {
+  width: 100%;
+  padding: 12px 20px 12px 20px;
+  /*margin: 8px 0;*/
+  box-sizing: border-box;
+  border: 1px solid #009fe3;
+  border-radius: 2px;
+  font-family: PT Sans, sans-serif;
+  color: #141a30;
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+  resize: none;
+}
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 8px #009fe3;
+}
 button.upload {
   width: 300px;
   padding: 12px 5px 12px 5px;
@@ -169,7 +187,6 @@ button.reset .icon::before {
   position: absolute;
   margin: -1px 0 0 0;
   background-color: white;
-  width: 370px;
   box-sizing: border-box;
   border-style: none solid solid solid;
   border-width: 1px;

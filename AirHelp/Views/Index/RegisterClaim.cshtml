@@ -119,6 +119,75 @@
                     <button class="bAdd" onclick="addCbAiports(this)"><i class="icon"></i></button>
                 </div>
             </div>
+            <!-- delay -->
+            <div class="form-hedar">
+                Причина за закъснението
+            </div>
+            <div class="form-row" style="justify-content:flex-start">
+
+                <label class="radio">
+                    <input type="radio" id="rYes" name="hasConnection">
+                    <span>Технически проблем</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" id="rNo" name="hasConnection">
+                    <span>Повлиян от други полети</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" id="rNo" name="hasConnection">
+                    <span>Стачка</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" id="rNo" name="hasConnection">
+                    <span>Лошо време</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" id="rNo" name="hasConnection">
+                    <span>По вина на летището</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" id="rNo" name="hasConnection">
+                    <span>По вина на летището</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" id="rNo" name="hasConnection">
+                    <span>Не беше дадена причина</span>
+                </label>
+            </div>
+
+            <div class="form-row" id="AirCompany" style="flex-flow: column;">
+                <div class="form-box-width">
+                    <label>Въздушен превозвач</label>
+                    <div>
+                        <input type="text" id="cbAirCompany" dropdown onkeyup="ddKeyUp(this, event)" style="width: 100%" onblur="cbBlur(this)" placeholder="Въдушен превозвач" />
+                        <i class="icon"></i>
+                        <ul class="lSuggestoin" style="width: 100%">
+                            <li index='1' onclick="menuItemClick(this)">Bulgaria Air</li>
+                            <li index='2' onclick="menuItemClick(this)">Ryanair</li>
+                            <li index='3' onclick="menuItemClick(this)">Blue Air</li>
+                            <li index='4' onclick="menuItemClick(this)">EasyJet</li>
+                            <li index='5' onclick="menuItemClick(this)">Germanwings</li>
+                            <li index='6' onclick="menuItemClick(this)">Pegasus Airlines</li>
+                            <li index='7' onclick="menuItemClick(this)">British Airways</li>
+                            <li index='8' onclick="menuItemClick(this)">Air France</li>
+                            <li index='9' onclick="menuItemClick(this)">Swiss Airlines</li>
+                            <li index='10' onclick="menuItemClick(this)">Hamburg International</li>
+                            <li index='11' onclick="menuItemClick(this)" last>Wizz Air</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row" id="AirCompany" style="flex-flow: column;">
+                <div class="form-box-width">
+                    <label>Допълнителна информация</label>
+                    <div>
+                        <textarea rows="6" cols="80" id="iAdditionalInfo" style="width: 100%" placeholder="">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-hedar">
                 Копия на необходими документи
             </div>

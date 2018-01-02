@@ -59,6 +59,22 @@ input.remove-shadow:focus {
     box-shadow: none !important;
 }
 
+textarea {
+    width: 100%;
+    padding: 12px 20px 12px 20px;
+    /*margin: 8px 0;*/
+    box-sizing: border-box;
+    border: 1px solid @border-blue-color;
+    border-radius: 2px;
+    #font;
+    outline: none;
+    resize:none;
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 8px @blue-color;
+    }
+}
+
 button.upload {
     width: 300px;
     padding: 12px 5px 12px 5px;
@@ -198,7 +214,7 @@ button.reset {
     position: absolute;
     margin: -1px 0 0 0;
     background-color: white;
-    width: 370px;
+    //width: 370px;
     box-sizing: border-box;
     border-style: none solid solid solid;
     border-width: 1px;
