@@ -217,6 +217,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\API.txt" />
     <Content Include="Content\Assets\285053.png" />
     <Content Include="Content\Assets\4c58fcdb.png" />
     <Content Include="Content\Assets\59919.png" />
