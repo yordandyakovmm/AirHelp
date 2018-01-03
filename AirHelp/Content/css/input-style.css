@@ -234,12 +234,34 @@ input[type=radio] {
   display: block;
   border-radius: 100%;
 }
+.checkbox {
+  margin: 10px 10px 0 0;
+  text-wrap: none;
+}
+.checkbox.selected::before {
+  background-color: #009fe3;
+}
+.checkbox span {
+  font-weight: 400;
+}
+.checkbox::before {
+  margin: 0 5px 0 0;
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 1px solid #009fe3;
+  padding: 4px;
+  box-sizing: border-box;
+  background-clip: content-box;
+  display: block;
+}
 button:focus {
   outline: none;
 }
 button:hover,
 li:hover,
-.radio:hover {
+.radio:hover,
+.checkbox:hover {
   cursor: pointer;
 }
 button.bDelete {

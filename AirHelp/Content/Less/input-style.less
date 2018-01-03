@@ -267,11 +267,37 @@ input[type=radio] {
     }
 }
 
+.checkbox {
+    margin: 10px 10px 0 0;
+    text-wrap: none;
+
+    &.selected::before {
+        background-color: @blue-color;
+    }
+
+    span{
+        font-weight: 400;
+    }
+
+    &::before {
+        margin: 0 5px 0 0;
+        content: '';
+        width: 20px;
+        height: 20px;
+        border: 1px solid @blue-color;
+        padding: 4px;
+        box-sizing: border-box;
+        background-clip: content-box;
+        display: block;
+        //border-radius: 100%;
+    }
+}
+
 button:focus {
     outline: none;
 }
 
-button, li, .radio {
+button, li, .radio, .checkbox {
     &:hover {
         cursor: pointer;
     }

@@ -94,6 +94,15 @@ a:hover {
   justify-content: space-around;
   align-content: space-around;
 }
+.form-row-choise {
+  margin: 5px 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.form-row-choise label {
+  margin: 20px 0 0 0;
+  display: inline-flex;
+}
 .form-box {
   width: 50%;
   display: flex;
