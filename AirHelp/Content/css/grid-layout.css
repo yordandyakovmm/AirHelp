@@ -103,6 +103,18 @@ a:hover {
   margin: 20px 0 0 0;
   display: inline-flex;
 }
+.form-row-yes-no,
+.form-row-rodio {
+  margin: 5px 0 0 0;
+  display: grid;
+  padding: 0 0 0 10px;
+  grid-template-columns: 80px 80px auto;
+}
+.form-row-yes-no label,
+.form-row-rodio label {
+  margin: 30px 0 0 0;
+  display: inline-flex;
+}
 .form-box {
   width: 50%;
   display: flex;

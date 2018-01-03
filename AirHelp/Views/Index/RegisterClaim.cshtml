@@ -89,15 +89,15 @@
             <div class="form-subtext">
                 Моля, посочете летища на прекачване, които са част от същото пътуване и резервация. Това ще ни помогне да изчислим размера на обезщетението Ви по-точно.
             </div>
-            <div class="form-row" style="justify-content:flex-start">
+            <div class="form-row-rodio" style="justify-content:flex-start">
 
                 <label class="radio">
                     <input type="radio" onclick="radioChange(this)"  id="rYes" name="hasConnection">
-                    <span>Yes</span>
+                    <span>Да</span>
                 </label>
                 <label class="radio">
                     <input type="radio" onclick="radioChange(this)" id="rNo" name="hasConnection">
-                    <span>No</span>
+                    <span>Не</span>
                 </label>
             </div>
             <div class="form-row" id="connectionAirPorts" style="flex-flow: column; display:none;">
@@ -113,61 +113,144 @@
                             <li index='5' last onclick="menuItemClick(this)">Amed</li>
                         </ul>
                     </div>
-                    <button class="bDelete" onclick="$(this).parent().remove()"><i class="icon"></i></button>
+                    <button class="bDelete" onclick="$(this).parent().remove(); return false;"><i class="icon"></i></button>
                 </div>
                 <div class="form-box">
-                    <button class="bAdd" onclick="addCbAiports(this)"><i class="icon"></i></button>
+                    <button class="bAdd" onclick="addCbAiports(this); return false;"><i class="icon"></i></button>
                 </div>
             </div>
             <!-- delay -->
             <div class="form-hedar">
-                Причина за закъснението
+                Причина за закъснението 1-2
             </div>
             <div class="form-row-choise" style="justify-content:flex-start">
 
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="reason">
                     <span>Технически проблем</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="reason">
                     <span>Повлиян от други полети</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)"  name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)"  name="reason">
                     <span>Стачка</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="reason">
                     <span>Лошо време</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="reason">
                     <span>По вина на летището</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="reason">
                     <span>По вина на летището</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" name="reason">
                     <span>Не беше дадена причина</span>
                 </label>
             </div>
-            <div class="form-subheder">
-                Полетат Ви закъсня ли с повече от 3 часа ?
+            <div class="form-hedar">
+                Полетат Ви закъсня ли с повече от три часа? - 1
             </div>
-             <div class="form-row" style="justify-content:flex-start">
+            <div class="form-row-yes-no">
 
-                <label class="radio">
-                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
-                    <span>Yes</span>
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="delay">
+                    <span>Да</span>
                 </label>
-                <label class="radio">
-                    <input type="radio" onclick="radioChange(this)" name="hasConnection">
-                    <span>No</span>
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="delay">
+                    <span>Не</span>
                 </label>
             </div>
+            
+
+            <div class="form-hedar">
+                Колко голямо беше закъснението до крайната дистанция ? - 2
+            </div>
+            <div class="form-row-choise" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr;">
+
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="howMuch">
+                    <span>0-2 часа</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="howMuch">
+                    <span>2-3 часа</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="howMuch">
+                    <span>3-4 часа</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="howMuch">
+                    <span>над 4 часа</span>
+                </label>
+            </div>
+            <div class="form-hedar">
+                Кога бяхте уведомени от превозвача за отмяната на полета ? - 2
+            </div>
+            <div class="form-row-choise" style="justify-content:flex-start">
+
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="annonsment">
+                    <span>Повече от 14 дни преди полета</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="annonsment">
+                    <span>По-малко от 14 дни преди полета</span>
+                </label>
+            </div>
+
+
+            <div class="form-hedar">
+                Пристигнахте ли на чек-ин-а поне 30 минути преди излитането на самолета?
+            </div>
+            <div class="form-row-yes-no" style="justify-content:flex-start">
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="arival">
+                    <span>Да</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="arival">
+                    <span>Не</span>
+                </label>
+            </div>
+
+            <div class="form-hedar">
+                Достъпът беше ли ви отказан заради проблеми с документите или от съображения за сигурност ?
+            </div>
+            <div class="form-row-yes-no" style="justify-content:flex-start">
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="documentSecurity">
+                    <span>Да</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="documentSecurity">
+                    <span>Не</span>
+                </label>
+            </div>
+
+            <div class="form-hedar">
+                Доброволно ли преотстъпихте мястото си на борда на самолета ?
+            </div>
+            <div class="form-row-yes-no" style="justify-content:flex-start">
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="willness">
+                    <span>Да</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="willness">
+                    <span>Не</span>
+                </label>
+            </div>
+
+
             <div class="form-row" id="AirCompany" style="flex-flow: column;">
                 <div class="form-box-width">
                     <label>Въздушен превозвач</label>

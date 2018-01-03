@@ -219,11 +219,11 @@ input[type=radio] {
 .radio {
   margin: 10px 20px 0 0;
 }
-.radio.selected::after {
+.radio.selected::before {
   background-color: #009fe3;
 }
-.radio::after {
-  margin: 5px 0 0 0;
+.radio::before {
+  margin: 0 6px 0 0;
   content: '';
   width: 20px;
   height: 20px;
