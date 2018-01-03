@@ -217,14 +217,24 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\API.txt" />
     <Content Include="Content\Assets\285053.png" />
     <Content Include="Content\Assets\4c58fcdb.png" />
     <Content Include="Content\Assets\59919.png" />
     <Content Include="Content\Assets\88db8d1d-checkmark_01j01j01j01j000000.png" />
+    <Content Include="Content\Assets\Airplane\airplane1.png" />
+    <Content Include="Content\Assets\Airplane\airplane2.png" />
     <Content Include="Content\Assets\Icon\cc-icon-01.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-02.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-03.svg" />
     <Content Include="Content\Assets\d192862f-pexels-delayed-4-compressor.jpg" />
+    <Content Include="Content\Assets\Icon\distance0.png" />
+    <Content Include="Content\Assets\Icon\distance1.png" />
+    <Content Include="Content\Assets\Icon\distance2.png" />
+    <Content Include="Content\Assets\Icon\distance3.png" />
+    <Content Include="Content\Assets\Icon\distance4.png" />
+    <Content Include="Content\Assets\Icon\distance5.png" />
+    <Content Include="Content\Assets\woman-watch.jpeg" />
     <Content Include="Content\Assets\yellow-cloud-plaine.jpg" />
     <Content Include="Content\Assets\five-green-stars.png" />
     <Content Include="Content\Assets\facebook-logout-button-851580_650602211663185_74135741_n.png" />
