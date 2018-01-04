@@ -62,7 +62,7 @@ button.upload {
   font-weight: 400;
   outline: none;
   border-color: #009fe3;
-  background-color: #e6e6e6;
+  background-color: #c8c8dc;
 }
 button.upload:hover {
   background-color: #f0f0f0;
@@ -74,6 +74,27 @@ button.upload + .icon::before {
   content: '\e164';
   margin-left: -30px;
   color: #1e201e;
+}
+button.clear {
+  width: 80%;
+  padding: 12px 5px 12px 5px;
+  box-sizing: border-box;
+  border: 1px solid #009fe3;
+  border-radius: 2px;
+  font-family: PT Sans, sans-serif;
+  color: #141a30;
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+  border-color: #009fe3;
+  background-color: #c8c8dc;
+}
+button.clear:hover {
+  background-color: #f0f0f0;
+}
+convas {
+  width: 80%;
+  height: auto;
 }
 button.submit {
   width: 380px;
@@ -92,9 +113,10 @@ button.submit {
   display: flex;
   align-content: center;
   justify-content: center;
+  background-color: #009fe3;
 }
 button.submit:hover {
-  background-color: #8d9db6;
+  background-color: #00587d;
 }
 button.submit .icon::before {
   font-size: 22px;
@@ -119,10 +141,10 @@ button.reset {
   display: flex;
   align-content: center;
   justify-content: center;
-  background-color: #87bdd8;
+  background-color: #8d9db6;
 }
 button.reset:hover {
-  background-color: #b7d7e8;
+  background-color: #566987;
 }
 button.reset .icon::before {
   font-size: 22px;

@@ -1,8 +1,9 @@
 ﻿@border-blue-color: rgb(0, 159, 227);
 @blue-color: #009fe3;
 @dark-color: rgb(30, 32, 30);
-@button-color: rgb(230, 230, 230);
+@button-color: rgb(200, 200, 220);
 @button-hover-color: rgb(240, 240, 240);
+
 #font() {
     font-family: PT Sans, sans-serif;
     color: rgb(20, 26, 48);
@@ -33,7 +34,8 @@ label {
     padding-left: 10px;
     justify-content: flex-start;
     font-weight: 600;
-    &.file-upload{
+
+    &.file-upload {
         margin-left: 10px;
     }
 }
@@ -68,14 +70,15 @@ textarea {
     border-radius: 2px;
     #font;
     outline: none;
-    resize:none;
+    resize: none;
+
     &:focus {
         outline: none;
         box-shadow: 0 0 8px @blue-color;
     }
 }
 
-button.upload {
+button.upload  {
     width: 300px;
     padding: 12px 5px 12px 5px;
     box-sizing: border-box;
@@ -96,12 +99,33 @@ button.upload {
         }
     }
 
-
     + .icon::before {
         content: '\e164';
         margin-left: -30px;
         color: @dark-color;
     }
+}
+
+button.clear {
+    width: 80%;
+    padding: 12px 5px 12px 5px;
+    box-sizing: border-box;
+    border: 1px solid @border-blue-color;
+    border-radius: 2px;
+    #font;
+    outline: none;
+    border-color: @blue-color;
+    background-color: @button-color;
+
+    &:hover {
+        background-color: @button-hover-color;
+    }
+        
+}
+
+convas{
+    width: 80%;
+    height:auto;
 }
 
 #button-big() {
@@ -122,9 +146,10 @@ button.upload {
 
 button.submit {
     #button-big;
+    background-color: @blue-color;
 
     &:hover {
-        background-color: #8d9db6;
+        background-color: lighten(@blue-color, -20%);
     }
 
     .icon::before {
@@ -137,10 +162,10 @@ button.submit {
 
 button.reset {
     #button-big;
-    background-color: #87bdd8;
+    background-color: #8d9db6;
 
     &:hover {
-        background-color: #b7d7e8;
+        background-color: lighten(#8d9db6, -20%);
     }
 
     .icon::before {
@@ -275,7 +300,7 @@ input[type=radio] {
         background-color: @blue-color;
     }
 
-    span{
+    span {
         font-weight: 400;
     }
 

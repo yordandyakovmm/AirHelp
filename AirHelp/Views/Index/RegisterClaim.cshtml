@@ -92,7 +92,7 @@
             <div class="form-row-rodio" style="justify-content:flex-start">
 
                 <label class="radio">
-                    <input type="radio" onclick="radioChange(this)"  id="rYes" name="hasConnection">
+                    <input type="radio" onclick="radioChange(this)" id="rYes" name="hasConnection">
                     <span>Да</span>
                 </label>
                 <label class="radio">
@@ -134,7 +134,7 @@
                     <span>Повлиян от други полети</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)"  name="reason">
+                    <input type="radio" onclick="radioChange(this)" name="reason">
                     <span>Стачка</span>
                 </label>
                 <label class="checkbox">
@@ -168,7 +168,7 @@
                     <span>Не</span>
                 </label>
             </div>
-            
+
 
             <div class="form-hedar">
                 Колко голямо беше закъснението до крайната дистанция ? - 2
@@ -290,27 +290,37 @@
             <div class="form-row">
                 <div class="form-box upload-box">
                     <div>
-                        <button class="upload" onclick="uploadClick(this)">Бордова карта</button><i class="icon"></i>
+                        <button class="upload" onclick="uploadClick(this); return false;">Бордова карта</button><i class="icon"></i>
                         <input type="file" accept="image/*" id="uBordCard" style="display:none" onchange="uploadChange(this)" />
                         <label class="file-upload"> -- </label>
                     </div>
                     <div>
-                        <button class="upload" onclick="uploadClick(this)">Потвърждение за резервация</button><i class="icon"></i>
+                        <button class="upload" onclick="uploadClick(this); return false;">Потвърждение за резервация</button><i class="icon"></i>
                         <input type="file" accept="image/*" id="uReservation" style="display:none" onchange="uploadChange(this)" />
                         <label class="file-upload"> -- </label>
                     </div>
                     <div>
-                        <button class="upload" onclick="uploadClick(this)">Документ за извършено плащане</button><i class="icon"></i>
+                        <button class="upload" onclick="uploadClick(this); return false;">Документ за извършено плащане</button><i class="icon"></i>
                         <input type="file" accept="image/*" id="uPayDocument" style="display:none" onchange="uploadChange(this)" />
                         <label class="file-upload"> -- </label>
                     </div>
                 </div>
                 <div class="form-box ">
-                    <label>****</label>
                     <div>
-                        <input type="text" id="iDate" placeholder="Дата на полета" /><i class="icon"></i>
+                        <convas >
+
+                        </convas>
+                    </div>
+                    <div>
+                        <button class="clear" onclick="uploadClick(this); return false;"><span>Изчисти</span></button>
                     </div>
                 </div>
+            </div>
+            <div class="form-row-yes-no" style="grid-template-columns: auto">
+                <label class="checkbox">
+                    <input type="radio" onclick="radioChange(this)" name="confirm">
+                    <span>Потвърждавам, че давам съгласието си AirHelp да обработи претенцията от мое име</span>
+                </label>
             </div>
             <div class="form-row">
                 <div class="form-box">

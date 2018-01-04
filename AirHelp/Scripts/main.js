@@ -87,12 +87,29 @@ function ddKeyUp(_this ,e) {
             $dropDown.find('[index="' + index + '"]').addClass('selected');
         }
     }
-    else if ($this.val().length >= 2) {
+    else if ($this.val().length >= 3) {
+        $this.addClass('remove-shadow');
+        $this.parent().parent().removeClass('error');
+
+        if ($this.val().length == 3)
+        {
+            var url = 'https://www.save70.com/components/autocompleteJson.php?type=airport&term=' + $this.val();
+            $.get(url, function (data) {
+                debugger;
+                for (i = 0; i < data.length; i++) {
+                    var li = '<li index="' + i + '" onclick="menuItemClick(this)" ' + (i == data.length - 1 ? 'last' : '') + '>' + data[i].name + '</li>';
+                    $dropDown.append(li);
+                }
+                $dropDown.find('li').removeClass('selected');
+                $dropDown.find('li').first().addClass('selected');
+                $dropDown.show();
+            });
+            //return;
+        }
         $dropDown.find('li').removeClass('selected');
         $dropDown.find('li').first().addClass('selected');
         $dropDown.show();
-        $this.addClass('remove-shadow');
-        $this.parent().parent().removeClass('error');
+        
     }
     else {
         $dropDown.hide();
