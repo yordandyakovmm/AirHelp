@@ -1,13 +1,12 @@
 ﻿$(document).ready(function () {
 
-
-    // initialize width of position absolute elements
+    //nitialize width of position absolute elements
     $('.lSuggestoin').each(function (el) {
-        $(this).width($(this).parent().find('input').width()+50);
+        $(this).width($(this).parent().find('input').width() + 50);
     });
     $(window).resize(function () {
         $('.lSuggestoin').each(function (el) {
-            $(this).width($(this).parent().find('input').width()+50);
+            $(this).width($(this).parent().find('input').width() + 50);
         });
     });
 
@@ -16,7 +15,7 @@
     $('#iDate').datepicker({ dateFormat: 'dd.mm.yy' });
     $('#iDate').datepicker($.datepicker.regional['bg']);
 
-    
+
 
     function addCbAiports(addButton) {
         var $this = $(addButton);
@@ -26,7 +25,50 @@
         $this.insertBefore($template);
     }
 
+
+    // convace 
+    var el = document.getElementById('signiture');
+    var ctx = el.getContext('2d');
+    ctx.strokeStyle = 0;
+    ctx.lineWidth = 5;
+    var isDrawing;
+
+    el.onmousedown = function (e) {
+        isDrawing = true;
+        ctx.lineWidth = 5;
+        ctx.lineJoin = ctx.lineCap = 'round';
+        ctx.moveTo(e.layerX, e.layerY);
+    };
+    el.onmousemove = function (e) {
+        if (isDrawing) {
+            ctx.lineTo(e.layerX, e.layerY);
+            ctx.stroke();
+        }
+    };
+    el.mouseout = function (e) {
+        console.log('out');
+    };
+
+    el.mousein = function (e) {
+        console.log('in');
+    };
+
+    el.onmouseup = function () {
+        isDrawing = false;
+        saveSigiture();
+
+    };
+
+    function saveSigiture() {
+        document.getElementById("signiture-img").style.border = "2px solid";
+        var dataURL = el.toDataURL();
+        document.getElementById("signiture-img").src = dataURL;
+        document.getElementById("signiture-img").style.display = "inline";
+    }
+
+
 });
+
 
 function addCbAiports(addButton) {
     var $this = $(addButton);
@@ -49,7 +91,7 @@ function menuItemClick(_this) {
     $parent.hide();
 }
 
-function ddKeyUp(_this ,e) {
+function ddKeyUp(_this, e) {
     if (e.which == 37 || e.which == 39) {
         return;
     }
@@ -63,7 +105,7 @@ function ddKeyUp(_this ,e) {
         $this.removeClass('remove-shadow');
         $dropDown.hide();
     }
-    // up
+        // up
     else if (e.which == 38) {
         var $selected = $dropDown.find('li.selected');
         if (($selected).length == 0) {
@@ -75,7 +117,7 @@ function ddKeyUp(_this ,e) {
             $dropDown.find('[index="' + index + '"]').addClass('selected');
         }
     }
-    // down
+        // down
     else if (e.which == 40) {
         var $selected = $dropDown.find('li.selected');
         if (($selected).length == 0) {
@@ -91,8 +133,7 @@ function ddKeyUp(_this ,e) {
         $this.addClass('remove-shadow');
         $this.parent().parent().removeClass('error');
 
-        if ($this.val().length == 3)
-        {
+        if ($this.val().length == 3) {
             var url = 'https://www.save70.com/components/autocompleteJson.php?type=airport&term=' + $this.val();
             $.get(url, function (data) {
                 debugger;
@@ -109,7 +150,7 @@ function ddKeyUp(_this ,e) {
         $dropDown.find('li').removeClass('selected');
         $dropDown.find('li').first().addClass('selected');
         $dropDown.show();
-        
+
     }
     else {
         $dropDown.hide();
@@ -119,7 +160,7 @@ function ddKeyUp(_this ,e) {
 
 function uploadClick(obj) {
     $(obj).parent().find('input[type="file"]').click();
-} 
+}
 
 function uploadChange(obj) {
     var fileName = obj.files[0].name.split('.')[0];
@@ -129,14 +170,14 @@ function uploadChange(obj) {
     }
     $parent.find('label').text(fileName);
     $parent.find('button').addClass('success');
-} 
+}
 
- function radioChange(obj) {
+function radioChange(obj) {
 
-     $(obj).parent().parent().find('label').removeClass('selected');
-     $(obj).parent().addClass('selected');
+    $(obj).parent().parent().find('label').removeClass('selected');
+    $(obj).parent().addClass('selected');
 
-     if ($(obj).is('#rYes:checked')) {
+    if ($(obj).is('#rYes:checked')) {
         $('#connectionAirPorts').show();
 
     }
