@@ -92,10 +92,6 @@ button.clear {
 button.clear:hover {
   background-color: #f0f0f0;
 }
-convas {
-  width: 80%;
-  height: auto;
-}
 button.submit {
   width: 380px;
   padding: 12px 5px 12px 5px;
