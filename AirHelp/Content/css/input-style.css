@@ -11,6 +11,22 @@
 label.file-upload {
   margin-left: 10px;
 }
+canvas {
+  border: 1px solid #009fe3;
+  border-radius: 2px;
+  outline: none;
+  background-color: white;
+}
+canvas.error {
+  border: 1px solid red;
+  border-radius: 2px;
+}
+canvas.success {
+  border: 1px solid #009fe3;
+  border-radius: 2px;
+  outline: none;
+  box-shadow: 0 0 4px #009fe3;
+}
 input[type="text"] {
   width: 370px;
   padding: 12px 30px 12px 20px;
@@ -51,7 +67,7 @@ textarea:focus {
   box-shadow: 0 0 8px #009fe3;
 }
 button.upload {
-  width: 300px;
+  width: 350px;
   padding: 12px 5px 12px 5px;
   box-sizing: border-box;
   border: 1px solid #009fe3;
@@ -62,7 +78,7 @@ button.upload {
   font-weight: 400;
   outline: none;
   border-color: #009fe3;
-  background-color: #c8c8dc;
+  background-color: #ffffff;
 }
 button.upload:hover {
   background-color: #f0f0f0;
@@ -76,7 +92,7 @@ button.upload + .icon::before {
   color: #1e201e;
 }
 button.clear {
-  width: 80%;
+  width: 302px;
   padding: 12px 5px 12px 5px;
   box-sizing: border-box;
   border: 1px solid #009fe3;
@@ -87,17 +103,18 @@ button.clear {
   font-weight: 400;
   outline: none;
   border-color: #009fe3;
-  background-color: #c8c8dc;
+  background-color: #ffffff;
 }
 button.clear:hover {
-  background-color: #f0f0f0;
+  background-color: #ffffff;
 }
 button.submit {
-  width: 380px;
+  width: 420px;
   padding: 12px 5px 12px 5px;
   box-sizing: border-box;
   border: 0px none;
   border-radius: 4px;
+  margin: 0 auto;
   font-family: PT Sans, sans-serif;
   color: #141a30;
   font-size: 22px;
@@ -121,11 +138,12 @@ button.submit .icon::before {
   color: white;
 }
 button.reset {
-  width: 380px;
+  width: 420px;
   padding: 12px 5px 12px 5px;
   box-sizing: border-box;
   border: 0px none;
   border-radius: 4px;
+  margin: 0 auto;
   font-family: PT Sans, sans-serif;
   color: #141a30;
   font-size: 22px;

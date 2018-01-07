@@ -15,27 +15,23 @@
     $('#iDate').datepicker({ dateFormat: 'dd.mm.yy' });
     $('#iDate').datepicker($.datepicker.regional['bg']);
 
+    initSigniture();
+
+});
 
 
-    function addCbAiports(addButton) {
-        var $this = $(addButton);
-        var $template = $this.parent().parent().find('.form-box-connection').first();
-        $template.find('input').val('');
-        $template.find('input').removeClass('success').removeClass('error');
-        $this.insertBefore($template);
-    }
+// convace 
+var el = document.getElementById('signiture');
+var ctx = el.getContext('2d');
+ctx.strokeStyle = 0;
+ctx.lineWidth = 5;
+var isDrawing;
 
-
-    // convace 
-    var el = document.getElementById('signiture');
-    var ctx = el.getContext('2d');
-    ctx.strokeStyle = 0;
-    ctx.lineWidth = 5;
-    var isDrawing;
+function initSigniture() {
 
     el.onmousedown = function (e) {
         isDrawing = true;
-        ctx.lineWidth = 5;
+        ctx.lineWidth = 3;
         ctx.lineJoin = ctx.lineCap = 'round';
         ctx.moveTo(e.layerX, e.layerY);
     };
@@ -55,24 +51,26 @@
 
     el.onmouseup = function () {
         isDrawing = false;
-        saveSigiture();
-
+        //saveSigiture();
     };
+}
 
-    function saveSigiture() {
-        document.getElementById("signiture-img").style.border = "2px solid";
-        var dataURL = el.toDataURL();
-        document.getElementById("signiture-img").src = dataURL;
-        document.getElementById("signiture-img").style.display = "inline";
-    }
+function saveSigiture() {
+    document.getElementById("signiture-img").style.border = "2px solid";
+    var dataURL = el.toDataURL();
+    document.getElementById("signiture-img").src = dataURL;
+    document.getElementById("signiture-img").style.display = "inline";
+}
 
-
-});
-
+function clearSignature() {
+    ctx.clearRect(0, 0, el.width, el.height);
+    ctx = el.getContext('2d');
+}
 
 function addCbAiports(addButton) {
     var $this = $(addButton);
-    var template = $('#sCbTemplate').html();
+    var template = $('#template').html();
+    //var $template = $(template);
     $this.parent().before(template);
 }
 
@@ -86,8 +84,10 @@ function cbBlur(_this) {
 }
 
 function menuItemClick(_this) {
+    debugger;
     var $parent = $(_this).parent();
     $parent.parent().find('input').val($(_this).text()).removeClass('remove-shadow');
+    $(_this).parent().parent().addClass('success');
     $parent.hide();
 }
 
@@ -101,11 +101,13 @@ function ddKeyUp(_this, e) {
         var $selected = $dropDown.find('li.selected');
         if ($selected.length > 0) {
             $this.parent().find('input').val($selected.text());
+            $this.parent().parent().addClass('success');
+           
         }
         $this.removeClass('remove-shadow');
         $dropDown.hide();
     }
-        // up
+    // up
     else if (e.which == 38) {
         var $selected = $dropDown.find('li.selected');
         if (($selected).length == 0) {
@@ -117,7 +119,7 @@ function ddKeyUp(_this, e) {
             $dropDown.find('[index="' + index + '"]').addClass('selected');
         }
     }
-        // down
+    // down
     else if (e.which == 40) {
         var $selected = $dropDown.find('li.selected');
         if (($selected).length == 0) {
@@ -134,17 +136,17 @@ function ddKeyUp(_this, e) {
         $this.parent().parent().removeClass('error');
 
         if ($this.val().length == 3) {
-            var url = 'https://www.save70.com/components/autocompleteJson.php?type=airport&term=' + $this.val();
-            $.get(url, function (data) {
-                debugger;
-                for (i = 0; i < data.length; i++) {
-                    var li = '<li index="' + i + '" onclick="menuItemClick(this)" ' + (i == data.length - 1 ? 'last' : '') + '>' + data[i].name + '</li>';
-                    $dropDown.append(li);
-                }
-                $dropDown.find('li').removeClass('selected');
-                $dropDown.find('li').first().addClass('selected');
-                $dropDown.show();
-            });
+            //var url = 'https://www.save70.com/components/autocompleteJson.php?type=airport&term=' + $this.val();
+            //$.get(url, function (data) {
+            //    debugger;
+            //    for (i = 0; i < data.length; i++) {
+            //        var li = '<li index="' + i + '" onclick="menuItemClick(this)" ' + (i == data.length - 1 ? 'last' : '') + '>' + data[i].name + '</li>';
+            //        $dropDown.append(li);
+            //    }
+            //    $dropDown.find('li').removeClass('selected');
+            //    $dropDown.find('li').first().addClass('selected');
+            //    $dropDown.show();
+            //});
             //return;
         }
         $dropDown.find('li').removeClass('selected');
@@ -165,8 +167,8 @@ function uploadClick(obj) {
 function uploadChange(obj) {
     var fileName = obj.files[0].name.split('.')[0];
     var $parent = $(obj).parent();
-    if (fileName.length > 20) {
-        fileName = fileName.substring(0, 20) + '...';
+    if (fileName.length > 30) {
+        fileName = fileName.substring(0, 30) + '...';
     }
     $parent.find('label').text(fileName);
     $parent.find('button').addClass('success');
@@ -184,4 +186,7 @@ function radioChange(obj) {
     else {
         $('#connectionAirPorts').hide();
     }
+}
+
+function validate() {
 }

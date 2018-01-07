@@ -120,15 +120,25 @@ a:hover {
   display: flex;
   flex-flow: column;
 }
-.form-box-width {
+.form-box-upload {
+  width: 600px;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+}
+.form-box-signiture {
+  width: 380px;
+  display: flex;
+  flex-flow: column;
+}
+.width {
   width: 100%;
   display: flex;
   flex-flow: column;
 }
 .form-box-connection {
-  width: 60%;
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   justify-content: flex-start;
   margin: 8px 0 0 0;
 }
@@ -136,5 +146,5 @@ a:hover {
   display: none;
 }
 .upload-box div {
-  margin-top: 10px;
+  margin-bottom: 10px;
 }

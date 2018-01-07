@@ -57,7 +57,7 @@
                 <div class="form-box">
                     <label>Начално летище</label>
                     <div>
-                        <input type="text" id="cbDepartureAirports" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Начално летище" /><i class="icon"></i>
+                        <input type="text" id="cbDepartureAirports" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Начално летище" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin">
                             <li index='1' onclick="menuItemClick(this)">Lorem</li>
@@ -103,7 +103,7 @@
             <div class="form-row" id="connectionAirPorts" style="flex-flow: column; display:none;">
                 <div class="form-box-connection">
                     <div>
-                        <input type="text" id="cbConnectionAirports" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" /><i class="icon"></i>
+                        <input type="text" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin">
                             <li index='1' onclick="menuItemClick(this)">Lorem</li>
@@ -120,7 +120,7 @@
                 </div>
             </div>
             <!-- delay -->
-            <div class="form-hedar">
+            <div class="form-subheder">
                 Причина за закъснението 1-2
             </div>
             <div class="form-row-choise" style="justify-content:flex-start">
@@ -170,7 +170,7 @@
             </div>
 
 
-            <div class="form-hedar">
+            <div class="form-subheder">
                 Колко голямо беше закъснението до крайната дистанция ? - 2
             </div>
             <div class="form-row-choise" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr;">
@@ -192,7 +192,7 @@
                     <span>над 4 часа</span>
                 </label>
             </div>
-            <div class="form-hedar">
+            <div class="form-subheder">
                 Кога бяхте уведомени от превозвача за отмяната на полета ? - 2
             </div>
             <div class="form-row-choise" style="justify-content:flex-start">
@@ -208,8 +208,8 @@
             </div>
 
 
-            <div class="form-hedar">
-                Пристигнахте ли на чек-ин-а поне 30 минути преди излитането на самолета?
+            <div class="form-subheder">
+                Пристигнахте ли на чек-ин-а поне 30 минути преди излитането на самолета? -3
             </div>
             <div class="form-row-yes-no" style="justify-content:flex-start">
                 <label class="checkbox">
@@ -222,8 +222,8 @@
                 </label>
             </div>
 
-            <div class="form-hedar">
-                Достъпът беше ли ви отказан заради проблеми с документите или от съображения за сигурност ?
+            <div class="form-subheder">
+                Достъпът беше ли ви отказан заради проблеми с документите или от съображения за сигурност ? - 3
             </div>
             <div class="form-row-yes-no" style="justify-content:flex-start">
                 <label class="checkbox">
@@ -236,8 +236,8 @@
                 </label>
             </div>
 
-            <div class="form-hedar">
-                Доброволно ли преотстъпихте мястото си на борда на самолета ?
+            <div class="form-subheder">
+                Доброволно ли преотстъпихте мястото си на борда на самолета ? - 3
             </div>
             <div class="form-row-yes-no" style="justify-content:flex-start">
                 <label class="checkbox">
@@ -250,31 +250,31 @@
                 </label>
             </div>
 
-
-            <div class="form-row" id="AirCompany" style="flex-flow: column;">
-                <div class="form-box-width">
-                    <label>Въздушен превозвач</label>
+            <div class="form-row" id="AirCompany">
+                <div class="form-box ">
+                    <label>Номер на резервация или код за потвърждение</label>
                     <div>
-                        <input type="text" id="cbAirCompany" dropdown onkeyup="ddKeyUp(this, event)" style="width: 100%" onblur="cbBlur(this)" placeholder="Въдушен превозвач" />
+                        <input type="text" id="iBook" placeholder="Номер на резервация" /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <label>Въдушен превозвач</label>
+                    <div>
+                        <input type="text" id="cbAirCompany" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Въдушен превозвач" />
                         <i class="icon"></i>
-                        <ul class="lSuggestoin" style="width: 100%">
-                            <li index='1' onclick="menuItemClick(this)">Bulgaria Air</li>
-                            <li index='2' onclick="menuItemClick(this)">Ryanair</li>
-                            <li index='3' onclick="menuItemClick(this)">Blue Air</li>
-                            <li index='4' onclick="menuItemClick(this)">EasyJet</li>
-                            <li index='5' onclick="menuItemClick(this)">Germanwings</li>
-                            <li index='6' onclick="menuItemClick(this)">Pegasus Airlines</li>
-                            <li index='7' onclick="menuItemClick(this)">British Airways</li>
-                            <li index='8' onclick="menuItemClick(this)">Air France</li>
-                            <li index='9' onclick="menuItemClick(this)">Swiss Airlines</li>
-                            <li index='10' onclick="menuItemClick(this)">Hamburg International</li>
-                            <li index='11' onclick="menuItemClick(this)" last>Wizz Air</li>
+                        <ul class="lSuggestoin">
+                            <li index='1' onclick="menuItemClick(this)">Lorem</li>
+                            <li index='2' onclick="menuItemClick(this)">Ipsum</li>
+                            <li index='3' onclick="menuItemClick(this)">Dolor</li>
+                            <li index='4' onclick="menuItemClick(this)">Sit</li>
+                            <li index='5' onclick="menuItemClick(this)" last>Amed</li>
                         </ul>
                     </div>
                 </div>
+               
             </div>
 
-            <div class="form-row" id="AirCompany" style="flex-flow: column;">
+            <div class="form-row" id="Info" style="flex-flow: column;">
                 <div class="form-box-width">
                     <label>Допълнителна информация</label>
                     <div>
@@ -288,30 +288,34 @@
                 Копия на необходими документи
             </div>
             <div class="form-row">
-                <div class="form-box upload-box">
+                <div class="form-box-upload upload-box">
+                    <label>Бордова карта</label>
                     <div>
-                        <button class="upload" onclick="uploadClick(this); return false;">Бордова карта</button><i class="icon"></i>
+                        <button class="upload" onclick="uploadClick(this); return false;">Ибор на файл</button><i class="icon"></i>
                         <input type="file" accept="image/*" id="uBordCard" style="display:none" onchange="uploadChange(this)" />
                         <label class="file-upload"> -- </label>
                     </div>
+                    <label>Потвърждение за резервация</label>
                     <div>
-                        <button class="upload" onclick="uploadClick(this); return false;">Потвърждение за резервация</button><i class="icon"></i>
+                        <button class="upload" onclick="uploadClick(this); return false;">Ибор на файл</button><i class="icon"></i>
                         <input type="file" accept="image/*" id="uReservation" style="display:none" onchange="uploadChange(this)" />
                         <label class="file-upload"> -- </label>
                     </div>
+                    <label>Документ за извършено плащане</label>
                     <div>
-                        <button class="upload" onclick="uploadClick(this); return false;">Документ за извършено плащане</button><i class="icon"></i>
+                        <button class="upload" onclick="uploadClick(this); return false;">Ибор на файл</button><i class="icon"></i>
                         <input type="file" accept="image/*" id="uPayDocument" style="display:none" onchange="uploadChange(this)" />
                         <label class="file-upload"> -- </label>
                     </div>
                 </div>
-                <div class="form-box ">
+                <div class="form-box-signiture">
+                    <label>Подпис</label>
                     <div>
-                        <canvas id="signiture" width="300" height="200" style="border: solid 1px #aaa"></canvas>
+                        <canvas id="signiture"></canvas>
                         <img id="signiture-img" style="display:none;">
                     </div>
                     <div>
-                        <button class="clear" onclick="uploadClick(this); return false;"><span>Изчисти</span></button>
+                        <button class="clear" type="button" onclick="return clearSignature(this); return false;"><span>Изчисти</span></button>
                     </div>
                 </div>
             </div>
@@ -323,7 +327,7 @@
             </div>
             <div class="form-row">
                 <div class="form-box">
-                    <button class="submit" type="submit" onclick=""><i class="icon"></i><span>Изпрати</span></button>
+                    <button class="submit" type="submit" onclick="return validate()"><i class="icon"></i><span>Изпрати</span></button>
                 </div>
                 <div class="form-box">
                     <button class="reset" type="reset" onclick=""><i class="icon"></i><span>Изчисти</span></button>
@@ -337,18 +341,20 @@
     </div>
 </div>
 
-<script id="sCbTemplate" type="html/template">
+
+<div id="template" style="display:none;">
     <div class="form-box-connection">
         <div>
-            <input type="text" id="cbConnectionAirports" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Летище" /><i class="icon"></i>
+            <input type="text" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
+            <i class="icon"></i>
             <ul class="lSuggestoin">
                 <li index='1' onclick="menuItemClick(this)">Lorem</li>
                 <li index='2' onclick="menuItemClick(this)">Ipsum</li>
                 <li index='3' onclick="menuItemClick(this)">Dolor</li>
                 <li index='4' onclick="menuItemClick(this)">Sit</li>
-                <li index='5' onclick="menuItemClick(this)" last>Amed</li>
+                <li index='5' last onclick="menuItemClick(this)">Amed</li>
             </ul>
         </div>
-        <button class="bDelete" onclick="$(this).parent().remove()"><i class="icon"></i></button>
+        <button class="bDelete" onclick="$(this).parent().remove(); return false;"><i class="icon"></i></button>
     </div>
-</script>
+</div>
