@@ -179,13 +179,17 @@ a:hover {
 }
 
 .form-box-connection {
-    &:first-child button.bDelete{
-        display:none;
+    > div {
+        flex-flow: column;
+        width: 390px;
     }
 
+    &:first-child button.bDelete {
+        display: none;
+    }
     //width: 50%;
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
     justify-content: flex-start;
     margin: 8px 0 0 0;
 }

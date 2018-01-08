@@ -10,13 +10,13 @@
                 <div class="form-box ">
                     <label>Име</label>
                     <div>
-                        <input type="text" id="iFirstName" placeholder="Име" /><i class="icon"></i>
+                        <input type="text" id="FirstName" placeholder="Име" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box ">
                     <label>Фамиля</label>
                     <div>
-                        <input type="text" id="iLastName" placeholder="Фамилия" /><i class="icon"></i>
+                        <input type="text" id="LastName" placeholder="Фамилия" validate /><i class="icon"></i>
                     </div>
                 </div>
             </div>
@@ -24,13 +24,13 @@
                 <div class="form-box ">
                     <label>Емаил</label>
                     <div>
-                        <input type="text" id="iEmail" placeholder="Емаил" /><i class="icon"></i>
+                        <input type="text" id="Email" placeholder="Емаил" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box ">
                     <label>Телефон</label>
                     <div>
-                        <input type="text" id="iTel" placeholder="Телефон" /><i class="icon"></i>
+                        <input type="text" id="Tel" placeholder="Телефон" validate /><i class="icon"></i>
                     </div>
                 </div>
             </div>
@@ -42,13 +42,13 @@
                 <div class="form-box ">
                     <label>Номер на полета</label>
                     <div>
-                        <input type="text" id="iFlithNumber" placeholder="Номер на полет" /><i class="icon"></i>
+                        <input type="text" id="FlithNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box ">
                     <label>Дата на полета</label>
                     <div>
-                        <input type="text" id="iDate" placeholder="Дата на полета" /><i class="icon"></i>
+                        <input type="text" id="Date" placeholder="Дата на полета"  /><i class="icon"></i>
                     </div>
                 </div>
             </div>
@@ -176,19 +176,19 @@
             <div class="form-row-choise" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr;">
 
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)" name="howMuch">
+                    <input type="radio" onclick="radioChange(this)" value="0-2" name="howMuch">
                     <span>0-2 часа</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)" name="howMuch">
+                    <input type="radio" onclick="radioChange(this)" value="2-3" name="howMuch">
                     <span>2-3 часа</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)" name="howMuch">
+                    <input type="radio" onclick="radioChange(this)" value="3-4" name="howMuch">
                     <span>3-4 часа</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" onclick="radioChange(this)" name="howMuch">
+                    <input type="radio" onclick="radioChange(this)" value="4" name="howMuch">
                     <span>над 4 часа</span>
                 </label>
             </div>

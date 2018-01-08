@@ -291,6 +291,11 @@ input[type=radio] {
   background-clip: content-box;
   display: block;
 }
+.error .checkbox {
+  color: red;
+  background-color: red;
+  border-color: rebeccapurple;
+}
 button:focus {
   outline: none;
 }
@@ -303,7 +308,7 @@ li:hover,
 button.bDelete {
   border-style: none;
   background-color: rgba(0, 0, 0, 0);
-  margin-left: 10px;
+  margin-left: 0px;
 }
 button.bDelete i::before {
   color: #009fe3;

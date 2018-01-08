@@ -138,9 +138,13 @@ a:hover {
 }
 .form-box-connection {
   display: flex;
-  flex-flow: column;
+  flex-flow: row;
   justify-content: flex-start;
   margin: 8px 0 0 0;
+}
+.form-box-connection > div {
+  flex-flow: column;
+  width: 390px;
 }
 .form-box-connection:first-child button.bDelete {
   display: none;

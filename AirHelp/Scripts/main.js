@@ -12,8 +12,40 @@
 
     $.datepicker.setDefaults($.datepicker.regional['bg']);
 
-    $('#iDate').datepicker({ dateFormat: 'dd.mm.yy' });
-    $('#iDate').datepicker($.datepicker.regional['bg']);
+    $('#Date').datepicker({ dateFormat: 'dd.mm.yy' });
+    $('#Date').datepicker($.datepicker.regional['bg']);
+    $('input[type=text]').change(function () {
+
+        var data = $(this).val();
+        var result = false;
+
+        if (this.id == 'Date') {
+            try {
+                data = $.datepicker.parseDate('dd.mm.yy', data);
+                result = true;
+            }
+            catch (ex) {
+                result = false
+            }
+        }
+        else if (this.id == 'Email') {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            result = re.test(data);
+        }
+        else {
+            result = data.length >= 3;
+        }
+        if (result) {
+            $(this).parent().parent().removeClass('error');
+            $(this).parent().parent().addClass('success');
+        }
+        else {
+            $(this).parent().parent().removeClass('success');
+        }
+    });
+
+
+
 
     initSigniture();
 
@@ -84,7 +116,6 @@ function cbBlur(_this) {
 }
 
 function menuItemClick(_this) {
-    debugger;
     var $parent = $(_this).parent();
     $parent.parent().find('input').val($(_this).text()).removeClass('remove-shadow');
     $(_this).parent().parent().addClass('success');
@@ -102,7 +133,7 @@ function ddKeyUp(_this, e) {
         if ($selected.length > 0) {
             $this.parent().find('input').val($selected.text());
             $this.parent().parent().addClass('success');
-           
+
         }
         $this.removeClass('remove-shadow');
         $dropDown.hide();
@@ -189,4 +220,25 @@ function radioChange(obj) {
 }
 
 function validate() {
+    var result = true;
+    $('input:visible').each(function (el) {
+        if ($(this).parent().parent().not('.success'))
+        {
+            $(this).parent().parent().removeClass('success');
+            $(this).parent().parent().addClass('error');
+            result = false;
+        }
+    });
+
+    var howMuch = $("input[name='gender']:checked").val();
+    if (!howMuch) {
+        result = false;
+        $("input[name='gender']").parent().parent().addClass('error');
+    }
+    else
+    {
+        $("input[name='gender']").parent().parent().removeClass('error');
+    }
+
+    return result;
 }
