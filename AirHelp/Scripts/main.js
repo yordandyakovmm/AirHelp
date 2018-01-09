@@ -45,7 +45,6 @@
     });
 
     $('input[type=radio]').change(function () {
-        debugger;
         $(this).parent().parent().removeClass('error');
         $(this).parent().parent().find('label').removeClass('selected');
         $(this).parent().addClass('selected');
@@ -131,7 +130,7 @@ function cbBlur(_this) {
 function menuItemClick(_this) {
     var $parent = $(_this).parent();
     $parent.parent().find('input').val($(_this).text()).removeClass('remove-shadow');
-    $(_this).parent().parent().addClass('success');
+    $(_this).parent().parent().parent().addClass('success');
     $parent.hide();
 }
 
@@ -139,12 +138,16 @@ function ddKeyUp(_this, e) {
     if (e.which == 37 || e.which == 39) {
         return;
     }
+
     var $this = $(_this);
+    $this.parent().parent().removeClass('error');
+    $this.parent().parent().removeClass('success');
     var $dropDown = $this.parent().find('.lSuggestoin');
     if (e.which == 13) {
         var $selected = $dropDown.find('li.selected');
         if ($selected.length > 0) {
             $this.parent().find('input').val($selected.text());
+            
             $this.parent().parent().addClass('success');
 
         }
@@ -221,8 +224,9 @@ function uploadChange(obj) {
 
 function validate() {
     var result = true;
+    debugger;
     $('input:visible').each(function (el) {
-        if ($(this).parent().parent().not('.success')) {
+        if ($(this).parent().parent().not('.success').length > 0) {
             $(this).parent().parent().removeClass('success');
             $(this).parent().parent().addClass('error');
             result = false;
@@ -319,6 +323,11 @@ function validate() {
     return result;
 }
 
-function clear() {
-    
+function clearForm() {
+    $('.success').removeClass('success');
+    $('.error').removeClass('error');
+    $('.selected').removeClass('selected');
+    $('.form-box-upload > div > label').text(' -- ');
+    $('#connectionAirPorts').hide();
+    $('#connectionAirPorts .form-box-connection:not(:first)').remove();
 }
