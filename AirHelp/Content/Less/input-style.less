@@ -338,9 +338,13 @@ input[type=radio] {
 }
 
 .error .checkbox {
+    border-color: red;
     color: red;
-    background-color: red;
-    border-color: rebeccapurple;
+
+    &::before {
+        border-color: red;
+        color: red;
+    }
 }
 
 button:focus {

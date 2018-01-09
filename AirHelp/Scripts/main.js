@@ -44,7 +44,20 @@
         }
     });
 
+    $('input[type=radio]').change(function () {
+        debugger;
+        $(this).parent().parent().removeClass('error');
+        $(this).parent().parent().find('label').removeClass('selected');
+        $(this).parent().addClass('selected');
 
+        if ($(this).is('#rYes:checked')) {
+            $('#connectionAirPorts').show();
+
+        }
+        else {
+            $('#connectionAirPorts').hide();
+        }
+    });
 
 
     initSigniture();
@@ -138,7 +151,7 @@ function ddKeyUp(_this, e) {
         $this.removeClass('remove-shadow');
         $dropDown.hide();
     }
-    // up
+        // up
     else if (e.which == 38) {
         var $selected = $dropDown.find('li.selected');
         if (($selected).length == 0) {
@@ -150,7 +163,7 @@ function ddKeyUp(_this, e) {
             $dropDown.find('[index="' + index + '"]').addClass('selected');
         }
     }
-    // down
+        // down
     else if (e.which == 40) {
         var $selected = $dropDown.find('li.selected');
         if (($selected).length == 0) {
@@ -205,40 +218,107 @@ function uploadChange(obj) {
     $parent.find('button').addClass('success');
 }
 
-function radioChange(obj) {
-
-    $(obj).parent().parent().find('label').removeClass('selected');
-    $(obj).parent().addClass('selected');
-
-    if ($(obj).is('#rYes:checked')) {
-        $('#connectionAirPorts').show();
-
-    }
-    else {
-        $('#connectionAirPorts').hide();
-    }
-}
 
 function validate() {
     var result = true;
     $('input:visible').each(function (el) {
-        if ($(this).parent().parent().not('.success'))
-        {
+        if ($(this).parent().parent().not('.success')) {
             $(this).parent().parent().removeClass('success');
             $(this).parent().parent().addClass('error');
             result = false;
         }
     });
 
-    var howMuch = $("input[name='gender']:checked").val();
-    if (!howMuch) {
-        result = false;
-        $("input[name='gender']").parent().parent().addClass('error');
-    }
-    else
-    {
-        $("input[name='gender']").parent().parent().removeClass('error');
+    if (true) {
+        var howMuch = $("input[name='reason']:checked").val();
+        if (!howMuch) {
+            result = false;
+            $("input[name='reason']").parent().parent().addClass('error');
+        }
+        else {
+            $("input[name='reason']").parent().parent().removeClass('error');
+        }
     }
 
+    if (true) {
+        var howMuch = $("input[name='delay']:checked").val();
+        if (!howMuch) {
+            result = false;
+            $("input[name='delay']").parent().parent().addClass('error');
+        }
+        else {
+            $("input[name='delay']").parent().parent().removeClass('error');
+        }
+    }
+
+    if (true) {
+        var howMuch = $("input[name='howMuch']:checked").val();
+        if (!howMuch) {
+            result = false;
+            $("input[name='howMuch']").parent().parent().addClass('error');
+        }
+        else {
+            $("input[name='howMuch']").parent().parent().removeClass('error');
+        }
+    }
+
+    if (true) {
+        var howMuch = $("input[name='annonsment']:checked").val();
+        if (!howMuch) {
+            result = false;
+            $("input[name='annonsment']").parent().parent().addClass('error');
+        }
+        else {
+            $("input[name='annonsment']").parent().parent().removeClass('error');
+        }
+    }
+
+    if (true) {
+        var howMuch = $("input[name='annonsment']:checked").val();
+        if (!howMuch) {
+            result = false;
+            $("input[name='arival']").parent().parent().addClass('error');
+        }
+        else {
+            $("input[name='arival']").parent().parent().removeClass('error');
+        }
+    }
+
+    if (true) {
+        var howMuch = $("input[name='documentSecurity']:checked").val();
+        if (!howMuch) {
+            result = false;
+            $("input[name='documentSecurity']").parent().parent().addClass('error');
+        }
+        else {
+            $("input[name='documentSecurity']").parent().parent().removeClass('error');
+        }
+    }
+
+    if (true) {
+        var howMuch = $("input[name='willness']:checked").val();
+        if (!howMuch) {
+            result = false;
+            $("input[name='willness']").parent().parent().addClass('error');
+        }
+        else {
+            $("input[name='willness']").parent().parent().removeClass('error');
+        }
+    }
+
+    if (true) {
+        var howMuch = $("input[name='confirm']:checked").val();
+        if (!howMuch) {
+            result = false;
+            $("input[name='confirm']").parent().parent().addClass('error');
+        }
+        else {
+            $("input[name='confirm']").parent().parent().removeClass('error');
+        }
+    }
     return result;
+}
+
+function clear() {
+    
 }

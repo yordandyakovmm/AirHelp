@@ -292,9 +292,12 @@ input[type=radio] {
   display: block;
 }
 .error .checkbox {
+  border-color: red;
   color: red;
-  background-color: red;
-  border-color: rebeccapurple;
+}
+.error .checkbox::before {
+  border-color: red;
+  color: red;
 }
 button:focus {
   outline: none;
