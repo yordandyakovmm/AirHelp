@@ -332,3 +332,17 @@ button.bAdd i::before {
   font-weight: 600;
   content: '\e081';
 }
+.form-box-signiture.error label {
+  color: red;
+}
+.form-box-signiture.error canvas {
+  border: solid 2px red;
+  box-shadow: 0 0 4px red;
+}
+.form-box-signiture.success label {
+  color: #009fe3;
+}
+.form-box-signiture.success canvas {
+  border: solid 2px #009fe3;
+  box-shadow: 0 0 4px #009fe3;
+}

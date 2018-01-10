@@ -384,3 +384,28 @@ button.bAdd {
         content: '\e081'
     }
 }
+
+.form-box-signiture {
+
+    &.error {
+        label {
+            color: red;
+        }
+
+        canvas {
+            border: solid 2px red;
+            box-shadow: 0 0 4px red;
+        }
+    }
+
+    &.success {
+        label {
+            color: @blue-color;
+        }
+
+        canvas {
+            border: solid 2px @blue-color;
+            box-shadow: 0 0 4px @blue-color;
+        }
+    }
+}

@@ -32,6 +32,9 @@
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             result = re.test(data);
         }
+        else if (this.id == 'Tel') {
+            result = data.length >= 8;
+        }
         else {
             result = data.length >= 3;
         }
@@ -70,6 +73,7 @@ var ctx = el.getContext('2d');
 ctx.strokeStyle = 0;
 ctx.lineWidth = 5;
 var isDrawing;
+var couunt = 0;
 
 function initSigniture() {
 
@@ -81,15 +85,22 @@ function initSigniture() {
     };
     el.onmousemove = function (e) {
         if (isDrawing) {
+            couunt++;
             ctx.lineTo(e.layerX, e.layerY);
             ctx.stroke();
         }
+        if (couunt > 60)
+        {
+            $('.form-box-signiture').removeClass('error').addClass('success');
+        }
     };
     el.mouseout = function (e) {
+        isDrawing = false;
         console.log('out');
     };
 
     el.mousein = function (e) {
+        debugger;
         console.log('in');
     };
 
@@ -107,8 +118,18 @@ function saveSigiture() {
 }
 
 function clearSignature() {
-    ctx.clearRect(0, 0, el.width, el.height);
+    $('.form-box-signiture').removeClass('success').removeClass('error');
+    var html = $('.form-box-signiture > div.convas-holder').html();
+    $('.form-box-signiture > div.convas-holder').html('');
+    $('.form-box-signiture > div.convas-holder').html(html);
+    el = document.getElementById('signiture');
     ctx = el.getContext('2d');
+    ctx.strokeStyle = 0;
+    ctx.lineWidth = 5;
+    isDrawing;
+    couunt = 0;
+    initSigniture();
+    
 }
 
 function addCbAiports(addButton) {
@@ -224,7 +245,6 @@ function uploadChange(obj) {
 
 function validate() {
     var result = true;
-    debugger;
     $('input:visible').each(function (el) {
         if ($(this).parent().parent().not('.success').length > 0) {
             $(this).parent().parent().removeClass('success');
@@ -320,6 +340,11 @@ function validate() {
             $("input[name='confirm']").parent().parent().removeClass('error');
         }
     }
+    if ($('.form-box-signiture').is('.success') == 0)
+    {
+        result = false;
+        $('.form-box-signiture').addClass('error');
+    }
     return result;
 }
 
@@ -330,4 +355,5 @@ function clearForm() {
     $('.form-box-upload > div > label').text(' -- ');
     $('#connectionAirPorts').hide();
     $('#connectionAirPorts .form-box-connection:not(:first)').remove();
+    clearSignature();
 }

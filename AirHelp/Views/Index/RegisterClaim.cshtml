@@ -10,13 +10,13 @@
                 <div class="form-box ">
                     <label>Име</label>
                     <div>
-                        <input type="text" id="FirstName" placeholder="Име" validate /><i class="icon"></i>
+                        <input type="text" name="FirstName" placeholder="Име" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box ">
                     <label>Фамиля</label>
                     <div>
-                        <input type="text" id="LastName" placeholder="Фамилия" validate /><i class="icon"></i>
+                        <input type="text" name="LastName" placeholder="Фамилия" validate /><i class="icon"></i>
                     </div>
                 </div>
             </div>
@@ -24,13 +24,13 @@
                 <div class="form-box ">
                     <label>Емаил</label>
                     <div>
-                        <input type="text" id="Email" placeholder="Емаил" validate /><i class="icon"></i>
+                        <input type="text" id="Email" name="Email" placeholder="Емаил" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box ">
                     <label>Телефон</label>
                     <div>
-                        <input type="text" id="Tel" placeholder="Телефон" validate /><i class="icon"></i>
+                        <input type="text" id="Tel" name="Tel" placeholder="Телефон" validate /><i class="icon"></i>
                     </div>
                 </div>
             </div>
@@ -42,13 +42,13 @@
                 <div class="form-box ">
                     <label>Номер на полета</label>
                     <div>
-                        <input type="text" id="FlithNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
+                        <input type="text" name="FlithNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box ">
                     <label>Дата на полета</label>
                     <div>
-                        <input type="text" id="Date" placeholder="Дата на полета"  /><i class="icon"></i>
+                        <input type="text" id="Date" name="Date" placeholder="Дата на полета"  /><i class="icon"></i>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 <div class="form-box">
                     <label>Начално летище</label>
                     <div>
-                        <input type="text" id="cbDepartureAirports" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Начално летище" />
+                        <input type="text" name="DepartureAirport" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Начално летище" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin">
                             <li index='1' onclick="menuItemClick(this)">Lorem</li>
@@ -71,7 +71,7 @@
                 <div class="form-box">
                     <label>Крайно летище</label>
                     <div>
-                        <input type="text" id="cbDestinationAirports" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Крайно летище" />
+                        <input type="text" name="DestinationAirports" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Крайно летище" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin">
                             <li index='1' onclick="menuItemClick(this)">Lorem</li>
@@ -103,7 +103,7 @@
             <div class="form-row" id="connectionAirPorts" style="flex-flow: column; display:none;">
                 <div class="form-box-connection">
                     <div>
-                        <input type="text" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
+                        <input type="text" name="ConnectionAirports" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin">
                             <li index='1' onclick="menuItemClick(this)">Lorem</li>
@@ -254,13 +254,13 @@
                 <div class="form-box ">
                     <label>Номер на резервация или код за потвърждение</label>
                     <div>
-                        <input type="text" id="iBook" placeholder="Номер на резервация" /><i class="icon"></i>
+                        <input type="text" name="BookCode" placeholder="Номер на резервация" /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box">
                     <label>Въдушен превозвач</label>
                     <div>
-                        <input type="text" id="cbAirCompany" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Въдушен превозвач" />
+                        <input type="text" name="AirCompany" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Въдушен превозвач" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin">
                             <li index='1' onclick="menuItemClick(this)">Lorem</li>
@@ -278,8 +278,7 @@
                 <div class="form-box-width">
                     <label>Допълнителна информация</label>
                     <div>
-                        <textarea rows="6" cols="80" id="iAdditionalInfo" style="width: 100%" placeholder="">
-                        </textarea>
+                        <textarea rows="6" cols="80" name="AdditionalInfo" style="width: 100%" placeholder=""></textarea>
                     </div>
                 </div>
             </div>
@@ -292,27 +291,27 @@
                     <label>Бордова карта</label>
                     <div>
                         <button class="upload" onclick="uploadClick(this); return false;">Ибор на файл</button><i class="icon"></i>
-                        <input type="file" accept="image/*" id="uBordCard" style="display:none" onchange="uploadChange(this)" />
+                        <input type="file" name="BordCard" accept="image/*" id="uBordCard" style="display:none" onchange="uploadChange(this)" />
                         <label class="file-upload"> -- </label>
                     </div>
                     <label>Потвърждение за резервация</label>
                     <div>
                         <button class="upload" onclick="uploadClick(this); return false;">Ибор на файл</button><i class="icon"></i>
-                        <input type="file" accept="image/*" id="uReservation" style="display:none" onchange="uploadChange(this)" />
+                        <input type="file" name="BookConfirmation" accept="image/*" id="uReservation" style="display:none" onchange="uploadChange(this)" />
                         <label class="file-upload"> -- </label>
                     </div>
                     <label>Документ за извършено плащане</label>
                     <div>
                         <button class="upload" onclick="uploadClick(this); return false;">Ибор на файл</button><i class="icon"></i>
-                        <input type="file" accept="image/*" id="uPayDocument" style="display:none" onchange="uploadChange(this)" />
+                        <input type="file" name="PaymantDocument" accept="image/*" id="uPayDocument" style="display:none" onchange="uploadChange(this)" />
                         <label class="file-upload"> -- </label>
                     </div>
                 </div>
                 <div class="form-box-signiture">
                     <label>Подпис</label>
-                    <div>
+                    <div class="convas-holder">
                         <canvas id="signiture"></canvas>
-                        <img id="signiture-img" style="display:none;">
+                        <img name="signiture-img" style="display:none;">
                     </div>
                     <div>
                         <button class="clear" type="button" onclick="return clearSignature(this); return false;"><span>Изчисти</span></button>
@@ -345,7 +344,7 @@
 <div id="template" style="display:none;">
     <div class="form-box-connection">
         <div>
-            <input type="text" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
+            <input type="text" name="ConnectionAirports" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
             <i class="icon"></i>
             <ul class="lSuggestoin">
                 <li index='1' onclick="menuItemClick(this)">Lorem</li>
