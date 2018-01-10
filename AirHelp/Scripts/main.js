@@ -89,8 +89,7 @@ function initSigniture() {
             ctx.lineTo(e.layerX, e.layerY);
             ctx.stroke();
         }
-        if (couunt > 60)
-        {
+        if (couunt > 60) {
             $('.form-box-signiture').removeClass('error').addClass('success');
         }
     };
@@ -129,7 +128,7 @@ function clearSignature() {
     isDrawing;
     couunt = 0;
     initSigniture();
-    
+
 }
 
 function addCbAiports(addButton) {
@@ -168,14 +167,14 @@ function ddKeyUp(_this, e) {
         var $selected = $dropDown.find('li.selected');
         if ($selected.length > 0) {
             $this.parent().find('input').val($selected.text());
-            
+
             $this.parent().parent().addClass('success');
 
         }
         $this.removeClass('remove-shadow');
         $dropDown.hide();
     }
-        // up
+    // up
     else if (e.which == 38) {
         var $selected = $dropDown.find('li.selected');
         if (($selected).length == 0) {
@@ -187,7 +186,7 @@ function ddKeyUp(_this, e) {
             $dropDown.find('[index="' + index + '"]').addClass('selected');
         }
     }
-        // down
+    // down
     else if (e.which == 40) {
         var $selected = $dropDown.find('li.selected');
         if (($selected).length == 0) {
@@ -204,19 +203,34 @@ function ddKeyUp(_this, e) {
         $this.parent().parent().removeClass('error');
 
         if ($this.val().length == 3) {
-            //var url = 'https://www.save70.com/components/autocompleteJson.php?type=airport&term=' + $this.val();
-            //$.get(url, function (data) {
-            //    debugger;
-            //    for (i = 0; i < data.length; i++) {
-            //        var li = '<li index="' + i + '" onclick="menuItemClick(this)" ' + (i == data.length - 1 ? 'last' : '') + '>' + data[i].name + '</li>';
-            //        $dropDown.append(li);
-            //    }
-            //    $dropDown.find('li').removeClass('selected');
-            //    $dropDown.find('li').first().addClass('selected');
-            //    $dropDown.show();
-            //});
-            //return;
+            if ($this.not('[name="AirCompany"]').length == 1) {
+                var url = '/api/airports?id=' + $this.val();
+                $.get(url, function (data) {
+                    data = JSON.parse(data);
+                    console.log(data);
+                    if (data.status == 'success') {
+                        $dropDown.html('');
+                        for (i = 0; i < data.results.length; i++) {
+                            var li = '<li index="' + (i+1) + '" onclick="menuItemClick(this)" ' + (i == data.results.length - 1 ? 'last' : '') + '>' + data.results[i].airportName + ' (' + data.results[i].threeCode + ')'+ '</li>';
+                            $dropDown.append(li);
+                        }
+                        $dropDown.find('li').removeClass('selected');
+                        $dropDown.find('li').first().addClass('selected');
+                        $dropDown.show();
+                    }
+                });
+                return;
+            }
+            else
+            {
+                // Air Company
+                // add filter
+                $dropDown.find('li').removeClass('selected');
+                $dropDown.find('li').first().addClass('selected');
+                $dropDown.show();
+            }
         }
+        // should remive next 3 rows
         $dropDown.find('li').removeClass('selected');
         $dropDown.find('li').first().addClass('selected');
         $dropDown.show();
@@ -340,8 +354,7 @@ function validate() {
             $("input[name='confirm']").parent().parent().removeClass('error');
         }
     }
-    if ($('.form-box-signiture').is('.success') == 0)
-    {
+    if ($('.form-box-signiture').is('.success') == 0) {
         result = false;
         $('.form-box-signiture').addClass('error');
     }
