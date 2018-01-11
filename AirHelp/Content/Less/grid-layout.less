@@ -3,14 +3,54 @@
 @logo-background-color: #f3f3f3;
 @logo-text-color: #000;
 
-@big-image-url: '/Content/Assets/d192862f-pexels-delayed-4-compressor.jpg';
+@big-image-url: '/Content/Assets/Airplane/PlainInClouds.jpg';
 
-*{
+.saturate {
+    filter: saturate(3);
+}
+
+.grayscale {
+    filter: grayscale(100%);
+}
+
+.contrast {
+    filter: contrast(160%);
+}
+
+#brightness() {
+    filter: brightness(1.45);
+    /*transition: ease-out;
+    transition-duration: 50s;*/
+}
+
+.blur {
+    filter: blur(3px);
+}
+
+.invert {
+    filter: invert(100%);
+}
+
+.sepia {
+    filter: sepia(100%);
+}
+
+.huerotate {
+    filter: hue-rotate(180deg);
+}
+
+.rss.opacity {
+    filter: opacity(50%);
+}
+
+
+* {
     margin: 0;
     padding: 0;
 }
+
 a:hover {
-        text-decoration: none;
+    text-decoration: none;
 }
 
 .main-layout {
@@ -19,10 +59,7 @@ a:hover {
     grid-template-rows: 70px 700px 300px;
     grid-gap: 0px;
     background-color: @background-color;
-
-    grid-template-areas: "Logo"
-                         "Content"; 
-    
+    grid-template-areas: "Logo" "Content";
 }
 
 .logo {
@@ -84,18 +121,52 @@ a:hover {
 
 
 .big-image {
+    #brightness;
     background-image: url('@{big-image-url}');
     background-repeat: no-repeat;
     background-size: 100% auto;
     grid-template: "Content";
+    width: 100%;
+    height: 400px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(5, 1fr);
+
+    .header-text {
+        grid-row: 1;
+        font-family: "Open Sans", sans-serif;
+        font-size: 42px;
+        font-weight: 500;
+        text-shadow: 3px 2px 3px #888;
+        color: #333;
+
+        span {
+            display: inline-block;
+            float: right;
+            margin: 30px 30px auto auto;
+        }
+    }
+
+    .header-subtext {
+        grid-row: span 3;
+        font-family: "Open Sans", sans-serif;
+        font-size: 30px;
+
+        p {
+            text-shadow: 2px 2px 3px #aaa;
+            color: #255;
+            width: 750px;
+            text-align: center;
+            margin: 60px 30px auto auto;
+        }
+    }
 }
 
 .register-form {
     grid-template: "Content";
-    
     display: grid;
     grid-template-columns: auto 1000px auto;
-    grid-template-areas : "left center rigth"
+    grid-template-areas: "left center rigth"
 }
 
 .left-content {
@@ -116,7 +187,6 @@ a:hover {
 .rigth-content {
     grid-area: rigth;
     background-color: aquamarine;
-    
 }
 
 .form-row {
@@ -125,7 +195,6 @@ a:hover {
     flex-flow: row;
     justify-content: space-around;
     align-content: space-around;
-       
 }
 
 .form-row-choise {
@@ -151,7 +220,7 @@ a:hover {
         margin: 30px 0 0 0;
         display: inline-flex;
     }
-} 
+}
 
 .form-box {
     width: 50%;

@@ -224,6 +224,7 @@
     <Content Include="Content\Assets\88db8d1d-checkmark_01j01j01j01j000000.png" />
     <Content Include="Content\Assets\Airplane\airplane1.png" />
     <Content Include="Content\Assets\Airplane\airplane2.png" />
+    <Content Include="Content\Assets\Airplane\PlainInClouds.jpg" />
     <Content Include="Content\Assets\Icon\cc-icon-01.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-02.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-03.svg" />
