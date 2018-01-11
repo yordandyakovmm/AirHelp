@@ -211,7 +211,8 @@ function ddKeyUp(_this, e) {
                     if (data.status == 'success') {
                         $dropDown.html('');
                         for (i = 0; i < data.results.length; i++) {
-                            var li = '<li index="' + (i+1) + '" onclick="menuItemClick(this)" ' + (i == data.results.length - 1 ? 'last' : '') + '>' + data.results[i].airportName + ' (' + data.results[i].threeCode + ')'+ '</li>';
+                            var li = '<li index="' + (i + 1) + '" onclick="menuItemClick(this)" ' + (i == data.results.length - 1 ? 'last' : '') + '>' +
+                                (data.results[i].airportName || data.results[i].cityName)+ ' (' + data.results[i].threeCode + ')' + '</li>';
                             $dropDown.append(li);
                         }
                         $dropDown.find('li').removeClass('selected');
