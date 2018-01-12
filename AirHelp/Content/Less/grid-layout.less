@@ -56,10 +56,10 @@ a:hover {
 .main-layout {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 70px 700px 300px;
+    grid-template-rows: 70px repeat(auto-fill, auto);
     grid-gap: 0px;
     background-color: @background-color;
-    grid-template-areas: "Logo" "Content";
+    grid-template-areas: "Logo" "big-image" "compensation-type";
 }
 
 .logo {
@@ -125,7 +125,7 @@ a:hover {
     background-image: url('@{big-image-url}');
     background-repeat: no-repeat;
     background-size: 100% auto;
-    grid-template: "Content";
+    grid-template: "big-image";
     width: 100%;
     height: 400px;
     display: grid;
@@ -159,6 +159,54 @@ a:hover {
             text-align: center;
             margin: 60px 30px auto auto;
         }
+    }
+}
+
+.compensation-type {
+    grid-template: "compensation-type";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100px auto;
+    display: grid;
+
+    .header-text {
+        grid-row: 1;
+        grid-column: span(3);
+        font-family: "Open Sans", sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+        text-shadow: 3px 2px 3px #888;
+        color: #333;
+
+        span {
+            display: inline-block;
+            float: right;
+            margin: 30px 30px auto auto;
+        }
+    }
+
+    span {
+        font-size: 30px;
+        text-shadow: 2px 2px 3px #aaa;
+        color: #255;
+        width: 750px;
+        text-align: center;
+        font-family: "Open Sans", sans-serif;
+        margin: 60px 30px auto auto;
+    }
+
+    .span-1 {
+        grid-row: 2;
+        grid-column: 1/2;
+    }
+
+    .span-2 {
+        grid-row: 2;
+        grid-column: 2/3;
+    }
+
+    .span-3 {
+        grid-row: 2;
+        grid-column: 3/4
     }
 }
 
