@@ -33,3 +33,7 @@
 .icon-dribbble:before {
     content: "\e002";
 }
+
+p, a {
+    text-align: center;
+}
