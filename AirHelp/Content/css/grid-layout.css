@@ -174,6 +174,21 @@ a:hover {
   box-shadow: 0 0 8px #009fe3;
   border-radius: 100%;
 }
+.compensation-type .span .image.image-delay > div {
+  background-image: url('/Content/Assets/закъснение-полет.png');
+  background-position-x: 300px;
+  background-size: 450px;
+}
+.compensation-type .span .image.image-cancel > div {
+  background-image: url('/Content/Assets/излитащ-самолет.jpg');
+  background-position-x: 250px;
+  background-size: 450px;
+}
+.compensation-type .span .image.image-denied-bording > div {
+  background-image: url('/Content/Assets/отказан-достъп-до-борда-1.jpg');
+  background-position-x: 350px;
+  background-size: 380px;
+}
 .compensation-type .span-1 {
   grid-row: 2;
   grid-column-start: 2;

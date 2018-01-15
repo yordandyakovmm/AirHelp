@@ -200,7 +200,7 @@ a:hover {
     }
 
     .span {
-       display: flex;
+        display: flex;
         flex-flow: column;
         align-content: center;
         justify-content: center;
@@ -217,6 +217,24 @@ a:hover {
                 box-shadow: 0 0 8px @blue-color;
                 border-radius: 100%;
             }
+
+            &.image-delay > div {
+                background-image: url('/Content/Assets/закъснение-полет.png');
+                background-position-x: 300px;
+                background-size: 450px;
+            }
+
+            &.image-cancel > div {
+                background-image: url('/Content/Assets/излитащ-самолет.jpg');
+                background-position-x: 250px;
+                background-size: 450px;
+            }
+
+            &.image-denied-bording > div {
+                background-image: url('/Content/Assets/отказан-достъп-до-борда-1.jpg');
+                background-position-x: 350px;
+                background-size: 380px;
+            }
         }
     }
 
@@ -224,7 +242,6 @@ a:hover {
         grid-row: 2;
         grid-column-start: 2;
         grid-column-end: 2;
-       
     }
 
     .span-2 {
@@ -239,6 +256,8 @@ a:hover {
         grid-column-end: 4;
     }
 }
+
+
 
 .register-form {
     grid-template: "Content";
