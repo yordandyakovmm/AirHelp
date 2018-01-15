@@ -346,3 +346,32 @@ button.bAdd i::before {
   border: solid 2px #009fe3;
   box-shadow: 0 0 4px #009fe3;
 }
+.button-smal {
+  border: solid 1px #008fd3;
+  font-family: Helvetica, sans-serif;
+  width: 250px;
+  height: 35px;
+  color: black;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: transparent;
+  border-radius: 3px;
+}
+.button-smal:hover {
+  background-color: lavender;
+}
+.button-home {
+  border: solid 1px black;
+  font-family: Helvetica, sans-serif;
+  width: 350px;
+  height: 40px;
+  color: black;
+  font-weight: 400;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+.button-home:hover {
+  background-color: lavender;
+  background-color: rgba(0, 0, 0, 0.4);
+}

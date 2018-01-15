@@ -11,6 +11,11 @@
     display: inline;
 }
 
+a, a:hover {
+    text-decoration: none;
+}
+
+
 [class^="icon"]:before,
 [class*=" icon"]:before {
     font-family: 'icomoon';

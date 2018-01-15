@@ -3,7 +3,7 @@
 @logo-background-color: #f3f3f3;
 @logo-text-color: #000;
 
-@big-image-url: '/Content/Assets/Airplane/PlainInClouds.jpg';
+@big-image-url: '/Content/Assets/обезщетение-при-полет.jpg';
 
 .saturate {
     filter: saturate(3);
@@ -134,16 +134,15 @@ a:hover {
 
     .header-text {
         grid-row: 1;
-        font-family: "Open Sans", sans-serif;
-        font-size: 42px;
-        font-weight: 500;
-        text-shadow: 3px 2px 3px #888;
-        color: #333;
+        color: #222;
         display: flex;
         align-content: center;
         justify-content: center;
 
         span {
+            font-family: "PT Sans", sans-serif;
+            font-size: 45px;
+            font-weight: 800;
             margin: auto 30px auto auto;
         }
     }
@@ -155,9 +154,11 @@ a:hover {
         display: flex;
         align-content: center;
         justify-content: center;
+
         p {
-            text-shadow: 2px 2px 3px #aaa;
-            color: #255;
+            font-family: "PT Sans", sans-serif;
+            font-size: 30px;
+            color: #233;
             width: 750px;
             text-align: center;
             margin: auto 30px auto auto;
@@ -165,201 +166,230 @@ a:hover {
     }
 }
 
-.compensation-type {
-    grid-template: "compensation-type";
-    grid-template-columns: auto 400px 400px 400px auto;
-    grid-template-rows: 100px auto;
-    grid-column-gap: 10px;
-    display: grid;
+.header-button {
+    grid-row: span 3;
     font-family: "Open Sans", sans-serif;
+    font-size: 30px;
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
 
-    .header-text {
-        grid-row: 1;
-        grid-column-start: 2;
-        grid-column-end: 5;
-        font-size: 40px;
-        font-weight: 400;
-        text-shadow: 2px 2px 3px #888;
-        color: #333;
-        display: flex;
-        align-content: center;
-        justify-content: center;
-
-        span {
-            display: flex;
-        }
+    a{
+        margin: auto 30px auto auto; 
     }
 
-    span {
-        font-size: 30px;
-        text-shadow: 2px 2px 3px #aaa;
-        color: #255;
-        text-align: center;
-        font-family: "Open Sans", sans-serif;
-        margin: auto auto auto auto;
-    }
+}
 
-    .span {
-        display: flex;
-        flex-flow: column;
-        align-content: center;
-        justify-content: center;
-
-        .image {
+        .compensation-type {
+            grid-template: "compensation-type";
+            grid-template-columns: auto 400px 400px 400px auto;
+            grid-template-rows: 200px auto;
+            grid-column-gap: 10px;
             display: grid;
-            grid-template-columns: auto 250px auto;
-            grid-template-rows: 250px;
+            font-family: Arial, Helvetica, sans-serif;
 
-            div {
+            span {
+                color: #255;
+                text-align: center;
+                margin: auto auto auto auto;
+            }
+
+            .header-text {
                 grid-row: 1;
-                grid-column: 2;
-                border: solid 4px @blue-color;
-                box-shadow: 0 0 8px @blue-color;
-                border-radius: 100%;
+                grid-column-start: 2;
+                grid-column-end: 5;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 42px;
+                font-weight: 600;
+                color: rgba(3,3, 13, 1);
+                display: flex;
+                align-content: center;
+                justify-content: center;
+
+                span {
+                    display: flex;
+                }
             }
 
-            &.image-delay > div {
-                background-image: url('/Content/Assets/закъснение-полет.png');
-                background-position-x: 300px;
-                background-size: 450px;
+
+
+            .span {
+                display: flex;
+                flex-flow: column;
+                align-content: center;
+                justify-content: center;
+
+                > * {
+                    margin-top: 15px;
+                }
+
+                > span {
+                    font-size: 28px;
+                    font-weight: 500;
+                    color: @blue-color;
+                }
+
+                > p {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: grba(2,2,14,1);
+                }
+
+                .image {
+                    display: grid;
+                    grid-template-columns: auto 250px auto;
+                    grid-template-rows: 250px;
+
+                    div {
+                        grid-row: 1;
+                        grid-column: 2;
+                        border: solid 4px @blue-color;
+                        box-shadow: 0 0 8px @blue-color;
+                        border-radius: 100%;
+                    }
+
+                    &.image-delay > div {
+                        background-image: url('/Content/Assets/закъснение-полет.png');
+                        background-position-x: 300px;
+                        background-size: 450px;
+                    }
+
+                    &.image-cancel > div {
+                        background-image: url('/Content/Assets/излитащ-самолет.jpg');
+                        background-position-x: 250px;
+                        background-size: 450px;
+                    }
+
+                    &.image-denied-bording > div {
+                        background-image: url('/Content/Assets/отказан-достъп-до-борда-1.jpg');
+                        background-position-x: 350px;
+                        background-size: 380px;
+                    }
+                }
             }
 
-            &.image-cancel > div {
-                background-image: url('/Content/Assets/излитащ-самолет.jpg');
-                background-position-x: 250px;
-                background-size: 450px;
+            .span-1 {
+                grid-row: 2;
+                grid-column-start: 2;
+                grid-column-end: 2;
             }
 
-            &.image-denied-bording > div {
-                background-image: url('/Content/Assets/отказан-достъп-до-борда-1.jpg');
-                background-position-x: 350px;
-                background-size: 380px;
+            .span-2 {
+                grid-row: 2;
+                grid-column-start: 3;
+                grid-column-end: 3;
+            }
+
+            .span-3 {
+                grid-row: 2;
+                grid-column-start: 4;
+                grid-column-end: 4;
             }
         }
-    }
-
-    .span-1 {
-        grid-row: 2;
-        grid-column-start: 2;
-        grid-column-end: 2;
-    }
-
-    .span-2 {
-        grid-row: 2;
-        grid-column-start: 3;
-        grid-column-end: 3;
-    }
-
-    .span-3 {
-        grid-row: 2;
-        grid-column-start: 4;
-        grid-column-end: 4;
-    }
-}
 
 
 
-.register-form {
-    grid-template: "Content";
-    display: grid;
-    grid-template-columns: auto 1000px auto;
-    grid-template-areas: "left center rigth"
-}
+        .register-form {
+            grid-template: "Content";
+            display: grid;
+            grid-template-columns: auto 1000px auto;
+            grid-template-areas: "left center rigth"
+        }
 
-.left-content {
-    grid-area: left;
-    background: linear-gradient(30);
-    background-color: aquamarine;
-}
+        .left-content {
+            grid-area: left;
+            background: linear-gradient(30);
+            background-color: aquamarine;
+        }
 
-.center-content {
-    grid-area: center;
-    background: linear-gradient(30);
-    background-color: azure;
-    display: flex;
-    flex-flow: column;
-    padding: 5px 10px;
-}
+        .center-content {
+            grid-area: center;
+            background: linear-gradient(30);
+            background-color: azure;
+            display: flex;
+            flex-flow: column;
+            padding: 5px 10px;
+        }
 
-.rigth-content {
-    grid-area: rigth;
-    background-color: aquamarine;
-}
+        .rigth-content {
+            grid-area: rigth;
+            background-color: aquamarine;
+        }
 
-.form-row {
-    margin: 15px 0 0 0;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-    align-content: space-around;
-}
+        .form-row {
+            margin: 15px 0 0 0;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-around;
+            align-content: space-around;
+        }
 
-.form-row-choise {
-    margin: 5px 0 0 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+        .form-row-choise {
+            margin: 5px 0 0 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
 
-    label {
-        margin: 20px 0 0 0;
-        display: inline-flex;
-    }
-}
+            label {
+                margin: 20px 0 0 0;
+                display: inline-flex;
+            }
+        }
 
 
 
-.form-row-yes-no, .form-row-rodio {
-    margin: 5px 0 0 0;
-    display: grid;
-    padding: 0 0 0 10px;
-    grid-template-columns: 80px 80px auto;
+        .form-row-yes-no, .form-row-rodio {
+            margin: 5px 0 0 0;
+            display: grid;
+            padding: 0 0 0 10px;
+            grid-template-columns: 80px 80px auto;
 
-    label {
-        margin: 30px 0 0 0;
-        display: inline-flex;
-    }
-}
+            label {
+                margin: 30px 0 0 0;
+                display: inline-flex;
+            }
+        }
 
-.form-box {
-    width: 50%;
-    display: flex;
-    flex-flow: column;
-}
+        .form-box {
+            width: 50%;
+            display: flex;
+            flex-flow: column;
+        }
 
-.form-box-upload {
-    width: 600px;
-    display: flex;
-    flex-flow: column;
-    justify-content: flex-start;
-}
+        .form-box-upload {
+            width: 600px;
+            display: flex;
+            flex-flow: column;
+            justify-content: flex-start;
+        }
 
-.form-box-signiture {
-    width: 380px;
-    display: flex;
-    flex-flow: column;
-}
+        .form-box-signiture {
+            width: 380px;
+            display: flex;
+            flex-flow: column;
+        }
 
-.width {
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-}
+        .width {
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+        }
 
-.form-box-connection {
-    > div {
-        flex-flow: column;
-        width: 390px;
-    }
+        .form-box-connection {
+            > div {
+                flex-flow: column;
+                width: 390px;
+            }
 
-    &:first-child button.bDelete {
-        display: none;
-    }
-    //width: 50%;
-    display: flex;
-    flex-flow: row;
-    justify-content: flex-start;
-    margin: 8px 0 0 0;
-}
+            &:first-child button.bDelete {
+                display: none;
+            }
+            //width: 50%;
+            display: flex;
+            flex-flow: row;
+            justify-content: flex-start;
+            margin: 8px 0 0 0;
+        }
 
-.upload-box div {
-    margin-bottom: 10px;
-}
+        .upload-box div {
+            margin-bottom: 10px;
+        }

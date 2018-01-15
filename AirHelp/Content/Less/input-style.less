@@ -1,5 +1,6 @@
 ﻿@border-blue-color: rgb(0, 159, 227);
 @blue-color: #009fe3;
+@blue-color-dark: #008fd3;
 @dark-color: rgb(30, 32, 30);
 @button-color: rgb(200, 200, 220);
 @button-hover-color: rgb(240, 240, 240);
@@ -407,5 +408,37 @@ button.bAdd {
             border: solid 2px @blue-color;
             box-shadow: 0 0 4px @blue-color;
         }
+    }
+}
+
+.button-smal {
+    border: solid 1px @blue-color-dark;
+    font-family: Helvetica, sans-serif;
+    width: 250px;
+    height: 35px;
+    color: black;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: transparent;
+    border-radius: 3px;
+
+    &:hover {
+        background-color: lavender;
+    }
+}
+.button-home {
+    border: solid 1px black;
+    font-family: Helvetica, sans-serif;
+    width: 350px;
+    height: 40px;
+    color: black;
+    font-weight: 400;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+
+    &:hover {
+        background-color: lavender;
+        background-color: rgba(0, 0, 0, 0.4);
     }
 }

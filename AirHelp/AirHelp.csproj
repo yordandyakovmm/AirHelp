@@ -245,6 +245,7 @@
     <Content Include="Content\Assets\logoRed.png" />
     <Content Include="Content\Assets\закъснение-полет.png" />
     <Content Include="Content\Assets\излитащ-самолет.jpg" />
+    <Content Include="Content\Assets\обезщетение-при-полет.jpg" />
     <Content Include="Content\Assets\отказан-достъп-до-борда-1.jpg" />
     <Content Include="Content\Assets\отказан-достъп-до-борда.jpg" />
     <Content Include="Content\Assets\отменен-полет.jpg" />
