@@ -64,13 +64,34 @@ namespace Recipes.Controllers
             return result;
         }
 
-        [Route("{category}/{item}")]
-        [Route("recipes/{category}/{item}")]
+        [Route("{item}/{category}")]
         public ActionResult Spliter(string category, string item)
         {
             //var contex = new DAL.AirHelpDBContext();
             //var count = contex.Users.Count();
             return View("RegisterClaim");
+
+
+        }
+
+
+        [Route("обезщетение-при-полет/{category}")]
+        public ActionResult Spliter1(string category)
+        {
+            //var contex = new DAL.AirHelpDBContext();
+            //var count = contex.Users.Count();
+            return View("RegisterClaim");
+
+
+        }
+
+        [Route("обезщетение-при-полет")]
+        public ActionResult Spliter2(string category)
+        {
+            //var contex = new DAL.AirHelpDBContext();
+            //var count = contex.Users.Count();
+            return View("RegisterClaim");
+
 
 
         }

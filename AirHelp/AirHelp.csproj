@@ -381,6 +381,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Assets\Background\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711302245583_InitialCreate.resx">
