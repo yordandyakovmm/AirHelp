@@ -59,7 +59,11 @@ a:hover {
     grid-template-rows: 70px repeat(auto-fill, auto);
     grid-gap: 0px;
     background-color: @background-color;
-    grid-template-areas: "Logo" "big-image" "compensation-type";
+    grid-template-areas: 
+        "Logo" 
+        "big-image" 
+        "compensation-type" 
+        "compensation-amount";
 }
 
 .logo {
@@ -174,223 +178,311 @@ a:hover {
     align-content: center;
     justify-content: flex-end;
 
-    a{
-        margin: auto 30px auto auto; 
+    a {
+        margin: auto 30px auto auto;
     }
-
 }
 
-        .compensation-type {
-            grid-template: "compensation-type";
-            grid-template-columns: auto 400px 400px 400px auto;
-            grid-template-rows: 200px auto;
-            grid-column-gap: 10px;
+.compensation-type {
+    grid-template: "compensation-type";
+    grid-template-columns: auto 400px 400px 400px auto;
+    grid-template-rows: 200px auto;
+    grid-column-gap: 10px;
+    display: grid;
+    font-family: Arial, Helvetica, sans-serif;
+
+    span {
+        color: #255;
+        text-align: center;
+        margin: auto auto auto auto;
+    }
+
+    .header-text {
+        grid-row: 1;
+        grid-column-start: 2;
+        grid-column-end: 5;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 42px;
+        font-weight: 600;
+        color: rgba(3,3, 13, 1);
+        display: flex;
+        align-content: center;
+        justify-content: center;
+
+        span {
+            display: flex;
+        }
+    }
+
+
+
+    .span {
+        display: flex;
+        flex-flow: column;
+        align-content: center;
+        justify-content: center;
+
+        > * {
+            margin-top: 15px;
+        }
+
+        > span {
+            font-size: 28px;
+            font-weight: 500;
+            color: @blue-color;
+        }
+
+        > p {
+            font-size: 14px;
+            font-weight: 500;
+            color: grba(2,2,14,1);
+        }
+
+        .image {
             display: grid;
-            font-family: Arial, Helvetica, sans-serif;
+            grid-template-columns: auto 250px auto;
+            grid-template-rows: 250px;
 
-            span {
-                color: #255;
-                text-align: center;
-                margin: auto auto auto auto;
-            }
-
-            .header-text {
+            div {
                 grid-row: 1;
-                grid-column-start: 2;
-                grid-column-end: 5;
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 42px;
-                font-weight: 600;
-                color: rgba(3,3, 13, 1);
-                display: flex;
-                align-content: center;
-                justify-content: center;
-
-                span {
-                    display: flex;
-                }
+                grid-column: 2;
+                border: solid 4px @blue-color;
+                box-shadow: 0 0 8px @blue-color;
+                border-radius: 100%;
             }
 
-
-
-            .span {
-                display: flex;
-                flex-flow: column;
-                align-content: center;
-                justify-content: center;
-
-                > * {
-                    margin-top: 15px;
-                }
-
-                > span {
-                    font-size: 28px;
-                    font-weight: 500;
-                    color: @blue-color;
-                }
-
-                > p {
-                    font-size: 14px;
-                    font-weight: 500;
-                    color: grba(2,2,14,1);
-                }
-
-                .image {
-                    display: grid;
-                    grid-template-columns: auto 250px auto;
-                    grid-template-rows: 250px;
-
-                    div {
-                        grid-row: 1;
-                        grid-column: 2;
-                        border: solid 4px @blue-color;
-                        box-shadow: 0 0 8px @blue-color;
-                        border-radius: 100%;
-                    }
-
-                    &.image-delay > div {
-                        background-image: url('/Content/Assets/закъснение-полет.png');
-                        background-position-x: 300px;
-                        background-size: 450px;
-                    }
-
-                    &.image-cancel > div {
-                        background-image: url('/Content/Assets/излитащ-самолет.jpg');
-                        background-position-x: 250px;
-                        background-size: 450px;
-                    }
-
-                    &.image-denied-bording > div {
-                        background-image: url('/Content/Assets/отказан-достъп-до-борда-1.jpg');
-                        background-position-x: 350px;
-                        background-size: 380px;
-                    }
-                }
+            &.image-delay > div {
+                background-image: url('/Content/Assets/закъснение-полет.png');
+                background-position-x: 300px;
+                background-size: 450px;
             }
 
-            .span-1 {
-                grid-row: 2;
-                grid-column-start: 2;
-                grid-column-end: 2;
+            &.image-cancel > div {
+                background-image: url('/Content/Assets/излитащ-самолет.jpg');
+                background-position-x: 250px;
+                background-size: 450px;
             }
 
-            .span-2 {
-                grid-row: 2;
-                grid-column-start: 3;
-                grid-column-end: 3;
-            }
-
-            .span-3 {
-                grid-row: 2;
-                grid-column-start: 4;
-                grid-column-end: 4;
+            &.image-denied-bording > div {
+                background-image: url('/Content/Assets/отказан-достъп-до-борда-1.jpg');
+                background-position-x: 350px;
+                background-size: 380px;
             }
         }
+    }
+
+    .span-1 {
+        grid-row: 2;
+        grid-column-start: 2;
+        grid-column-end: 2;
+    }
+
+    .span-2 {
+        grid-row: 2;
+        grid-column-start: 3;
+        grid-column-end: 3;
+    }
+
+    .span-3 {
+        grid-row: 2;
+        grid-column-start: 4;
+        grid-column-end: 4;
+    }
+}
 
 
+.compensation-amount {
+    grid-template: "compensation-amount";
+    grid-template-columns: auto 400px 400px 400px auto;
+    grid-template-rows: 100px auto;
+    grid-column-gap: 10px;
+    display: grid;
+    font-family: Arial, Helvetica, sans-serif;
 
-        .register-form {
-            grid-template: "Content";
-            display: grid;
-            grid-template-columns: auto 1000px auto;
-            grid-template-areas: "left center rigth";
-            bac
-        }
 
-        .left-content {
-            grid-area: left;
-            background: linear-gradient(30);
-            background-color: aquamarine;
-        }
+    > div.background {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 6;
+        background-image: url('/Content/Assets/Background/обезщетение-в-зависимост-от-разтоянието-на-полета.jpg');
+        background-position: center;
+        filter: opacity(20%);
+        z-index: 1;
+    }
+    *>{z-index: 100}
+    span {
+        color: #222;
+        text-align: center;
+        margin: auto auto auto auto;
+    }
 
-        .center-content {
-            grid-area: center;
-            background: linear-gradient(30);
-            background-color: azure;
+    .header-text {
+        grid-row: 1;
+        grid-column-start: 2;
+        grid-column-end: 5;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 42px;
+        font-weight: 600;
+        color: rgba(3,3, 13, 1);
+        display: flex;
+        align-content: center;
+        justify-content: center;
+
+        span {
             display: flex;
-            flex-flow: column;
-            padding: 5px 10px;
+        }
+    }
+
+    .span {
+        display: flex;
+        flex-flow: column;
+        align-content: center;
+        justify-content: center;
+
+        > * {
+            margin-top: 8px;
         }
 
-        .rigth-content {
-            grid-area: rigth;
-            background-color: aquamarine;
+        > span.text-black {
+            font-size: 22px;
+            font-weight: 600;
         }
 
-        .form-row {
-            margin: 15px 0 0 0;
-            display: flex;
-            flex-flow: row;
-            justify-content: space-around;
-            align-content: space-around;
+        > span.text-blue {
+            font-size: 32px;
+            font-weight: 700;
+            color: @blue-color;
         }
 
-        .form-row-choise {
-            margin: 5px 0 0 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-
-            label {
-                margin: 20px 0 0 0;
-                display: inline-flex;
-            }
+        .image img {
+            display: block;
+            height: 250px;
+            margin: auto;
         }
+    }
+
+    .span-1 {
+        grid-row: 2;
+        grid-column-start: 2;
+        grid-column-end: 2;
+    }
+
+    .span-2 {
+        grid-row: 2;
+        grid-column-start: 3;
+        grid-column-end: 3;
+    }
+
+    .span-3 {
+        grid-row: 2;
+        grid-column-start: 4;
+        grid-column-end: 4;
+    }
+}
+
+
+.register-form {
+    grid-template: "Content";
+    display: grid;
+    grid-template-columns: auto 1000px auto;
+    grid-template-areas: "left center rigth";
+}
+
+.left-content {
+    grid-area: left;
+    background: linear-gradient(30);
+    background-color: aquamarine;
+}
+
+.center-content {
+    grid-area: center;
+    background: linear-gradient(30);
+    background-color: azure;
+    display: flex;
+    flex-flow: column;
+    padding: 5px 10px;
+}
+
+.rigth-content {
+    grid-area: rigth;
+    background-color: aquamarine;
+}
+
+.form-row {
+    margin: 15px 0 0 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.form-row-choise {
+    margin: 5px 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    label {
+        margin: 20px 0 0 0;
+        display: inline-flex;
+    }
+}
 
 
 
-        .form-row-yes-no, .form-row-rodio {
-            margin: 5px 0 0 0;
-            display: grid;
-            padding: 0 0 0 10px;
-            grid-template-columns: 80px 80px auto;
+.form-row-yes-no, .form-row-rodio {
+    margin: 5px 0 0 0;
+    display: grid;
+    padding: 0 0 0 10px;
+    grid-template-columns: 80px 80px auto;
 
-            label {
-                margin: 30px 0 0 0;
-                display: inline-flex;
-            }
-        }
+    label {
+        margin: 30px 0 0 0;
+        display: inline-flex;
+    }
+}
 
-        .form-box {
-            width: 50%;
-            display: flex;
-            flex-flow: column;
-        }
+.form-box {
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+}
 
-        .form-box-upload {
-            width: 600px;
-            display: flex;
-            flex-flow: column;
-            justify-content: flex-start;
-        }
+.form-box-upload {
+    width: 600px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+}
 
-        .form-box-signiture {
-            width: 380px;
-            display: flex;
-            flex-flow: column;
-        }
+.form-box-signiture {
+    width: 380px;
+    display: flex;
+    flex-flow: column;
+}
 
-        .width {
-            width: 100%;
-            display: flex;
-            flex-flow: column;
-        }
+.width {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
 
-        .form-box-connection {
-            > div {
-                flex-flow: column;
-                width: 390px;
-            }
+.form-box-connection {
+    > div {
+        flex-flow: column;
+        width: 390px;
+    }
 
-            &:first-child button.bDelete {
-                display: none;
-            }
-            //width: 50%;
-            display: flex;
-            flex-flow: row;
-            justify-content: flex-start;
-            margin: 8px 0 0 0;
-        }
+    &:first-child button.bDelete {
+        display: none;
+    }
+    //width: 50%;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    margin: 8px 0 0 0;
+}
 
-        .upload-box div {
-            margin-bottom: 10px;
-        }
+.upload-box div {
+    margin-bottom: 10px;
+}

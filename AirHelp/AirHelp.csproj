@@ -225,6 +225,7 @@
     <Content Include="Content\Assets\Airplane\airplane1.png" />
     <Content Include="Content\Assets\Airplane\airplane2.png" />
     <Content Include="Content\Assets\Airplane\PlainInClouds.jpg" />
+    <Content Include="Content\Assets\Background\обезщетение-в-зависимост-от-разтоянието-на-полета.jpg" />
     <Content Include="Content\Assets\Icon\cc-icon-01.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-02.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-03.svg" />
@@ -381,7 +382,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Assets\Background\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711302245583_InitialCreate.resx">

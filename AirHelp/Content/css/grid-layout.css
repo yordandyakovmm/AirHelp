@@ -35,7 +35,7 @@ a:hover {
   grid-template-rows: 70px repeat(auto-fill, auto);
   grid-gap: 0px;
   background-color: #fafafa;
-  grid-template-areas: "Logo" "big-image" "compensation-type";
+  grid-template-areas: "Logo" "big-image" "compensation-type" "compensation-amount";
 }
 .logo {
   background-color: #f3f3f3;
@@ -221,6 +221,85 @@ a:hover {
   grid-column-end: 3;
 }
 .compensation-type .span-3 {
+  grid-row: 2;
+  grid-column-start: 4;
+  grid-column-end: 4;
+}
+.compensation-amount {
+  grid-template: "compensation-amount";
+  grid-template-columns: auto 400px 400px 400px auto;
+  grid-template-rows: 100px auto;
+  grid-column-gap: 10px;
+  display: grid;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.compensation-amount > div.background {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  background-image: url('/Content/Assets/Background/обезщетение-в-зависимост-от-разтоянието-на-полета.jpg');
+  background-position: center;
+  filter: opacity(20%);
+  z-index: 1;
+}
+.compensation-amount * {
+  z-index: 100;
+}
+.compensation-amount span {
+  color: #222;
+  text-align: center;
+  margin: auto auto auto auto;
+}
+.compensation-amount .header-text {
+  grid-row: 1;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 42px;
+  font-weight: 600;
+  color: #03030d;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.compensation-amount .header-text span {
+  display: flex;
+}
+.compensation-amount .span {
+  display: flex;
+  flex-flow: column;
+  align-content: center;
+  justify-content: center;
+}
+.compensation-amount .span > * {
+  margin-top: 8px;
+}
+.compensation-amount .span > span.text-black {
+  font-size: 22px;
+  font-weight: 600;
+}
+.compensation-amount .span > span.text-blue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #009fe3;
+}
+.compensation-amount .span .image img {
+  display: block;
+  height: 250px;
+  margin: auto;
+}
+.compensation-amount .span-1 {
+  grid-row: 2;
+  grid-column-start: 2;
+  grid-column-end: 2;
+}
+.compensation-amount .span-2 {
+  grid-row: 2;
+  grid-column-start: 3;
+  grid-column-end: 3;
+}
+.compensation-amount .span-3 {
   grid-row: 2;
   grid-column-start: 4;
   grid-column-end: 4;
