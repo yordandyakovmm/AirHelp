@@ -115,7 +115,7 @@ button.submit {
   border: 0px none;
   border-radius: 4px;
   margin: 0 auto;
-  font-family: PT Sans, sans-serif;
+  font-family: "PT Sans", sans-serif;
   color: #141a30;
   font-size: 22px;
   font-weight: 500;
@@ -144,7 +144,7 @@ button.reset {
   border: 0px none;
   border-radius: 4px;
   margin: 0 auto;
-  font-family: PT Sans, sans-serif;
+  font-family: "PT Sans", sans-serif;
   color: #141a30;
   font-size: 22px;
   font-weight: 500;

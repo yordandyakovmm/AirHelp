@@ -97,13 +97,13 @@ namespace Recipes.Controllers
             return View("PrivatePolice");
         }
 
-        [Route("/проблеми-с-полета/често-задавани-въпроси")]
+        [Route("проблеми-с-полета/често-задавани-въпроси")]
         public ActionResult Spliter4(string category)
         {
             return View("faq");
         }
 
-        [Route("/общи-условия")]
+        [Route("общи-условия")]
         public ActionResult Spliter5(string category)
         {
             return View("CommonRules");
