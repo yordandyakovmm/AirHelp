@@ -88,12 +88,27 @@ namespace Recipes.Controllers
         [Route("обезщетение-при-полет")]
         public ActionResult Spliter2(string category)
         {
-            //var contex = new DAL.AirHelpDBContext();
-            //var count = contex.Users.Count();
-            return View("RegisterClaim");
-
-
-
+            return View("Claim");
         }
+
+        [Route("пpолитика-на-поверителност")]
+        public ActionResult Spliter3(string category)
+        {
+            return View("PrivatePolice");
+        }
+
+        [Route("/проблеми-с-полета/често-задавани-въпроси")]
+        public ActionResult Spliter4(string category)
+        {
+            return View("faq");
+        }
+
+        [Route("/общи-условия")]
+        public ActionResult Spliter5(string category)
+        {
+            return View("CommonRules");
+        }
+
+
     }
 }

@@ -365,6 +365,10 @@
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Index\Edit.cshtml" />
     <Content Include="Views\Index\RegisterClaim.cshtml" />
+    <Content Include="Views\Index\Claim.cshtml" />
+    <Content Include="Views\Index\PrivatePolice.cshtml" />
+    <Content Include="Views\Index\faq.cshtml" />
+    <Content Include="Views\Index\CommonRules.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
