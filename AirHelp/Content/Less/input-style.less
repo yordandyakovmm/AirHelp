@@ -36,6 +36,11 @@ label {
     justify-content: flex-start;
     font-weight: 600;
 
+    span.requared {
+        margin-left: 2px;
+        color: red;
+    }
+
     &.file-upload {
         margin-left: 10px;
     }
@@ -46,6 +51,8 @@ canvas {
     border-radius: 2px;
     outline: none;
     background-color: white;
+    width: 500px;
+    height: 300px;
     
     &.error {
         border: 1px solid red;
@@ -63,9 +70,8 @@ canvas {
 
 
 input[type="text"] {
-    width: 370px;
+    width: 400px;
     padding: 12px 30px 12px 20px;
-    /*margin: 8px 0;*/
     box-sizing: border-box;
     border: 1px solid @border-blue-color;
     border-radius: 2px;
@@ -84,7 +90,6 @@ input.remove-shadow:focus {
 }
 
 textarea {
-    width: 100%;
     padding: 12px 20px 12px 20px;
     /*margin: 8px 0;*/
     box-sizing: border-box;
@@ -234,8 +239,8 @@ button.reset {
 .form-hedar {
     #font;
     font-weight: 700;
-    font-size: 35px;
-    margin: 20px 0 0 0;
+    font-size: 32px;
+    margin: 20px 0 0 50px;
 }
 
 .form-subheder {
@@ -243,7 +248,7 @@ button.reset {
     font-weight: 700;
     font-size: 24px;
     color: @border-blue-color;
-    margin: 20px 0 5px 0;
+    margin: 20px 0 5px 50px;
 }
 
 .form-subtext {

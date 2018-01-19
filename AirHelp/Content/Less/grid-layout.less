@@ -405,7 +405,7 @@ a:hover {
         }
 
         > span.text-black {
-            margin: 10px 0 0 0; 
+            margin: 10px 0 0 0;
             font-size: 18px;
             font-weight: 600;
         }
@@ -418,7 +418,6 @@ a:hover {
         }
 
         .image img {
-
             display: block;
             height: 80px;
             margin: auto;
@@ -430,7 +429,11 @@ a:hover {
     grid-template: "Content";
     display: grid;
     grid-template-columns: auto 1000px auto;
-    grid-template-areas: "left center rigth";
+    grid-template-rows: 50px auto 50px;
+    grid-template-areas: 
+        ". . ."
+        "left center rigth"
+        ". . .";
 }
 
 .data-content {
@@ -440,6 +443,9 @@ a:hover {
     grid-template-areas: "left center rigth";
 
     .center-content {
+
+
+
         h2 {
             margin: 10px 0 0 0;
             font-family: "PT Sans", sans-serif;
@@ -462,6 +468,7 @@ a:hover {
 
 .center-content {
     grid-area: center;
+    box-shadow: 12px 0 50px -4px rgba(31, 73, 125, 0.8), -12px 0 50px -4px rgba(31, 73, 125, 0.8);
     //background: linear-gradient(30);
     //background-color: azure;
     display: flex;
@@ -483,7 +490,7 @@ a:hover {
 }
 
 .form-row-choise {
-    margin: 5px 0 0 0;
+    margin: 5px 0 0 60px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 
@@ -496,13 +503,13 @@ a:hover {
 
 
 .form-row-yes-no, .form-row-rodio {
-    margin: 5px 0 0 0;
+    margin: 5px 0 0 50px;
     display: grid;
     padding: 0 0 0 10px;
     grid-template-columns: 80px 80px auto;
 
     label {
-        margin: 30px 0 0 0;
+        margin: 10px 0 0 0;
         display: inline-flex;
     }
 }
@@ -511,17 +518,72 @@ a:hover {
     width: 50%;
     display: flex;
     flex-flow: column;
+    justify-content: center;
+
+
+
+    &.left {
+        label {
+            margin-left: 50px;
+        }
+
+        input[type=text], ul {
+            margin-left: 50px;
+        }
+    }
+
+    &.rigth {
+        label {
+            margin-left: 20px;
+        }
+
+        input[type=text], ul {
+            margin-left: 20px;
+        }
+    }
+}
+
+.form-box-width {
+    label {
+        margin-left: 50px;
+    }
+   
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    textarea{
+        margin-left:50px;
+        width:860px;
+    }
+    input[type=text] {
+        width: 860px;
+        margin-left: 50px
+    }
 }
 
 .form-box-upload {
-    width: 600px;
+    >div{
+        margin-left: 50px;
+    }
+    >label{
+        margin-left: 60px;
+    }
+    width: 100%;
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
 }
 
 .form-box-signiture {
-    width: 380px;
+    > div {
+        margin-left: 50px;
+    }
+
+    > label {
+        margin-left: 60px;
+    }
+
+    width: 100%;
     display: flex;
     flex-flow: column;
 }
@@ -532,14 +594,17 @@ a:hover {
     flex-flow: column;
 }
 
-.form-box-connection {
+#connectionAirPorts {
+    margin-left: 50px;
+}.form-box-connection {
     > div {
         flex-flow: column;
-        width: 390px;
+        width: 410px;
     }
 
     &:first-child button.bDelete {
         display: none;
+        margin-left: 10px;
     }
     //width: 50%;
     display: flex;

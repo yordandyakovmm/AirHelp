@@ -346,7 +346,8 @@ a:hover {
   grid-template: "Content";
   display: grid;
   grid-template-columns: auto 1000px auto;
-  grid-template-areas: "left center rigth";
+  grid-template-rows: 50px auto 50px;
+  grid-template-areas: ". . ." "left center rigth" ". . .";
 }
 .data-content {
   grid-template: "Content";
@@ -370,6 +371,7 @@ a:hover {
 }
 .center-content {
   grid-area: center;
+  box-shadow: 12px 0 50px -4px rgba(31, 73, 125, 0.8), -12px 0 50px -4px rgba(31, 73, 125, 0.8);
   display: flex;
   flex-flow: column;
   padding: 5px 10px;
@@ -385,7 +387,7 @@ a:hover {
   align-content: space-around;
 }
 .form-row-choise {
-  margin: 5px 0 0 0;
+  margin: 5px 0 0 60px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -395,36 +397,82 @@ a:hover {
 }
 .form-row-yes-no,
 .form-row-rodio {
-  margin: 5px 0 0 0;
+  margin: 5px 0 0 50px;
   display: grid;
   padding: 0 0 0 10px;
   grid-template-columns: 80px 80px auto;
 }
 .form-row-yes-no label,
 .form-row-rodio label {
-  margin: 30px 0 0 0;
+  margin: 10px 0 0 0;
   display: inline-flex;
 }
 .form-box {
   width: 50%;
   display: flex;
   flex-flow: column;
+  justify-content: center;
+}
+.form-box.left label {
+  margin-left: 50px;
+}
+.form-box.left input[type=text],
+.form-box.left ul {
+  margin-left: 50px;
+}
+.form-box.rigth label {
+  margin-left: 20px;
+}
+.form-box.rigth input[type=text],
+.form-box.rigth ul {
+  margin-left: 20px;
+}
+.form-box-width {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+}
+.form-box-width label {
+  margin-left: 50px;
+}
+.form-box-width textarea {
+  margin-left: 50px;
+  width: 860px;
+}
+.form-box-width input[type=text] {
+  width: 860px;
+  margin-left: 50px;
 }
 .form-box-upload {
-  width: 600px;
+  width: 100%;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
 }
+.form-box-upload > div {
+  margin-left: 50px;
+}
+.form-box-upload > label {
+  margin-left: 60px;
+}
 .form-box-signiture {
-  width: 380px;
+  width: 100%;
   display: flex;
   flex-flow: column;
+}
+.form-box-signiture > div {
+  margin-left: 50px;
+}
+.form-box-signiture > label {
+  margin-left: 60px;
 }
 .width {
   width: 100%;
   display: flex;
   flex-flow: column;
+}
+#connectionAirPorts {
+  margin-left: 50px;
 }
 .form-box-connection {
   display: flex;
@@ -434,10 +482,11 @@ a:hover {
 }
 .form-box-connection > div {
   flex-flow: column;
-  width: 390px;
+  width: 410px;
 }
 .form-box-connection:first-child button.bDelete {
   display: none;
+  margin-left: 10px;
 }
 .upload-box div {
   margin-bottom: 10px;

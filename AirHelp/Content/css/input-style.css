@@ -8,6 +8,10 @@
   justify-content: flex-start;
   font-weight: 600;
 }
+label span.requared {
+  margin-left: 2px;
+  color: red;
+}
 label.file-upload {
   margin-left: 10px;
 }
@@ -16,6 +20,8 @@ canvas {
   border-radius: 2px;
   outline: none;
   background-color: white;
+  width: 500px;
+  height: 300px;
 }
 canvas.error {
   border: 1px solid red;
@@ -28,9 +34,8 @@ canvas.success {
   box-shadow: 0 0 4px #009fe3;
 }
 input[type="text"] {
-  width: 370px;
+  width: 400px;
   padding: 12px 30px 12px 20px;
-  /*margin: 8px 0;*/
   box-sizing: border-box;
   border: 1px solid #009fe3;
   border-radius: 2px;
@@ -49,7 +54,6 @@ input.remove-shadow:focus {
   box-shadow: none !important;
 }
 textarea {
-  width: 100%;
   padding: 12px 20px 12px 20px;
   /*margin: 8px 0;*/
   box-sizing: border-box;
@@ -197,8 +201,8 @@ button.reset .icon::before {
   font-size: 15px;
   font-weight: 400;
   font-weight: 700;
-  font-size: 35px;
-  margin: 20px 0 0 0;
+  font-size: 32px;
+  margin: 20px 0 0 50px;
 }
 .form-subheder {
   font-family: "PT Sans", sans-serif;
@@ -208,7 +212,7 @@ button.reset .icon::before {
   font-weight: 700;
   font-size: 24px;
   color: #009fe3;
-  margin: 20px 0 5px 0;
+  margin: 20px 0 5px 50px;
 }
 .form-subtext {
   font-family: "PT Sans", sans-serif;

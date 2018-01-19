@@ -8,13 +8,13 @@
                 Данни за контакт
             </div>
             <div class="form-row">
-                <div class="form-box ">
+                <div class="form-box left">
                     <label>Име</label>
                     <div>
                         <input type="text" name="FirstName" placeholder="Име" validate /><i class="icon"></i>
                     </div>
                 </div>
-                <div class="form-box ">
+                <div class="form-box rigth">
                     <label>Фамиля</label>
                     <div>
                         <input type="text" name="LastName" placeholder="Фамилия" validate /><i class="icon"></i>
@@ -22,13 +22,36 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-box ">
+                <div class="form-box left">
+                    <label>Град</label>
+                    <div>
+                        <input type="text" id="City" name="City" placeholder="Град" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth success">
+                    <label>Държава<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="Country" name="Country" placeholder="България" value="България" validate /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-box-width">
+                    <label>Адрес</label>
+                    <div>
+                        <input type="text" id="Adress" name="Adress" placeholder="Адрес" validate /><i class="icon"></i>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row ">
+                <div class="form-box left">
                     <label>Емаил</label>
                     <div>
                         <input type="text" id="Email" name="Email" placeholder="Емаил" validate /><i class="icon"></i>
                     </div>
                 </div>
-                <div class="form-box ">
+                <div class="form-box rigth">
                     <label>Телефон</label>
                     <div>
                         <input type="text" id="Tel" name="Tel" placeholder="Телефон" validate /><i class="icon"></i>
@@ -40,22 +63,22 @@
                 Информаця за полета
             </div>
             <div class="form-row">
-                <div class="form-box ">
+                <div class="form-box left">
                     <label>Номер на полета</label>
                     <div>
                         <input type="text" name="FlithNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
                     </div>
                 </div>
-                <div class="form-box ">
+                <div class="form-box rigth">
                     <label>Дата на полета</label>
                     <div>
-                        <input type="text" id="Date" name="Date" placeholder="Дата на полета"  /><i class="icon"></i>
+                        <input type="text" id="Date" name="Date" placeholder="Дата на полета" /><i class="icon"></i>
                     </div>
                 </div>
             </div>
             <div class="form-row">
 
-                <div class="form-box">
+                <div class="form-box left">
                     <label>Начално летище</label>
                     <div>
                         <input type="text" name="DepartureAirport" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Начално летище" />
@@ -69,7 +92,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="form-box">
+                <div class="form-box rigth">
                     <label>Крайно летище</label>
                     <div>
                         <input type="text" name="DestinationAirports" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Крайно летище" />
@@ -87,17 +110,14 @@
             <div class="form-subheder">
                 Имахте ли прекачвания по пътя?
             </div>
-            <div class="form-subtext">
-                Моля, посочете летища на прекачване, които са част от същото пътуване и резервация. Това ще ни помогне да изчислим размера на обезщетението Ви по-точно.
-            </div>
             <div class="form-row-rodio" style="justify-content:flex-start">
 
                 <label class="radio">
-                    <input type="radio"  id="rYes" name="hasConnection">
+                    <input type="radio" id="rYes" name="hasConnection">
                     <span>Да</span>
                 </label>
                 <label class="radio">
-                    <input type="radio"  id="rNo" name="hasConnection">
+                    <input type="radio" id="rNo" name="hasConnection">
                     <span>Не</span>
                 </label>
             </div>
@@ -127,31 +147,31 @@
             <div class="form-row-choise" style="justify-content:flex-start">
 
                 <label class="checkbox">
-                    <input type="radio"  value="Технически проблем" name="reason">
+                    <input type="radio" value="Технически проблем" name="reason">
                     <span>Технически проблем</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="Повлиян от други полети" name="reason">
+                    <input type="radio" value="Повлиян от други полети" name="reason">
                     <span>Повлиян от други полети</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="Стачка" name="reason">
+                    <input type="radio" value="Стачка" name="reason">
                     <span>Стачка</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="Лошо време" name="reason">
+                    <input type="radio" value="Лошо време" name="reason">
                     <span>Лошо време</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="По вина на летищетое" name="reason">
+                    <input type="radio" value="По вина на летищетое" name="reason">
                     <span>По вина на летището</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="По вина на летището" name="reason">
+                    <input type="radio" value="По вина на летището" name="reason">
                     <span>По вина на летището</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="Не беше дадена причина" name="reason">
+                    <input type="radio" value="Не беше дадена причина" name="reason">
                     <span>Не беше дадена причина</span>
                 </label>
             </div>
@@ -161,11 +181,11 @@
             <div class="form-row-yes-no">
 
                 <label class="checkbox">
-                    <input type="radio"  value="Да" name="delay">
+                    <input type="radio" value="Да" name="delay">
                     <span>Да</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="Не" name="delay">
+                    <input type="radio" value="Не" name="delay">
                     <span>Не</span>
                 </label>
             </div>
@@ -177,19 +197,19 @@
             <div class="form-row-choise" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr;">
 
                 <label class="checkbox">
-                    <input type="radio"  value="0-2" name="howMuch">
+                    <input type="radio" value="0-2" name="howMuch">
                     <span>0-2 часа</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="2-3" name="howMuch">
+                    <input type="radio" value="2-3" name="howMuch">
                     <span>2-3 часа</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="3-4" name="howMuch">
+                    <input type="radio" value="3-4" name="howMuch">
                     <span>3-4 часа</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="4" name="howMuch">
+                    <input type="radio" value="4" name="howMuch">
                     <span>над 4 часа</span>
                 </label>
             </div>
@@ -197,13 +217,12 @@
                 Кога бяхте уведомени от превозвача за отмяната на полета ? - 2
             </div>
             <div class="form-row-choise" style="justify-content:flex-start">
-
                 <label class="checkbox">
-                    <input type="radio"  value="Повече от 14 дни преди полета" name="annonsment">
+                    <input type="radio" value="Повече от 14 дни преди полета" name="annonsment">
                     <span>Повече от 14 дни преди полета</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="По-малко от 14 дни преди полета" name="annonsment">
+                    <input type="radio" value="По-малко от 14 дни преди полета" name="annonsment">
                     <span>По-малко от 14 дни преди полета</span>
                 </label>
             </div>
@@ -214,11 +233,11 @@
             </div>
             <div class="form-row-yes-no" style="justify-content:flex-start">
                 <label class="checkbox">
-                    <input type="radio"  value="Да" name="arival">
+                    <input type="radio" value="Да" name="arival">
                     <span>Да</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="Не" name="arival">
+                    <input type="radio" value="Не" name="arival">
                     <span>Не</span>
                 </label>
             </div>
@@ -228,11 +247,11 @@
             </div>
             <div class="form-row-yes-no" style="justify-content:flex-start">
                 <label class="checkbox">
-                    <input type="radio"  value="Да" name="documentSecurity">
+                    <input type="radio" value="Да" name="documentSecurity">
                     <span>Да</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="Не" name="documentSecurity">
+                    <input type="radio" value="Не" name="documentSecurity">
                     <span>Не</span>
                 </label>
             </div>
@@ -242,23 +261,23 @@
             </div>
             <div class="form-row-yes-no" style="justify-content:flex-start">
                 <label class="checkbox">
-                    <input type="radio"  value="Да" name="willness">
+                    <input type="radio" value="Да" name="willness">
                     <span>Да</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio"  value="Не" name="willness">
+                    <input type="radio" value="Не" name="willness">
                     <span>Не</span>
                 </label>
             </div>
 
             <div class="form-row" id="AirCompany">
-                <div class="form-box ">
+                <div class="form-box left">
                     <label>Номер на резервация или код за потвърждение</label>
                     <div>
                         <input type="text" name="BookCode" placeholder="Номер на резервация" /><i class="icon"></i>
                     </div>
                 </div>
-                <div class="form-box">
+                <div class="form-box rigth">
                     <label>Въдушен превозвач</label>
                     <div>
                         <input type="text" name="AirCompany" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Въдушен превозвач" />
@@ -272,14 +291,14 @@
                         </ul>
                     </div>
                 </div>
-               
+
             </div>
 
             <div class="form-row" id="Info" style="flex-flow: column;">
                 <div class="form-box-width">
                     <label>Допълнителна информация</label>
                     <div>
-                        <textarea rows="6" cols="80" name="AdditionalInfo" style="width: 100%" placeholder=""></textarea>
+                        <textarea rows="6" cols="80" name="AdditionalInfo" placeholder=""></textarea>
                     </div>
                 </div>
             </div>
@@ -301,13 +320,9 @@
                         <input type="file" name="BookConfirmation" accept="image/*" id="uReservation" style="display:none" onchange="uploadChange(this)" />
                         <label class="file-upload"> -- </label>
                     </div>
-                    <label>Документ за извършено плащане</label>
-                    <div>
-                        <button class="upload" onclick="uploadClick(this); return false;">Ибор на файл</button><i class="icon"></i>
-                        <input type="file" name="PaymantDocument" accept="image/*" id="uPayDocument" style="display:none" onchange="uploadChange(this)" />
-                        <label class="file-upload"> -- </label>
-                    </div>
                 </div>
+            </div>
+            <div class="form-row">
                 <div class="form-box-signiture">
                     <label>Подпис</label>
                     <div class="convas-holder">
@@ -321,7 +336,7 @@
             </div>
             <div class="form-row-yes-no" style="grid-template-columns: auto">
                 <label class="checkbox">
-                    <input type="radio"  name="confirm">
+                    <input type="radio" name="confirm">
                     <span>Потвърждавам, че давам съгласието си AirHelp да обработи претенцията от мое име</span>
                 </label>
             </div>
@@ -332,6 +347,9 @@
                 <div class="form-box">
                     <button class="reset" type="reset" onclick="clearForm()"><i class="icon"></i><span>Изчисти</span></button>
                 </div>
+            </div>
+            <div class="form-row">
+                &nbsp;
             </div>
         </form>
     </div>
