@@ -355,9 +355,14 @@ function validate() {
             $("input[name='confirm']").parent().parent().removeClass('error');
         }
     }
-    if ($('.form-box-signiture').is('.success') == 0) {
+    if ($('.form-box-signiture').is('.success')) {
         result = false;
         $('.form-box-signiture').addClass('error');
+    }
+    if (result)
+    {
+        var res = $('[name=ConnectionAirports]').val().join(' <--> ');
+        $('[name=connection-ariports]').val(res);
     }
     return result;
 }

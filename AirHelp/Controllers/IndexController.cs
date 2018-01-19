@@ -74,15 +74,20 @@ namespace Recipes.Controllers
 
         }
 
-
+        [HttpGet]
         [Route("обезщетение-при-полет/{category}")]
         public ActionResult Spliter1(string category)
         {
-            //var contex = new DAL.AirHelpDBContext();
-            //var count = contex.Users.Count();
+            ViewBag.category = category;
             return View("RegisterClaim");
+        }
 
-
+        [HttpPost]
+        [Route("обезщетение-при-полет/{category}")]
+        public ActionResult Spliter5(string category)
+        {
+            ViewBag["category"] = category;
+            return View("ViewClaim");
         }
 
         [Route("обезщетение-при-полет")]
@@ -104,7 +109,7 @@ namespace Recipes.Controllers
         }
 
         [Route("общи-условия")]
-        public ActionResult Spliter5(string category)
+        public ActionResult Spliter6(string category)
         {
             return View("CommonRules");
         }

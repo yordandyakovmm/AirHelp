@@ -369,6 +369,7 @@
     <Content Include="Views\Index\PrivatePolice.cshtml" />
     <Content Include="Views\Index\faq.cshtml" />
     <Content Include="Views\Index\CommonRules.cshtml" />
+    <Content Include="Views\Index\ViewClaim.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
