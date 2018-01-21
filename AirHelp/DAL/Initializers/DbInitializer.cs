@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Recipes.DAL.Initializers
+namespace AirHelp.DAL.Initializers
 {
-	internal class DbInitializer: MigrateDatabaseToLatestVersion<AirHelpDBContext, Recipes.DAL.Migration.Configuration>
+	internal class DbInitializer: MigrateDatabaseToLatestVersion<AirHelpDBContext, AirHelp.DAL.Migration.Configuration>
 	{
 	}
 }

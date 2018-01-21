@@ -1,5 +1,5 @@
 ﻿using Facebook;
-using Recipes.Models;
+using AirHelp.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,9 +7,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Recipes.Hellpers;
+using AirHelp.Hellpers;
 
-namespace Recipes.Controllers
+namespace AirHelp.Controllers
 {
 
     public class BaseController : Controller

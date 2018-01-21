@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace Recipes.DAL
+namespace AirHelp.DAL
 {
 	
     public class AirHelpDBContext : DbContext
@@ -12,7 +12,8 @@ namespace Recipes.DAL
             Database.SetInitializer<AirHelpDBContext>(null);
         }
 
-        public DbSet<Users> Users { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Claim> Claims { get; set; }
 
         //public DbSet<Form> Forms { get; set; }
         //public DbSet<Measure> Measures { get; set; }

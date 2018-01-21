@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Recipes.Startup))]
-namespace Recipes
+[assembly: OwinStartupAttribute(typeof(AirHelp.Startup))]
+namespace AirHelp
 {
     public partial class Startup
     {

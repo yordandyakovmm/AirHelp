@@ -194,6 +194,7 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="DAL\Entities\Abstract\EntityBase.cs" />
     <Compile Include="DAL\Entities\Abstract\EntityID.cs" />
+    <Compile Include="DAL\Entities\Claim.cs" />
     <Compile Include="DAL\Entities\Users.cs" />
     <Compile Include="DAL\Entities\Form.cs" />
     <Compile Include="DAL\Entities\Measure.cs" />
@@ -207,6 +208,10 @@
     <Compile Include="Migrations\201711302315470_FixDate.cs" />
     <Compile Include="Migrations\201711302315470_FixDate.Designer.cs">
       <DependentUpon>201711302315470_FixDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801210223207_Claim.cs" />
+    <Compile Include="Migrations\201801210223207_Claim.Designer.cs">
+      <DependentUpon>201801210223207_Claim.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -370,6 +375,7 @@
     <Content Include="Views\Index\faq.cshtml" />
     <Content Include="Views\Index\CommonRules.cshtml" />
     <Content Include="Views\Index\ViewClaim.cshtml" />
+    <Content Include="Views\Index\ClaimList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -387,6 +393,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UserDocuments\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711302245583_InitialCreate.resx">
@@ -394,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711302315470_FixDate.resx">
       <DependentUpon>201711302315470_FixDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801210223207_Claim.resx">
+      <DependentUpon>201801210223207_Claim.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

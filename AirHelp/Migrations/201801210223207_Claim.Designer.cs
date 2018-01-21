@@ -7,13 +7,13 @@ namespace AirHelp.DAL.Migration
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class FixDate : IMigrationMetadata
+    public sealed partial class Claim : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FixDate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Claim));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711302315470_FixDate"; }
+            get { return "201801210223207_Claim"; }
         }
         
         string IMigrationMetadata.Source

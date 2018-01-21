@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Recipes.DAL;
-using Recipes.Models;
+using AirHelp.DAL;
+using AirHelp.Models;
 
-namespace Recipes.Hellpers
+namespace AirHelp.Hellpers
 {
     public class UserHeppler
     {
@@ -48,7 +48,7 @@ namespace Recipes.Hellpers
                     return user;
                 }
                 user.Role = "";
-                var newUserBD = new Users()
+                var newUserBD = new User()
                 {
                     UserId = user.UserId,
                     FirstName = user.FirstName,

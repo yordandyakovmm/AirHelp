@@ -1,5 +1,7 @@
 ﻿using Facebook;
 using Newtonsoft.Json.Linq;
+using AirHelp.DAL;
+using AirHelp.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,7 +15,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Recipes.Controllers
+namespace AirHelp.Controllers
 {
 
 
@@ -86,14 +88,164 @@ namespace Recipes.Controllers
         [Route("обезщетение-при-полет/{category}")]
         public ActionResult Spliter5(string category)
         {
-            ViewBag["category"] = category;
-            return View("ViewClaim");
+            ViewBag.category = category;
+
+            string BordCardUrl = "";
+            string BookConfirmationUrl = "";
+
+            if (Request.Files["BordCard"].ContentLength > 0)
+            {
+                var file = Request.Files["BordCard"];
+                var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
+                BordCardUrl = $"/UserDocuments/{name}";
+                file.SaveAs(Server.MapPath("~/UserDocuments/" + name ));
+            }
+            if (Request.Files["BookConfirmation"].ContentLength > 0)
+            {
+                var file = Request.Files["BordCard"];
+                var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
+                BookConfirmationUrl = $"/UserDocuments/{name}";
+                file.SaveAs(Server.MapPath("~/UserDocuments/" + name ));
+            }
+
+            Claim claim = new Claim
+            {
+                ClaimId = Guid.NewGuid(),
+                State = "приета",
+
+                UserId = null,
+                DateCreated = DateTime.Now,
+
+                BordCardUrl = BordCardUrl,
+                BookConfirmationUrl = BookConfirmationUrl,
+                Type = Request.Form["Type"],
+                ConnectionAriports = Request.Form["ConnectionAriports"],
+                FirstName = Request.Form["FirstName"],
+                LastName = Request.Form["LastName"],
+                City = Request.Form["City"],
+                Country = Request.Form["Country"],
+                Adress = Request.Form["Adress"],
+                Email = Request.Form["Email"],
+                Tel = Request.Form["Tel"],
+                FlightNumber = Request.Form["FlightNumber"],
+                Date = Request.Form["Date"],
+                DepartureAirport = Request.Form["DepartureAirport"],
+                DestinationAirports = Request.Form["DestinationAirports"],
+                HasConnection = Request.Form["HasConnection"],
+                ConnectionAirports = Request.Form["ConnectionAirports"],
+                Reason = Request.Form["Reason"],
+                HowMuch = Request.Form["HowMuch"],
+                Annonsment = Request.Form["Annonsment"],
+                BookCode = Request.Form["BookCode"],
+                AirCompany = Request.Form["AirCompany"],
+                AdditionalInfo = Request.Form["AdditionalInfo"],
+                Confirm = Request.Form["Confirm"]
+            };
+
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                dc.Claims.Add(claim);
+                dc.SaveChanges();
+            }
+
+            return RedirectToAction("Spliter8" , new{ category = claim.ClaimId });
+            
         }
 
         [Route("обезщетение-при-полет")]
         public ActionResult Spliter2(string category)
         {
             return View("Claim");
+        }
+
+
+        [Route("обезщетение-списък/{id}")]
+        public ActionResult Spliter8(Guid id)
+        {
+
+            Claim claim = null;
+
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                claim = dc.Claims.Where(c => c.ClaimId == id).SingleOrDefault();
+            }
+
+            var model = new VMClaim()
+            {
+                ClaimId = claim.ClaimId,
+                State = claim.State,
+
+                User = null,
+                DateCreated = claim.DateCreated,
+
+                BordCardUrl = claim.BordCardUrl,
+                BookConfirmationUrl = claim.BookConfirmationUrl,
+                Type = claim.Type,
+                ConnectionAriports = claim.ConnectionAriports,
+                FirstName = claim.FirstName,
+                LastName = claim.LastName,
+                City = claim.City,
+                Country = claim.Country,
+                Adress = claim.Adress,
+                Email = claim.Email,
+                Tel = claim.Tel,
+                FlightNumber = claim.FlightNumber,
+                Date = claim.Date,
+                DepartureAirport = claim.DepartureAirport,
+                DestinationAirports = claim.DestinationAirports,
+                HasConnection = claim.HasConnection,
+                ConnectionAirports = claim.ConnectionAirports,
+                Reason = claim.Reason,
+                HowMuch = claim.HowMuch,
+                Annonsment = claim.Annonsment,
+                BookCode = claim.BookCode,
+                AirCompany = claim.AirCompany,
+                AdditionalInfo = claim.AdditionalInfo,
+                Confirm = claim.Confirm
+            };
+
+            return View("ViewClaim", model);
+        }
+
+
+        [Route("обезщетение-списък")]
+        public ActionResult Spliter7(string category)
+        {
+            var list = new List<VMClaim>();
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                list = dc.Claims.Where(l => true).Select(claim => new VMClaim() {
+                    ClaimId = claim.ClaimId,
+                    State = claim.State,
+                    User = claim.User,
+                    DateCreated = claim.DateCreated,
+                    BordCardUrl = claim.BordCardUrl,
+                    BookConfirmationUrl = claim.BookConfirmationUrl,
+                    Type = claim.Type,
+                    ConnectionAriports = claim.ConnectionAriports,
+                    FirstName = claim.FirstName,
+                    LastName = claim.LastName,
+                    City = claim.City,
+                    Country = claim.Country,
+                    Adress = claim.Adress,
+                    Email = claim.Email,
+                    Tel = claim.Tel,
+                    FlightNumber = claim.FlightNumber,
+                    Date = claim.Date,
+                    DepartureAirport = claim.DepartureAirport,
+                    DestinationAirports = claim.DestinationAirports,
+                    HasConnection = claim.HasConnection,
+                    ConnectionAirports = claim.ConnectionAirports,
+                    Reason = claim.Reason,
+                    HowMuch = claim.HowMuch,
+                    Annonsment = claim.Annonsment,
+                    BookCode = claim.BookCode,
+                    AirCompany = claim.AirCompany,
+                    AdditionalInfo = claim.AdditionalInfo,
+                    Confirm = claim.Confirm
+                }).ToList();
+            }
+                return View("ClaimList", list);
         }
 
         [Route("пpолитика-на-поверителност")]

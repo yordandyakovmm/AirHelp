@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Recipes.DAL
+namespace AirHelp.DAL
 {
 	public class Study:EntityBase
 	{

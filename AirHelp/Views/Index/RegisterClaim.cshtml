@@ -5,9 +5,9 @@
     <div class="left-content">
     </div>
     <div class="center-content">
-        <form method="post">
-            <input type="hidden" name="type" value="@category" />
-            <input type="hidden" name="connection-ariports" value="@category" />
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" name="Type"  value="@category" />
+            <input type="hidden" name="ConnectionAriports" value="@category" />
             <button type="button" ></button>
             <div class="form-hedar">
                 Данни за контакт
@@ -16,7 +16,7 @@
                 <div class="form-box left">
                     <label>Име</label>
                     <div>
-                        <input type="text" name="FirstName" placeholder="Име" validate /><i class="icon"></i>
+                        <input type="text" inputmode="latin" name="FirstName" placeholder="Име" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box rigth">
@@ -71,7 +71,7 @@
                 <div class="form-box left">
                     <label>Номер на полета</label>
                     <div>
-                        <input type="text" name="FlithNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
+                        <input type="text" name="FlightNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box rigth">
@@ -118,11 +118,11 @@
             <div class="form-row-rodio" style="justify-content:flex-start">
 
                 <label class="radio">
-                    <input type="radio" id="rYes" name="hasConnection">
+                    <input type="radio" id="rYes" name="HasConnection">
                     <span>Да</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" id="rNo" name="hasConnection">
+                    <input type="radio" id="rNo" name="HasConnection">
                     <span>Не</span>
                 </label>
             </div>
@@ -139,7 +139,7 @@
                             <li index='5' last onclick="menuItemClick(this)">Amed</li>
                         </ul>
                     </div>
-                    <button class="bDelete" onclick="$(this).parent().remove(); return false;"><i class="icon"></i></button>
+                    <button class="bDelete" onmousedown="$(this).parent().remove(); return false;"><i class="icon"></i></button>
                 </div>
                 <div class="form-box">
                     <button class="bAdd" onclick="addCbAiports(this); return false;"><i class="icon"></i></button>
@@ -152,31 +152,31 @@
             <div class="form-row-choise" style="justify-content:flex-start">
 
                 <label class="checkbox">
-                    <input type="radio" value="Технически проблем" name="reason">
+                    <input type="radio" value="Технически проблем" name="Reason">
                     <span>Технически проблем</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" value="Повлиян от други полети" name="reason">
+                    <input type="radio" value="Повлиян от други полети" name="Reason">
                     <span>Повлиян от други полети</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" value="Стачка" name="reason">
+                    <input type="radio" value="Стачка" name="Reason">
                     <span>Стачка</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" value="Лошо време" name="reason">
+                    <input type="radio" value="Лошо време" name="Reason">
                     <span>Лошо време</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" value="По вина на летищетое" name="reason">
+                    <input type="radio" value="По вина на летищетое" name="Reason">
                     <span>По вина на летището</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" value="По вина на летището" name="reason">
+                    <input type="radio" value="По вина на летището" name="Reason">
                     <span>По вина на летището</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" value="Не беше дадена причина" name="reason">
+                    <input type="radio" value="Не беше дадена причина" name="Reason">
                     <span>Не беше дадена причина</span>
                 </label>
             </div>
@@ -188,11 +188,11 @@
                 <div class="form-row-yes-no">
 
                     <label class="checkbox">
-                        <input type="radio" value="Да" name="delay">
+                        <input type="radio" value="Да" name="Delay">
                         <span>Да</span>
                     </label>
                     <label class="checkbox">
-                        <input type="radio" value="Не" name="delay">
+                        <input type="radio" value="Не" name="Delay">
                         <span>Не</span>
                     </label>
                 </div>
@@ -205,19 +205,19 @@
                 <div class="form-row-choise" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr;">
 
                     <label class="checkbox">
-                        <input type="radio" value="0-2" name="howMuch">
+                        <input type="radio" value="0-2" name="HowMuch">
                         <span>0-2 часа</span>
                     </label>
                     <label class="checkbox">
-                        <input type="radio" value="2-3" name="howMuch">
+                        <input type="radio" value="2-3" name="HowMuch">
                         <span>2-3 часа</span>
                     </label>
                     <label class="checkbox">
-                        <input type="radio" value="3-4" name="howMuch">
+                        <input type="radio" value="3-4" name="HowMuch">
                         <span>3-4 часа</span>
                     </label>
                     <label class="checkbox">
-                        <input type="radio" value="4" name="howMuch">
+                        <input type="radio" value="4" name="HowMuch">
                         <span>над 4 часа</span>
                     </label>
                 </div>
@@ -226,11 +226,11 @@
                 </div>
                 <div class="form-row-choise" style="justify-content:flex-start">
                     <label class="checkbox">
-                        <input type="radio" value="Повече от 14 дни преди полета" name="annonsment">
+                        <input type="radio" value="Повече от 14 дни преди полета" name="Annonsment">
                         <span>Повече от 14 дни преди полета</span>
                     </label>
                     <label class="checkbox">
-                        <input type="radio" value="По-малко от 14 дни преди полета" name="annonsment">
+                        <input type="radio" value="По-малко от 14 дни преди полета" name="Annonsment">
                         <span>По-малко от 14 дни преди полета</span>
                     </label>
                 </div>
@@ -242,11 +242,11 @@
                 </div>
                 <div class="form-row-yes-no" style="justify-content:flex-start">
                     <label class="checkbox">
-                        <input type="radio" value="Да" name="arival">
+                        <input type="radio" value="Да" name="Arival">
                         <span>Да</span>
                     </label>
                     <label class="checkbox">
-                        <input type="radio" value="Не" name="arival">
+                        <input type="radio" value="Не" name="Arival">
                         <span>Не</span>
                     </label>
                 </div>
@@ -256,11 +256,11 @@
                 </div>
                 <div class="form-row-yes-no" style="justify-content:flex-start">
                     <label class="checkbox">
-                        <input type="radio" value="Да" name="documentSecurity">
+                        <input type="radio" value="Да" name="DocumentSecurity">
                         <span>Да</span>
                     </label>
                     <label class="checkbox">
-                        <input type="radio" value="Не" name="documentSecurity">
+                        <input type="radio" value="Не" name="DocumentSecurity">
                         <span>Не</span>
                     </label>
                 </div>
@@ -270,11 +270,11 @@
                 </div>
                 <div class="form-row-yes-no" style="justify-content:flex-start">
                     <label class="checkbox">
-                        <input type="radio" value="Да" name="willness">
+                        <input type="radio" value="Да" name="Willness">
                         <span>Да</span>
                     </label>
                     <label class="checkbox">
-                        <input type="radio" value="Не" name="willness">
+                        <input type="radio" value="Не" name="Willness">
                         <span>Не</span>
                     </label>
                 </div>
@@ -351,10 +351,10 @@
             </div>
             <div class="form-row">
                 <div class="form-box">
-                    <button class="submit" type="submit" onclick="return validate()"><i class="icon"></i><span>Изпрати</span></button>
+                    <button class="submit" type="submit" keypress="alert(1); return false" onclick="return validate()"><i class="icon"></i><span>Изпрати</span></button>
                 </div>
                 <div class="form-box">
-                    <button class="reset" type="reset" onclick="clearForm()"><i class="icon"></i><span>Изчисти</span></button>
+                    <button class="reset" type="reset" keypress="return false" onclick="clearForm()"><i class="icon"></i><span>Изчисти</span></button>
                 </div>
             </div>
             <div class="form-row">
@@ -382,7 +382,7 @@
                 <li index='5' last onclick="menuItemClick(this)">Amed</li>
             </ul>
         </div>
-        <button class="bDelete" onclick="$(this).parent().remove(); return false;"><i class="icon"></i></button>
+        <button class="bDelete" onmousedown="$(this).parent().remove(); return false;"><i class="icon"></i></button>
     </div>
 </div>
 <script src="~/Scripts/main.js"></script>

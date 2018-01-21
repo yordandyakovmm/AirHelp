@@ -430,10 +430,7 @@ a:hover {
     display: grid;
     grid-template-columns: auto 1000px auto;
     grid-template-rows: 50px auto 50px;
-    grid-template-areas: 
-        ". . ."
-        "left center rigth"
-        ". . .";
+    grid-template-areas: ". . ." "left center rigth" ". . .";
 }
 
 .data-content {
@@ -547,14 +544,16 @@ a:hover {
     label {
         margin-left: 50px;
     }
-   
+
     width: 100%;
     display: flex;
     flex-flow: column;
-    textarea{
-        margin-left:50px;
-        width:860px;
+
+    textarea {
+        margin-left: 50px;
+        width: 860px;
     }
+
     input[type=text] {
         width: 860px;
         margin-left: 50px
@@ -562,12 +561,14 @@ a:hover {
 }
 
 .form-box-upload {
-    >div{
+    > div {
         margin-left: 50px;
     }
-    >label{
+
+    > label {
         margin-left: 60px;
     }
+
     width: 100%;
     display: flex;
     flex-flow: column;
@@ -596,7 +597,9 @@ a:hover {
 
 #connectionAirPorts {
     margin-left: 50px;
-}.form-box-connection {
+}
+
+.form-box-connection {
     > div {
         flex-flow: column;
         width: 410px;
@@ -615,4 +618,40 @@ a:hover {
 
 .upload-box div {
     margin-bottom: 10px;
+}
+
+.list-container {
+    margin: 50px 50px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 10px;
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 14px;
+
+    a:nth-child(odd) > div > div {
+        background-color: #ccc;
+    }
+
+    a:nth-child(even) > div > div {
+        background-color: #eee;
+    }
+
+    .claim-list {
+        display: grid;
+        grid-template-columns: 100px 200px 200px 200px 100px 100px;
+        grid-template-rows: 30px;
+        grid-gap: 5px;
+        > div {
+            > label{
+                cursor: pointer;
+                height: 20px;
+                margin:auto 0;
+            }
+            display: flex;
+            align-content: center;
+            justify-content: flex-start;
+            padding-left: 4px;
+            border-radius: 3px;
+        }
+    }
 }

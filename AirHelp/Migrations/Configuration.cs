@@ -1,4 +1,4 @@
-﻿using Recipes.DAL;
+﻿using AirHelp.DAL;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 
-namespace Recipes.DAL.Migration
+namespace AirHelp.DAL.Migration
 {
 
     internal sealed class Configuration : DbMigrationsConfiguration<AirHelpDBContext>

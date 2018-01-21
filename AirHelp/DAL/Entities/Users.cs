@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Recipes.DAL
+namespace AirHelp.DAL
 {
-	public class Users: EntityBase
+	public class User: EntityBase
 	{
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -27,5 +27,7 @@ namespace Recipes.DAL
 
         public DateTime CreateDate { get; set; }
 
-	}
+        public virtual ICollection<Claim> Claims { get; set; }
+
+    }
 }

@@ -1,28 +1,26 @@
-﻿using AirHelp.DAL;
+﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace AirHelp.Models
+namespace AirHelp.DAL
 {
-    public class VMUser
+    public class Claim : EntityBase
     {
-        public string UserId {get; set;}
-        public string Email { get; set; }
-        public string Token { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string PictureUrl { get; set; }
-        public string Role { get; set; }
-    }
-
-    public class VMClaim
-    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid ClaimId { get; set; }
-
+        
         public string State { get; set; }
-        public User User { get; set; }
+
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual User User{ get; set; }
+        
         public DateTime DateCreated { get; set; }
 
         public string BordCardUrl { get; set; }
@@ -50,6 +48,8 @@ namespace AirHelp.Models
         public string AirCompany { get; set; }
         public string AdditionalInfo { get; set; }
         public string Confirm { get; set; }
+
+
     }
 
 }

@@ -1,4 +1,4 @@
-namespace Recipes.DAL.Migration
+namespace AirHelp.DAL.Migration
 {
     using System;
     using System.Data.Entity.Migrations;

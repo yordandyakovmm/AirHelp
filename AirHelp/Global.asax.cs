@@ -8,7 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 
-namespace Recipes
+namespace AirHelp
 {
     public class MvcApplication : System.Web.HttpApplication
     {

@@ -1,0 +1,48 @@
+﻿@model List<AirHelp.Models.VMClaim>
+
+<div class="register-form">
+    <div class="left-content">
+    </div>
+    <div class="center-content">
+        <div class="list-container">
+
+            @foreach (var claim in Model)
+            {
+                <a href="/обезщетение-списък/@claim.ClaimId">
+                    <div class="claim-list">
+                        <div style="grid-column-start: 1; grid-column-end: 2;">
+                            <label>
+                                @claim.FlightNumber
+                            </label>
+                        </div>
+                        <div style="grid-column-start: 2; grid-column-end: 3;">
+                            <label>
+                                @claim.FirstName @claim.LastName
+                            </label>
+                        </div>
+                        <div style="grid-column-start: 3; grid-column-end: 4;">
+                            <label>
+                                @claim.DepartureAirport
+                            </label>
+                        </div>
+                        <div style="grid-column-start: 4; grid-column-end: 5;">
+                            <label>
+                                @claim.DestinationAirports
+                            </label>
+                        </div>
+                        <div style="grid-column-start: 5; grid-column-end: 6;">
+                            <label>
+                                @claim.AirCompany
+                            </label>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+
+    </div>
+
+    <div class="rigth-content">
+
+    </div>
+</div>
