@@ -139,7 +139,11 @@ namespace AirHelp.Controllers
                 BookCode = Request.Form["BookCode"],
                 AirCompany = Request.Form["AirCompany"],
                 AdditionalInfo = Request.Form["AdditionalInfo"],
-                Confirm = Request.Form["Confirm"]
+                Confirm = Request.Form["Confirm"],
+                Arival = Request.Form["Arival"],
+                DocumentSecurity = Request.Form["DocumentSecurity"],
+                Willness = Request.Form["Willness"],
+                Delay = Request.Form["Delay"]
             };
 
             using (AirHelpDBContext dc = new AirHelpDBContext())
@@ -148,7 +152,7 @@ namespace AirHelp.Controllers
                 dc.SaveChanges();
             }
 
-            return RedirectToAction("Spliter8" , new{ category = claim.ClaimId });
+            return Redirect($"обезщетение-списък/{claim.ClaimId}");
             
         }
 
@@ -201,7 +205,11 @@ namespace AirHelp.Controllers
                 BookCode = claim.BookCode,
                 AirCompany = claim.AirCompany,
                 AdditionalInfo = claim.AdditionalInfo,
-                Confirm = claim.Confirm
+                Confirm = claim.Confirm,
+                Arival = claim. Arival,
+                DocumentSecurity = claim.DocumentSecurity,
+                Willness = claim.Willness,
+                Delay = claim.Delay
             };
 
             return View("ViewClaim", model);
@@ -242,7 +250,11 @@ namespace AirHelp.Controllers
                     BookCode = claim.BookCode,
                     AirCompany = claim.AirCompany,
                     AdditionalInfo = claim.AdditionalInfo,
-                    Confirm = claim.Confirm
+                    Confirm = claim.Confirm,
+                    Arival = claim.Arival,
+                    DocumentSecurity = claim.DocumentSecurity,
+                    Willness = claim.Willness,
+                    Delay = claim.Delay
                 }).ToList();
             }
                 return View("ClaimList", list);

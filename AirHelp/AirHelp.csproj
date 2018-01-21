@@ -196,9 +196,6 @@
     <Compile Include="DAL\Entities\Abstract\EntityID.cs" />
     <Compile Include="DAL\Entities\Claim.cs" />
     <Compile Include="DAL\Entities\Users.cs" />
-    <Compile Include="DAL\Entities\Form.cs" />
-    <Compile Include="DAL\Entities\Measure.cs" />
-    <Compile Include="DAL\Entities\Study.cs" />
     <Compile Include="DAL\Initializers\DbInitializer.cs" />
     <Compile Include="Hellpers\UserHeppler.cs" />
     <Compile Include="Migrations\201711302245583_InitialCreate.cs" />
@@ -212,6 +209,10 @@
     <Compile Include="Migrations\201801210223207_Claim.cs" />
     <Compile Include="Migrations\201801210223207_Claim.Designer.cs">
       <DependentUpon>201801210223207_Claim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801212341321_miising-fields.cs" />
+    <Compile Include="Migrations\201801212341321_miising-fields.Designer.cs">
+      <DependentUpon>201801212341321_miising-fields.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -404,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801210223207_Claim.resx">
       <DependentUpon>201801210223207_Claim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801212341321_miising-fields.resx">
+      <DependentUpon>201801212341321_miising-fields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

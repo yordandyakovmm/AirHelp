@@ -14,13 +14,13 @@ namespace AirHelp.DAL
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid ClaimId { get; set; }
-        
+
         public string State { get; set; }
 
         public string UserId { get; set; }
         [ForeignKey("UserId")]
-        public virtual User User{ get; set; }
-        
+        public virtual User User { get; set; }
+
         public DateTime DateCreated { get; set; }
 
         public string BordCardUrl { get; set; }
@@ -48,6 +48,11 @@ namespace AirHelp.DAL
         public string AirCompany { get; set; }
         public string AdditionalInfo { get; set; }
         public string Confirm { get; set; }
+
+        public string Arival { get; set; }
+        public string DocumentSecurity { get; set; }
+        public string Willness { get; set; }
+        public string Delay { get; set; }
 
 
     }

@@ -10,337 +10,274 @@
             </div>
             <div class="form-row">
                 <div class="form-box left">
-                    <label>Име</label>
+                    <label class="heder">Име</label>
                     <div>
-                        <input type="text" name="FirstName" placeholder="Име" validate /><i class="icon"></i>
+                        <label class="data">
+                            @Model.FirstName
+                        </label>
                     </div>
                 </div>
                 <div class="form-box rigth">
-                    <label>Фамиля</label>
+                    <label class="heder">Фамиля</label>
                     <div>
-                        <input type="text" name="LastName" placeholder="Фамилия" validate /><i class="icon"></i>
+                        <label class="data">
+                            @Model.LastName
+                        </label>
                     </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-box left">
-                    <label>Град</label>
+                    <label class="heder">Град</label>
                     <div>
-                        <input type="text" id="City" name="City" placeholder="Град" validate /><i class="icon"></i>
+                        <label class="data">
+                            @Model.City
+                        </label>
                     </div>
                 </div>
-                <div class="form-box rigth success">
-                    <label>Държава<span class="requared">*</span></label>
+                <div class="form-box rigth ">
+                    <label class="heder">Държава </label>
                     <div>
-                        <input type="text" id="Country" name="Country" placeholder="България" value="България" validate /><i class="icon"></i>
+                        <label class="data">
+                            @Model.Country
+                        </label>
                     </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-box-width">
-                    <label>Адрес</label>
+                    <label class="heder">Адрес</label>
                     <div>
-                        <input type="text" id="Adress" name="Adress" placeholder="Адрес" validate /><i class="icon"></i>
+                        <label class="data">
+                            @Model.Country
+                        </label>
                     </div>
                 </div>
 
             </div>
             <div class="form-row ">
                 <div class="form-box left">
-                    <label>Емаил</label>
+                    <label class="heder">Емаил</label>
                     <div>
-                        <input type="text" id="Email" name="Email" placeholder="Емаил" validate /><i class="icon"></i>
+                        <label class="data">
+                            @Model.Email
+                        </label>
                     </div>
                 </div>
                 <div class="form-box rigth">
-                    <label>Телефон</label>
+                    <label class="heder" Телефон</label>
                     <div>
-                        <input type="text" id="Tel" name="Tel" placeholder="Телефон" validate /><i class="icon"></i>
+                        <label class="data">
+                            @Model.Tel
+                        </label>
                     </div>
                 </div>
             </div>
 
-            <div class="form-hedar">
-                Информаця за полета
-            </div>
             <div class="form-row">
                 <div class="form-box left">
-                    <label>Номер на полета</label>
+                    <label class="heder">Номер на полета</label>
                     <div>
-                        <input type="text" name="FlithNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
+                        <label class="data">
+                            @Model.FlightNumber
+                        </label>
                     </div>
                 </div>
                 <div class="form-box rigth">
-                    <label>Дата на полета</label>
+                    <label class="heder">Дата на полета</label>
                     <div>
-                        <input type="text" id="Date" name="Date" placeholder="Дата на полета" /><i class="icon"></i>
+                        <label class="data">
+                            @Model.Date
+                        </label>
                     </div>
                 </div>
             </div>
             <div class="form-row">
 
                 <div class="form-box left">
-                    <label>Начално летище</label>
+                    <label class="heder">Начално летище</label>
                     <div>
-                        <input type="text" name="DepartureAirport" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Начално летище" />
-                        <i class="icon"></i>
-                        <ul class="lSuggestoin">
-                            <li index='1' onclick="menuItemClick(this)">Lorem</li>
-                            <li index='2' onclick="menuItemClick(this)">Ipsum</li>
-                            <li index='3' onclick="menuItemClick(this)">Dolor</li>
-                            <li index='4' onclick="menuItemClick(this)">Sit</li>
-                            <li index='5' onclick="menuItemClick(this)" last>Amed</li>
-                        </ul>
+                        <label class="data">
+                            @Model.DepartureAirport
+                        </label>
                     </div>
                 </div>
                 <div class="form-box rigth">
-                    <label>Крайно летище</label>
+                    <label class="heder">Крайно летище</label>
                     <div>
-                        <input type="text" name="DestinationAirports" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Крайно летище" />
-                        <i class="icon"></i>
-                        <ul class="lSuggestoin">
-                            <li index='1' onclick="menuItemClick(this)">Lorem</li>
-                            <li index='2' onclick="menuItemClick(this)">Ipsum</li>
-                            <li index='3' onclick="menuItemClick(this)">Dolor</li>
-                            <li index='4' onclick="menuItemClick(this)">Sit</li>
-                            <li index='5' onclick="menuItemClick(this)" last>Amed</li>
-                        </ul>
+                        <label class="data">
+                            @Model.DestinationAirports
+                        </label>
                     </div>
                 </div>
             </div>
-            <div class="form-subheder">
-                Имахте ли прекачвания по пътя?
-            </div>
-            <div class="form-row-rodio" style="justify-content:flex-start">
+            @if (Model.HasConnection == "yes")
+            {
+                <div class="form-row" id="connectionAirPorts" style="flex-flow: column;">
+                    <div class="form-box left">
 
-                <label class="radio">
-                    <input type="radio" id="rYes" name="hasConnection">
-                    <span>Да</span>
-                </label>
-                <label class="radio">
-                    <input type="radio" id="rNo" name="hasConnection">
-                    <span>Не</span>
-                </label>
-            </div>
-            <div class="form-row" id="connectionAirPorts" style="flex-flow: column; display:none;">
-                <div class="form-box-connection">
-                    <div>
-                        <input type="text" name="ConnectionAirports" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
-                        <i class="icon"></i>
-                        <ul class="lSuggestoin">
-                            <li index='1' onclick="menuItemClick(this)">Lorem</li>
-                            <li index='2' onclick="menuItemClick(this)">Ipsum</li>
-                            <li index='3' onclick="menuItemClick(this)">Dolor</li>
-                            <li index='4' onclick="menuItemClick(this)">Sit</li>
-                            <li index='5' last onclick="menuItemClick(this)">Amed</li>
-                        </ul>
+                        @foreach (var li in Model.ConnectionAirports.Split("<-->".ToCharArray()))
+                        {
+                            <div class="form-box-connection">
+                                li
+                            </div>
+                        }
                     </div>
-                    <button class="bDelete" onclick="$(this).parent().remove(); return false;"><i class="icon"></i></button>
                 </div>
+            }
+
+            <div class="form-row" style="justify-content:flex-start">
                 <div class="form-box">
-                    <button class="bAdd" onclick="addCbAiports(this); return false;"><i class="icon"></i></button>
+                    <label class="heder">
+                        Причина за закъснението
+                    </label>
+                    <div>
+                        <label class="data">
+                            @Model.Reason
+                        </label>
+                    </div>
                 </div>
             </div>
-            <!-- delay -->
-            <div class="form-subheder">
-                Причина за закъснението 1-2
-            </div>
-            <div class="form-row-choise" style="justify-content:flex-start">
+            @if (Model.Type == "закъснял-полет")
+            {
+                <div class="form-row">
+                    <div class="form-box">
+                        <label class="heder">
+                            Закъснение на полета
+                        </label>
+                        <div>
+                            <label class="data">
+                                (Model.Delay == "Да" ? "повече от 3 часа" : "по-малко от 3 часа")
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            }
 
-                <label class="checkbox">
-                    <input type="radio" value="Технически проблем" name="reason">
-                    <span>Технически проблем</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="Повлиян от други полети" name="reason">
-                    <span>Повлиян от други полети</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="Стачка" name="reason">
-                    <span>Стачка</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="Лошо време" name="reason">
-                    <span>Лошо време</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="По вина на летищетое" name="reason">
-                    <span>По вина на летището</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="По вина на летището" name="reason">
-                    <span>По вина на летището</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="Не беше дадена причина" name="reason">
-                    <span>Не беше дадена причина</span>
-                </label>
-            </div>
-            <div class="form-hedar">
-                Полетат Ви закъсня ли с повече от три часа? - 1
-            </div>
-            <div class="form-row-yes-no">
+            @if (Model.Type == "отменен-полет")
+            {
+                <div class="form-row">
+                    <div class="form-box">
+                        <label class="heder">
+                            Закъснение до крайната дестинация
+                        </label>
+                        <div>
+                            <label class="data">
+                                @Model.HowMuch часа
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
-                <label class="checkbox">
-                    <input type="radio" value="Да" name="delay">
-                    <span>Да</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="Не" name="delay">
-                    <span>Не</span>
-                </label>
-            </div>
+                <div class="form-row">
+                    <div class="form-box">
+                        <label class="heder">
+                            Уведомление  за отмяната на полета
+                        </label>
+                        <div>
+                            <label class="data">
+                                @Model.Annonsment
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (Model.Type == "отказан-досъп-до-борд")
+            {
 
+                <div class="form-row">
+                    <div class="form-box">
+                        <label class="heder">
+                            Пристигane на чек-ин-а 30 минути преди излитането на самолета?
+                        </label>
+                        <div>
+                            <label class="data">
+                                @Model.Arival
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="form-subheder">
-                Колко голямо беше закъснението до крайната дистанция ? - 2
-            </div>
-            <div class="form-row-choise" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr;">
+                    <div class="form-row">
+                        <div class="form-box">
+                            <label class="heder">
+                                Достъпът беше отказан заради проблеми с документите или от съображения за сигурност
+                            </label>
+                            <div>
+                                <label class="data">
+                                    @Model.DocumentSecurity
+                                </label>
+                            </div>
+                        </div>
+                    </div>
 
-                <label class="checkbox">
-                    <input type="radio" value="0-2" name="howMuch">
-                    <span>0-2 часа</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="2-3" name="howMuch">
-                    <span>2-3 часа</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="3-4" name="howMuch">
-                    <span>3-4 часа</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="4" name="howMuch">
-                    <span>над 4 часа</span>
-                </label>
-            </div>
-            <div class="form-subheder">
-                Кога бяхте уведомени от превозвача за отмяната на полета ? - 2
-            </div>
-            <div class="form-row-choise" style="justify-content:flex-start">
-                <label class="checkbox">
-                    <input type="radio" value="Повече от 14 дни преди полета" name="annonsment">
-                    <span>Повече от 14 дни преди полета</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="По-малко от 14 дни преди полета" name="annonsment">
-                    <span>По-малко от 14 дни преди полета</span>
-                </label>
-            </div>
+                    <div class="form-row">
+                        <div class="form-box">
+                            <label class="heder">
+                                Доброволно предостъпване на мястото на борда на самолета
+                            </label>
+                            <div>
+                                <label class="data">
+                                    @Model.Willness
+                                </label>
+                            </div>
+                        </div>
+                    </div>
 
-
-            <div class="form-subheder">
-                Пристигнахте ли на чек-ин-а поне 30 минути преди излитането на самолета? -3
-            </div>
-            <div class="form-row-yes-no" style="justify-content:flex-start">
-                <label class="checkbox">
-                    <input type="radio" value="Да" name="arival">
-                    <span>Да</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="Не" name="arival">
-                    <span>Не</span>
-                </label>
-            </div>
-
-            <div class="form-subheder">
-                Достъпът беше ли ви отказан заради проблеми с документите или от съображения за сигурност ? - 3
-            </div>
-            <div class="form-row-yes-no" style="justify-content:flex-start">
-                <label class="checkbox">
-                    <input type="radio" value="Да" name="documentSecurity">
-                    <span>Да</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="Не" name="documentSecurity">
-                    <span>Не</span>
-                </label>
-            </div>
-
-            <div class="form-subheder">
-                Доброволно ли преотстъпихте мястото си на борда на самолета ? - 3
-            </div>
-            <div class="form-row-yes-no" style="justify-content:flex-start">
-                <label class="checkbox">
-                    <input type="radio" value="Да" name="willness">
-                    <span>Да</span>
-                </label>
-                <label class="checkbox">
-                    <input type="radio" value="Не" name="willness">
-                    <span>Не</span>
-                </label>
-            </div>
-
+            }
             <div class="form-row" id="AirCompany">
                 <div class="form-box left">
-                    <label>Номер на резервация или код за потвърждение</label>
+                    <label class="heder">Номер на резервация или код за потвърждение</label>
                     <div>
-                        <input type="text" name="BookCode" placeholder="Номер на резервация" /><i class="icon"></i>
+                        <label class="data">
+                            @Model.BookCode
+                        </label>
                     </div>
                 </div>
                 <div class="form-box rigth">
-                    <label>Въдушен превозвач</label>
+                    <label class="heder">Въдушен превозвач</label>
                     <div>
-                        <input type="text" name="AirCompany" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Въдушен превозвач" />
-                        <i class="icon"></i>
-                        <ul class="lSuggestoin">
-                            <li index='1' onclick="menuItemClick(this)">Lorem</li>
-                            <li index='2' onclick="menuItemClick(this)">Ipsum</li>
-                            <li index='3' onclick="menuItemClick(this)">Dolor</li>
-                            <li index='4' onclick="menuItemClick(this)">Sit</li>
-                            <li index='5' onclick="menuItemClick(this)" last>Amed</li>
-                        </ul>
+                        <label class="data">
+                            @Model.AirCompany
+                        </label>
                     </div>
                 </div>
 
             </div>
 
-            <div class="form-row" id="Info" style="flex-flow: column;">
-                <div class="form-box-width">
-                    <label>Допълнителна информация</label>
-                    <div>
-                        <textarea rows="6" cols="80" name="AdditionalInfo" placeholder=""></textarea>
+            @if (Model.AdditionalInfo != "")
+            {
+                <div class="form-row" id="Info" style="flex-flow: column;">
+                    <div class="form-box-width">
+                        <label class="heder">Допълнителна информация</label>
+                        <p>
+                            @Model.AdditionalInfo
+                        </p>
                     </div>
                 </div>
-            </div>
-
+            }
             <div class="form-hedar">
                 Копия на необходими документи
             </div>
             <div class="form-row">
-                <div class="form-box-upload upload-box">
-                    <label>Бордова карта</label>
-                    <div>
-                        <button class="upload" onclick="uploadClick(this); return false;">Ибор на файл</button><i class="icon"></i>
-                        <input type="file" name="BordCard" accept="image/*" id="uBordCard" style="display:none" onchange="uploadChange(this)" />
-                        <label class="file-upload"> -- </label>
-                    </div>
-                    <label>Потвърждение за резервация</label>
-                    <div>
-                        <button class="upload" onclick="uploadClick(this); return false;">Ибор на файл</button><i class="icon"></i>
-                        <input type="file" name="BookConfirmation" accept="image/*" id="uReservation" style="display:none" onchange="uploadChange(this)" />
-                        <label class="file-upload"> -- </label>
-                    </div>
+                <div class="form-box">
+                    @if (Model.BookConfirmationUrl != "")
+                    {
+                        <a href="@Model.BookConfirmationUrl" target="_blank">
+                            <img width="300" src="@Model.BookConfirmationUrl" />
+                        </a>
+                    }
+                </div>
+                <div class="form-box">
+                    @if (Model.BordCardUrl != "")
+                    {
+                        <a href="@Model.BordCardUrl" target= target="_blank">
+                            <img width="300" src="@Model.BordCardUrl" />
+                        </a>
+                    }
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-box-signiture">
-                    <label>Подпис</label>
-                    <div class="convas-holder">
-                        <canvas id="signiture"></canvas>
-                        <img name="signiture-img" style="display:none;">
-                    </div>
-                    <div>
-                        <button class="clear" type="button" onclick="return clearSignature(this); return false;"><span>Изчисти</span></button>
-                    </div>
-                </div>
-            </div>
-            <div class="form-row-yes-no" style="grid-template-columns: auto">
-                <label class="checkbox">
-                    <input type="radio" name="confirm">
-                    <span>Потвърждавам, че давам съгласието си AirHelp да обработи претенцията от мое име</span>
-                </label>
-            </div>
+
             <div class="form-row">
                 <div class="form-box">
                     <button class="submit" type="submit" onclick="return validate()"><i class="icon"></i><span>Изпрати</span></button>
@@ -360,21 +297,3 @@
     </div>
 </div>
 
-
-<div id="template" style="display:none;">
-    <div class="form-box-connection">
-        <div>
-            <input type="text" name="ConnectionAirports" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
-            <i class="icon"></i>
-            <ul class="lSuggestoin">
-                <li index='1' onclick="menuItemClick(this)">Lorem</li>
-                <li index='2' onclick="menuItemClick(this)">Ipsum</li>
-                <li index='3' onclick="menuItemClick(this)">Dolor</li>
-                <li index='4' onclick="menuItemClick(this)">Sit</li>
-                <li index='5' last onclick="menuItemClick(this)">Amed</li>
-            </ul>
-        </div>
-        <button class="bDelete" onclick="$(this).parent().remove(); return false;"><i class="icon"></i></button>
-    </div>
-</div>
-<script src="~/Scripts/main.js"></script>

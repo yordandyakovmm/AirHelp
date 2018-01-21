@@ -50,6 +50,11 @@ namespace AirHelp.Models
         public string AirCompany { get; set; }
         public string AdditionalInfo { get; set; }
         public string Confirm { get; set; }
+        public string Arival { get; set; }
+
+        public string DocumentSecurity { get; set; }
+        public string Willness { get; set; }
+        public string Delay { get; set; }
     }
 
 }
