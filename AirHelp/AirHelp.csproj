@@ -366,7 +366,7 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Index\About.cshtml" />
+    <Content Include="Views\Index\Attorney.cshtml" />
     <Content Include="Views\Index\Contact.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Index\Edit.cshtml" />

@@ -266,6 +266,13 @@ namespace AirHelp.Controllers
             return View("PrivatePolice");
         }
 
+        [Route("attorney/{id}")]
+        public ActionResult Spliter11(Guid id)
+        {
+            return PartialView("Attorney");
+        }
+
+
         [Route("проблеми-с-полета/често-задавани-въпроси")]
         public ActionResult Spliter4(string category)
         {
