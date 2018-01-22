@@ -174,43 +174,7 @@ namespace AirHelp.Controllers
                 claim = dc.Claims.Where(c => c.ClaimId == id).SingleOrDefault();
             }
 
-            var model = new VMClaim()
-            {
-                ClaimId = claim.ClaimId,
-                State = claim.State,
-
-                User = null,
-                DateCreated = claim.DateCreated,
-
-                BordCardUrl = claim.BordCardUrl,
-                BookConfirmationUrl = claim.BookConfirmationUrl,
-                Type = claim.Type,
-                ConnectionAriports = claim.ConnectionAriports,
-                FirstName = claim.FirstName,
-                LastName = claim.LastName,
-                City = claim.City,
-                Country = claim.Country,
-                Adress = claim.Adress,
-                Email = claim.Email,
-                Tel = claim.Tel,
-                FlightNumber = claim.FlightNumber,
-                Date = claim.Date,
-                DepartureAirport = claim.DepartureAirport,
-                DestinationAirports = claim.DestinationAirports,
-                HasConnection = claim.HasConnection,
-                ConnectionAirports = claim.ConnectionAirports,
-                Reason = claim.Reason,
-                HowMuch = claim.HowMuch,
-                Annonsment = claim.Annonsment,
-                BookCode = claim.BookCode,
-                AirCompany = claim.AirCompany,
-                AdditionalInfo = claim.AdditionalInfo,
-                Confirm = claim.Confirm,
-                Arival = claim. Arival,
-                DocumentSecurity = claim.DocumentSecurity,
-                Willness = claim.Willness,
-                Delay = claim.Delay
-            };
+            var model = new VMClaim(claim);
 
             return View("ViewClaim", model);
         }
@@ -222,40 +186,10 @@ namespace AirHelp.Controllers
             var list = new List<VMClaim>();
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
-                list = dc.Claims.Where(l => true).Select(claim => new VMClaim() {
-                    ClaimId = claim.ClaimId,
-                    State = claim.State,
-                    User = claim.User,
-                    DateCreated = claim.DateCreated,
-                    BordCardUrl = claim.BordCardUrl,
-                    BookConfirmationUrl = claim.BookConfirmationUrl,
-                    Type = claim.Type,
-                    ConnectionAriports = claim.ConnectionAriports,
-                    FirstName = claim.FirstName,
-                    LastName = claim.LastName,
-                    City = claim.City,
-                    Country = claim.Country,
-                    Adress = claim.Adress,
-                    Email = claim.Email,
-                    Tel = claim.Tel,
-                    FlightNumber = claim.FlightNumber,
-                    Date = claim.Date,
-                    DepartureAirport = claim.DepartureAirport,
-                    DestinationAirports = claim.DestinationAirports,
-                    HasConnection = claim.HasConnection,
-                    ConnectionAirports = claim.ConnectionAirports,
-                    Reason = claim.Reason,
-                    HowMuch = claim.HowMuch,
-                    Annonsment = claim.Annonsment,
-                    BookCode = claim.BookCode,
-                    AirCompany = claim.AirCompany,
-                    AdditionalInfo = claim.AdditionalInfo,
-                    Confirm = claim.Confirm,
-                    Arival = claim.Arival,
-                    DocumentSecurity = claim.DocumentSecurity,
-                    Willness = claim.Willness,
-                    Delay = claim.Delay
-                }).ToList();
+                list = dc.Claims.Where(l => true).Select(claim => claim)
+                    .ToList()
+                    .Select(claim => new VMClaim(claim))
+                    .ToList();
             }
                 return View("ClaimList", list);
         }
@@ -269,7 +203,16 @@ namespace AirHelp.Controllers
         [Route("attorney/{id}")]
         public ActionResult Spliter11(Guid id)
         {
-            return PartialView("Attorney");
+            Claim claim = null;
+
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                claim = dc.Claims.Where(c => c.ClaimId == id).SingleOrDefault();
+            }
+
+            var model = new VMClaim(claim);
+            
+            return PartialView("Attorney", model);
         }
 
 

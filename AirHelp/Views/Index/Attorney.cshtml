@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model AirHelp.Models.VMClaim
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -14,6 +16,7 @@
             display: grid;
             grid-template-columns: 52% 48%;
             grid-auto-rows: auto;
+            padding-bottom: 50px;
         }
 
         .hedar {
@@ -27,7 +30,7 @@
         }
 
         .left {
-            border-right: solid 2px rgba(34, 34, 34, 1);
+            border-right: solid 1px rgba(55, 55, 55, 1);
         }
 
         .content {
@@ -35,9 +38,29 @@
         }
 
         .signiture {
-        
+            margin: 40px 0 0 0;
+            grid-column-start: 1;
+            grid-column-end: 3;
         }
 
+        .span-2 {
+            margin: 0 230px 0 auto;
+        }
+
+        .div-1 {
+            padding: 0 10px;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .div-3 {
+            padding: 0 10px;
+        }
+
+        .span-3 {
+            float: right;
+            margin: 5px 75px 0 0;
+        }
     </style>
 </head>
 <body>
@@ -46,21 +69,21 @@
             <p class="hedar"> ПЪЛНОМОЩНО <p>
             <p class="content">
                 Долуподписаният/ата,
-                ______________________________________________, с
-                адрес ______________________________________,
-                като пътник на (въздушен транспорт) полет № ___________
-                с планирано разписание: излитане на ___________г. от
-                летище ______________, на летище _____________,
+                @Model.FirstName @Model.LastName  , с
+                адрес @Model.City, @Model.Adress,
+                като пътник на (въздушен транспорт) полет № @Model.FlightNumber
+                с планирано разписание: излитане на  @Model.Date г. от
+                летище @Model.DepartureAirport, на летище @Model.DestinationAirports ,
                 извършван от въздушния превозвач
-                _______________________, с номер на резервация (бордова
-                карта) _____________________, като ВЪЗЛАГАМ и
+                @Model.AirCompany, с номер на резервация (бордова
+                карта) @Model.BookCode, като ВЪЗЛАГАМ и
             </p>
             <p class="hedar"> УПЪЛНОМОЩАВАМ <p>
-                <p class="content">
-                    "Коеф" ЕООД, вписано в Търговския регистър
-                    под ЕИК 666666666, със седалище и адрес на управление:
-                    Република България, гр. В. Търново, ул. "В. левски" №22, представлявано от управителя адвокат Коеф,
-                     <b>за следното: </b>
+            <p class="content">
+                "Коеф" ЕООД, вписано в Търговския регистър
+                под ЕИК 666666666, със седалище и адрес на управление:
+                Република България, гр. В. Търново, ул. "В. левски" №22, представлявано от управителя адвокат Коеф,
+                <b>за следното: </b>
             </p>
             <p class="content">
                 Да ме представлява пред горепосочения въздушен
@@ -117,20 +140,20 @@
         <div class="rigth">
             <p class="hedar">POWER OF ATTORNEY</p>
             <p class="content">
-                I, the undersigned
-                _________________________________________, residing
-                at_______________________________________, as an (air)
-                passenger of flight No_________ scheduled to: take off on
-                ________from _______ airport, land at _________airport,
-                performed by the air carrier_______________________,
-                booking (boarding pass) number_______________,
+                I, the undersigned @Model.FirstName @Model.LastName, residing
+                at @Model.City, @Model.Adress, as an (air)
+                passenger of flight No @Model.FlightNumber scheduled to: take off on
+                @Model.Date from @Model.DepartureAirport airport, land at @Model.DestinationAirports airport,
+                performed by the air carrier @Model.AirCompany,
+                booking (boarding pass) number @Model.BookCode,
                 ASSIGNING and
             </p>
             <p class="hedar"> AUTHORIZING </p>
             <p class="content">
                 Koef EOOD, registered in the Trade Register under
                 UIN 66666666, seat and registered address: Republic of
-                Bulgaria, V. Turnovo taun, 12 V. levski, represented by the loyer Koef, <b>as follows:
+                Bulgaria, V. Turnovo taun, 12 V. levski, represented by the loyer Koef, <b>
+                    as follows:
                 </b>
             <p class="content">
                 To represent me before the aforementioned air carrier, third
@@ -146,15 +169,17 @@
                 and particulars; sub-delegate all or part of the powers
                 hereunder.
             </p>
-            Koef EOOD shall have the power to execute actions
-            on the collection and factual receipt of the amounts paid by the
-            said air carrier, irrespective of whether such amounts have been
-            paid voluntarily or under a writ of execution, representing
-            compensations and/or costs on civil/commercial/enforcement
-            lawsuits, to the account of the company (including to bank
-            account IBAN: 666666666666666666666, BIC CODE:
-            *******, Banck Banck, account holder
-            koef EOOD).</P>
+            <p class="content">
+                Koef EOOD shall have the power to execute actions
+                on the collection and factual receipt of the amounts paid by the
+                said air carrier, irrespective of whether such amounts have been
+                paid voluntarily or under a writ of execution, representing
+                compensations and/or costs on civil/commercial/enforcement
+                lawsuits, to the account of the company (including to bank
+                account IBAN: 666666666666666666666, BIC CODE:
+                *******, Banck Banck, account holder
+                koef EOOD).
+            </p>
             <p class="content">
                 koef EOOD shall have the right to represent me
                 before a court of law (courts of all instances) by filing lawsuits
@@ -180,7 +205,24 @@
 
         </div>
 
+        <div class="signiture">
+            <div class="div-1">
+                <div class="span-1">
+                    <span><b>Дата/Date: @Model.DateCreated.ToString("dd.MM.yyyy") </b></span>
+                </div>
+                <div class="span-2">
+                    <span><b>Упълномощител / Principal:</b>&nbsp;</span><div style="display: inline-block; position:absolute"> <img src="@Model.BookConfirmationUrl" style="margin: -70px 0 0 10px; width: 200px; height:150px;" /> </div>
+                </div>
 
+            </div>
+            @*<div class="div-3">
+
+                <div>
+                    <span class="span-3">(подпис/signature)</span>
+                </div>
+            </div>*@
+
+        </div>
 
     </div>
 </body>

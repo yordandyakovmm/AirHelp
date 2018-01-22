@@ -8,7 +8,7 @@ namespace AirHelp.Models
 {
     public class VMUser
     {
-        public string UserId {get; set;}
+        public string UserId { get; set; }
         public string Email { get; set; }
         public string Token { get; set; }
         public string FirstName { get; set; }
@@ -19,6 +19,83 @@ namespace AirHelp.Models
 
     public class VMClaim
     {
+
+        public VMClaim(Claim claim)
+        {
+            ClaimId = claim.ClaimId;
+            State = claim.State;
+
+            User = null;
+            DateCreated = claim.DateCreated;
+
+            BordCardUrl = claim.BordCardUrl;
+            BookConfirmationUrl = claim.BookConfirmationUrl;
+            Type = claim.Type;
+            ConnectionAriports = claim.ConnectionAriports;
+            FirstName = claim.FirstName;
+            LastName = claim.LastName;
+            City = claim.City;
+            Country = claim.Country;
+            Adress = claim.Adress;
+            Email = claim.Email;
+            Tel = claim.Tel;
+            FlightNumber = claim.FlightNumber;
+            Date = claim.Date;
+            DepartureAirport = claim.DepartureAirport;
+            DestinationAirports = claim.DestinationAirports;
+            HasConnection = claim.HasConnection;
+            ConnectionAirports = claim.ConnectionAirports;
+            Reason = claim.Reason;
+            HowMuch = claim.HowMuch;
+            Annonsment = claim.Annonsment;
+            BookCode = claim.BookCode;
+            AirCompany = claim.AirCompany;
+            AdditionalInfo = claim.AdditionalInfo;
+            Confirm = claim.Confirm;
+            Arival = claim.Arival;
+            DocumentSecurity = claim.DocumentSecurity;
+            Willness = claim.Willness;
+            Delay = claim.Delay;
+        }
+
+        public VMClaim FromClaim(Claim claim)
+        {
+            ClaimId = claim.ClaimId;
+            State = claim.State;
+
+            User = null;
+            DateCreated = claim.DateCreated;
+
+            BordCardUrl = claim.BordCardUrl;
+            BookConfirmationUrl = claim.BookConfirmationUrl;
+            Type = claim.Type;
+            ConnectionAriports = claim.ConnectionAriports;
+            FirstName = claim.FirstName;
+            LastName = claim.LastName;
+            City = claim.City;
+            Country = claim.Country;
+            Adress = claim.Adress;
+            Email = claim.Email;
+            Tel = claim.Tel;
+            FlightNumber = claim.FlightNumber;
+            Date = claim.Date;
+            DepartureAirport = claim.DepartureAirport;
+            DestinationAirports = claim.DestinationAirports;
+            HasConnection = claim.HasConnection;
+            ConnectionAirports = claim.ConnectionAirports;
+            Reason = claim.Reason;
+            HowMuch = claim.HowMuch;
+            Annonsment = claim.Annonsment;
+            BookCode = claim.BookCode;
+            AirCompany = claim.AirCompany;
+            AdditionalInfo = claim.AdditionalInfo;
+            Confirm = claim.Confirm;
+            Arival = claim.Arival;
+            DocumentSecurity = claim.DocumentSecurity;
+            Willness = claim.Willness;
+            Delay = claim.Delay;
+            return this;
+        }
         public Guid ClaimId { get; set; }
 
         public string State { get; set; }
