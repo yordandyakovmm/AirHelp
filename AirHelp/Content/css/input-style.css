@@ -202,7 +202,13 @@ button.reset .icon::before {
   font-weight: 400;
   font-weight: 700;
   font-size: 32px;
-  margin: 20px 0 0 50px;
+  margin: 20px 0 0 100px;
+}
+.form-hedar.view {
+  text-transform: uppercase;
+  margin: 50px 0 20px 110px;
+  font-weight: 700;
+  font-size: 24px;
 }
 .form-subheder {
   font-family: "PT Sans", sans-serif;
@@ -378,4 +384,33 @@ button.bAdd i::before {
 .button-home:hover {
   background-color: lavender;
   background-color: rgba(0, 0, 0, 0.4);
+}
+label {
+  margin-left: 100px;
+  font-size: 18px;
+}
+label.heder {
+  font-size: 18px;
+}
+label.heder.left {
+  margin-left: 100px;
+}
+label.heder.rigth {
+  margin-left: 50px;
+}
+label.data {
+  font-size: 18px;
+  color: #009fe3;
+}
+label.data.left {
+  margin-left: 100px;
+}
+label.data.rigth {
+  margin-left: 50px;
+}
+p.left {
+  font-size: 16px;
+  color: #009fe3;
+  margin-left: 100px;
+  width: 500px;
 }

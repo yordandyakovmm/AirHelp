@@ -5,40 +5,40 @@
     </div>
     <div class="center-content">
         <form>
-            <div class="form-hedar">
-                Данни за контакт
+            <div class="form-hedar view">
+                @Model.Type.Replace('-', ' ')
             </div>
             <div class="form-row">
-                <div class="form-box left">
-                    <label class="heder">Име</label>
+                <div class="form-box ">
+                    <label class="heder left">Име</label>
                     <div>
-                        <label class="data">
+                        <label class="data left">
                             @Model.FirstName
                         </label>
                     </div>
                 </div>
-                <div class="form-box rigth">
-                    <label class="heder">Фамиля</label>
+                <div class="form-box">
+                    <label class="heder rigth">Фамиля</label>
                     <div>
-                        <label class="data">
+                        <label class="data rigth">
                             @Model.LastName
                         </label>
                     </div>
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-box left">
-                    <label class="heder">Град</label>
+                <div class="form-box">
+                    <label class="heder left">Град</label>
                     <div>
-                        <label class="data">
+                        <label class="data left">
                             @Model.City
                         </label>
                     </div>
                 </div>
-                <div class="form-box rigth ">
-                    <label class="heder">Държава </label>
+                <div class="form-box">
+                    <label class="heder rigth">Държава </label>
                     <div>
-                        <label class="data">
+                        <label class="data rigth">
                             @Model.Country
                         </label>
                     </div>
@@ -46,28 +46,28 @@
             </div>
             <div class="form-row">
                 <div class="form-box-width">
-                    <label class="heder">Адрес</label>
+                    <label class="heder left">Адрес</label>
                     <div>
-                        <label class="data">
-                            @Model.Country
+                        <label class="data left">
+                            @Model.Adress
                         </label>
                     </div>
                 </div>
 
             </div>
             <div class="form-row ">
-                <div class="form-box left">
-                    <label class="heder">Емаил</label>
+                <div class="form-box">
+                    <label class="heder left">Емаил</label>
                     <div>
-                        <label class="data">
+                        <label class="data left">
                             @Model.Email
                         </label>
                     </div>
                 </div>
-                <div class="form-box rigth">
-                    <label class="heder" Телефон</label>
+                <div class="form-box ">
+                    <label class="heder rigth"> Телефон</label>
                     <div>
-                        <label class="data">
+                        <label class="data rigth">
                             @Model.Tel
                         </label>
                     </div>
@@ -75,18 +75,18 @@
             </div>
 
             <div class="form-row">
-                <div class="form-box left">
-                    <label class="heder">Номер на полета</label>
+                <div class="form-box">
+                    <label class="heder left">Номер на полета</label>
                     <div>
-                        <label class="data">
+                        <label class="data left">
                             @Model.FlightNumber
                         </label>
                     </div>
                 </div>
-                <div class="form-box rigth">
-                    <label class="heder">Дата на полета</label>
+                <div class="form-box">
+                    <label class="heder rigth">Дата на полета</label>
                     <div>
-                        <label class="data">
+                        <label class="data rigth">
                             @Model.Date
                         </label>
                     </div>
@@ -94,18 +94,18 @@
             </div>
             <div class="form-row">
 
-                <div class="form-box left">
-                    <label class="heder">Начално летище</label>
+                <div class="form-box">
+                    <label class="heder left">Начално летище</label>
                     <div>
-                        <label class="data">
+                        <label class="data left">
                             @Model.DepartureAirport
                         </label>
                     </div>
                 </div>
-                <div class="form-box rigth">
-                    <label class="heder">Крайно летище</label>
+                <div class="form-box ">
+                    <label class="heder rigth">Крайно летище</label>
                     <div>
-                        <label class="data">
+                        <label class="data rigth">
                             @Model.DestinationAirports
                         </label>
                     </div>
@@ -114,12 +114,12 @@
             @if (Model.HasConnection == "yes")
             {
                 <div class="form-row" id="connectionAirPorts" style="flex-flow: column;">
-                    <div class="form-box left">
+                    <div class="form-box">
 
                         @foreach (var li in Model.ConnectionAirports.Split("<-->".ToCharArray()))
                         {
                             <div class="form-box-connection">
-                                li
+                                <label class="data left"> li </label>
                             </div>
                         }
                     </div>
@@ -128,11 +128,11 @@
 
             <div class="form-row" style="justify-content:flex-start">
                 <div class="form-box">
-                    <label class="heder">
+                    <label class="heder left">
                         Причина за закъснението
                     </label>
                     <div>
-                        <label class="data">
+                        <label class="data left">
                             @Model.Reason
                         </label>
                     </div>
@@ -140,13 +140,13 @@
             </div>
             @if (Model.Type == "закъснял-полет")
             {
-                <div class="form-row">
+                <div class="form-row" style="justify-content:flex-start">
                     <div class="form-box">
-                        <label class="heder">
+                        <label class="heder left">
                             Закъснение на полета
                         </label>
                         <div>
-                            <label class="data">
+                            <label class="data left">
                                 (Model.Delay == "Да" ? "повече от 3 часа" : "по-малко от 3 часа")
                             </label>
                         </div>
@@ -156,26 +156,26 @@
 
             @if (Model.Type == "отменен-полет")
             {
-                <div class="form-row">
+                <div class="form-row" style="justify-content:flex-start">
                     <div class="form-box">
-                        <label class="heder">
+                        <label class="heder left">
                             Закъснение до крайната дестинация
                         </label>
                         <div>
-                            <label class="data">
+                            <label class="data left">
                                 @Model.HowMuch часа
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-row">
+                <div class="form-row" style="justify-content:flex-start">
                     <div class="form-box">
-                        <label class="heder">
+                        <label class="heder left">
                             Уведомление  за отмяната на полета
                         </label>
                         <div>
-                            <label class="data">
+                            <label class="data left">
                                 @Model.Annonsment
                             </label>
                         </div>
@@ -185,39 +185,39 @@
             @if (Model.Type == "отказан-досъп-до-борд")
             {
 
-                <div class="form-row">
+                <div class="form-row" style="justify-content:flex-start">
                     <div class="form-box">
-                        <label class="heder">
+                        <label class="heder left">
                             Пристигane на чек-ин-а 30 минути преди излитането на самолета?
                         </label>
                         <div>
-                            <label class="data">
+                            <label class="data left">
                                 @Model.Arival
                             </label>
                         </div>
                     </div>
                 </div>
 
-                    <div class="form-row">
-                        <div class="form-box">
-                            <label class="heder">
-                                Достъпът беше отказан заради проблеми с документите или от съображения за сигурност
+                <div class="form-row" style="justify-content:flex-start">
+                    <div class="form-box">
+                        <label class="heder left">
+                            Отказан достъп поради проблеми с документите или от съображения за сигурност
+                        </label>
+                        <div>
+                            <label class="data left">
+                                @Model.DocumentSecurity
                             </label>
-                            <div>
-                                <label class="data">
-                                    @Model.DocumentSecurity
-                                </label>
-                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-row">
+                    <div class="form-row" style="justify-content:flex-start">
                         <div class="form-box">
-                            <label class="heder">
-                                Доброволно предостъпване на мястото на борда на самолета
+                            <label class="heder left">
+                                Доброволно предостъпено на мястото на борда
                             </label>
                             <div>
-                                <label class="data">
+                                <label class="data left">
                                     @Model.Willness
                                 </label>
                             </div>
@@ -225,19 +225,19 @@
                     </div>
 
             }
-            <div class="form-row" id="AirCompany">
-                <div class="form-box left">
-                    <label class="heder">Номер на резервация или код за потвърждение</label>
+            <div class="form-row" id="AirCompany" style="justify-content:flex-start">
+                <div class="form-box">
+                    <label class="heder left">Номер на резервация или код за потвърждение</label>
                     <div>
-                        <label class="data">
+                        <label class="data left">
                             @Model.BookCode
                         </label>
                     </div>
                 </div>
-                <div class="form-box rigth">
-                    <label class="heder">Въдушен превозвач</label>
+                <div class="form-box" style="justify-content:flex-start">
+                    <label class="heder rigth">Въдушен превозвач</label>
                     <div>
-                        <label class="data">
+                        <label class="data rigth">
                             @Model.AirCompany
                         </label>
                     </div>
@@ -249,14 +249,14 @@
             {
                 <div class="form-row" id="Info" style="flex-flow: column;">
                     <div class="form-box-width">
-                        <label class="heder">Допълнителна информация</label>
-                        <p>
+                        <label class="heder left">Допълнителна информация</label>
+                        <p class="left">
                             @Model.AdditionalInfo
                         </p>
                     </div>
                 </div>
             }
-            <div class="form-hedar">
+            <div class="form-hedar view">
                 Копия на необходими документи
             </div>
             <div class="form-row">
