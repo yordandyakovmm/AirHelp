@@ -15,13 +15,18 @@ label span.requared {
 label.file-upload {
   margin-left: 10px;
 }
+#signiture-div {
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  z-index: 100;
+}
 canvas {
   border: 1px solid #009fe3;
   border-radius: 2px;
   outline: none;
   background-color: white;
-  width: 500px;
-  height: 300px;
+  z-index: 0;
 }
 canvas.error {
   border: 1px solid red;
@@ -352,7 +357,7 @@ button.bAdd i::before {
 .form-box-signiture.success label {
   color: #009fe3;
 }
-.form-box-signiture.success canvas {
+.form-box-signiture.success Model.Delay {
   border: solid 2px #009fe3;
   box-shadow: 0 0 4px #009fe3;
 }

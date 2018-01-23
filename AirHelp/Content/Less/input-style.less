@@ -46,14 +46,21 @@ label {
     }
 }
 
+#signiture-div {
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    z-index: 100;
+}
+
 canvas {
     border: 1px solid @border-blue-color;
     border-radius: 2px;
     outline: none;
     background-color: white;
-    width: 500px;
-    height: 300px;
-
+    z-index: 0;
+    //width: 500px;
+    //height: 300px;
     &.error {
         border: 1px solid red;
         border-radius: 2px;
@@ -414,7 +421,7 @@ button.bAdd {
             color: @blue-color;
         }
 
-        canvas {
+        Model.Delay {
             border: solid 2px @blue-color;
             box-shadow: 0 0 4px @blue-color;
         }
