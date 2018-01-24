@@ -57,6 +57,7 @@ namespace AirHelp.Models
             Willness = claim.Willness;
             Delay = claim.Delay;
             SignitureImage = claim.SignitureImage;
+            AttorneyUrl = claim.AttorneyUrl;
         }
 
         public VMClaim FromClaim(Claim claim)
@@ -96,6 +97,7 @@ namespace AirHelp.Models
             Willness = claim.Willness;
             Delay = claim.Delay;
             SignitureImage = claim.SignitureImage;
+            AttorneyUrl = claim.AttorneyUrl;
             return this;
         }
         public Guid ClaimId { get; set; }
@@ -135,6 +137,7 @@ namespace AirHelp.Models
         public string Willness { get; set; }
         public string Delay { get; set; }
         public string SignitureImage { get; set; }
+        public string AttorneyUrl { get; set; }
     }
 
 }

@@ -25,6 +25,7 @@ namespace AirHelp.DAL
 
         public string BordCardUrl { get; set; }
         public string BookConfirmationUrl { get; set; }
+        public string AttorneyUrl { get; set; }
 
         public string Type { get; set; }
         public string ConnectionAriports { get; set; }

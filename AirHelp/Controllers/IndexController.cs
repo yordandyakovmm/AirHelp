@@ -14,6 +14,8 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Spire.Pdf;
+using System.Threading;
 
 namespace AirHelp.Controllers
 {
@@ -108,6 +110,9 @@ namespace AirHelp.Controllers
                 file.SaveAs(Server.MapPath("~/UserDocuments/" + name ));
             }
 
+            Guid newGuid = Guid.NewGuid();
+            string AttorneyUrl =$"/UserDocuments/{newGuid}.pdf";
+
             Claim claim = new Claim
             {
                 ClaimId = Guid.NewGuid(),
@@ -144,7 +149,9 @@ namespace AirHelp.Controllers
                 DocumentSecurity = Request.Form["DocumentSecurity"],
                 Willness = Request.Form["Willness"],
                 Delay = Request.Form["Delay"],
-                SignitureImage = Request.Form["SignitureImage"]
+                SignitureImage = Request.Form["SignitureImage"],
+                AttorneyUrl = AttorneyUrl
+
             };
 
             using (AirHelpDBContext dc = new AirHelpDBContext())
@@ -153,7 +160,26 @@ namespace AirHelp.Controllers
                 dc.SaveChanges();
             }
 
-            return Redirect($"обезщетение-списък/{claim.ClaimId}");
+            PdfDocument doc = new PdfDocument();
+
+            string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
+
+            String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorney/{claim.ClaimId}";
+             
+
+            Thread thread = new Thread(() =>
+            {
+                doc.LoadFromHTML(url, false, true, true);
+            });
+
+            thread.SetApartmentState(ApartmentState.STA);
+
+            thread.Start();
+            thread.Join();
+
+            doc.SaveToFile(Server.MapPath($"~/UserDocuments/{newGuid}.pdf"), FileFormat.PDF);
+
+            return Redirect($"/обезщетение-списък/{claim.ClaimId}");
             
         }
 
@@ -229,6 +255,7 @@ namespace AirHelp.Controllers
             return View("CommonRules");
         }
 
+        
 
     }
 }

@@ -271,7 +271,7 @@
                 <div class="form-box">
                     @if (Model.BordCardUrl != "")
                     {
-                        <a href="@Model.BordCardUrl" target= target="_blank">
+                        <a href="@Model.BordCardUrl" target="_blank">
                             <img width="300" src="@Model.BordCardUrl" />
                         </a>
                     }
@@ -280,7 +280,7 @@
 
             <div class="form-row">
                 <div class="form-box">
-                    <button class="submit" type="button" onclick="window.open('/attorney/@Model.ClaimId', '_blank')"><i class="icon"></i><span>Пълномощно</span></button>
+                    <button class="submit" type="button" onclick="window.open('@Model.AttorneyUrl', '_blank')"><i class="icon"></i><span>Пълномощно</span></button>
                 </div>
                 <div class="form-box">
                     <a href="https://selectpdf.com/save-as-pdf/">Save as Pdf</a>
