@@ -357,7 +357,7 @@ button.bAdd i::before {
 .form-box-signiture.success label {
   color: #009fe3;
 }
-.form-box-signiture.success Model.Delay {
+.form-box-signiture.success canvas {
   border: solid 2px #009fe3;
   box-shadow: 0 0 4px #009fe3;
 }
