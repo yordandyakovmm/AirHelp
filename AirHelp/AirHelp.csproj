@@ -214,6 +214,10 @@
     <Compile Include="Migrations\201801212341321_miising-fields.Designer.cs">
       <DependentUpon>201801212341321_miising-fields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801240015096_signitureImage.cs" />
+    <Compile Include="Migrations\201801240015096_signitureImage.Designer.cs">
+      <DependentUpon>201801240015096_signitureImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -408,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801212341321_miising-fields.resx">
       <DependentUpon>201801212341321_miising-fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801240015096_signitureImage.resx">
+      <DependentUpon>201801240015096_signitureImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

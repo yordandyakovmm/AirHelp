@@ -102,7 +102,7 @@ namespace AirHelp.Controllers
             }
             if (Request.Files["BookConfirmation"].ContentLength > 0)
             {
-                var file = Request.Files["BordCard"];
+                var file = Request.Files["BookConfirmationUrl"];
                 var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
                 BookConfirmationUrl = $"/UserDocuments/{name}";
                 file.SaveAs(Server.MapPath("~/UserDocuments/" + name ));
@@ -143,7 +143,8 @@ namespace AirHelp.Controllers
                 Arival = Request.Form["Arival"],
                 DocumentSecurity = Request.Form["DocumentSecurity"],
                 Willness = Request.Form["Willness"],
-                Delay = Request.Form["Delay"]
+                Delay = Request.Form["Delay"],
+                SignitureImage = Request.Form["SignitureImage"]
             };
 
             using (AirHelpDBContext dc = new AirHelpDBContext())

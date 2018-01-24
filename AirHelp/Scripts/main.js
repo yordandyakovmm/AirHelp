@@ -113,6 +113,7 @@ function initSigniture() {
         }
         if (couunt > 60) {
             $('.form-box-signiture').removeClass('error').addClass('success');
+            saveSigiture();
         }
     };
     el.mouseout = function (e) {
@@ -128,15 +129,13 @@ function initSigniture() {
     el.onmouseup = function () {
         isDrawing = false;
         console.log('up');
-        //saveSigiture();
+        saveSigiture();
     };
 }
 
 function saveSigiture() {
-    document.getElementById("signiture-img").style.border = "2px solid";
-    var dataURL = el.toDataURL();
-    document.getElementById("signiture-img").src = dataURL;
-    document.getElementById("signiture-img").style.display = "inline";
+    var dataURL = conv.toDataURL('image/png');
+    $('[name=SignitureImage]').val(dataURL);
 }
 
 function clearSignature() {
@@ -381,6 +380,7 @@ function validate() {
         var res = $('[name=ConnectionAirports]').val().join(' <--> ');
         $('[name="ConnectionAriports"]').val(res);
     }
+    saveSigiture();
     return result;
 }
 

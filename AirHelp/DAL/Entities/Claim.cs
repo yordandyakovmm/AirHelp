@@ -53,6 +53,7 @@ namespace AirHelp.DAL
         public string DocumentSecurity { get; set; }
         public string Willness { get; set; }
         public string Delay { get; set; }
+        public string SignitureImage { get; set; }
 
 
     }
