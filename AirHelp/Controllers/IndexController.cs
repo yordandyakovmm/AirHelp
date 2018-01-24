@@ -14,7 +14,6 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Spire.Pdf;
 using System.Threading;
 
 namespace AirHelp.Controllers
@@ -100,18 +99,18 @@ namespace AirHelp.Controllers
                 var file = Request.Files["BordCard"];
                 var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
                 BordCardUrl = $"/UserDocuments/{name}";
-                file.SaveAs(Server.MapPath("~/UserDocuments/" + name ));
+                file.SaveAs(Server.MapPath("~/UserDocuments/" + name));
             }
             if (Request.Files["BookConfirmation"].ContentLength > 0)
             {
                 var file = Request.Files["BookConfirmationUrl"];
                 var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
                 BookConfirmationUrl = $"/UserDocuments/{name}";
-                file.SaveAs(Server.MapPath("~/UserDocuments/" + name ));
+                file.SaveAs(Server.MapPath("~/UserDocuments/" + name));
             }
 
             Guid newGuid = Guid.NewGuid();
-            string AttorneyUrl =$"/UserDocuments/{newGuid}.pdf";
+            string AttorneyUrl = $"/UserDocuments/{newGuid}.pdf";
 
             Claim claim = new Claim
             {
@@ -160,27 +159,20 @@ namespace AirHelp.Controllers
                 dc.SaveChanges();
             }
 
-            PdfDocument doc = new PdfDocument();
+
 
             string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
 
-            String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorney/{claim.ClaimId}";
-             
+            String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{claim.ClaimId}";
 
-            Thread thread = new Thread(() =>
-            {
-                doc.LoadFromHTML(url, false, true, true);
-            });
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+            SelectPdf.PdfDocument doc = converter.ConvertUrl(url);
+            doc.Save(Server.MapPath($"~/UserDocuments/{newGuid}.pdf"));
+            doc.Close();
 
-            thread.SetApartmentState(ApartmentState.STA);
-
-            thread.Start();
-            thread.Join();
-
-            doc.SaveToFile(Server.MapPath($"~/UserDocuments/{newGuid}.pdf"), FileFormat.PDF);
 
             return Redirect($"/обезщетение-списък/{claim.ClaimId}");
-            
+
         }
 
         [Route("обезщетение-при-полет")]
@@ -218,7 +210,7 @@ namespace AirHelp.Controllers
                     .Select(claim => new VMClaim(claim))
                     .ToList();
             }
-                return View("ClaimList", list);
+            return View("ClaimList", list);
         }
 
         [Route("пpолитика-на-поверителност")]
@@ -238,10 +230,24 @@ namespace AirHelp.Controllers
             }
 
             var model = new VMClaim(claim);
-            
+
             return PartialView("Attorney", model);
         }
 
+        [Route("attorneyPdf/{id}")]
+        public ActionResult Spliter12(Guid id)
+        {
+            Claim claim = null;
+
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                claim = dc.Claims.Where(c => c.ClaimId == id).SingleOrDefault();
+            }
+
+            var model = new VMClaim(claim);
+
+            return PartialView("AttorneyPdf", model);
+        }
 
         [Route("проблеми-с-полета/често-задавани-въпроси")]
         public ActionResult Spliter4(string category)
@@ -255,7 +261,7 @@ namespace AirHelp.Controllers
             return View("CommonRules");
         }
 
-        
+
 
     }
 }

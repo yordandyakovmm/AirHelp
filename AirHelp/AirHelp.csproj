@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201801240015096_signitureImage.Designer.cs">
       <DependentUpon>201801240015096_signitureImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801242216573_merge.cs" />
+    <Compile Include="Migrations\201801242216573_merge.Designer.cs">
+      <DependentUpon>201801242216573_merge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -384,6 +388,7 @@
     <Content Include="Views\Index\CommonRules.cshtml" />
     <Content Include="Views\Index\ViewClaim.cshtml" />
     <Content Include="Views\Index\ClaimList.cshtml" />
+    <Content Include="Views\Index\AttorneyPdf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -418,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801240015096_signitureImage.resx">
       <DependentUpon>201801240015096_signitureImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801242216573_merge.resx">
+      <DependentUpon>201801242216573_merge.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
