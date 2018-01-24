@@ -53,6 +53,10 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Spire.Pdf, Version=3.2.52.56040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\Spire.Pdf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -217,6 +221,10 @@
     <Compile Include="Migrations\201801240015096_signitureImage.cs" />
     <Compile Include="Migrations\201801240015096_signitureImage.Designer.cs">
       <DependentUpon>201801240015096_signitureImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801241211167_pdf-document.cs" />
+    <Compile Include="Migrations\201801241211167_pdf-document.Designer.cs">
+      <DependentUpon>201801241211167_pdf-document.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -415,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801240015096_signitureImage.resx">
       <DependentUpon>201801240015096_signitureImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801241211167_pdf-document.resx">
+      <DependentUpon>201801241211167_pdf-document.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
