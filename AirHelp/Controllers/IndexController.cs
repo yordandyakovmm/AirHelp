@@ -237,6 +237,7 @@ namespace AirHelp.Controllers
         [Route("attorneyPdf/{id}")]
         public ActionResult Spliter12(Guid id)
         {
+
             Claim claim = null;
 
             using (AirHelpDBContext dc = new AirHelpDBContext())
@@ -247,6 +248,24 @@ namespace AirHelp.Controllers
             var model = new VMClaim(claim);
 
             return PartialView("AttorneyPdf", model);
+            
+        }
+
+        [Route("пълномощно/{id}")]
+        public ActionResult Spliter14(Guid id)
+        {
+            string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
+
+            String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{id}";
+
+            SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+            SelectPdf.PdfDocument doc = converter.ConvertUrl(url);
+            Response.ContentType = "application/pdf";
+            //doc.Save(Server.MapPath($"~/UserDocuments/{newGuid}.pdf"));
+            doc.Save(Response.OutputStream);
+            doc.Close();
+            Response.End();
+            return null;
         }
 
         [Route("проблеми-с-полета/често-задавани-въпроси")]
