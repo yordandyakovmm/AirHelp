@@ -85,6 +85,13 @@ namespace AirHelp.Controllers
             return View("RegisterClaim");
         }
 
+        [HttpGet]
+        [Route("контакти")]
+        public ActionResult Spliter14()
+        {
+            return View("Contact");
+        }
+
         [HttpPost]
         [Route("обезщетение-при-полет/{category}")]
         public ActionResult Spliter5(string category)

@@ -121,19 +121,45 @@ a:hover {
 
 
 .big-image {
-    #brightness;
-    background-image: url('@{big-image-url}');
-    background-repeat: no-repeat;
-    background-size: 100% auto;
     grid-template: "big-image";
     width: 100%;
     height: 400px;
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 100px 400px 100px auto;
     grid-template-rows: repeat(5, 1fr);
 
+    > div.image-plaine {
+        grid-row-start: 2;
+        grid-row-end: 5;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    > div.background-big-image {
+        //#brightness;
+        background-image: url('@{big-image-url}');
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        grid-row-start: 1;
+        grid-row-end: 6;
+        grid-column-start: 1;
+        grid-column-end: 5;
+        filter: opacity(60%);
+        z-index: 1;
+    }
+
+    > * {
+        z-index: 100;
+    }
+
     .header-text {
-        grid-row: 1;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 4;
+        grid-column-end: 5;
         color: #222;
         display: flex;
         align-content: center;
@@ -148,7 +174,10 @@ a:hover {
     }
 
     .header-subtext {
-        grid-row: span 3;
+        grid-row-start: 2;
+        grid-row-end: 5;
+        grid-column-start: 4;
+        grid-column-end: 5;
         font-family: "Open Sans", sans-serif;
         font-size: 30px;
         display: flex;
@@ -167,7 +196,10 @@ a:hover {
 }
 
 .header-button {
-    grid-row: span 3;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 4;
+    grid-column-end: 5;
     font-family: "Open Sans", sans-serif;
     font-size: 30px;
     display: flex;
