@@ -380,6 +380,7 @@ a:hover {
   display: grid;
   grid-template-columns: auto 1200px auto;
   grid-template-areas: "left center rigth";
+  padding: 50px 50px;
 }
 .data-content .center-content h2 {
   margin: 10px 0 0 0;
@@ -549,4 +550,71 @@ a:hover {
   cursor: pointer;
   height: 20px;
   margin: auto 0;
+}
+.contact-main {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: center;
+  padding: 40px;
+  font-family: "PT Sans", sans-serif;
+}
+.contact-main > div {
+  width: 700px;
+  margin: 10px auto 0 auto;
+}
+.contact-main .contact-data > div {
+  margin: 15px 0 0 0;
+}
+.contact-main .title {
+  width: 700px;
+  margin: 0;
+  font-size: 18px;
+  padding-left: 0;
+}
+.contact-main .value {
+  width: 700px;
+  margin: 0;
+  font-size: 18px;
+  color: #009fe3;
+  padding-left: 0;
+}
+.contact-main p {
+  text-align: justify;
+}
+.form-content {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  padding: 50px 0;
+}
+.form-content span {
+  font-family: "PT Sans", sans-serif;
+  font-size: 28px;
+}
+.form-content .contact-form-main input[type=text],
+.form-content .contact-form-main textarea {
+  width: 450px;
+}
+.form-content .contact-form-main form > div {
+  margin-top: 15px;
+}
+.form-content .contact-form-main .button-div {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+.form-content .login-form-main input[type=text],
+.form-content .login-form-main input[type=password],
+.form-content .login-form-main textarea {
+  width: 350px;
+}
+.form-content .login-form-main form > div {
+  margin-top: 15px;
+}
+.form-content .login-form-main .button-div {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
 }

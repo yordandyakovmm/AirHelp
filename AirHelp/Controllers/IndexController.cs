@@ -89,7 +89,20 @@ namespace AirHelp.Controllers
         [Route("контакти")]
         public ActionResult Spliter14()
         {
-            return View("Contact");
+            return View("ContactForm");
+        }
+
+        [HttpGet]
+        [Route("вход")]
+        public ActionResult  Login()
+        {
+            return View("Login");
+        }
+        [HttpGet]
+        [Route("за-нас")]
+        public ActionResult Spliter15()
+        {
+            return View("ForUs");
         }
 
         [HttpPost]
@@ -255,7 +268,7 @@ namespace AirHelp.Controllers
             var model = new VMClaim(claim);
 
             return PartialView("AttorneyPdf", model);
-            
+
         }
 
         [Route("пълномощно/{id}")]

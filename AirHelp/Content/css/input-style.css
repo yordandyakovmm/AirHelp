@@ -38,7 +38,8 @@ canvas.success {
   outline: none;
   box-shadow: 0 0 4px #009fe3;
 }
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   width: 400px;
   padding: 12px 30px 12px 20px;
   box-sizing: border-box;
@@ -50,7 +51,8 @@ input[type="text"] {
   font-weight: 400;
   outline: none;
 }
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
   outline: none;
   box-shadow: 0 0 8px #009fe3;
 }
@@ -418,4 +420,52 @@ p.left {
   color: #009fe3;
   margin-left: 100px;
   width: 500px;
+}
+button.reset-smal {
+  display: block;
+  width: 200px;
+  padding: 12px 5px 12px 5px;
+  box-sizing: border-box;
+  border: 0px none;
+  border-radius: 4px;
+  margin: 0 auto;
+  font-family: "PT Sans", sans-serif;
+  color: #141a30;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+  border-color: #009fe3;
+  background-color: #667292;
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: #8d9db6;
+}
+button.reset-smal:hover {
+  background-color: #566987;
+}
+button.submit-smal {
+  display: block;
+  width: 200px;
+  padding: 12px 5px 12px 5px;
+  box-sizing: border-box;
+  border: 0px none;
+  border-radius: 4px;
+  margin: 0 auto;
+  font-family: "PT Sans", sans-serif;
+  color: #141a30;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+  border-color: #009fe3;
+  background-color: #667292;
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: #009fe3;
+}
+button.submit-smal:hover {
+  background-color: #00587d;
 }

@@ -1,0 +1,34 @@
+﻿<div class="form-content">
+    <div class="contact-form-main">
+        <form method="post" enctype="multipart/form-data">
+            <div class="header-text">
+                <span>Форма за контакт </span>
+            </div>
+            <div >
+                <input type="text" name="Email" placeholder="Емейл" validate /><i class="icon"></i>
+            </div>
+            <div >
+                <input type="text" name="Name" placeholder="Име" validate /><i class="icon"></i>
+            </div>
+            <div >
+                <input type="text" name="Theme" placeholder="Тема" validate /><i class="icon"></i>
+            </div>
+            <div >
+                <textarea rows="6" cols="80" name="AdditionalInfo" placeholder=""></textarea>
+            </div>
+            <div class="button-div">
+                <div >
+                    <button class="submit-smal" type="submit" keypress="alert(1); return false" onclick="return validate()">Изпрати</button>
+                </div>
+                <div >
+                    <button class="reset-smal" type="reset" keypress="return false" onclick="clearForm()">Изчисти</button>
+                </div>
+            </div>
+            <div class="form-row">
+                &nbsp;
+            </div>
+        </form>
+
+    </div>
+</div>
+<script src="~/Scripts/form.js"></script>

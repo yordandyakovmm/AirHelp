@@ -470,11 +470,13 @@ a:hover {
     display: grid;
     grid-template-columns: auto 1200px auto;
     grid-template-areas: "left center rigth";
-
+    padding: 50px 50px;
+    //background-image: url('/Content/Assets/clouds.jpg');
+    //background-size: 100%;
+    //filter: opacity(20%);
+    //background-color: lightblue;
     .center-content {
-
-
-
+        //background-color: white;
         h2 {
             margin: 10px 0 0 0;
             font-family: "PT Sans", sans-serif;
@@ -671,18 +673,106 @@ a:hover {
         grid-template-columns: 100px 200px 200px 200px 100px 100px;
         grid-template-rows: 30px;
         grid-gap: 5px;
+
         > div {
-            > label{
+            > label {
                 font-size: 15px;
                 cursor: pointer;
                 height: 20px;
-                margin:auto 0;
+                margin: auto 0;
             }
+
             display: flex;
             align-content: center;
             justify-content: flex-start;
             padding-left: 4px;
             border-radius: 3px;
+        }
+    }
+}
+
+.contact-main {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: center;
+    padding: 40px;
+    font-family: "PT Sans", sans-serif;
+
+    > div {
+        width: 700px;
+        margin: 10px auto 0 auto;
+    }
+
+    .contact-data > div {
+        margin: 15px 0 0 0;
+    }
+
+    .title {
+        width: 700px;
+        margin: 0;
+        font-size: 18px;
+        padding-left: 0;
+    }
+
+    .value {
+        width: 700px;
+        margin: 0;
+        font-size: 18px;
+        color: @blue-color;
+        padding-left: 0;
+    }
+
+    p {
+        text-align: justify;
+    }
+}
+
+.form-content {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    padding: 50px 0;
+
+    span {
+        font-family: "PT Sans", sans-serif;
+        font-size: 28px;
+    }
+
+    .contact-form-main {
+
+        input[type=text], textarea {
+            width: 450px;
+        }
+
+
+        form > div {
+            margin-top: 15px;
+        }
+
+        .button-div {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+        }
+    }
+
+    .login-form-main {
+
+        input[type=text], input[type=password], textarea {
+            width: 350px;
+        }
+
+
+        form > div {
+            margin-top: 15px;
+        }
+
+        .button-div {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
         }
     }
 }

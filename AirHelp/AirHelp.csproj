@@ -359,6 +359,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\form.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
@@ -378,7 +379,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Index\Attorney.cshtml" />
-    <Content Include="Views\Index\Contact.cshtml" />
+    <Content Include="Views\Index\ForUs.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Index\Edit.cshtml" />
     <Content Include="Views\Index\RegisterClaim.cshtml" />
@@ -389,6 +390,8 @@
     <Content Include="Views\Index\ViewClaim.cshtml" />
     <Content Include="Views\Index\ClaimList.cshtml" />
     <Content Include="Views\Index\AttorneyPdf.cshtml" />
+    <Content Include="Views\Index\ContactForm.cshtml" />
+    <Content Include="Views\Index\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

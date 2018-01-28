@@ -76,7 +76,7 @@ canvas {
 
 
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
     width: 400px;
     padding: 12px 30px 12px 20px;
     box-sizing: border-box;
@@ -173,6 +173,9 @@ button.clear {
     align-content: center;
     justify-content: center;
 }
+
+
+
 
 button.submit {
     #button-big;
@@ -502,4 +505,49 @@ p.left {
     color: @blue-color;
     margin-left: 100px;
     width: 500px;
+}
+
+
+#button-smal() {
+    width: 200px;
+    padding: 12px 5px 12px 5px;
+    box-sizing: border-box;
+    border: 0px none;
+    border-radius: 4px;
+    margin: 0 auto;
+    font-family: "PT Sans", sans-serif;
+    color: rgb(20, 26, 48);
+    font-size: 16px;
+    font-weight: 500;
+    outline: none;
+    border-color: @blue-color;
+    background-color: #667292;
+    color: white;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+button.reset-smal {
+    display: block;
+    #button-smal;
+    background-color: #8d9db6;
+
+    &:hover {
+        background-color: lighten(#8d9db6, -20%);
+    }
+
+    
+}
+
+button.submit-smal {
+    display: block;
+    #button-smal;
+    background-color: @blue-color;
+
+    &:hover {
+        background-color: lighten(@blue-color, -20%);
+    }
+
+    
 }
