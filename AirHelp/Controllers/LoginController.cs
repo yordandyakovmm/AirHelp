@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using AirHelp.Hellpers;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace AirHelp.Controllers
 {
@@ -20,17 +22,28 @@ namespace AirHelp.Controllers
 
             if (Session != null && Session["user"] != null)
             {
-                ViewBag.user = (VMUser)Session["user"];
+                ViewBag.user = Session["user"];
             }
             else if (User.Identity.IsAuthenticated)
             {
                 var user = UserHeppler.GetUserById(User.Identity.Name);
                 Session["user"] = user;
-                ViewBag.user = (VMUser)Session["user"];
+                ViewBag.user = Session["user"];
             }
 
         }
-       
+
+
+
+        protected string GetHash(string text)
+        {
+            string hsa256salt = ConfigurationManager.AppSettings["hsa256salt"].ToString();
+            var hmacSHA25 = new HMACSHA256(Encoding.ASCII.GetBytes(hsa256salt));
+            byte[] hash = hmacSHA25.ComputeHash(Encoding.UTF8.GetBytes(text));
+            string hashPassword = Convert.ToBase64String(hash);
+            return hashPassword;
+        }
+
     }
         
     public class LoginController : Controller
@@ -112,6 +125,9 @@ namespace AirHelp.Controllers
 
             }
         }
+
+        
+
 
     }
 }

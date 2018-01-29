@@ -15,6 +15,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Threading;
+using System.Security.Cryptography;
 
 namespace AirHelp.Controllers
 {
@@ -49,6 +50,7 @@ namespace AirHelp.Controllers
         }
 
         [HttpGet]
+        [ValidateAntiForgeryToken]
         [Route("api/airports")]
         public string GetAirport(string id)
         {
@@ -72,7 +74,7 @@ namespace AirHelp.Controllers
         {
             //var contex = new DAL.AirHelpDBContext();
             //var count = contex.Users.Count();
-            return View("RegisterClaim");
+            return View("Index");
 
 
         }
@@ -94,10 +96,59 @@ namespace AirHelp.Controllers
 
         [HttpGet]
         [Route("вход")]
-        public ActionResult  Login()
+        public ActionResult  Login(string ReturnUrl)
         {
             return View("Login");
         }
+
+        [HttpPost]
+        [Route("вход")]
+        public ActionResult Login(string Email, string Password, string ReturnUrl)
+        {
+
+            string hashPassword = GetHash(Password); 
+            
+            User user = null;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                user = dc.Users.Where(u => u.Email == Email).SingleOrDefault();
+            }
+
+            if (user == null)
+            {
+                ViewBag.error = "Грешно потребителско име или парола";
+                return View("Login");
+            }
+
+            var VMuser = new VMUser()
+            {
+                UserId = user.UserId,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PictureUrl = user.PictureUrl,
+                Role = user.Role
+            };
+
+            Session["user"] = user;
+
+            FormsAuthenticationTicket authTicket =
+                new FormsAuthenticationTicket(1, user.UserId, DateTime.Now, DateTime.Now.AddMinutes(200), true, user.Role, "/");
+            HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName,
+                                               FormsAuthentication.Encrypt(authTicket));
+            Response.Cookies.Add(cookie);
+            return Redirect(ReturnUrl);
+
+        }
+
+        [Route("изход")]
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Remove("user");
+            return Redirect("/");
+        }
+
         [HttpGet]
         [Route("за-нас")]
         public ActionResult Spliter15()
@@ -109,6 +160,14 @@ namespace AirHelp.Controllers
         [Route("обезщетение-при-полет/{category}")]
         public ActionResult Spliter5(string category)
         {
+
+            //System.Device.Location
+
+            //var sCoord = new GeoCoordinate(sLatitude, sLongitude);
+            //var eCoord = new GeoCoordinate(eLatitude, eLongitude);
+
+            //return sCoord.GetDistanceTo(eCoord);
+
             ViewBag.category = category;
 
             string BordCardUrl = "";
@@ -218,7 +277,7 @@ namespace AirHelp.Controllers
             return View("ViewClaim", model);
         }
 
-
+        [Authorize(Roles = "admin,user")]
         [Route("обезщетение-списък")]
         public ActionResult Spliter7(string category)
         {

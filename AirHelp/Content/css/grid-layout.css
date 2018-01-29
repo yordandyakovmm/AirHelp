@@ -393,6 +393,27 @@ a:hover {
   font-family: "PT Sans", sans-serif;
   font-size: 16px;
 }
+.data-content .info-page {
+  grid-area: center;
+  padding: 30px 30px;
+}
+.data-content .info-page h1 {
+  margin: 10px 0 0 0;
+  font-family: "PT Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+}
+.data-content .info-page h2 {
+  margin: 10px 0 0 0;
+  font-family: "PT Sans", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+}
+.data-content .info-page p {
+  text-align: left;
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+}
 .left-content {
   grid-area: left;
 }
