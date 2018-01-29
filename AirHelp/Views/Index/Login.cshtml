@@ -1,20 +1,28 @@
-﻿<div class="form-content">
+﻿
+
+<div class="form-content">
     <div class="login-form-main">
         <form method="post" enctype="multipart/form-data">
             <div class="header-text">
                 <span>Вход</span>
             </div>
-            <div >
+            <div>
                 <input type="text" name="Email" placeholder="Емейл" validate /><i class="icon"></i>
             </div>
-            <div >
+            <div>
                 <input type="password" name="Password" placeholder="Име" validate /><i class="icon"></i>
             </div>
+            @if (ViewBag.error != null)
+            {
+                <div class="autentication-error">
+                    Невалиден емейл или парола
+                </div>
+            }
             <div class="button-div">
-                <div >
+                <div>
                     <button class="submit-smal" type="submit" keypress="return false" onclick="return validate()">Вход</button>
                 </div>
-               
+
             </div>
             <div class="form-row">
                 &nbsp;
@@ -23,4 +31,5 @@
 
     </div>
 </div>
+
 <script src="~/Scripts/form.js"></script>
