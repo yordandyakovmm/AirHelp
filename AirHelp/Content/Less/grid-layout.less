@@ -56,10 +56,10 @@ a:hover {
 .main-layout {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 100px repeat(auto-fill, auto);
+    grid-template-rows: 100px auto auto auto auto auto 40px;
     grid-gap: 0px;
     background-color: @background-color;
-    grid-template-areas: "Logo" "big-image" "compensation-type" "compensation-amount";
+    grid-template-areas: "Logo" "big-image" "compensation-type" "compensation-amount" "compensation-step" "links" "bottom";
 }
 
 .logo {
@@ -798,6 +798,77 @@ a:hover {
             display: flex;
             flex-flow: row;
             justify-content: space-between;
+        }
+    }
+}
+
+.bottom {
+    grid-template: "bottom";
+    background-color: #444;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    
+    span {
+        font-family: "PT Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: white;
+    }
+}
+
+.links {
+    grid-template: "links";
+    display: grid;
+    height: 300px;
+    grid-template-rows: 50px auto 100px;
+    grid-template-columns: auto 300px 300px 300px auto;
+    background-color: #444;
+    font-family: "PT Sans", sans-serif;
+    font-size: 14px;
+    color: white;
+
+    > .span-1 {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    > .span-2 {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+
+    > .span-3 {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 4;
+        grid-column-end: 5;
+    }
+
+    .span {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        >*{
+            margin-bottom: 5px;
+        }
+        
+        a, a:visited {
+           text-decoration: underline;
+           color: white;
+        }
+        
+        
+        .heder {
+            font-size: 18px;
+            text-transform: uppercase;
         }
     }
 }
