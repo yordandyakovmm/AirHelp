@@ -102,12 +102,12 @@ a:hover {
 .big-image > div.background-big-image {
   background-image: url('/Content/Assets/обезщетение-при-полет.jpg');
   background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-size: auto;
   grid-row-start: 1;
   grid-row-end: 6;
   grid-column-start: 1;
   grid-column-end: 5;
-  filter: opacity(60%);
+  filter: opacity(85%);
   z-index: 1;
 }
 .big-image > * {
@@ -137,18 +137,17 @@ a:hover {
   font-family: "Open Sans", sans-serif;
   font-size: 30px;
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: center;
 }
 .big-image .header-subtext p {
   font-family: "PT Sans", sans-serif;
   font-size: 30px;
   color: #233;
-  width: 750px;
+  width: 700px;
   text-align: center;
-  margin: auto 30px auto auto;
 }
-.header-button {
+.big-image .header-button {
   grid-row-start: 5;
   grid-row-end: 6;
   grid-column-start: 4;
@@ -159,7 +158,7 @@ a:hover {
   align-content: center;
   justify-content: flex-end;
 }
-.header-button a {
+.big-image .header-button a {
   margin: auto 30px auto auto;
 }
 .span-1 {

@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirHelp", "AirHelp\AirHelp.csproj", "{A23630A0-1171-4145-970A-B0C69D42359D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{7DAD1CCA-0FB3-4C50-BE97-9E5220F7B0B1}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\Yordan\Desktop\airport-frequencies.csv = C:\Users\Yordan\Desktop\airport-frequencies.csv
+		C:\Users\Yordan\Desktop\airports.csv = C:\Users\Yordan\Desktop\airports.csv
+		C:\Users\Yordan\Desktop\runways.csv = C:\Users\Yordan\Desktop\runways.csv
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +25,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43C6AC84-1D54-4FB7-8822-5BD57F28E74A}
 	EndGlobalSection
 EndGlobal

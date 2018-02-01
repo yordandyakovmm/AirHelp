@@ -16,6 +16,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Threading;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 namespace AirHelp.Controllers
 {
@@ -24,6 +25,7 @@ namespace AirHelp.Controllers
     public class IndexController : BaseController
     {
 
+        private static readonly HttpClient client = new HttpClient();
 
         public async System.Threading.Tasks.Task<ActionResult> Index(string studentId, string seond)
         {
@@ -49,22 +51,27 @@ namespace AirHelp.Controllers
             return View();
         }
 
+        
+
         [HttpGet]
-        [ValidateAntiForgeryToken]
         [Route("api/airports")]
-        public string GetAirport(string id)
+        async public Task<string> GetAirport(string id)
         {
             string result = "";
-            var url = "https://www.save70.com/components/autocompleteJson.php?type=airport&term=" + id;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
+            var url = "https://openflights.org/php/apsearch.php";
+            var values = new Dictionary<string, string>
+                {
+                      {"name" , id},
+                      {"country", "ALL"},
+                      {"action", "SEARCH"},
+                      {"offset", "0"}
+                };
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                result = reader.ReadToEnd();
-            }
+            var content = new FormUrlEncodedContent(values);
+
+            var response = await client.PostAsync(url, content);
+
+          result = await response.Content.ReadAsStringAsync();
 
             return result;
         }
@@ -96,7 +103,7 @@ namespace AirHelp.Controllers
 
         [HttpGet]
         [Route("вход")]
-        public ActionResult  Login(string ReturnUrl)
+        public ActionResult Login(string ReturnUrl)
         {
             return View("Login");
         }
@@ -106,12 +113,12 @@ namespace AirHelp.Controllers
         public ActionResult Login(string Email, string Password, string ReturnUrl)
         {
 
-            string hashPassword = GetHash(Password); 
-            
+            string hashPassword = GetHash(Password);
+
             User user = null;
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
-                user = dc.Users.Where(u => u.Email == Email).SingleOrDefault();
+                user = dc.Users.Where(u => u.Email == Email && u.password == hashPassword).SingleOrDefault();
             }
 
             if (user == null)

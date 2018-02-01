@@ -142,12 +142,12 @@ a:hover {
         //#brightness;
         background-image: url('@{big-image-url}');
         background-repeat: no-repeat;
-        background-size: 100% auto;
+        background-size: auto;
         grid-row-start: 1;
         grid-row-end: 6;
         grid-column-start: 1;
         grid-column-end: 5;
-        filter: opacity(60%);
+        filter: opacity(85%);
         z-index: 1;
     }
 
@@ -181,35 +181,36 @@ a:hover {
         font-family: "Open Sans", sans-serif;
         font-size: 30px;
         display: flex;
-        align-content: center;
+        align-items: center;
         justify-content: center;
 
         p {
             font-family: "PT Sans", sans-serif;
             font-size: 30px;
             color: #233;
-            width: 750px;
+            width: 700px;
             text-align: center;
+        }
+    }
+
+    .header-button {
+        grid-row-start: 5;
+        grid-row-end: 6;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        font-family: "Open Sans", sans-serif;
+        font-size: 30px;
+        display: flex;
+        align-content: center;
+        justify-content: flex-end;
+
+        a {
             margin: auto 30px auto auto;
         }
     }
 }
 
-.header-button {
-    grid-row-start: 5;
-    grid-row-end: 6;
-    grid-column-start: 4;
-    grid-column-end: 5;
-    font-family: "Open Sans", sans-serif;
-    font-size: 30px;
-    display: flex;
-    align-content: center;
-    justify-content: flex-end;
 
-    a {
-        margin: auto 30px auto auto;
-    }
-}
 
 .span-1 {
     grid-row: 2;

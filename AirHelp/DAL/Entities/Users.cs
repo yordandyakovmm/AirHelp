@@ -29,5 +29,9 @@ namespace AirHelp.DAL
 
         public virtual ICollection<Claim> Claims { get; set; }
 
+        public string password { get; set; }
+
+        public string type { get; set; }
+
     }
 }

@@ -56,6 +56,8 @@ namespace AirHelp.DAL
         public string Delay { get; set; }
         public string SignitureImage { get; set; }
 
+        public virtual ICollection<AirPort> AirPorts { get; set; }
+
 
     }
 

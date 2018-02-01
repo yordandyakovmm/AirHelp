@@ -81,7 +81,7 @@
 
 var el;
 var conv;
-var ctx ;
+var ctx;
 var isDrawing;
 var couunt = 0;
 
@@ -216,42 +216,39 @@ function ddKeyUp(_this, e) {
             $dropDown.find('[index="' + index + '"]').addClass('selected');
         }
     }
-    else if ($this.val().length >= 3) {
+    else if ($this.val().length >= 2) {
         $this.addClass('remove-shadow');
         $this.parent().parent().removeClass('error');
 
-        if ($this.val().length == 3) {
-            if ($this.not('[name="AirCompany"]').length == 1) {
-                var url = '/api/airports?id=' + $this.val();
-                $.get(url, function (data) {
-                    data = JSON.parse(data);
-                    console.log(data);
-                    if (data.status == 'success') {
-                        $dropDown.html('');
-                        for (i = 0; i < data.results.length; i++) {
-                            var li = '<li index="' + (i + 1) + '" onclick="menuItemClick(this)" ' + (i == data.results.length - 1 ? 'last' : '') + '>' +
-                                (data.results[i].airportName || data.results[i].cityName) + ' (' + data.results[i].threeCode + ')' + '</li>';
-                            $dropDown.append(li);
-                        }
-                        $dropDown.find('li').removeClass('selected');
-                        $dropDown.find('li').first().addClass('selected');
-                        $dropDown.show();
+
+        if ($this.not('[name="AirCompany"]').length == 1) {
+            var url = '/api/airports?id=' + $this.val();
+            $.get(url, function (data) {
+                data = JSON.parse(data);
+                console.log(data);
+                debugger;
+                if (data.status == 1) {
+                    $dropDown.html('');
+                    for (i = 0; i < data.airports.length; i++) {
+                        var li = '<li index="' + (i + 1) + '" onclick="menuItemClick(this)" ' + (i == data.airports.length - 1 ? 'last' : '') + '>' +
+                            (data.airports[i].name || data.airports[i][i].city) + ' (' + data.airports[i].iata + ')' + '</li>';
+                        var $li = $(li).data('airport', data.airports[i]);
+                        $dropDown.append($li);
                     }
-                });
-                return;
-            }
-            else {
-                // Air Company
-                // add filter
-                $dropDown.find('li').removeClass('selected');
-                $dropDown.find('li').first().addClass('selected');
-                $dropDown.show();
-            }
+                    $dropDown.find('li').removeClass('selected');
+                    $dropDown.find('li').first().addClass('selected');
+                    $dropDown.show();
+                }
+            });
+            return;
         }
-        // should remive next 3 rows
-        $dropDown.find('li').removeClass('selected');
-        $dropDown.find('li').first().addClass('selected');
-        $dropDown.show();
+        else {
+            // Air Company
+            // add filter
+            $dropDown.find('li').removeClass('selected');
+            $dropDown.find('li').first().addClass('selected');
+            $dropDown.show();
+        }
 
     }
     else {
