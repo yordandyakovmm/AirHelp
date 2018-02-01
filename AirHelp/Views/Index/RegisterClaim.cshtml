@@ -7,7 +7,8 @@
     <div class="center-content">
         <form method="post" enctype="multipart/form-data">
             <input type="hidden" name="Type"  value="@category" />
-            <input type="hidden" name="ConnectionAriports" value="@category" />
+            <input type="hidden" name="ConnectionAriports" value="" />
+            <input type="hidden" name="json" value="" />
             <input type="hidden" name="SignitureImage" value="" />
             <div class="form-hedar">
                 Данни за контакт
@@ -69,13 +70,13 @@
             </div>
             <div class="form-row">
                 <div class="form-box left">
-                    <label>Номер на полета</label><span class="requared">*</span>
+                    <label>Номер на полета<span class="requared">*</span></label>
                     <div>
                         <input type="text" name="FlightNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box rigth">
-                    <label>Дата на полета</label><span class="requared">*</span>
+                    <label>Дата на полета<span class="requared">*</span></label>
                     <div>
                         <input type="text" id="Date" name="Date" placeholder="Дата на полета" validate /><i class="icon"></i>
                     </div>
@@ -84,30 +85,22 @@
             <div class="form-row">
 
                 <div class="form-box left">
-                    <label>Начално летище</label>
+                    <label>Начално летище<span class="requared">*</span></label>
                     <div>
-                        <input type="text" name="DepartureAirport" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Начално летище" />
+                        <input type="text" name="DepartureAirport" autocomplete="off" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Начално летище" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin">
-                            <li index='1' onclick="menuItemClick(this)">Lorem</li>
-                            <li index='2' onclick="menuItemClick(this)">Ipsum</li>
-                            <li index='3' onclick="menuItemClick(this)">Dolor</li>
-                            <li index='4' onclick="menuItemClick(this)">Sit</li>
-                            <li index='5' onclick="menuItemClick(this)" last>Amed</li>
+                            
                         </ul>
                     </div>
                 </div>
                 <div class="form-box rigth">
-                    <label>Крайно летище</label>
+                    <label>Крайно летище<span class="requared">*</span></label>
                     <div>
-                        <input type="text" name="DestinationAirports" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Крайно летище" />
+                        <input type="text" name="DestinationAirports" autocomplete="off" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Крайно летище" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin">
-                            <li index='1' onclick="menuItemClick(this)">Lorem</li>
-                            <li index='2' onclick="menuItemClick(this)">Ipsum</li>
-                            <li index='3' onclick="menuItemClick(this)">Dolor</li>
-                            <li index='4' onclick="menuItemClick(this)">Sit</li>
-                            <li index='5' onclick="menuItemClick(this)" last>Amed</li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -129,14 +122,10 @@
             <div class="form-row" id="connectionAirPorts" style="flex-flow: column; display:none;">
                 <div class="form-box-connection">
                     <div>
-                        <input type="text" name="ConnectionAirports" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
+                        <input type="text" name="ConnectionAirports" autocomplete="off" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin">
-                            <li index='1' onclick="menuItemClick(this)">Lorem</li>
-                            <li index='2' onclick="menuItemClick(this)">Ipsum</li>
-                            <li index='3' onclick="menuItemClick(this)">Dolor</li>
-                            <li index='4' onclick="menuItemClick(this)">Sit</li>
-                            <li index='5' last onclick="menuItemClick(this)">Amed</li>
+                           
                         </ul>
                     </div>
                     <button class="bDelete" onmousedown="$(this).parent().remove(); return false;"><i class="icon"></i></button>
@@ -217,7 +206,7 @@
                     </label>
                 </div>
                 <div class="form-subheder">
-                    Кога бяхте уведомени от превозвача за отмяната на полета ? - 2
+                    Кога бяхте уведомени от превозвача за отмяната на полета ?
                 </div>
                 <div class="form-row-choise" style="justify-content:flex-start">
                     <label class="checkbox">
@@ -284,14 +273,10 @@
                 <div class="form-box rigth">
                     <label>Въдушен превозвач<span class="requared">*</span></label>
                     <div>
-                        <input type="text" name="AirCompany" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Въдушен превозвач" />
+                        <input type="text" name="AirCompany" autocomplete="off" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Въдушен превозвач" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin">
-                            <li index='1' onclick="menuItemClick(this)">Lorem</li>
-                            <li index='2' onclick="menuItemClick(this)">Ipsum</li>
-                            <li index='3' onclick="menuItemClick(this)">Dolor</li>
-                            <li index='4' onclick="menuItemClick(this)">Sit</li>
-                            <li index='5' onclick="menuItemClick(this)" last>Amed</li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -369,14 +354,10 @@
 <div id="template" style="display:none;">
     <div class="form-box-connection">
         <div>
-            <input type="text" name="ConnectionAirports" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
+            <input type="text" name="ConnectionAirports" autocomplete="off" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
             <i class="icon"></i>
             <ul class="lSuggestoin">
-                <li index='1' onclick="menuItemClick(this)">Lorem</li>
-                <li index='2' onclick="menuItemClick(this)">Ipsum</li>
-                <li index='3' onclick="menuItemClick(this)">Dolor</li>
-                <li index='4' onclick="menuItemClick(this)">Sit</li>
-                <li index='5' last onclick="menuItemClick(this)">Amed</li>
+                
             </ul>
         </div>
         <button class="bDelete" onmousedown="$(this).parent().remove(); return false;"><i class="icon"></i></button>

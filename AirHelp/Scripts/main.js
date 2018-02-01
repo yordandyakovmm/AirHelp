@@ -48,7 +48,7 @@
         else {
             result = data.length >= 3;
         }
-        if (result) {
+        if (result && $(this).not('[dropdown]').length > 0) {
             $(this).parent().parent().removeClass('error');
             $(this).parent().parent().addClass('success');
         }
@@ -101,7 +101,7 @@ function initSigniture() {
         ctx.lineWidth = 3;
         ctx.lineJoin = ctx.lineCap = 'round';
         ctx.moveTo(e.offsetX, e.offsetY);
-        console.log('down', e.offsetX, e.offsetY);
+        //console.log('down', e.offsetX, e.offsetY);
 
     };
     el.onmousemove = function (e) {
@@ -109,7 +109,7 @@ function initSigniture() {
             couunt++;
             ctx.lineTo(e.offsetX, e.offsetY);
             ctx.stroke();
-            console.log('move', e.offsetX, e.offsetY);
+            //console.log('move', e.offsetX, e.offsetY);
         }
         if (couunt > 60) {
             $('.form-box-signiture').removeClass('error').addClass('success');
@@ -118,17 +118,17 @@ function initSigniture() {
     };
     el.mouseout = function (e) {
         isDrawing = false;
-        console.log('out');
+        //console.log('out');
     };
 
     el.mousein = function (e) {
         debugger;
-        console.log('in');
+        //console.log('in');
     };
 
     el.onmouseup = function () {
         isDrawing = false;
-        console.log('up');
+        //console.log('up');
         saveSigiture();
     };
 }
@@ -166,6 +166,7 @@ function cbBlur(_this) {
 function menuItemClick(_this) {
     var $parent = $(_this).parent();
     $parent.parent().find('input').val($(_this).text()).removeClass('remove-shadow');
+    $parent.parent().find('input').data('data', $(_this).data('data'));
     $(_this).parent().parent().parent().addClass('success');
     $parent.hide();
 }
@@ -183,7 +184,7 @@ function ddKeyUp(_this, e) {
         var $selected = $dropDown.find('li.selected');
         if ($selected.length > 0) {
             $this.parent().find('input').val($selected.text());
-
+            $this.parent().find('input').data('data', $selected.data('data'));
             $this.parent().parent().addClass('success');
 
         }
@@ -210,7 +211,7 @@ function ddKeyUp(_this, e) {
         if (($selected).length == 0) {
             $dropDown.find('li').first().addClass('selected');
         }
-        else if ($selected.not('[last]')) {
+        else if ($selected.not('[last]').length > 0) {
             var index = parseInt($selected.attr('index')) + 1
             $selected.removeClass('selected');
             $dropDown.find('[index="' + index + '"]').addClass('selected');
@@ -226,13 +227,12 @@ function ddKeyUp(_this, e) {
         var url = (isAirtport ? '/api/airports?id=' : '/api/airline?id=') + $this.val();
         $.get(url, function (data) {
             data = JSON.parse(data);
-            console.log(data);
             if (data.status == 1) {
                 $dropDown.html('');
                 for (i = 0; i < data.airports.length; i++) {
                     var li = '<li index="' + (i + 1) + '" onclick="menuItemClick(this)" ' + (i == data.airports.length - 1 ? 'last' : '') + '>' +
                         (data.airports[i].name || data.airports[i][i].city) + ' (' + data.airports[i].iata + ')' + '</li>';
-                    var $li = $(li).data('airport', data.airports[i]);
+                    var $li = $(li).data('data', data.airports[i]);
                     $dropDown.append($li);
                 }
                 $dropDown.find('li').removeClass('selected');
@@ -274,7 +274,7 @@ function uploadChange(obj) {
 
 function validate() {
     var result = true;
-    $('input:visible').each(function (el) {
+    $('input:visible[validate]').each(function (el) {
         if ($(this).parent().parent().not('.success').length > 0) {
             $(this).parent().parent().removeClass('success');
             $(this).parent().parent().addClass('error');
@@ -374,8 +374,18 @@ function validate() {
         $('.form-box-signiture').removeClass('success').addClass('error');
     }
     if (result) {
-        var res = $('[name=ConnectionAirports]').val().join(' <--> ');
-        $('[name="ConnectionAriports"]').val(res);
+        debugger;
+        var json = {};
+        json.airports = [];
+        json.airports.push($('[name="DepartureAirport"]').data('data'));
+        json.airports.push($('[name="DestinationAirports"]').data('data'));
+        $('[name=ConnectionAirports]:visible').each(function (index) {
+            var data = $($('[name=ConnectionAirports]')[index]).data('data');
+            json.airports.push(data);
+        });
+        json.airline = $('[name="AirCompany"]').data('data');
+        $('[name="json"]').val(JSON.stringify(json));
+        console.log(JSON.stringify(json));
     }
     saveSigiture();
     return result;

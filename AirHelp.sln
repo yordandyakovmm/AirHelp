@@ -1,16 +1,29 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirHelp", "AirHelp\AirHelp.csproj", "{A23630A0-1171-4145-970A-B0C69D42359D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{7DAD1CCA-0FB3-4C50-BE97-9E5220F7B0B1}"
-	ProjectSection(SolutionItems) = preProject
-		C:\Users\Yordan\Desktop\airport-frequencies.csv = C:\Users\Yordan\Desktop\airport-frequencies.csv
-		C:\Users\Yordan\Desktop\airports.csv = C:\Users\Yordan\Desktop\airports.csv
-		AirHelp\Content\API.txt = AirHelp\Content\API.txt
-		C:\Users\Yordan\Desktop\runways.csv = C:\Users\Yordan\Desktop\runways.csv
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Data", "Data\", "{10F62196-FC74-4E4C-9DA2-80A27283A051}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62636"
+		Debug.AspNetCompiler.PhysicalPath = "Data\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62636\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62636"
+		Release.AspNetCompiler.PhysicalPath = "Data\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62636\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "62636"
+		SlnRelativePath = "Data\"
 	EndProjectSection
 EndProject
 Global
@@ -23,6 +36,10 @@ Global
 		{A23630A0-1171-4145-970A-B0C69D42359D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A23630A0-1171-4145-970A-B0C69D42359D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A23630A0-1171-4145-970A-B0C69D42359D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10F62196-FC74-4E4C-9DA2-80A27283A051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F62196-FC74-4E4C-9DA2-80A27283A051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F62196-FC74-4E4C-9DA2-80A27283A051}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F62196-FC74-4E4C-9DA2-80A27283A051}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

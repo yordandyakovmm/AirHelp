@@ -17,6 +17,7 @@ using System.Web.Security;
 using System.Threading;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using System.Web.Helpers;
 
 namespace AirHelp.Controllers
 {
@@ -195,13 +196,6 @@ namespace AirHelp.Controllers
         public ActionResult Spliter5(string category)
         {
 
-            //System.Device.Location
-
-            //var sCoord = new GeoCoordinate(sLatitude, sLongitude);
-            //var eCoord = new GeoCoordinate(eLatitude, eLongitude);
-
-            //return sCoord.GetDistanceTo(eCoord);
-
             ViewBag.category = category;
 
             string BordCardUrl = "";
@@ -216,7 +210,7 @@ namespace AirHelp.Controllers
             }
             if (Request.Files["BookConfirmation"].ContentLength > 0)
             {
-                var file = Request.Files["BookConfirmationUrl"];
+                var file = Request.Files["BookConfirmation"];
                 var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
                 BookConfirmationUrl = $"/UserDocuments/{name}";
                 file.SaveAs(Server.MapPath("~/UserDocuments/" + name));
@@ -224,6 +218,8 @@ namespace AirHelp.Controllers
 
             Guid newGuid = Guid.NewGuid();
             string AttorneyUrl = $"/UserDocuments/{newGuid}.pdf";
+
+            dynamic data = JObject.Parse(Request.Form["json"]);
 
             Claim claim = new Claim
             {
@@ -263,7 +259,6 @@ namespace AirHelp.Controllers
                 Delay = Request.Form["Delay"],
                 SignitureImage = Request.Form["SignitureImage"],
                 AttorneyUrl = AttorneyUrl
-
             };
 
             using (AirHelpDBContext dc = new AirHelpDBContext())
