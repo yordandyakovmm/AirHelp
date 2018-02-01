@@ -14,13 +14,13 @@
             </div>
             <div class="form-row">
                 <div class="form-box left">
-                    <label>Име</label>
+                    <label>Име<span class="requared">*</span></label>
                     <div>
                         <input type="text" inputmode="latin" name="FirstName" placeholder="Име" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box rigth">
-                    <label>Фамиля</label>
+                    <label>Фамиля<span class="requared">*</span></label>
                     <div>
                         <input type="text" name="LastName" placeholder="Фамилия" validate /><i class="icon"></i>
                     </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="form-row">
                 <div class="form-box left">
-                    <label>Град</label>
+                    <label>Град<span class="requared">*</span></label>
                     <div>
                         <input type="text" id="City" name="City" placeholder="Град" validate /><i class="icon"></i>
                     </div>
@@ -42,7 +42,7 @@
             </div>
             <div class="form-row">
                 <div class="form-box-width">
-                    <label>Адрес</label>
+                    <label>Адрес<span class="requared">*</span></label>
                     <div>
                         <input type="text" id="Adress" name="Adress" placeholder="Адрес" validate /><i class="icon"></i>
                     </div>
@@ -51,7 +51,7 @@
             </div>
             <div class="form-row ">
                 <div class="form-box left">
-                    <label>Емаил</label>
+                    <label>Емаил<span class="requared">*</span></label>
                     <div>
                         <input type="text" id="Email" name="Email" placeholder="Емаил" validate /><i class="icon"></i>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="form-box rigth">
                     <label>Телефон</label>
                     <div>
-                        <input type="text" id="Tel" name="Tel" placeholder="Телефон" validate /><i class="icon"></i>
+                        <input type="text" id="Tel" name="Tel" placeholder="Телефон" /><i class="icon"></i>
                     </div>
                 </div>
             </div>
@@ -69,15 +69,15 @@
             </div>
             <div class="form-row">
                 <div class="form-box left">
-                    <label>Номер на полета</label>
+                    <label>Номер на полета</label><span class="requared">*</span>
                     <div>
                         <input type="text" name="FlightNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box rigth">
-                    <label>Дата на полета</label>
+                    <label>Дата на полета</label><span class="requared">*</span>
                     <div>
-                        <input type="text" id="Date" name="Date" placeholder="Дата на полета" /><i class="icon"></i>
+                        <input type="text" id="Date" name="Date" placeholder="Дата на полета" validate /><i class="icon"></i>
                     </div>
                 </div>
             </div>
@@ -168,10 +168,6 @@
                     <span>Лошо време</span>
                 </label>
                 <label class="checkbox">
-                    <input type="radio" value="По вина на летищетое" name="Reason">
-                    <span>По вина на летището</span>
-                </label>
-                <label class="checkbox">
                     <input type="radio" value="По вина на летището" name="Reason">
                     <span>По вина на летището</span>
                 </label>
@@ -183,10 +179,9 @@
             @if (category == "закъснял-полет")
             {
                 <div class="form-hedar">
-                    Полетат Ви закъсня ли с повече от три часа? - 1
+                    Полетат Ви закъсня ли с повече от три часа?
                 </div>
                 <div class="form-row-yes-no">
-
                     <label class="checkbox">
                         <input type="radio" value="Да" name="Delay">
                         <span>Да</span>
@@ -200,7 +195,7 @@
             @if (category == "отменен-полет")
             {
                 <div class="form-subheder">
-                    Колко голямо беше закъснението до крайната дистанция ? - 2
+                    Колко голямо беше закъснението до крайната дистанция ?
                 </div>
                 <div class="form-row-choise" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr;">
 
@@ -238,7 +233,7 @@
             @if (category == "отказан-досъп-до-борд")
             {
                 <div class="form-subheder">
-                    Пристигнахте ли на чек-ин-а поне 30 минути преди излитането на самолета? -3
+                    Пристигнахте ли на чек-ин-а поне 30 минути преди излитането на самолета?
                 </div>
                 <div class="form-row-yes-no" style="justify-content:flex-start">
                     <label class="checkbox">
@@ -252,7 +247,7 @@
                 </div>
 
                 <div class="form-subheder">
-                    Достъпът беше ли ви отказан заради проблеми с документите или от съображения за сигурност ? - 3
+                    Достъпът беше ли ви отказан заради проблеми с документите или от съображения за сигурност ?
                 </div>
                 <div class="form-row-yes-no" style="justify-content:flex-start">
                     <label class="checkbox">
@@ -266,7 +261,7 @@
                 </div>
 
                 <div class="form-subheder">
-                    Доброволно ли преотстъпихте мястото си на борда на самолета ? - 3
+                    Доброволно ли преотстъпихте мястото си на борда на самолета ?
                 </div>
                 <div class="form-row-yes-no" style="justify-content:flex-start">
                     <label class="checkbox">
@@ -281,13 +276,13 @@
             }
             <div class="form-row" id="AirCompany">
                 <div class="form-box left">
-                    <label>Номер на резервация или код за потвърждение</label>
+                    <label>Номер на резервация или код за потвърждение <span class="requared">*</span></label>
                     <div>
-                        <input type="text" name="BookCode" placeholder="Номер на резервация" /><i class="icon"></i>
+                        <input type="text" name="BookCode" placeholder="Номер на резервация" validate /><i class="icon"></i>
                     </div>
                 </div>
                 <div class="form-box rigth">
-                    <label>Въдушен превозвач</label>
+                    <label>Въдушен превозвач<span class="requared">*</span></label>
                     <div>
                         <input type="text" name="AirCompany" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Въдушен превозвач" />
                         <i class="icon"></i>

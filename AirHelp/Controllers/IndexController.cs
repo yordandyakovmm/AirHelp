@@ -76,6 +76,33 @@ namespace AirHelp.Controllers
             return result;
         }
 
+        [HttpGet]
+        [Route("api/airline")]
+        async public Task<string> GetAirline(string id)
+        {
+            string result = "";
+            var url = "https://openflights.org/php/alsearch.php";
+            var values = new Dictionary<string, string>
+                {
+                      {"name" , id},
+                      {"country", "ALL"},
+                      {"action", "SEARCH"},
+                      {"mode", "F" },
+                      {"iatafilter", "true" }
+            };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = await client.PostAsync(url, content);
+
+            result = await response.Content.ReadAsStringAsync();
+            result = result.Substring(result.IndexOf('{')).Replace("\n", ",");
+            result = "{\"status\": 1, \"airports\": [" + result + "]}";
+
+            return result;
+        }
+        
+
         [Route("{item}/{category}")]
         public ActionResult Spliter(string category, string item)
         {
