@@ -47,6 +47,7 @@ namespace AirHelp.DAL
         public string Annonsment { get; set; }
         public string BookCode { get; set; }
         public string AirCompany { get; set; }
+        public string AirCompanyCountry { get; set; }
         public string AdditionalInfo { get; set; }
         public string Confirm { get; set; }
 

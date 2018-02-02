@@ -18,6 +18,7 @@ using System.Threading;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web.Helpers;
+using System.Web.Script.Serialization;
 
 namespace AirHelp.Controllers
 {
@@ -219,7 +220,11 @@ namespace AirHelp.Controllers
             Guid newGuid = Guid.NewGuid();
             string AttorneyUrl = $"/UserDocuments/{newGuid}.pdf";
 
-            dynamic data = JObject.Parse(Request.Form["json"]);
+            var jsonString = Request.Form["json"];
+
+            var json = new JavaScriptSerializer();
+            Rootobject data = json.Deserialize<Rootobject>(jsonString);
+                       
 
             Claim claim = new Claim
             {
@@ -250,7 +255,8 @@ namespace AirHelp.Controllers
                 HowMuch = Request.Form["HowMuch"],
                 Annonsment = Request.Form["Annonsment"],
                 BookCode = Request.Form["BookCode"],
-                AirCompany = Request.Form["AirCompany"],
+                AirCompany = data.airline.al_name,
+                AirCompanyCountry = data.airline.country,
                 AdditionalInfo = Request.Form["AdditionalInfo"],
                 Confirm = Request.Form["Confirm"],
                 Arival = Request.Form["Arival"],
@@ -261,14 +267,31 @@ namespace AirHelp.Controllers
                 AttorneyUrl = AttorneyUrl
             };
 
+            data.airports.ToList().ForEach(a => {
+                AirPort airport = new AirPort {
+                    Id = Guid.NewGuid(),
+                    ap_name = a.ap_name,
+                    city = a.city,
+                    country = a.country,
+                    elevation = int.Parse(a.elevation),
+                    iata = a.iata,
+                    name = a.name,
+                    timezone = double.Parse(a.timezone),
+                    icao = a.icao,
+                    type = a.type,
+                    x = double.Parse(a.x),
+                    y = double.Parse(a.y)
+                };
+
+                claim.AirPorts.Add(airport);
+            });
+            
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
                 dc.Claims.Add(claim);
                 dc.SaveChanges();
             }
-
-
-
+            
             string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
 
             String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{claim.ClaimId}";
