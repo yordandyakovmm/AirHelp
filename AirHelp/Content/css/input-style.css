@@ -148,6 +148,52 @@ button.submit .icon::before {
   margin-right: 15px;
   color: white;
 }
+button.submit-claim {
+  width: 280px;
+  padding: 12px 5px 12px 5px;
+  box-sizing: border-box;
+  border: 0px none;
+  border-radius: 4px;
+  font-family: Helvetica, sans-serif;
+  height: 45px;
+  font-weight: 500;
+  font-size: 18px;
+  outline: none;
+  border-color: #009fe3;
+  background-color: #667292;
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: #009fe3;
+}
+button.submit-claim.left-claim {
+  margin: 0 0 0 110px;
+}
+button.submit-claim.rigth-claim {
+  margin: 0 0 0 60px;
+}
+button.submit-claim:hover {
+  background-color: #00587d;
+}
+button.submit-claim .icon::before {
+  font-size: 16px;
+  content: '\e084';
+  margin-right: 15px;
+  color: white;
+}
+button.claim-reset {
+  background-color: #8d9db6;
+}
+button.claim-reset:hover {
+  background-color: #566987;
+}
+button.claim-reset .icon::before {
+  font-size: 16px;
+  content: '\e014';
+  margin-right: 15px;
+  color: white;
+}
 button.reset {
   width: 420px;
   padding: 12px 5px 12px 5px;
@@ -420,6 +466,14 @@ p.left {
   color: #009fe3;
   margin-left: 100px;
   width: 500px;
+}
+input.left {
+  width: 280px;
+  margin-left: 110px;
+}
+input.rigth {
+  width: 280px;
+  margin-left: 60px !important;
 }
 button.reset-smal {
   display: block;

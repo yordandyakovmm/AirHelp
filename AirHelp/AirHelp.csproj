@@ -196,7 +196,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="DAL\Entities\Abstract\EntityBase.cs" />
     <Compile Include="DAL\Entities\Abstract\EntityID.cs" />
@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201801312225558_airpoirt.cs" />
     <Compile Include="Migrations\201801312225558_airpoirt.Designer.cs">
       <DependentUpon>201801312225558_airpoirt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802041826460_AirCompany.cs" />
+    <Compile Include="Migrations\201802041826460_AirCompany.Designer.cs">
+      <DependentUpon>201802041826460_AirCompany.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -436,6 +440,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801312225558_airpoirt.resx">
       <DependentUpon>201801312225558_airpoirt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802041826460_AirCompany.resx">
+      <DependentUpon>201802041826460_AirCompany.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -33,8 +33,26 @@ namespace AirHelp.Controllers
 
         }
 
+        protected void LogWithUser(string user, string role, string firstName = "", string lastName = "", string email = "") {
+            var VMuser = new VMUser()
+            {
+                UserId = user,
+                FirstName = firstName,
+                LastName = lastName,
+                Email = email,
+                PictureUrl = "",
+                Role = role
+            };
 
+            Session["user"] = user;
 
+            FormsAuthenticationTicket authTicket =
+                new FormsAuthenticationTicket(1, user, DateTime.Now, DateTime.Now.AddMinutes(200), true, role, "/");
+            HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName,
+                                               FormsAuthentication.Encrypt(authTicket));
+            Response.Cookies.Add(cookie);
+           
+        }
         protected string GetHash(string text)
         {
             string hsa256salt = ConfigurationManager.AppSettings["hsa256salt"].ToString();

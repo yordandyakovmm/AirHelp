@@ -378,11 +378,11 @@ function validate() {
         var json = {};
         json.airports = [];
         json.airports.push($('[name="DepartureAirport"]').data('data'));
-        json.airports.push($('[name="DestinationAirports"]').data('data'));
         $('[name=ConnectionAirports]:visible').each(function (index) {
             var data = $($('[name=ConnectionAirports]')[index]).data('data');
             json.airports.push(data);
         });
+        json.airports.push($('[name="DestinationAirports"]').data('data'));
         json.airline = $('[name="AirCompany"]').data('data');
         $('[name="json"]').val(JSON.stringify(json));
         console.log(JSON.stringify(json));

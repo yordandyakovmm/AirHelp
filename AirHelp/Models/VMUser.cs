@@ -17,6 +17,12 @@ namespace AirHelp.Models
         public string Role { get; set; }
     }
 
+    public class AirportDistance
+    {
+        public string Name { get; set; }
+        public double distance { get; set; }
+    }
+
     public class VMClaim
     {
 
@@ -58,6 +64,7 @@ namespace AirHelp.Models
             Delay = claim.Delay;
             SignitureImage = claim.SignitureImage;
             AttorneyUrl = claim.AttorneyUrl;
+            AirporstDistance = new List<AirportDistance>();
         }
 
         public VMClaim FromClaim(Claim claim)
@@ -138,6 +145,7 @@ namespace AirHelp.Models
         public string Delay { get; set; }
         public string SignitureImage { get; set; }
         public string AttorneyUrl { get; set; }
-    }
+        public List<AirportDistance> AirporstDistance { get; set; }
+}
 
 }

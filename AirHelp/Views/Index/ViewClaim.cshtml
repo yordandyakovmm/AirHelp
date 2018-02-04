@@ -111,6 +111,22 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-row">
+
+                <div class="form-box">
+                    @foreach (var item in Model.AirporstDistance)
+                    {
+                    <label class="heder left">@item.Name</label>
+                    <div>
+                        <label class="data left">
+                            @item.distance
+                        </label>
+                    </div>
+                    }
+                </div>
+            </div>
+
             @if (Model.HasConnection == "yes")
             {
                 <div class="form-row" id="connectionAirPorts" style="flex-flow: column;">
@@ -169,18 +185,18 @@
                     </div>
                 </div>
 
-                <div class="form-row" style="justify-content:flex-start">
-                    <div class="form-box">
-                        <label class="heder left">
-                            Уведомление  за отмяната на полета
-                        </label>
-                        <div>
-                            <label class="data left">
-                                @Model.Annonsment
+                    <div class="form-row" style="justify-content:flex-start">
+                        <div class="form-box">
+                            <label class="heder left">
+                                Уведомление  за отмяната на полета
                             </label>
+                            <div>
+                                <label class="data left">
+                                    @Model.Annonsment
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
             }
             @if (Model.Type == "отказан-досъп-до-борд")
             {
@@ -198,18 +214,18 @@
                     </div>
                 </div>
 
-                <div class="form-row" style="justify-content:flex-start">
-                    <div class="form-box">
-                        <label class="heder left">
-                            Отказан достъп поради проблеми с документите или от съображения за сигурност
-                        </label>
-                        <div>
-                            <label class="data left">
-                                @Model.DocumentSecurity
+                    <div class="form-row" style="justify-content:flex-start">
+                        <div class="form-box">
+                            <label class="heder left">
+                                Отказан достъп поради проблеми с документите или от съображения за сигурност
                             </label>
+                            <div>
+                                <label class="data left">
+                                    @Model.DocumentSecurity
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                     <div class="form-row" style="justify-content:flex-start">
                         <div class="form-box">
@@ -256,23 +272,64 @@
                     </div>
                 </div>
             }
-            <div class="form-hedar view">
-                Копия на необходими документи
+
+            <div class="form-row">
+                <div class="form-box left">
+                    <label class="heder left">Парола<span class="requared">*</span></label>
+                    <div>
+                        <input class="left" type="password" inputmode="latin" name="password" placeholder="парола" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth">
+                    <label class="heder rigth">Повтори паролата<span class="requared">*</span></label>
+                    <div>
+                        <input class="rigth" type="text" name="password1" placeholder="парола" validate /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <p>
+                    Ние ще ви информираме за развитието по вашето обезщетение по емаил и телефон.
+                </p>
+                <p>
+                    Ако желаете може да се рагистрирате в нашата система. Ще можете да следите статуса на вашето обезщетение в профила си.
+                </p>
             </div>
             <div class="form-row">
                 <div class="form-box">
-                    @if (Model.BookConfirmationUrl != "")
+                    <button class="submit-claim left-claim" type="button" onclick="return validate()"><i class="icon"></i><span>Регистрирай ме</span></button>
+                </div>
+                <div class="form-box">
+                    <button class="submit-claim claim-reset rigth-claim" type="reset"><i class="icon"></i><span>изчисти</span></button>
+                </div>
+            </div>
+
+            <div class="form-hedar view">
+                Копия на документи
+            </div>
+            <div class="form-row">
+                <div class="form-box">
+
+                    @if (Model.BordCardUrl != "")
+                    {
+                        <a href="@Model.BordCardUrl" target="_blank">
+                            <img src="@Model.BordCardUrl" />
+                        </a>
+                    }
+                    @if (Model.BordCardUrl == "" && Model.BookConfirmationUrl != "")
                     {
                         <a href="@Model.BookConfirmationUrl" target="_blank">
-                            <img width="300" src="@Model.BookConfirmationUrl" />
+                            <img src="@Model.BookConfirmationUrl" />
                         </a>
                     }
                 </div>
                 <div class="form-box">
-                    @if (Model.BordCardUrl != "")
+                    @if (Model.BordCardUrl != "" && Model.BookConfirmationUrl != "")
                     {
-                        <a href="@Model.BordCardUrl" target="_blank">
-                            <img width="300" src="@Model.BordCardUrl" />
+                        <a href="@Model.BookConfirmationUrl" target="_blank">
+                            <img src="@Model.BookConfirmationUrl" />
                         </a>
                     }
                 </div>
@@ -280,13 +337,13 @@
 
             <div class="form-row">
                 <div class="form-box">
-                    <button class="submit" type="button" onclick="window.open('/пълномощно/@Model.ClaimId', '_blank')"><i class="icon"></i><span>Пълномощно</span></button>
+                    <button class="submit-claim left-claim" type="button" onclick="window.open('/пълномощно/@Model.ClaimId', '_blank')"><i class="icon"></i><span>Пълномощно</span></button>
                 </div>
                 <div class="form-box">
-                   
-                    @*<button class="reset" type="reset" onclick="clearForm()"><i class="icon"></i><span>Изчисти</span></button>*@
+                    <button class="submit-claim rigth-claim" type="button" onclick="clearForm()"><i class="icon"></i><span>Жалба</span></button>
                 </div>
             </div>
+
             <div class="form-row">
                 &nbsp;
             </div>

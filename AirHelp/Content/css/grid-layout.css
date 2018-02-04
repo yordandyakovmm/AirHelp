@@ -699,3 +699,7 @@ a:hover {
   font-size: 18px;
   text-transform: uppercase;
 }
+.form-box > a > img {
+  width: 330px;
+  margin-left: 60px;
+}

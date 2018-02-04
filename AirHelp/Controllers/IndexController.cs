@@ -19,6 +19,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web.Helpers;
 using System.Web.Script.Serialization;
+using System.Device.Location;
 
 namespace AirHelp.Controllers
 {
@@ -267,6 +268,7 @@ namespace AirHelp.Controllers
                 AttorneyUrl = AttorneyUrl
             };
 
+            int number = 1;
             data.airports.ToList().ForEach(a => {
                 AirPort airport = new AirPort {
                     Id = Guid.NewGuid(),
@@ -275,6 +277,7 @@ namespace AirHelp.Controllers
                     country = a.country,
                     elevation = int.Parse(a.elevation),
                     iata = a.iata,
+                    number = number,
                     name = a.name,
                     timezone = double.Parse(a.timezone),
                     icao = a.icao,
@@ -282,6 +285,7 @@ namespace AirHelp.Controllers
                     x = double.Parse(a.x),
                     y = double.Parse(a.y)
                 };
+                number++;
 
                 claim.AirPorts.Add(airport);
             });
@@ -301,6 +305,7 @@ namespace AirHelp.Controllers
             doc.Save(Server.MapPath($"~/UserDocuments/{newGuid}.pdf"));
             doc.Close();
 
+            LogWithUser("temp", "temp");
 
             return Redirect($"/обезщетение-списък/{claim.ClaimId}");
 
@@ -318,14 +323,30 @@ namespace AirHelp.Controllers
         {
 
             Claim claim = null;
-
+            List<AirPort> airPorts = null;
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
                 claim = dc.Claims.Where(c => c.ClaimId == id).SingleOrDefault();
-            }
 
+                airPorts = claim.AirPorts.OrderBy(a => a.number).ToList();
+                
+            }
             var model = new VMClaim(claim);
 
+            for (int i = 0; i < airPorts.Count - 1; i++)
+            {
+                var sCoord = new GeoCoordinate(airPorts[i].y, airPorts[i].x);
+                var eCoord = new GeoCoordinate(airPorts[i+1].y, airPorts[i+1].x);
+
+                var distance = sCoord.GetDistanceTo(eCoord);
+
+                var AirportDistance = new AirportDistance {
+                    Name = airPorts[i+1].ap_name,
+                    distance = distance / 1000
+                };
+                model.AirporstDistance.Add(AirportDistance);
+            }
+            
             return View("ViewClaim", model);
         }
 

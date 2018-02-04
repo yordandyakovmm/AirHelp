@@ -11,6 +11,10 @@ namespace AirHelp.DAL
 {
     public class Claim : EntityBase
     {
+        public Claim()
+        {
+            this.AirPorts = new List<AirPort>();
+        }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid ClaimId { get; set; }
