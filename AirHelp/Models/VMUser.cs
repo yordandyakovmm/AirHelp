@@ -145,6 +145,7 @@ namespace AirHelp.Models
         public string Delay { get; set; }
         public string SignitureImage { get; set; }
         public string AttorneyUrl { get; set; }
+        public string CompensationAmount { get; set; }
         public List<AirportDistance> AirporstDistance { get; set; }
 }
 

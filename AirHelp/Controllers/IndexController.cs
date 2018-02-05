@@ -317,7 +317,7 @@ namespace AirHelp.Controllers
             return View("Claim");
         }
 
-
+        [HttpGet]
         [Route("обезщетение-списък/{id}")]
         public ActionResult Spliter8(Guid id)
         {
@@ -350,6 +350,37 @@ namespace AirHelp.Controllers
             return View("ViewClaim", model);
         }
 
+        [HttpPost]
+        [Route("обезщетение-списък/{id}")]
+        public ActionResult Spliter17(Guid id)
+        {
+            Claim claim = null;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                claim = dc.Claims.Where(c => c.ClaimId == id).SingleOrDefault();
+
+                var password = Request.Form["password"];
+                var newUserBD = new User()
+                {
+                    UserId = claim.Email,
+                    FirstName = claim.FirstName,
+                    LastName = claim.LastName,
+                    Email = claim.Email,
+                    password = GetHash(password),
+                    PictureUrl = "",
+                    CreateDate = DateTime.Now,
+                    Role = "user"
+                };
+
+                dc.Users.Add(newUserBD);
+                claim.UserId = newUserBD.UserId;
+                dc.SaveChanges();
+
+            }
+
+            return Redirect($"/обезщетение-списък/{claim.ClaimId}");
+
+        }
         [Authorize(Roles = "admin,user")]
         [Route("обезщетение-списък")]
         public ActionResult Spliter7(string category)

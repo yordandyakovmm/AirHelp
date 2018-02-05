@@ -4,10 +4,15 @@
     <div class="left-content">
     </div>
     <div class="center-content">
-        <form>
+        <form method="post">
+            <input type="hidden" name="claimid" value="@Model.ClaimId">
             <div class="form-hedar view">
                 @Model.Type.Replace('-', ' ')
             </div>
+            <div class="form-hedar view">
+                <span>Право на обезщетение </span> <span>@Model </span>   
+            </div>
+
             <div class="form-row">
                 <div class="form-box ">
                     <label class="heder left">Име</label>
@@ -112,17 +117,17 @@
                 </div>
             </div>
 
-            <div class="form-row">
+            <div class="form-row-width">
 
-                <div class="form-box">
+                <div style="padding: 20px 0 0 110px;">
                     @foreach (var item in Model.AirporstDistance)
                     {
-                    <label class="heder left">@item.Name</label>
-                    <div>
-                        <label class="data left">
-                            @item.distance
-                        </label>
-                    </div>
+                        <label class="heder left">@item.Name</label>
+                        <div>
+                            <label class="data left">
+                                @item.distance
+                            </label>
+                        </div>
                     }
                 </div>
             </div>
@@ -185,18 +190,18 @@
                     </div>
                 </div>
 
-                    <div class="form-row" style="justify-content:flex-start">
-                        <div class="form-box">
-                            <label class="heder left">
-                                Уведомление  за отмяната на полета
+                <div class="form-row" style="justify-content:flex-start">
+                    <div class="form-box">
+                        <label class="heder left">
+                            Уведомление  за отмяната на полета
+                        </label>
+                        <div>
+                            <label class="data left">
+                                @Model.Annonsment
                             </label>
-                            <div>
-                                <label class="data left">
-                                    @Model.Annonsment
-                                </label>
-                            </div>
                         </div>
                     </div>
+                </div>
             }
             @if (Model.Type == "отказан-досъп-до-борд")
             {
@@ -214,31 +219,31 @@
                     </div>
                 </div>
 
-                    <div class="form-row" style="justify-content:flex-start">
-                        <div class="form-box">
-                            <label class="heder left">
-                                Отказан достъп поради проблеми с документите или от съображения за сигурност
+                <div class="form-row" style="justify-content:flex-start">
+                    <div class="form-box">
+                        <label class="heder left">
+                            Отказан достъп поради проблеми с документите или от съображения за сигурност
+                        </label>
+                        <div>
+                            <label class="data left">
+                                @Model.DocumentSecurity
                             </label>
-                            <div>
-                                <label class="data left">
-                                    @Model.DocumentSecurity
-                                </label>
-                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-row" style="justify-content:flex-start">
-                        <div class="form-box">
-                            <label class="heder left">
-                                Доброволно предостъпено на мястото на борда
+                <div class="form-row" style="justify-content:flex-start">
+                    <div class="form-box">
+                        <label class="heder left">
+                            Доброволно предостъпено на мястото на борда
+                        </label>
+                        <div>
+                            <label class="data left">
+                                @Model.Willness
                             </label>
-                            <div>
-                                <label class="data left">
-                                    @Model.Willness
-                                </label>
-                            </div>
                         </div>
                     </div>
+                </div>
 
             }
             <div class="form-row" id="AirCompany" style="justify-content:flex-start">
@@ -273,38 +278,11 @@
                 </div>
             }
 
-            <div class="form-row">
-                <div class="form-box left">
-                    <label class="heder left">Парола<span class="requared">*</span></label>
-                    <div>
-                        <input class="left" type="password" inputmode="latin" name="password" placeholder="парола" validate /><i class="icon"></i>
-                    </div>
-                </div>
-                <div class="form-box rigth">
-                    <label class="heder rigth">Повтори паролата<span class="requared">*</span></label>
-                    <div>
-                        <input class="rigth" type="text" name="password1" placeholder="парола" validate /><i class="icon"></i>
-                    </div>
-                </div>
-            </div>
 
 
-            <div class="form-row">
-                <p>
-                    Ние ще ви информираме за развитието по вашето обезщетение по емаил и телефон.
-                </p>
-                <p>
-                    Ако желаете може да се рагистрирате в нашата система. Ще можете да следите статуса на вашето обезщетение в профила си.
-                </p>
-            </div>
-            <div class="form-row">
-                <div class="form-box">
-                    <button class="submit-claim left-claim" type="button" onclick="return validate()"><i class="icon"></i><span>Регистрирай ме</span></button>
-                </div>
-                <div class="form-box">
-                    <button class="submit-claim claim-reset rigth-claim" type="reset"><i class="icon"></i><span>изчисти</span></button>
-                </div>
-            </div>
+
+
+
 
             <div class="form-hedar view">
                 Копия на документи
@@ -335,15 +313,55 @@
                 </div>
             </div>
 
+            @*@if (User.IsInRole("temp"))*@
+            @*{*@
+            <div class="info">
+
+                <p>
+                    Ние ще ви информираме за развитието по вашето обезщетение по емаил и телефон.
+                </p>
+                <p>
+                    Ако желаете може да се рагистрирате в нашата система. Ще можете да следите статуса на вашето обезщетение в профила си.
+                </p>
+            </div>
             <div class="form-row">
-                <div class="form-box">
-                    <button class="submit-claim left-claim" type="button" onclick="window.open('/пълномощно/@Model.ClaimId', '_blank')"><i class="icon"></i><span>Пълномощно</span></button>
+                <div class="form-box left">
+                    <label class="heder left">Парола<span class="requared">*</span></label>
+                    <div>
+                        <input class="left" type="password" inputmode="latin" name="password" placeholder="парола" validate /><i class="icon"></i>
+                    </div>
                 </div>
-                <div class="form-box">
-                    <button class="submit-claim rigth-claim" type="button" onclick="clearForm()"><i class="icon"></i><span>Жалба</span></button>
+                <div class="form-box rigth">
+                    <label class="heder rigth">Повтори паролата<span class="requared">*</span></label>
+                    <div>
+                        <input class="rigth" type="password" name="password1" placeholder="парола" validate /><i class="icon"></i>
+                    </div>
                 </div>
             </div>
+            <div class="autentication-error left" style="display: none;">
 
+            </div>
+            <div class="form-row">
+                <div class="form-box">
+                    <button class="submit-claim left-claim" type="button" onclick="return validate()"><i class="icon"></i><span>Регистрирай ме</span></button>
+                </div>
+                <div class="form-box">
+                    <button class="submit-claim claim-reset rigth-claim" onclick="clearForm()" type="reset"><i class="icon"></i><span>изчисти</span></button>
+                </div>
+            </div>
+            @*}*@
+
+            @if (User.IsInRole("admin"))
+            {
+                <div class="form-row">
+                    <div class="form-box">
+                        <button class="submit-claim left-claim" type="button" onclick="window.open('/пълномощно/@Model.ClaimId', '_blank')"><i class="icon"></i><span>Пълномощно</span></button>
+                    </div>
+                    <div class="form-box">
+                        <button class="submit-claim rigth-claim" type="button"><i class="icon"></i><span>Жалба</span></button>
+                    </div>
+                </div>
+            }
             <div class="form-row">
                 &nbsp;
             </div>
@@ -354,4 +372,6 @@
 
     </div>
 </div>
+
+<script src="~/Scripts/form.js"></script>
 
