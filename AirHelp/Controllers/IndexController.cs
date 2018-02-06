@@ -442,11 +442,20 @@ namespace AirHelp.Controllers
             String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{id}";
 
             SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+
+            converter.Options.MarginTop = 18;
+            converter.Options.MarginBottom = 10;
+            converter.Options.MarginLeft = 10;
+            converter.Options.MarginRight = 10;
+            converter.Options.PdfPageSize = SelectPdf.PdfPageSize.A4;
+            
             SelectPdf.PdfDocument doc = converter.ConvertUrl(url);
+
             Response.ContentType = "application/pdf";
             //doc.Save(Server.MapPath($"~/UserDocuments/{newGuid}.pdf"));
             doc.Save(Response.OutputStream);
             doc.Close();
+
             Response.End();
             return null;
         }
