@@ -542,3 +542,6 @@ button.submit-smal:hover {
   text-align: left;
   width: 700px;
 }
+span.blue {
+  color: #008fd3;
+}

@@ -333,6 +333,9 @@ namespace AirHelp.Controllers
             }
             var model = new VMClaim(claim);
 
+            
+            model.totalDistance = 0;
+
             for (int i = 0; i < airPorts.Count - 1; i++)
             {
                 var sCoord = new GeoCoordinate(airPorts[i].y, airPorts[i].x);
@@ -341,12 +344,24 @@ namespace AirHelp.Controllers
                 var distance = sCoord.GetDistanceTo(eCoord);
 
                 var AirportDistance = new AirportDistance {
-                    Name = airPorts[i+1].ap_name,
+                    From = airPorts[i].name,
+                    To = airPorts[i+1]. name,
                     distance = distance / 1000
                 };
+                model.totalDistance = model.totalDistance +  distance / 1000;
                 model.AirporstDistance.Add(AirportDistance);
             }
-            
+
+            model.rightOfCompensation = true;
+            model.CompensationAmount = 250;
+            if (model.totalDistance >= 3500)
+            {
+                model.CompensationAmount = 600;
+            }
+            else if (model.totalDistance >= 1500)
+            {
+                model.CompensationAmount = 450;
+            }
             return View("ViewClaim", model);
         }
 

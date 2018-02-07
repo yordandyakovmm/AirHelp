@@ -19,7 +19,9 @@ namespace AirHelp.Models
 
     public class AirportDistance
     {
-        public string Name { get; set; }
+        public string From { get; set; }
+        public string To { get; set; }
+
         public double distance { get; set; }
     }
 
@@ -65,6 +67,7 @@ namespace AirHelp.Models
             SignitureImage = claim.SignitureImage;
             AttorneyUrl = claim.AttorneyUrl;
             AirporstDistance = new List<AirportDistance>();
+
         }
 
         public VMClaim FromClaim(Claim claim)
@@ -145,8 +148,13 @@ namespace AirHelp.Models
         public string Delay { get; set; }
         public string SignitureImage { get; set; }
         public string AttorneyUrl { get; set; }
-        public string CompensationAmount { get; set; }
+        public int CompensationAmount { get; set; }
         public List<AirportDistance> AirporstDistance { get; set; }
-}
+        public double totalDistance { get; set; }
+        public bool rightOfCompensation { get; set; }
+        public string reasonOfRejection { get; set; }
+
+
+    }
 
 }

@@ -9,10 +9,23 @@
             <div class="form-hedar view">
                 @Model.Type.Replace('-', ' ')
             </div>
+
             <div class="form-hedar view">
-                <span>Право на обезщетение </span> <span>@Model </span>   
+                Статус на заявката: <span class="blue">  @Model.State </span>
             </div>
 
+            @if (Model.rightOfCompensation)
+            {
+                <div class="form-hedar view">
+                    <span>Право на обезщетение:</span> <span class="blue"> €@Model.CompensationAmount</span>
+                </div>
+            }
+            else
+            {
+                <div class="form-hedar view">
+                    @Model.reasonOfRejection
+                </div>
+            }
             <div class="form-row">
                 <div class="form-box ">
                     <label class="heder left">Име</label>
@@ -117,19 +130,28 @@
                 </div>
             </div>
 
-            <div class="form-row-width">
+            <div class="form-row-list">
 
-                <div style="padding: 20px 0 0 110px;">
+                <div>
                     @foreach (var item in Model.AirporstDistance)
                     {
-                        <label class="heder left">@item.Name</label>
+                        <label class="heder left">@item.From --> @item.To </label>
                         <div>
                             <label class="data left">
-                                @item.distance
+                                @item.distance.ToString("00");
                             </label>
                         </div>
                     }
+
+
+                    <label class="heder left"> Обща дължина на полета </label>
+                    <div>
+                        <label class="data left">
+                            @Model.totalDistance.ToString("00")
+                        </label>
+                    </div>
                 </div>
+
             </div>
 
             @if (Model.HasConnection == "yes")
@@ -138,7 +160,7 @@
                     <div class="form-box">
 
                         @foreach (var li in Model.ConnectionAirports.Split("<-->".ToCharArray()))
-                        {
+                {
                             <div class="form-box-connection">
                                 <label class="data left"> li </label>
                             </div>
@@ -291,13 +313,13 @@
                 <div class="form-box">
 
                     @if (Model.BordCardUrl != "")
-                    {
+            {
                         <a href="@Model.BordCardUrl" target="_blank">
                             <img src="@Model.BordCardUrl" />
                         </a>
                     }
                     @if (Model.BordCardUrl == "" && Model.BookConfirmationUrl != "")
-                    {
+            {
                         <a href="@Model.BookConfirmationUrl" target="_blank">
                             <img src="@Model.BookConfirmationUrl" />
                         </a>
@@ -305,7 +327,7 @@
                 </div>
                 <div class="form-box">
                     @if (Model.BordCardUrl != "" && Model.BookConfirmationUrl != "")
-                    {
+            {
                         <a href="@Model.BookConfirmationUrl" target="_blank">
                             <img src="@Model.BookConfirmationUrl" />
                         </a>
@@ -343,7 +365,7 @@
             </div>
             <div class="form-row">
                 <div class="form-box">
-                    <button class="submit-claim left-claim" type="submit"  onclick="return validate()"><i class="icon"></i><span>Регистрирай ме</span></button>
+                    <button class="submit-claim left-claim" type="submit" onclick="return validate()"><i class="icon"></i><span>Регистрирай ме</span></button>
                 </div>
                 <div class="form-box">
                     <button class="submit-claim claim-reset rigth-claim" onclick="clearForm()" type="reset"><i class="icon"></i><span>изчисти</span></button>
