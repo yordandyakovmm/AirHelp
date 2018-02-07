@@ -706,6 +706,11 @@ a:hover {
 .form-row-list > div {
   padding: 20px 0 0 110px;
 }
-.form-row-list > div > * {
+.form-row-list > div > label,
+.form-row-list > div div > label {
   margin-left: 0;
+  padding-left: 0;
+}
+.form-row-list > div > label {
+  margin-top: 10px;
 }

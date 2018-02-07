@@ -54,7 +54,7 @@ namespace AirHelp.Controllers
             return View();
         }
 
-        
+
 
         [HttpGet]
         [Route("api/airports")]
@@ -74,7 +74,7 @@ namespace AirHelp.Controllers
 
             var response = await client.PostAsync(url, content);
 
-          result = await response.Content.ReadAsStringAsync();
+            result = await response.Content.ReadAsStringAsync();
 
             return result;
         }
@@ -104,7 +104,7 @@ namespace AirHelp.Controllers
 
             return result;
         }
-        
+
 
         [Route("{item}/{category}")]
         public ActionResult Spliter(string category, string item)
@@ -225,7 +225,7 @@ namespace AirHelp.Controllers
 
             var json = new JavaScriptSerializer();
             Rootobject data = json.Deserialize<Rootobject>(jsonString);
-                       
+
 
             Claim claim = new Claim
             {
@@ -289,13 +289,13 @@ namespace AirHelp.Controllers
 
                 claim.AirPorts.Add(airport);
             });
-            
+
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
                 dc.Claims.Add(claim);
                 dc.SaveChanges();
             }
-            
+
             string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
 
             String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{claim.ClaimId}";
@@ -319,6 +319,7 @@ namespace AirHelp.Controllers
 
         [HttpGet]
         [Route("обезщетение-списък/{id}")]
+        [Authorize]
         public ActionResult Spliter8(Guid id)
         {
 
@@ -329,26 +330,26 @@ namespace AirHelp.Controllers
                 claim = dc.Claims.Where(c => c.ClaimId == id).SingleOrDefault();
 
                 airPorts = claim.AirPorts.OrderBy(a => a.number).ToList();
-                
+
             }
             var model = new VMClaim(claim);
 
-            
+
             model.totalDistance = 0;
 
             for (int i = 0; i < airPorts.Count - 1; i++)
             {
                 var sCoord = new GeoCoordinate(airPorts[i].y, airPorts[i].x);
-                var eCoord = new GeoCoordinate(airPorts[i+1].y, airPorts[i+1].x);
+                var eCoord = new GeoCoordinate(airPorts[i + 1].y, airPorts[i + 1].x);
 
                 var distance = sCoord.GetDistanceTo(eCoord);
 
                 var AirportDistance = new AirportDistance {
-                    From = airPorts[i].name,
-                    To = airPorts[i+1]. name,
+                    From = $"{airPorts[i].name} ({airPorts[i].iata})",
+                    To = $"{airPorts[i+1].name} ({airPorts[i+1].iata})",
                     distance = distance / 1000
                 };
-                model.totalDistance = model.totalDistance +  distance / 1000;
+                model.totalDistance = model.totalDistance + distance / 1000;
                 model.AirporstDistance.Add(AirportDistance);
             }
 
@@ -366,6 +367,7 @@ namespace AirHelp.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles="admin,temp")]
         [Route("обезщетение-списък/{id}")]
         public ActionResult Spliter17(Guid id)
         {
@@ -396,14 +398,16 @@ namespace AirHelp.Controllers
             return Redirect($"/обезщетение-списък/{claim.ClaimId}");
 
         }
+
         [Authorize(Roles = "admin,user")]
         [Route("обезщетение-списък")]
         public ActionResult Spliter7(string category)
         {
             var list = new List<VMClaim>();
+            var isAdmin = User.IsInRole("admin");
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
-                list = dc.Claims.Where(l => true).Select(claim => claim)
+                list = dc.Claims.Where(c => c.UserId == User.Identity.Name || isAdmin).Select(claim => claim)
                     .ToList()
                     .Select(claim => new VMClaim(claim))
                     .ToList();
