@@ -193,6 +193,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PdfController.cs" />
+    <Compile Include="Controllers\ClaimController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="DAL\Entities\Abstract\EntityBase.cs" />
     <Compile Include="DAL\Entities\Abstract\EntityID.cs" />
@@ -246,11 +251,17 @@
     <Content Include="Content\Assets\285053.png" />
     <Content Include="Content\Assets\4c58fcdb.png" />
     <Content Include="Content\Assets\59919.png" />
+    <Content Include="Content\Assets\73e5f5811aab5673afcaa99032383457.png" />
     <Content Include="Content\Assets\88db8d1d-checkmark_01j01j01j01j000000.png" />
     <Content Include="Content\Assets\Airplane\airplane1.png" />
     <Content Include="Content\Assets\Airplane\airplane2.png" />
     <Content Include="Content\Assets\Airplane\PlainInClouds.jpg" />
+    <Content Include="Content\Assets\Background\blue_top_bkgd5-73e7fc3f.jpg" />
+    <Content Include="Content\Assets\Background\claud-map.jpg" />
+    <Content Include="Content\Assets\Background\colors-simple-background-1080P-wallpaper-middle-size.jpg" />
+    <Content Include="Content\Assets\Background\oscuro.png" />
     <Content Include="Content\Assets\Background\обезщетение-в-зависимост-от-разтоянието-на-полета.jpg" />
+    <Content Include="Content\Assets\clouds.jpg" />
     <Content Include="Content\Assets\Icon\cc-icon-01.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-02.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-03.svg" />
@@ -384,20 +395,19 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Index\Attorney.cshtml" />
-    <Content Include="Views\Index\ForUs.cshtml" />
+    <Content Include="Views\Pdf\Attorney.cshtml" />
+    <Content Include="Views\Common\ForUs.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
-    <Content Include="Views\Index\Edit.cshtml" />
-    <Content Include="Views\Index\RegisterClaim.cshtml" />
-    <Content Include="Views\Index\Claim.cshtml" />
-    <Content Include="Views\Index\PrivatePolice.cshtml" />
-    <Content Include="Views\Index\faq.cshtml" />
-    <Content Include="Views\Index\CommonRules.cshtml" />
-    <Content Include="Views\Index\ViewClaim.cshtml" />
-    <Content Include="Views\Index\ClaimList.cshtml" />
-    <Content Include="Views\Index\AttorneyPdf.cshtml" />
-    <Content Include="Views\Index\ContactForm.cshtml" />
-    <Content Include="Views\Index\Login.cshtml" />
+    <Content Include="Views\Claim\RegisterClaim.cshtml" />
+    <Content Include="Views\Claim\ClaimSpliter.cshtml" />
+    <Content Include="Views\Common\PrivatePolice.cshtml" />
+    <Content Include="Views\Common\faq.cshtml" />
+    <Content Include="Views\Common\CommonRules.cshtml" />
+    <Content Include="Views\Claim\ViewClaim.cshtml" />
+    <Content Include="Views\Claim\ClaimList.cshtml" />
+    <Content Include="Views\Pdf\AttorneyPdf.cshtml" />
+    <Content Include="Views\Common\ContactForm.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="site1.PublishSettings" />
   </ItemGroup>
   <ItemGroup>
