@@ -6,6 +6,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'VarelaRound';
+    src: url('/fonts/VarelaRound-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 [class^="icon"],
 [class*=" icon"]{
     display: inline;
