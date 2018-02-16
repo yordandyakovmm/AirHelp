@@ -262,6 +262,9 @@
     <Content Include="Content\Assets\Background\oscuro.png" />
     <Content Include="Content\Assets\Background\обезщетение-в-зависимост-от-разтоянието-на-полета.jpg" />
     <Content Include="Content\Assets\clouds.jpg" />
+    <Content Include="Content\Assets\Icon\19-1User-512.png" />
+    <Content Include="Content\Assets\Icon\access-512.png" />
+    <Content Include="Content\Assets\Icon\access_key-512.png" />
     <Content Include="Content\Assets\Icon\cc-icon-01.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-02.svg" />
     <Content Include="Content\Assets\Icon\cc-icon-03.svg" />
@@ -272,6 +275,12 @@
     <Content Include="Content\Assets\Icon\distance3.png" />
     <Content Include="Content\Assets\Icon\distance4.png" />
     <Content Include="Content\Assets\Icon\distance5.png" />
+    <Content Include="Content\Assets\Icon\download.jpg" />
+    <Content Include="Content\Assets\Icon\download.png" />
+    <Content Include="Content\Assets\Icon\exit_delete_close_remove_door-512.png" />
+    <Content Include="Content\Assets\Icon\images.png" />
+    <Content Include="Content\Assets\Icon\login.png" />
+    <Content Include="Content\Assets\Icon\logout.ico" />
     <Content Include="Content\Assets\woman-watch.jpeg" />
     <Content Include="Content\Assets\yellow-cloud-plaine.jpg" />
     <Content Include="Content\Assets\five-green-stars.png" />
@@ -368,6 +377,8 @@
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
+    <Content Include="fonts\Round.ttf" />
+    <Content Include="fonts\ALS_Schlange_sans_reg.ttf" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />

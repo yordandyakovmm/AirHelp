@@ -105,13 +105,32 @@ a:hover {
         text-decoration: none;
     }
 
+    .enter:hover{
+        transform: scale(1.5) 1s;
+    }
+
     > span {
         display: flex;
         align-items: center;
         margin: 0 0 0 15px;
+        flex-flow: row;
+        align-items: center;
 
-        &:hover {
+        a {
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+        }
+
+        img {
+            height: 35px;
+        }
+
+        &:hover:not(.enter), selected {
             color: #999;
+            border-top-style: dotted;
+            border-top-color: transparent;
+            border-top-width: 2px;
             border-bottom-style: solid;
             border-bottom-width: 2px;
             border-bottom-color: coral;
@@ -827,7 +846,7 @@ a:hover {
     grid-template-rows: 50px auto 100px;
     grid-template-columns: auto 300px 300px 300px auto;
     background-color: #444;
-    font-family: "PT Sans", sans-serif;
+    font-family: Round, sans-serif; 
     font-size: 14px;
     color: white;
 
@@ -858,16 +877,16 @@ a:hover {
         align-items: flex-start;
         justify-content: flex-start;
 
-        >*{
+        > * {
             margin-bottom: 5px;
         }
-        
+
         a, a:visited {
-           text-decoration: underline;
-           color: white;
+            text-decoration: underline;
+            color: white;
         }
-        
-        
+
+
         .heder {
             font-size: 18px;
             text-transform: uppercase;

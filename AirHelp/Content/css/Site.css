@@ -7,8 +7,8 @@
 }
 
 @font-face {
-    font-family: 'VarelaRound';
-    src: url('/fonts/VarelaRound-Regular.otf') format('opentype');
+    font-family: 'Round';
+    src: url('/fonts/Round.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }

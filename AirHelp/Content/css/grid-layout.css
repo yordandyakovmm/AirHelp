@@ -71,13 +71,29 @@ a:hover {
   font-weight: 500;
   text-decoration: none;
 }
+.logo-menu .enter:hover {
+  transform: scale(1.5) 1s;
+}
 .logo-menu > span {
   display: flex;
-  align-items: center;
   margin: 0 0 0 15px;
+  flex-flow: row;
+  align-items: center;
 }
-.logo-menu > span:hover {
+.logo-menu > span a {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+.logo-menu > span img {
+  height: 35px;
+}
+.logo-menu > span:hover:not(.enter),
+.logo-menu > span selected {
   color: #999;
+  border-top-style: dotted;
+  border-top-color: transparent;
+  border-top-width: 2px;
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: coral;
@@ -660,7 +676,7 @@ a:hover {
   grid-template-rows: 50px auto 100px;
   grid-template-columns: auto 300px 300px 300px auto;
   background-color: #444;
-  font-family: "PT Sans", sans-serif;
+  font-family: Round, sans-serif;
   font-size: 14px;
   color: white;
 }
