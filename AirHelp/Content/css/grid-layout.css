@@ -32,10 +32,19 @@ a:hover {
 .main-layout {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 100px auto auto auto auto auto 40px;
+  grid-template-rows: 100px auto 40px;
   grid-gap: 0px;
   background-color: #fafafa;
-  grid-template-areas: "Logo" "big-image" "compensation-type" "compensation-amount" "compensation-step" "links" "bottom";
+  grid-template-areas: "Logo" "content" "bottom";
+}
+.index-container {
+  display: grid;
+  grid-area: content;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto auto;
+  grid-gap: 0px;
+  background-color: #fafafa;
+  grid-template-areas: "big-image" "compensation-type" "compensation-amount" "compensation-step" "links";
 }
 .logo {
   background-color: white;
@@ -134,10 +143,11 @@ a:hover {
   grid-row-end: 2;
   grid-column-start: 4;
   grid-column-end: 5;
-  color: #222;
+  color: #050505;
   display: flex;
   align-content: center;
   justify-content: center;
+  text-transform: uppercase;
 }
 .big-image .header-text span {
   font-family: "PT Sans", sans-serif;
@@ -619,12 +629,13 @@ a:hover {
   text-align: justify;
 }
 .form-content {
+  grid-area: content;
   display: flex;
   flex-direction: row;
   align-content: center;
   justify-content: center;
   padding: 50px 0;
-  flex-grow: auto;
+  min-height: 70vh;
 }
 .form-content span {
   font-family: "PT Sans", sans-serif;
@@ -662,6 +673,7 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 40px;
 }
 .bottom span {
   font-family: "PT Sans", sans-serif;

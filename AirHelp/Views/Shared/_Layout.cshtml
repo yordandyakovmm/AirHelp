@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using AirHelp.Models
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -33,12 +34,21 @@
                     </a>
                 </div>
                 <div class="logo-menu">
-                    <span class=""><a href="/обезщетение-списък">ИСКОВЕ</a></span>
-                    <span class=""><a href="/проблеми-с-полета/често-задавани-въпроси">ВЪПРОСИ</a></span>
-                    <span><a href="/обезщетение-при-полет">ПОДАЙ ИСК</a></span>
-                    <span class="selected"><a href="/за-нас">ЗА НАС</a></span>
-                    <span><a href="/контакти">КОНТАКТИ</a></span>
-                    <span class="enter"><a href="/вход">  <img src="~/Content/Assets/Icon/login.png" /> <span style="margin:  0 0 0 5px;"> ВХОД </span></a> </span>
+                    <span class='(@ViewBag.menu=="claims": "selected" : ""'><a href="/обезщетение-списък">ИСКОВЕ</a></span>
+                    <span class='(@ViewBag.menu=="faq": "selected" : ""'><a href="/проблеми-с-полета/често-задавани-въпроси">ВЪПРОСИ</a></span>
+                    <span class='(@ViewBag.menu=="claim": "selected" : ""'><a href="/обезщетение-при-полет">ПОДАЙ ИСК</a></span>
+                    <span class='(@ViewBag.menu=="aboutus": "selected" : ""'><a href="/за-нас">ЗА НАС</a></span>
+                    <span class='(@ViewBag.menu=="contact": "selected" : ""'><a href="/контакти">КОНТАКТИ</a></span>
+                   
+                    @if (User.Identity.IsAuthenticated)
+                        {
+                        <span class="enter"><a href="/изход">  <img src="~/Content/Assets/Icon/exit_delete_close_remove_door-512.png" /> <span style="margin:  0 0 0 5px;"> @ViewBag.user.FirstName @ViewBag.user.LastName</span></a> </span>
+                    }
+                    else
+                    {
+                        <span class="enter"><a href="/вход">  <img  src="~/Content/Assets/Icon/login.png" /> <span style="margin:  0 0 0 5px;"> ВХОД </span></a> </span>
+                    }
+
 
                 </div>
             </div>

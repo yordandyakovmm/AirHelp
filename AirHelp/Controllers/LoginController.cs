@@ -25,7 +25,7 @@ namespace AirHelp.Controllers
 
         [HttpPost]
         [Route("вход")]
-        public ActionResult Login(string Email, string Password, string ReturnUrl)
+        public ActionResult Login(string Email, string Password, string ReturnUrl= "/")
         {
 
             string hashPassword = GetHash(Password);
