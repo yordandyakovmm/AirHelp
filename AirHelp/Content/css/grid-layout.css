@@ -151,7 +151,7 @@ a:hover {
 }
 .big-image .header-text span {
   font-family: "PT Sans", sans-serif;
-  font-size: 45px;
+  font-size: 40px;
   font-weight: 800;
   margin: auto 30px auto auto;
 }
@@ -226,6 +226,7 @@ a:hover {
   display: flex;
   align-content: center;
   justify-content: center;
+  text-transform: uppercase;
 }
 .compensation-type .header-text span {
   display: flex;
@@ -307,12 +308,13 @@ a:hover {
   grid-column-start: 2;
   grid-column-end: 5;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 600;
   color: #03030d;
   display: flex;
   align-content: center;
   justify-content: center;
+  text-transform: uppercase;
 }
 .compensation-amount .header-text span {
   display: flex;
@@ -364,6 +366,7 @@ a:hover {
   display: flex;
   align-content: center;
   justify-content: center;
+  text-transform: uppercase;
 }
 .compensation-steps .header-text span {
   display: flex;
@@ -635,7 +638,6 @@ a:hover {
   align-content: center;
   justify-content: center;
   padding: 50px 0;
-  min-height: 70vh;
 }
 .form-content span {
   font-family: "PT Sans", sans-serif;
