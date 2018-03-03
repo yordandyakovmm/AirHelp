@@ -13,8 +13,7 @@
     font-style: normal;
 }
 
-[class^="icon"],
-[class*=" icon"]{
+.icon{
     display: inline;
 }
 
@@ -23,8 +22,8 @@ a, a:hover {
 }
 
 
-[class^="icon"]:before,
-[class*=" icon"]:before {
+.icin:before,
+.icon {
     font-family: 'icomoon';
     font-style: normal;
     speak: none;
@@ -45,6 +44,20 @@ a, a:hover {
 .icon-dribbble:before {
     content: "\e002";
 }
+
+.delay:before {
+    content: "\e023";
+}
+
+.cancel:before {
+    content: "\e014";
+}
+
+.overbook:before {
+    content: "\e088";
+}
+
+/*e089";*/
 
 p, a {
     text-align: center;

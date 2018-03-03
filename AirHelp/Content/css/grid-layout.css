@@ -208,6 +208,7 @@ a:hover {
   grid-template-rows: 200px auto 50px;
   grid-column-gap: 10px;
   display: grid;
+  background-color: azure;
   font-family: Arial, Helvetica, sans-serif;
 }
 .compensation-type span {
@@ -220,9 +221,9 @@ a:hover {
   grid-column-start: 2;
   grid-column-end: 5;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 600;
-  color: #03030d;
+  color: #0f0f0f;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -241,9 +242,10 @@ a:hover {
   margin-top: 15px;
 }
 .compensation-type .span > span {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 500;
   color: #009fe3;
+  text-transform: uppercase;
 }
 .compensation-type .span > p {
   font-size: 14px;
@@ -258,8 +260,7 @@ a:hover {
 .compensation-type .span .image div {
   grid-row: 1;
   grid-column: 2;
-  border: solid 4px #009fe3;
-  box-shadow: 0 0 8px #009fe3;
+  box-shadow: 0 0 50px #009fe3;
   border-radius: 100%;
 }
 .compensation-type .span .image.image-delay > div {
@@ -308,9 +309,9 @@ a:hover {
   grid-column-start: 2;
   grid-column-end: 5;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 38px;
+  font-size: 35px;
   font-weight: 600;
-  color: #03030d;
+  color: #141414;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -346,7 +347,7 @@ a:hover {
   grid-template: "compensation-steps";
   grid-template-columns: auto 400px 400px 400px auto;
   grid-template-rows: 100px auto 50px;
-  grid-column-gap: 10px;
+  grid-column-gap: 15px;
   display: grid;
   font-family: "PT Sans", Helvetica, sans-serif;
   background-color: #009fe3;
@@ -360,7 +361,7 @@ a:hover {
   grid-column-start: 2;
   grid-column-end: 5;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 35px;
+  font-size: 32px;
   font-weight: 600;
   color: #ffffff;
   display: flex;

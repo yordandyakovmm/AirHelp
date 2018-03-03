@@ -583,7 +583,7 @@ input.rigth {
     font-size: 16px;
     font-weight: 500;
     outline: none;
-    border-color: @blue-color;
+    compensation-type border-color: @blue-color;
     background-color: #667292;
     color: white;
     display: flex;
@@ -591,13 +591,19 @@ input.rigth {
     justify-content: center;
 }
 
-button.reset-smal {
+.button-smal {
+    #button-smal;
+}
+
+
+button.claim {
     display: block;
     #button-smal;
-    background-color: #8d9db6;
+    width: 230px;
+    background-color: @blue-color;
 
     &:hover {
-        background-color: lighten(#8d9db6, -20%);
+        background-color: lighten(@blue-color, -20%);
     }
 }
 
