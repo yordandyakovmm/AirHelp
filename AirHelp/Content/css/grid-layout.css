@@ -205,7 +205,7 @@ a:hover {
 .compensation-type {
   grid-template: "compensation-type";
   grid-template-columns: auto 400px 400px 400px auto;
-  grid-template-rows: 200px auto 50px;
+  grid-template-rows: auto auto 50px;
   grid-column-gap: 10px;
   display: grid;
   background-color: azure;
@@ -217,6 +217,7 @@ a:hover {
   margin: auto auto auto auto;
 }
 .compensation-type .header-text {
+  height: 200px;
   grid-row: 1;
   grid-column-start: 2;
   grid-column-end: 5;
@@ -239,12 +240,12 @@ a:hover {
   justify-content: center;
 }
 .compensation-type .span > * {
-  margin-top: 15px;
+  margin-top: 20px;
 }
 .compensation-type .span > span {
   font-size: 22px;
   font-weight: 500;
-  color: #009fe3;
+  color: #006996;
   text-transform: uppercase;
 }
 .compensation-type .span > p {
@@ -260,7 +261,7 @@ a:hover {
 .compensation-type .span .image div {
   grid-row: 1;
   grid-column: 2;
-  box-shadow: 0 0 50px #009fe3;
+  box-shadow: 0 0 100px #009fe3;
   border-radius: 100%;
 }
 .compensation-type .span .image.image-delay > div {
@@ -274,9 +275,39 @@ a:hover {
   background-size: 450px;
 }
 .compensation-type .span .image.image-denied-bording > div {
-  background-image: url('/Content/Assets/отказан-достъп-до-борда-1.jpg');
+  background-image: url('/Content/Assets/overbooking.jpg');
   background-position-x: 350px;
   background-size: 380px;
+}
+.spliter-claim {
+  background-image: url('/Content/Assets/Background/claim-split-ligth.png');
+  background-size: cover;
+}
+.spliter-claim .spliter-header {
+  height: 150px;
+  grid-row: 1;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  font-family: Round;
+  font-size: 42px;
+  font-weight: 600;
+  color: #0f0f0f;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+.spliter-claim .spliter-header span {
+  display: flex;
+}
+.spliter-claim a {
+  filter: grayscale(50%);
+}
+.spliter-claim a:hover {
+  filter: grayscale(0);
+}
+.spliter-claim button {
+  margin: 20px auto 10px auto !important;
 }
 .compensation-amount {
   grid-template: "compensation-amount";
@@ -291,7 +322,6 @@ a:hover {
   grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 6;
-  background-image: url('/Content/Assets/Background/обезщетение-в-зависимост-от-разтоянието-на-полета.jpg');
   background-position: center;
   filter: opacity(20%);
   z-index: 1;
@@ -639,6 +669,8 @@ a:hover {
   align-content: center;
   justify-content: center;
   padding: 50px 0;
+  background-image: url('../Assets/Background/login.jpg');
+  background-size: cover;
 }
 .form-content span {
   font-family: "PT Sans", sans-serif;
@@ -660,6 +692,11 @@ a:hover {
 .form-content .login-form-main input[type=password],
 .form-content .login-form-main textarea {
   width: 350px;
+}
+.form-content .login-form-main form {
+  margin: auto auto auto auto;
+  width: 500px;
+  padding-left: 50px;
 }
 .form-content .login-form-main form > div {
   margin-top: 15px;

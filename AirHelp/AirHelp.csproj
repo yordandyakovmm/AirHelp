@@ -259,7 +259,9 @@
     <Content Include="Content\Assets\Background\blue_top_bkgd5-73e7fc3f.jpg" />
     <Content Include="Content\Assets\Background\claud-map.jpg" />
     <Content Include="Content\Assets\Background\colors-simple-background-1080P-wallpaper-middle-size.jpg" />
+    <Content Include="Content\Assets\Background\login.jpg" />
     <Content Include="Content\Assets\Background\oscuro.png" />
+    <Content Include="Content\Assets\Background\claim-split.jpg" />
     <Content Include="Content\Assets\Background\обезщетение-в-зависимост-от-разтоянието-на-полета.jpg" />
     <Content Include="Content\Assets\clouds.jpg" />
     <Content Include="Content\Assets\Icon\19-1User-512.png" />
@@ -281,13 +283,12 @@
     <Content Include="Content\Assets\Icon\images.png" />
     <Content Include="Content\Assets\Icon\login.png" />
     <Content Include="Content\Assets\Icon\logout.ico" />
+    <Content Include="Content\Assets\overbooking.jpg" />
     <Content Include="Content\Assets\woman-watch.jpeg" />
     <Content Include="Content\Assets\yellow-cloud-plaine.jpg" />
     <Content Include="Content\Assets\five-green-stars.png" />
     <Content Include="Content\Assets\facebook-logout-button-851580_650602211663185_74135741_n.png" />
     <Content Include="Content\Assets\images.png" />
-    <Content Include="Content\Assets\Logo\logo.bmp" />
-    <Content Include="Content\Assets\Logo\logo.png" />
     <Content Include="Content\Assets\logoRed.png" />
     <Content Include="Content\Assets\закъснение-полет.png" />
     <Content Include="Content\Assets\излитащ-самолет.jpg" />
@@ -303,7 +304,6 @@
     <Content Include="Content\css\input-style.min.css">
       <DependentUpon>input-style.css</DependentUpon>
     </Content>
-    <Content Include="Content\Assets\Logo\Logo1.png" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -437,6 +437,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Assets\Logo\" />
     <Folder Include="UserDocuments\" />
   </ItemGroup>
   <ItemGroup>

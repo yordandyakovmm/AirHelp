@@ -424,19 +424,23 @@ button.bAdd i::before {
   background-color: lavender;
 }
 .button-home {
-  border: solid 1px black;
-  font-family: Helvetica, sans-serif;
-  width: 350px;
-  height: 40px;
-  color: black;
-  font-weight: 400;
-  font-size: 20px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-}
-.button-home:hover {
-  background-color: lavender;
-  background-color: rgba(0, 0, 0, 0.4);
+  width: 200px;
+  padding: 12px 5px 12px 5px;
+  box-sizing: border-box;
+  border: 0px none;
+  border-radius: 4px;
+  margin: 0 auto;
+  font-family: "PT Sans", sans-serif;
+  color: #141a30;
+  font-size: 18px;
+  font-weight: 500;
+  outline: none;
+  border-color: #009fe3;
+  background-color: #667292;
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 label {
   margin-left: 100px;
@@ -487,7 +491,7 @@ input.rigth {
   font-size: 16px;
   font-weight: 500;
   outline: none;
-  compensation-typeborder-color: #009fe3;
+  border-color: #009fe3;
   background-color: #667292;
   color: white;
   display: flex;
@@ -507,7 +511,7 @@ button.claim {
   font-size: 16px;
   font-weight: 500;
   outline: none;
-  compensation-typeborder-color: #009fe3;
+  border-color: #009fe3;
   background-color: #667292;
   color: white;
   display: flex;
@@ -518,6 +522,13 @@ button.claim {
 }
 button.claim:hover {
   background-color: #00587d;
+}
+button.claim i {
+  margin-right: 10px;
+}
+button.claim.big {
+  background-color: #00587d;
+  width: 300px;
 }
 button.submit-smal {
   display: block;
@@ -532,7 +543,7 @@ button.submit-smal {
   font-size: 16px;
   font-weight: 500;
   outline: none;
-  compensation-typeborder-color: #009fe3;
+  border-color: #009fe3;
   background-color: #667292;
   color: white;
   display: flex;
