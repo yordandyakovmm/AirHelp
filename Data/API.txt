@@ -21,3 +21,17 @@ help4fligth@gmail.com
 
 https://www.moneysavingexpert.com/travel/flight-delays#discuss
 
+
+
+https://developer.flightstats.com/admin/applications/1409617586306
+Application ID
+
+This is the application ID, you should send with each API request.
+
+5b921345
+
+Application Keys
+
+These are application keys used to authenticate requests.
+
+8f0e137c13f79f5c7c62f1b175193119 
