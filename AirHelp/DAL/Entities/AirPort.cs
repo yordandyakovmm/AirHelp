@@ -33,5 +33,17 @@ namespace AirHelp.DAL
 		public string type { get; set; }
 		public string ap_name { get; set; }
 
+        public string fs { get; set; }
+        public string cityCode { get; set; }
+        public string countryCode { get; set; }
+        public string countryName { get; set; }
+        public string regionName { get; set; }
+        public float utcOffsetHours { get; set; }
+        public float latitude { get; set; }
+        public float longitude { get; set; }
+        public int elevationFeet { get; set; }
+        public int classification { get; set; }
+        public bool active { get; set; }
+
     }
 }

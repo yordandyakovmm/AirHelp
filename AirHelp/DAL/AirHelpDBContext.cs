@@ -14,10 +14,9 @@ namespace AirHelp.DAL
 
         public DbSet<User> Users { get; set; }
         public DbSet<Claim> Claims { get; set; }
+        public DbSet<AdditionalUser> AdditionalUsers { get; set; }
+        public DbSet<AirPort> AirPorts { get; set; }
 
-        //public DbSet<Form> Forms { get; set; }
-        //public DbSet<Measure> Measures { get; set; }
-        //public DbSet<Study> Studys { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
