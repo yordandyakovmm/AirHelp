@@ -31,15 +31,15 @@ https://www.oag.com/flightview-flight-status
 --------------------------------------
 
 
-https://developer.flightstats.com/admin/applications/1409617586306
+https://developer.flightstats.com/admin/applications/1409617586655
 Application ID
 
 This is the application ID, you should send with each API request.
 
-5b921345
+eda6e203
 
 Application Keys
 
 These are application keys used to authenticate requests.
 
-8f0e137c13f79f5c7c62f1b175193119 
+9b5d1bec431aa11ee8d9f08f649c038a 
