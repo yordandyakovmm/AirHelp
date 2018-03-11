@@ -20,7 +20,15 @@ namespace AirHelp.DAL
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+            
+        public string City { get; set; }
 
+        public string Country { get; set; }
+
+        public string Adress { get; set; }
+
+        public string Tel { get; set; }
+        
         public string PictureUrl { get; set; }
         
         public string Role { get; set; }

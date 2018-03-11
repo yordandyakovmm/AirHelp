@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using System.Web.Helpers;
 using System.Web.Script.Serialization;
 using System.Device.Location;
+using Newtonsoft.Json;
 
 namespace AirHelp.Controllers
 {
@@ -29,6 +30,33 @@ namespace AirHelp.Controllers
     {
 
         private static readonly HttpClient client = new HttpClient();
+
+
+
+        [HttpGet]
+        [Route("api/getFlight")]
+        async public Task<JsonResult> GetAirport(string number, DateTime date)
+        {
+            number = number.Trim().Replace(" ", "").Replace("-", "");
+            string airLineCode = number.Substring(0, 2).ToUpper();
+            string flightNumber = number.Substring(2);
+            int year = date.Year;
+            int month = date.Day;
+            int day = date.Month;
+
+            string appID = ConfigurationManager.AppSettings["appId"];
+            string appKey = ConfigurationManager.AppSettings["appKey"];
+
+            string json = "";
+            var url = $"https://api.flightstats.com/flex/flightstatus/historical/rest/v3/json/flight/status/{airLineCode}/{flightNumber}/dep/{year}/{month}/{day}?appId={appID}&appKey={appKey}";
+            
+            var response = await client.GetAsync(url);
+
+            json = await response.Content.ReadAsStringAsync();
+            JavaScriptSerializer json_serializer = new JavaScriptSerializer();
+            FlightStatus flight = JsonConvert.DeserializeObject<FlightStatus>(json);
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
 
         
         [HttpGet]

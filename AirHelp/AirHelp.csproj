@@ -203,6 +203,7 @@
     <Compile Include="DAL\Entities\Abstract\EntityID.cs" />
     <Compile Include="DAL\Entities\Claim.cs" />
     <Compile Include="DAL\Entities\AirPort.cs" />
+    <Compile Include="DAL\Entities\AdditionalUsers.cs" />
     <Compile Include="DAL\Entities\Users.cs" />
     <Compile Include="DAL\Initializers\DbInitializer.cs" />
     <Compile Include="Hellpers\UserHeppler.cs" />
@@ -242,7 +243,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\Object.cs" />
+    <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\VMUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
