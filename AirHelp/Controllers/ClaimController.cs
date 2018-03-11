@@ -73,28 +73,15 @@ namespace AirHelp.Controllers
             Claim claim = new Claim
             {
                 ClaimId = Guid.NewGuid(),
-                State = "приета",
+                State = ClaimStatus.Accepted,
 
                 UserId = null,
                 DateCreated = DateTime.Now,
 
                 BordCardUrl = BordCardUrl,
                 BookConfirmationUrl = BookConfirmationUrl,
-                Type = Request.Form["Type"],
-                ConnectionAriports = Request.Form["ConnectionAriports"],
-                FirstName = Request.Form["FirstName"],
-                LastName = Request.Form["LastName"],
-                City = Request.Form["City"],
-                Country = Request.Form["Country"],
-                Adress = Request.Form["Adress"],
-                Email = Request.Form["Email"],
-                Tel = Request.Form["Tel"],
+                Type = ProblemType.Cancel,
                 FlightNumber = Request.Form["FlightNumber"],
-                Date = Request.Form["Date"],
-                DepartureAirport = Request.Form["DepartureAirport"],
-                DestinationAirports = Request.Form["DestinationAirports"],
-                HasConnection = Request.Form["HasConnection"],
-                ConnectionAirports = Request.Form["ConnectionAirports"],
                 Reason = Request.Form["Reason"],
                 HowMuch = Request.Form["HowMuch"],
                 Annonsment = Request.Form["Annonsment"],
@@ -224,10 +211,10 @@ namespace AirHelp.Controllers
                 var password = Request.Form["password"];
                 var newUserBD = new User()
                 {
-                    UserId = claim.Email,
-                    FirstName = claim.FirstName,
-                    LastName = claim.LastName,
-                    Email = claim.Email,
+                    UserId = claim.User.Email,
+                    FirstName = claim.User.FirstName,
+                    LastName = claim.User.LastName,
+                    Email = claim.User.Email,
                     password = GetHash(password),
                     PictureUrl = "",
                     CreateDate = DateTime.Now,

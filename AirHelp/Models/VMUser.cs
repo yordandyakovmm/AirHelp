@@ -31,15 +31,15 @@ namespace AirHelp.Models
         public VMClaim(Claim claim)
         {
             ClaimId = claim.ClaimId;
-            State = claim.State;
+            State = "";
 
             User = null;
             DateCreated = claim.DateCreated;
 
             BordCardUrl = claim.BordCardUrl;
             BookConfirmationUrl = claim.BookConfirmationUrl;
-            Type = claim.Type;
-            ConnectionAriports = claim.ConnectionAriports;
+            Type = claim.Type.ToString();
+            
             FirstName = claim.User.FirstName;
             LastName = claim.User.LastName;
             City = claim.User.City;
@@ -48,11 +48,8 @@ namespace AirHelp.Models
             Email = claim.User.Email;
             Tel = claim.User.Tel;
             FlightNumber = claim.FlightNumber;
-            Date = claim.Date;
-            DepartureAirport = claim.DepartureAirport;
-            DestinationAirports = claim.DestinationAirports;
-            HasConnection = claim.HasConnection;
-            ConnectionAirports = claim.ConnectionAirports;
+            Date = claim.Date.ToString("dd.MM.yyyy");
+    
             Reason = claim.Reason;
             HowMuch = claim.HowMuch;
             Annonsment = claim.Annonsment;
@@ -73,15 +70,14 @@ namespace AirHelp.Models
         public VMClaim FromClaim(Claim claim)
         {
             ClaimId = claim.ClaimId;
-            State = claim.State;
+            State = claim.State.ToString();
 
             User = null;
             DateCreated = claim.DateCreated;
 
             BordCardUrl = claim.BordCardUrl;
             BookConfirmationUrl = claim.BookConfirmationUrl;
-            Type = claim.Type;
-            ConnectionAriports = claim.ConnectionAriports;
+            Type  = "";
             FirstName = claim.User.FirstName;
             LastName = claim.User.LastName;
             City = claim.User.City;
@@ -90,11 +86,7 @@ namespace AirHelp.Models
             Email = claim.User.Email;
             Tel = claim.User.Tel;
             FlightNumber = claim.FlightNumber;
-            Date = claim.Date;
-            DepartureAirport = claim.DepartureAirport;
-            DestinationAirports = claim.DestinationAirports;
-            HasConnection = claim.HasConnection;
-            ConnectionAirports = claim.ConnectionAirports;
+            Date = claim.Date.ToString("dd.MM.yyyy");
             Reason = claim.Reason;
             HowMuch = claim.HowMuch;
             Annonsment = claim.Annonsment;

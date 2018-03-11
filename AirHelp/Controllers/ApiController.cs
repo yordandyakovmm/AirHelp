@@ -35,14 +35,14 @@ namespace AirHelp.Controllers
 
         [HttpGet]
         [Route("api/getFlight")]
-        async public Task<JsonResult> GetAirport(string number, DateTime date)
+        async public Task<JsonResult> GetAirport(string number, string date)
         {
             number = number.Trim().Replace(" ", "").Replace("-", "");
             string airLineCode = number.Substring(0, 2).ToUpper();
             string flightNumber = number.Substring(2);
-            int year = date.Year;
-            int month = date.Day;
-            int day = date.Month;
+            string year = date.Split('.')[2];
+            string month = date.Split('.')[1];
+            string day = date.Split('.')[0];
 
             string appID = ConfigurationManager.AppSettings["appId"];
             string appKey = ConfigurationManager.AppSettings["appKey"];
