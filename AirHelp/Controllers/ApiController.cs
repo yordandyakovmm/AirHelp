@@ -35,7 +35,7 @@ namespace AirHelp.Controllers
 
         [HttpGet]
         [Route("api/getFlight")]
-        async public Task<JsonResult> GetAirport(string number, string date)
+        async public Task<string> GetAirport(string number, string date)
         {
             number = number.Trim().Replace(" ", "").Replace("-", "");
             string airLineCode = number.Substring(0, 2).ToUpper();
@@ -55,7 +55,8 @@ namespace AirHelp.Controllers
             json = await response.Content.ReadAsStringAsync();
             JavaScriptSerializer json_serializer = new JavaScriptSerializer();
             FlightStatus flight = JsonConvert.DeserializeObject<FlightStatus>(json);
-            return Json(json, JsonRequestBehavior.AllowGet);
+            
+            return json.Replace("\\", "");
         }
 
         
