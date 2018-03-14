@@ -21,6 +21,7 @@ using System.Web.Helpers;
 using System.Web.Script.Serialization;
 using System.Device.Location;
 using Newtonsoft.Json;
+using AirHelp.Hellpers;
 
 namespace AirHelp.Controllers
 {
@@ -35,28 +36,12 @@ namespace AirHelp.Controllers
 
         [HttpGet]
         [Route("api/getFlight")]
-        async public Task<string> GetAirport(string number, string date)
+        public string GetFlight(string number, string date)
         {
-            number = number.Trim().Replace(" ", "").Replace("-", "");
-            string airLineCode = number.Substring(0, 2).ToUpper();
-            string flightNumber = number.Substring(2);
-            string year = date.Split('.')[2];
-            string month = date.Split('.')[1];
-            string day = date.Split('.')[0];
+            var flight = CommonHeppler.GetFlight(number, date);
+            return flight.ToString();
 
-            string appID = ConfigurationManager.AppSettings["appId"];
-            string appKey = ConfigurationManager.AppSettings["appKey"];
 
-            string json = "";
-            var url = $"https://api.flightstats.com/flex/flightstatus/historical/rest/v3/json/flight/status/{airLineCode}/{flightNumber}/dep/{year}/{month}/{day}?appId={appID}&appKey={appKey}";
-            
-            var response = await client.GetAsync(url);
-
-            json = await response.Content.ReadAsStringAsync();
-            JavaScriptSerializer json_serializer = new JavaScriptSerializer();
-            FlightStatus flight = JsonConvert.DeserializeObject<FlightStatus>(json);
-            
-            return json.Replace("\\", "");
         }
 
         

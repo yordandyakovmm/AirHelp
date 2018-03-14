@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201802041826460_AirCompany.Designer.cs">
       <DependentUpon>201802041826460_AirCompany.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803141725074_refactoring.cs" />
+    <Compile Include="Migrations\201803141725074_refactoring.Designer.cs">
+      <DependentUpon>201803141725074_refactoring.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -468,6 +472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802041826460_AirCompany.resx">
       <DependentUpon>201802041826460_AirCompany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803141725074_refactoring.resx">
+      <DependentUpon>201803141725074_refactoring.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
