@@ -28,6 +28,15 @@ namespace AirHelp.Controllers
     public class ClaimController : BaseController
     {
 
+
+        [HttpGet]
+        [Route("проверка-полет")]
+        public ActionResult RegisterClaim()
+        {
+            //ViewBag.category = category;
+            return View("DirectFlight");
+        }
+
         [HttpGet]
         [Route("обезщетение-при-полет/{category}")]
         public ActionResult RegisterClaim(string category)

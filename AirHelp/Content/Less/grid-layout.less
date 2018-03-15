@@ -528,85 +528,87 @@ a:hover {
         }
     }
 
-    .register-form {
-        grid-template: "Content";
-        display: grid;
-        grid-template-columns: auto 1000px auto;
-        grid-template-rows: 50px auto 50px;
-        grid-template-areas: ". . ." "left center rigth" ". . .";
-    }
+    
 
-    .data-content {
-        grid-template: "Content";
-        display: grid;
-        grid-template-columns: auto 1200px auto;
-        grid-template-areas: "left center rigth";
-        padding: 50px 50px;
-        //background-image: url('/Content/Assets/clouds.jpg');
-        //background-size: 100%;
-        //filter: opacity(20%);
-        //background-color: lightblue;
-        .center-content {
-            //background-color: white;
-            h2 {
-                margin: 10px 0 0 0;
-                font-family: "PT Sans", sans-serif;
-                font-size: 32px;
-                font-weight: 500;
-            }
-
-            p {
-                text-align: left;
-                font-family: "PT Sans", sans-serif;
-                font-size: 16px;
-            }
-        }
-
-        .info-page {
-            grid-area: center;
-            padding: 30px 30px;
-
-            h1 {
-                margin: 10px 0 0 0;
-                font-family: "PT Sans", sans-serif;
-                font-size: 32px;
-                font-weight: 500;
-            }
-
-            h2 {
-                margin: 10px 0 0 0;
-                font-family: "PT Sans", sans-serif;
-                font-size: 28px;
-                font-weight: 500;
-            }
-
-            p {
-                text-align: left;
-                font-family: "PT Sans", sans-serif;
-                font-size: 16px;
-            }
-        }
-    }
-
-    .left-content {
-        grid-area: left;
-        //background-color: aquamarine;
-    }
-
+.data-content {
+    grid-template: "Content";
+    display: grid;
+    grid-template-columns: auto 1200px auto;
+    grid-template-areas: "left center rigth";
+    padding: 50px 50px;
+    //background-image: url('/Content/Assets/clouds.jpg');
+    //background-size: 100%;
+    //filter: opacity(20%);
+    //background-color: lightblue;
     .center-content {
-        grid-area: center;
-        box-shadow: 12px 0 50px -4px rgba(31, 73, 125, 0.8), -12px 0 50px -4px rgba(31, 73, 125, 0.8);
-        //background: linear-gradient(30);
-        //background-color: azure;
-        display: flex;
-        flex-flow: column;
-        padding: 5px 10px;
+        //background-color: white;
+        h2 {
+            margin: 10px 0 0 0;
+            font-family: "PT Sans", sans-serif;
+            font-size: 32px;
+            font-weight: 500;
+        }
+
+        p {
+            text-align: left;
+            font-family: "PT Sans", sans-serif;
+            font-size: 16px;
+        }
     }
 
-    .rigth-content {
-        grid-area: rigth;
-        //background-color: aquamarine;
+    .info-page {
+        grid-area: center;
+        padding: 30px 30px;
+
+        h1 {
+            margin: 10px 0 0 0;
+            font-family: "PT Sans", sans-serif;
+            font-size: 32px;
+            font-weight: 500;
+        }
+
+        h2 {
+            margin: 10px 0 0 0;
+            font-family: "PT Sans", sans-serif;
+            font-size: 28px;
+            font-weight: 500;
+        }
+
+        p {
+            text-align: left;
+            font-family: "PT Sans", sans-serif;
+            font-size: 16px;
+        }
     }
+}
+
+.register-form {
+    grid-template: "Content";
+    display: grid;
+    grid-template-columns: auto 800px 100px;
+    grid-template-rows: 50px auto 50px;
+    grid-template-areas: ". . ." "left center rigth" ". . .";
+}
+
+.left-content {
+    grid-area: left;
+    //background-color: aquamarine;
+}
+
+.center-content {
+    grid-area: center;
+    //box-shadow: 12px 0 50px -4px rgba(31, 73, 125, 0.8), -12px 0 50px -4px rgba(31, 73, 125, 0.8);
+    //background: linear-gradient(30);
+    //background-color: azure;
+    display: flex;
+    flex-flow: column;
+    padding: 5px 10px;
+}
+
+.rigth-content {
+    grid-area: rigth;
+    //background-color: aquamarine;
+}
 
     .form-row {
         margin: 15px 0 0 0;
@@ -649,21 +651,21 @@ a:hover {
 
         &.left {
             label {
-                margin-left: 50px;
+                margin-left: 0px;
             }
 
             input[type=text], ul {
-                margin-left: 50px;
+                margin-left: 0px;
             }
         }
 
         &.rigth {
             label {
-                margin-left: 20px;
+                margin-left: 0px;
             }
 
             input[type=text], ul {
-                margin-left: 20px;
+                margin-left: 0px;
             }
         }
     }

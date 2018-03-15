@@ -427,13 +427,6 @@ a:hover {
   height: 80px;
   margin: auto;
 }
-.register-form {
-  grid-template: "Content";
-  display: grid;
-  grid-template-columns: auto 1000px auto;
-  grid-template-rows: 50px auto 50px;
-  grid-template-areas: ". . ." "left center rigth" ". . .";
-}
 .data-content {
   grid-template: "Content";
   display: grid;
@@ -473,12 +466,18 @@ a:hover {
   font-family: "PT Sans", sans-serif;
   font-size: 16px;
 }
+.register-form {
+  grid-template: "Content";
+  display: grid;
+  grid-template-columns: auto 800px 100px;
+  grid-template-rows: 50px auto 50px;
+  grid-template-areas: ". . ." "left center rigth" ". . .";
+}
 .left-content {
   grid-area: left;
 }
 .center-content {
   grid-area: center;
-  box-shadow: 12px 0 50px -4px rgba(31, 73, 125, 0.8), -12px 0 50px -4px rgba(31, 73, 125, 0.8);
   display: flex;
   flex-flow: column;
   padding: 5px 10px;
@@ -521,18 +520,18 @@ a:hover {
   justify-content: center;
 }
 .form-box.left label {
-  margin-left: 50px;
+  margin-left: 0px;
 }
 .form-box.left input[type=text],
 .form-box.left ul {
-  margin-left: 50px;
+  margin-left: 0px;
 }
 .form-box.rigth label {
-  margin-left: 20px;
+  margin-left: 0px;
 }
 .form-box.rigth input[type=text],
 .form-box.rigth ul {
-  margin-left: 20px;
+  margin-left: 0px;
 }
 .form-box-width {
   width: 100%;

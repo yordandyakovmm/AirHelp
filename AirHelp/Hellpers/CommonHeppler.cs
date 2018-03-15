@@ -47,7 +47,65 @@ namespace AirHelp.Hellpers
             return flight;
         }
 
-            public static bool IsEuCountry(string countryCode)
+        public static string GetAirport(string text)
+        {
+            var result = "";
+            var url = "https://openflights.org/php/apsearch.php";
+            var values = new Dictionary<string, string>
+                {
+                      {"name" , text},
+                      {"country", "ALL"},
+                      {"action", "SEARCH"},
+                      {"offset", "0"}
+                };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = client.PostAsync(url, content).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+
+                result = responseContent.ReadAsStringAsync().Result;
+
+            }
+                        
+            return result;
+        }
+
+       public static string GetAirlines(string text)
+        {
+            
+            string result = "";
+            var url = "https://openflights.org/php/alsearch.php";
+            var values = new Dictionary<string, string>
+                {
+                      {"name" , text},
+                      {"country", "ALL"},
+                      {"action", "SEARCH"},
+                      {"mode", "F" },
+                      {"iatafilter", "true" }
+            };
+
+            var content = new FormUrlEncodedContent(values);
+
+            var response = client.PostAsync(url, content).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = response.Content;
+
+                result = responseContent.ReadAsStringAsync().Result;
+
+            }
+
+            result = result.Substring(result.IndexOf('{')).Replace("\n", ",");
+            result = "{\"status\": 1, \"airports\": [" + result + "]}";
+
+            return result;
+        }
+        public static bool IsEuCountry(string countryCode)
         {
             countryCode = countryCode.ToUpper();
             return CountryCodeArr.ToList().Any(c => c == countryCode);

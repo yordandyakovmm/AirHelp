@@ -29,22 +29,7 @@
     text-rendering: optimizeLegibility;
 }
 
-label {
-    #font;
-    margin: 0 0 5px 0;
-    padding-left: 10px;
-    justify-content: flex-start;
-    font-weight: 600;
 
-    span.requared {
-        margin-left: 2px;
-        color: red;
-    }
-
-    &.file-upload {
-        margin-left: 10px;
-    }
-}
 
 #signiture-div {
     width: 500px;
@@ -77,7 +62,7 @@ canvas {
 
 
 input[type="text"], input[type="password"] {
-    width: 400px;
+    width: 300px;
     padding: 12px 30px 12px 20px;
     box-sizing: border-box;
     border: 1px solid @border-blue-color;
@@ -87,7 +72,7 @@ input[type="text"], input[type="password"] {
 
     &:focus {
         outline: none;
-        box-shadow: 0 0 8px @blue-color;
+        box-shadow: 0 0 4px @blue-color;
     }
 }
 
@@ -178,15 +163,22 @@ button.clear {
 
 
 button.submit {
-    #button-big;
+    border: solid 1px @blue-color;
+    font-family: Helvetica, sans-serif;
+    width: 250px;
+    height: 44px;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 3px;
     background-color: @blue-color;
 
     &:hover {
-        background-color: lighten(@blue-color, -20%);
+        background-color: lighten(@blue-color, 20%);
     }
 
     .icon::before {
-        font-size: 22px;
+        font-size: 15px;
         content: '\e084';
         margin-right: 15px;
         color: white;
@@ -302,8 +294,8 @@ button.reset {
 .form-hedar {
     #font;
     font-weight: 700;
-    font-size: 32px;
-    margin: 20px 0 0 100px;
+    font-size: 30px;
+    margin: 20px 0 0 0;
 
     &.view {
         text-transform: uppercase;
@@ -524,12 +516,22 @@ button.bAdd {
 
 
 label {
-    margin-left: 100px;
-    font-size: 18px;
-}
+    #font;
+    font-size: 15px;
+    font-weight: 500;
+       
+    margin: 0 0 5px 0;
+    justify-content: flex-start;
+    
+    span.requared {
+        margin-left: 2px;
+        color: red;
+    }
 
+    &.file-upload {
+        margin-left: 10px;
+    }
 
-label {
     &.heder {
         font-size: 18px;
 

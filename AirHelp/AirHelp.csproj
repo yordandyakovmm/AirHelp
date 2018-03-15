@@ -428,6 +428,7 @@
     <Content Include="Views\Common\ContactForm.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="site1.PublishSettings" />
+    <Content Include="Views\Claim\DirectFlight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

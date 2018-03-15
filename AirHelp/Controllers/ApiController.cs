@@ -47,49 +47,22 @@ namespace AirHelp.Controllers
         
         [HttpGet]
         [Route("api/airports")]
-        async public Task<string> GetAirport(string id)
+        public string GetAirport(string text)
         {
             string result = "";
-            var url = "https://openflights.org/php/apsearch.php";
-            var values = new Dictionary<string, string>
-                {
-                      {"name" , id},
-                      {"country", "ALL"},
-                      {"action", "SEARCH"},
-                      {"offset", "0"}
-                };
 
-            var content = new FormUrlEncodedContent(values);
-
-            var response = await client.PostAsync(url, content);
-
-            result = await response.Content.ReadAsStringAsync();
+            result = CommonHeppler.GetAirport(text);
 
             return result;
         }
 
         [HttpGet]
         [Route("api/airline")]
-        async public Task<string> GetAirlines(string id)
+        public string GetAirlines(string text)
         {
             string result = "";
-            var url = "https://openflights.org/php/alsearch.php";
-            var values = new Dictionary<string, string>
-                {
-                      {"name" , id},
-                      {"country", "ALL"},
-                      {"action", "SEARCH"},
-                      {"mode", "F" },
-                      {"iatafilter", "true" }
-            };
 
-            var content = new FormUrlEncodedContent(values);
-
-            var response = await client.PostAsync(url, content);
-
-            result = await response.Content.ReadAsStringAsync();
-            result = result.Substring(result.IndexOf('{')).Replace("\n", ",");
-            result = "{\"status\": 1, \"airports\": [" + result + "]}";
+            result = CommonHeppler.GetAirlines(text);
 
             return result;
         }
