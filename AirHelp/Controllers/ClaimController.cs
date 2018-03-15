@@ -42,10 +42,76 @@ namespace AirHelp.Controllers
         [Route("проверка-полет")]
         public ActionResult CheckDirctFlightPost(string FlightNumber, string Date)
         {
-            var model = new VMDirectFlight();
+            var model = new VMDirectFlight()
+            {
+                date = Date,
+                number = FlightNumber,
+                numberError = ""
+            };
             FlightStatus fligth = CommonHeppler.GetFlight(FlightNumber,  Date);
-            
-            return View("DirectFlight", model);
+
+            if (fligth.flightStatuses.Length == 0)
+            {
+                model.commonError = "Невалидна комбинция от номер и дата на полета";
+                return View("DirectFlight", model);
+            }
+
+            var AirLine = fligth.appendix.airlines.ToList().Find(a => a.iata == fligth.flightStatuses[0].primaryCarrierFsCode);
+
+            Claim claim = new Claim
+            {
+                ClaimId = Guid.NewGuid(),
+                State = ClaimStatus.Accepted,
+                UserId = User.Identity.IsAuthenticated ? User.Identity.Name: null,
+                DateCreated = DateTime.Now,
+                Type = ProblemType.Pending,
+                FlightNumber = FlightNumber,
+                AirCompany = AirLine.name,
+                AirCompanyCountry = ""
+            };
+
+            int number = 0;
+            fligth.appendix.airports.ToList().ForEach(a => {
+                double distance = 0;
+                if (number > 0)
+                {
+                    var sCoord = new GeoCoordinate(fligth.appendix.airports[number].longitude, fligth.appendix.airports[number].latitude);
+                    var eCoord = new GeoCoordinate(fligth.appendix.airports[number+1].longitude, fligth.appendix.airports[number+1].latitude);
+
+                    distance = sCoord.GetDistanceTo(eCoord);
+                }
+                AirPort airport = new AirPort
+                {
+                    Id = Guid.NewGuid(),
+                    ap_name = a.name,
+                    city = a.city,
+                    cityCode = a.cityCode,
+                    country = a.countryName,
+                    countryCode = a.countryCode,
+                    elevation = a.elevationFeet,
+                    iata = a.iata,
+                    number = number,
+                    name = a.name,
+                    timezone = 0,
+                    icao = a.icao,
+                    type =  "",
+                    x = a.latitude,
+                    y = a.longitude,
+                    distance = distance
+                };
+                number++;
+                claim.AirPorts.Add(airport);
+            });
+
+            claim.distance = claim.AirPorts.Sum(a => a.distance);
+
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                dc.Claims.Add(claim);
+                dc.SaveChanges();
+            }
+
+            return View("ColectData", claim);
         }
 
         [HttpGet]

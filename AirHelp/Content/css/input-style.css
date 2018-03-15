@@ -211,9 +211,13 @@ button.reset .icon::before {
   color: red;
 }
 .error .sub-error {
-  margin: 5px 0 0 0;
+  margin: 5px 0 ;
   color: red;
   display: block;
+}
+.error-row {
+  margin: 5px 0 0 0;
+  color: red;
 }
 .form-hedar {
   font-family: "PT Sans", sans-serif;

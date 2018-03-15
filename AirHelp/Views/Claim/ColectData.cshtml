@@ -9,7 +9,7 @@
             <input type="hidden" name="ConnectionAriports" value="" />
             <input type="hidden" name="json" value="" />
             <input type="hidden" name="SignitureImage" value="" />
-
+          
             <div class="form-hedar">
                 Информаця за полета
             </div>
@@ -24,21 +24,14 @@
                 <div class="form-box rigth">
                     <label>Дата на полета<span class="requared">*</span></label>
                     <div>
-                        <input type="text" id="Date" name="Date" placeholder="Дата на полета" validate /><i class="icon"></i>
+                        <input type="text" id="Date" name="Date" placeholder="Дата на полета" validate  /><i class="icon"></i>
                     </div>
+                   
+                   
                 </div>
-            </div>
 
-            <div class="form-subtext">
-                @if (Model.commonError != "")
-                {
-                    <label class="error-row">
-                        @Model.commonError
-                    </label>
-                }
             </div>
-
-            <div class="form-row">
+           <div class="form-row">
                 <div class="form-box">
                     <button class="submit" type="submit" keypress="return false" onclick="return validateCommon()">Напред</button>
                 </div>

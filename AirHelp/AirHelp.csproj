@@ -251,7 +251,7 @@
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\Object.cs" />
     <Compile Include="Models\Enums.cs" />
-    <Compile Include="Models\VM.cs" />
+    <Compile Include="Models\VMUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -429,6 +429,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="site1.PublishSettings" />
     <Content Include="Views\Claim\DirectFlight.cshtml" />
+    <Content Include="Views\Claim\ColectData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

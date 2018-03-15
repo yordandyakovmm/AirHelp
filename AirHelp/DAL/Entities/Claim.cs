@@ -73,6 +73,8 @@ namespace AirHelp.DAL
 
         public virtual ICollection<AdditionalUser> AdditionalUsers { get; set; }
 
+        public double distance { get; set; }
+
 
     }
 

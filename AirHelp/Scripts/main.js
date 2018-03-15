@@ -24,6 +24,8 @@
 
     $('input[type=text]').change(function () {
 
+        $('.error-row').hide();
+
         var data = $(this).val();
         var result = false;
 
