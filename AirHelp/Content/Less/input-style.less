@@ -125,21 +125,7 @@ button.upload {
     }
 }
 
-button.clear {
-    width: 302px;
-    padding: 12px 5px 12px 5px;
-    box-sizing: border-box;
-    border: 1px solid @border-blue-color;
-    border-radius: 2px;
-    #font;
-    outline: none;
-    border-color: @blue-color;
-    background-color: lighten(@button-color, 40%);
 
-    &:hover {
-        background-color: lighten(@button-color, 60%);
-    }
-}
 
 
 #button-big() {
@@ -163,9 +149,10 @@ button.clear {
 
 
 button.submit {
+    margin: 10px 0 0 0;
     border: solid 1px @blue-color;
     font-family: Helvetica, sans-serif;
-    width: 250px;
+    width: 300px;
     height: 44px;
     color: white;
     font-weight: 500;
@@ -174,16 +161,21 @@ button.submit {
     background-color: @blue-color;
 
     &:hover {
-        background-color: lighten(@blue-color, 20%);
+        background-color: lighten(@blue-color, -20%);
     }
+        
+}
 
-    .icon::before {
-        font-size: 15px;
-        content: '\e084';
-        margin-right: 15px;
-        color: white;
+button.clear {
+    
+    border-color: @blue-color;
+    background-color: lighten(@button-color, 40%);
+
+    &:hover {
+        background-color: lighten(@button-color, 60%);
     }
 }
+
 
 button.submit-claim {
     width: 280px;
@@ -273,6 +265,10 @@ button.reset {
     }
 }
 
+.sub-error{
+    display: none;
+}
+
 .error {
     input {
         &:focus {
@@ -288,6 +284,12 @@ button.reset {
             margin-left: -30px;
             color: red;
         }
+    }
+
+    .sub-error {
+        margin: 5px 0 0 0;
+        color: red;
+        display: block;
     }
 }
 

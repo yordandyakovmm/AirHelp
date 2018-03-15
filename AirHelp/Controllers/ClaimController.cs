@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using System.Web.Helpers;
 using System.Web.Script.Serialization;
 using System.Device.Location;
+using AirHelp.Hellpers;
 
 namespace AirHelp.Controllers
 {
@@ -31,10 +32,20 @@ namespace AirHelp.Controllers
 
         [HttpGet]
         [Route("проверка-полет")]
-        public ActionResult RegisterClaim()
+        public ActionResult DirctFlight()
         {
-            //ViewBag.category = category;
-            return View("DirectFlight");
+            var model = new VMDirectFlight();
+            return View("DirectFlight", model);
+        }
+
+        [HttpPost]
+        [Route("проверка-полет")]
+        public ActionResult CheckDirctFlightPost(string FlightNumber, string Date)
+        {
+            var model = new VMDirectFlight();
+            FlightStatus fligth = CommonHeppler.GetFlight(FlightNumber,  Date);
+            
+            return View("DirectFlight", model);
         }
 
         [HttpGet]

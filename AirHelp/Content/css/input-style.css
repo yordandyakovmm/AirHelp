@@ -85,27 +85,11 @@ button.upload + .icon::before {
   margin-left: -30px;
   color: #1e201e;
 }
-button.clear {
-  width: 302px;
-  padding: 12px 5px 12px 5px;
-  box-sizing: border-box;
-  border: 1px solid #009fe3;
-  border-radius: 2px;
-  font-family: "PT Sans", sans-serif;
-  color: #141a30;
-  font-size: 15px;
-  font-weight: 400;
-  outline: none;
-  border-color: #009fe3;
-  background-color: #ffffff;
-}
-button.clear:hover {
-  background-color: #ffffff;
-}
 button.submit {
+  margin: 10px 0 0 0;
   border: solid 1px #009fe3;
   font-family: Helvetica, sans-serif;
-  width: 250px;
+  width: 300px;
   height: 44px;
   color: white;
   font-weight: 500;
@@ -114,13 +98,14 @@ button.submit {
   background-color: #009fe3;
 }
 button.submit:hover {
-  background-color: #4ac9ff;
+  background-color: #00587d;
 }
-button.submit .icon::before {
-  font-size: 15px;
-  content: '\e084';
-  margin-right: 15px;
-  color: white;
+button.clear {
+  border-color: #009fe3;
+  background-color: #ffffff;
+}
+button.clear:hover {
+  background-color: #ffffff;
 }
 button.submit-claim {
   width: 280px;
@@ -209,6 +194,9 @@ button.reset .icon::before {
   margin-left: -30px;
   color: #009fe3;
 }
+.sub-error {
+  display: none;
+}
 .error input {
   border-color: red;
   color: red;
@@ -221,6 +209,11 @@ button.reset .icon::before {
   content: '\e014';
   margin-left: -30px;
   color: red;
+}
+.error .sub-error {
+  margin: 5px 0 0 0;
+  color: red;
+  display: block;
 }
 .form-hedar {
   font-family: "PT Sans", sans-serif;

@@ -1,6 +1,5 @@
-﻿@{
-//var category = ViewBag.category;
-}
+﻿@model AirHelp.Models.VMDirectFlight
+
 <div class="register-form">
     <div class="left-content">
     </div>
@@ -18,25 +17,26 @@
                 <div class="form-box left">
                     <label>Номер на полета<span class="requared">*</span></label>
                     <div>
-                        <input type="text" name="FlightNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
+                        <input type="text" name="FlightNumber" id="FlightNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
                     </div>
-                    <label class="error"></label>
+                    <label class="sub-error">@Model.numberError</label>
                 </div>
                 <div class="form-box rigth">
                     <label>Дата на полета<span class="requared">*</span></label>
                     <div>
-                        <input type="text" id="Date" name="Date" placeholder="Дата на полета" validate /><i class="icon"></i>
+                        <input type="text" id="Date" name="Date" placeholder="Дата на полета" validate  /><i class="icon"></i>
                     </div>
-                    <label class="error"></label>
+                   
+                   
                 </div>
+
             </div>
-           
-            <div class="form-row">
+           <div class="form-row">
                 <div class="form-box">
-                    <button class="submit" type="submit" keypress="return false" onclick="return validate()">Напред</button>
+                    <button class="submit" type="submit" keypress="return false" onclick="return validateCommon()">Напред</button>
                 </div>
                 <div class="form-box">
-                    <button class="reset" type="reset" keypress="return false" onclick="clearForm()"><i class="icon"></i><span>Изчисти</span></button>
+                    <button class="reset" type="reset" keypress="return false" onclick="clearForm()">Изчисти</button>
                 </div>
             </div>
             <div class="form-row">

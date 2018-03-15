@@ -1,14 +1,11 @@
 ﻿$(document).ready(function () {
 
-
-
     $(window).keydown(function (event) {
         if (event.keyCode == 13) {
             event.preventDefault();
             return false;
         }
     });
-
 
     //nitialize width of position absolute elements
     $('.lSuggestoin').each(function (el) {
@@ -24,6 +21,7 @@
 
     $('#Date').datepicker({ dateFormat: 'dd.mm.yy' });
     $('#Date').datepicker($.datepicker.regional['bg']);
+
     $('input[type=text]').change(function () {
 
         var data = $(this).val();
@@ -45,9 +43,22 @@
         else if (this.id == 'Tel') {
             result = data.length >= 8;
         }
+        else if (this.id == 'FlightNumber') {
+            var text = data.replace(' ', '').replace('-', '');
+            if (text.length < 3) {
+                result = false;
+            }
+            else {
+                var re = /(^[a-zA-Z]){1}([a-zA-Z]|[0-9]){1}([0-9]*$)/;
+                result = re.test(text);
+                $(this).parent().parent().find('.sub-error').text('Невалиден номмер');
+            }
+            
+        }
         else {
             result = data.length >= 3;
         }
+
         if (result && $(this).not('[dropdown]').length > 0) {
             $(this).parent().parent().removeClass('error');
             $(this).parent().parent().addClass('success');
@@ -272,7 +283,9 @@ function uploadChange(obj) {
 }
 
 
-function validate() {
+
+function validateCommon()
+{
     var result = true;
     $('input:visible[validate]').each(function (el) {
         if ($(this).parent().parent().not('.success').length > 0) {
@@ -281,6 +294,12 @@ function validate() {
             result = false;
         }
     });
+    return result;
+}
+
+function validate() {
+    
+    var result = validateCommon();
 
     if ($("input[name='Reason']").length > 0) {
         var howMuch = $("input[name='Reason']:checked").val();
@@ -390,6 +409,8 @@ function validate() {
     saveSigiture();
     return result;
 }
+
+
 
 function clearForm() {
     $('.success').removeClass('success');
