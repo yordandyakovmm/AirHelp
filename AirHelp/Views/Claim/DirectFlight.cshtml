@@ -1,7 +1,16 @@
 ﻿@model AirHelp.Models.VMDirectFlight
 
 <div class="register-form">
-    <div class="left-content">
+    <div class="progress">
+        <div class="past">
+            <div>1</div> <label>Калкулиране на обезщетение</label> 
+        </div>
+        <div class="current">
+            <div>2</div> <label>Регистрация</label>
+        </div>
+        <div>
+            <div>3</div> <label>Подаване на иск</label>
+        </div>
     </div>
     <div class="center-content">
         <form method="post" enctype="multipart/form-data">
@@ -26,6 +35,7 @@
                     <div>
                         <input type="text" id="Date" name="Date" placeholder="Дата на полета" validate /><i class="icon"></i>
                     </div>
+                    <label class="sub-error"></label>
                 </div>
             </div>
 
@@ -52,9 +62,6 @@
         </form>
     </div>
 
-    <div class="rigth-content">
-
-    </div>
 </div>
 
 <script src="~/Scripts/main.js"></script>

@@ -153,7 +153,7 @@ button.submit {
     border: solid 1px @blue-color;
     font-family: Helvetica, sans-serif;
     width: 300px;
-    height: 44px;
+    height: 48px;
     color: white;
     font-weight: 500;
     font-size: 15px;
@@ -165,6 +165,25 @@ button.submit {
     }
         
 }
+
+
+button.reset {
+    margin: 10px 0 0 0;
+    border: solid 1px #8d9db6;
+    font-family: Helvetica, sans-serif;
+    width: 300px;
+    height: 48px;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 3px;
+    background-color: #8d9db6;
+
+    &:hover {
+        background-color: lighten(#8d9db6, -20%);
+    }
+}
+
 
 button.clear {
     
@@ -232,21 +251,7 @@ button.claim-reset {
     }
 }
 
-button.reset {
-    #button-big;
-    background-color: #8d9db6;
 
-    &:hover {
-        background-color: lighten(#8d9db6, -20%);
-    }
-
-    .icon::before {
-        font-size: 22px;
-        content: '\e014';
-        margin-right: 15px;
-        color: white;
-    }
-}
 
 .success {
     input {

@@ -469,12 +469,22 @@ a:hover {
 .register-form {
   grid-template: "Content";
   display: grid;
-  grid-template-columns: auto 800px 100px;
+  grid-template-columns: auto 300px 800px auto;
   grid-template-rows: 50px auto 50px;
-  grid-template-areas: ". . ." "left center rigth" ". . .";
+  grid-template-areas: ". . . ." ". progress center . " ". . . .";
 }
-.left-content {
-  grid-area: left;
+.progress {
+  grid-area: progress;
+  display: flex;
+  flex-flow: column;
+  font-family: "PT sans";
+  font-size: 18px;
+}
+.progress span {
+  width: 20px;
+  height: 20px;
+  border: solid 2px #4d4d4d;
+  border-radius: 50%;
 }
 .center-content {
   grid-area: center;
@@ -519,6 +529,9 @@ a:hover {
   flex-flow: column;
   justify-content: flex-start;
   align-items: flex-start;
+}
+.form-box > div {
+  width: 100%;
 }
 .form-box.left label {
   margin-left: 0px;
