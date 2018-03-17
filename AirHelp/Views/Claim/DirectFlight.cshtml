@@ -3,18 +3,21 @@
 <div class="register-form">
     <div class="progress">
         <div class="past">
-            <div>1</div> <label>Калкулиране на обезщетение</label> 
+            <div class="circle"><label>1</label></div>
+            <label class="text">Калкулиране на обезщетение</label> 
         </div>
         <div class="current">
-            <div>2</div> <label>Регистрация</label>
+            <div class="circle"><label>2</label></div>
+            <label class="text">Регистрация</label>
         </div>
-        <div>
-            <div>3</div> <label>Подаване на иск</label>
+        <div class="empty">
+            <div class="circle"><label>3</label></div>
+            <label class="text">Подаване на иск</label>
         </div>
+        
     </div>
     <div class="center-content">
         <form method="post" enctype="multipart/form-data">
-            @*<input type="hidden" name="Type"  value="@category" />*@
             <input type="hidden" name="ConnectionAriports" value="" />
             <input type="hidden" name="json" value="" />
             <input type="hidden" name="SignitureImage" value="" />

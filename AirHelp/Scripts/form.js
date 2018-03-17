@@ -1,17 +1,4 @@
-﻿$(document).ready(function () {
-    $('input').change(function () {
-        $(this).parent().removeClass('error');
-        $('.autentication-error').hide();
-    });
-
-    fixSize();
-
-});
-
-$(window).resize(function () {
-    fixSize();
-});
-
+﻿
 function fixSize() {
     var heigth = $(window).height() - 240;
     $('.form-content').height(heigth);

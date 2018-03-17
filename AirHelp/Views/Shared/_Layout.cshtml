@@ -57,14 +57,38 @@
         </div>
 
         @RenderBody()
+        <div class="bottom-spacer">
+            <div class="spacer">
 
-        <div class="bottom">
+            </div>
+            <div class="bottom">
 
-            <span>Коеф ООД е регистриран като администратор на лични данни с номер 529654</span>
+                <span>Коеф ООД е регистриран като администратор на лични данни с номер 529654</span>
 
+            </div>
         </div>
 
     </div>
-   
+    <script type="text/javascript">
+      
+       fixSize();
+      
+
+       $(window).resize(function () {
+           fixSize();
+       });
+
+       function fixSize() {
+           var wHeigth = $(window).height();
+           var dHeigth = $('body').height();
+           if (dHeigth < wHeigth) {
+               $('.spacer').height(wHeigth - dHeigth);
+           }
+
+
+       }
+    </script>
 </body>
 </html>
+
+

@@ -35,7 +35,7 @@ a:hover {
   grid-template-rows: 100px auto 40px;
   grid-gap: 0px;
   background-color: #fafafa;
-  grid-template-areas: "Logo" "content" "bottom";
+  grid-template-areas: "Logo" "content" "bottom-spacer";
 }
 .index-container {
   display: grid;
@@ -479,12 +479,59 @@ a:hover {
   flex-flow: column;
   font-family: "PT sans";
   font-size: 18px;
+  padding: 40px 0 0 0;
 }
-.progress span {
-  width: 20px;
-  height: 20px;
-  border: solid 2px #4d4d4d;
-  border-radius: 50%;
+.progress label.text {
+  margin: 4px 0 0 8px;
+}
+.progress .circle {
+  border: 2px solid #009fe3;
+  padding: 3px;
+  box-sizing: border-box;
+  background-clip: content-box;
+  display: block;
+  border-radius: 100%;
+  display: flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  background-color: #009fe3;
+}
+.progress .circle label {
+  margin: 0;
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+}
+.progress > div {
+  display: flex;
+  flex-flow: row;
+  margin: 0 0 20px 0;
+}
+.progress > div.past .circle {
+  background-color: grayscale #009fe3;
+  border: 2px solid #009fe3;
+  padding: 0px;
+}
+.progress > div.past .circle label {
+  color: white;
+}
+.progress > div.current .circle {
+  background-color: #009fe3;
+  border: 2px solid #009fe3;
+  padding: 3px;
+}
+.progress > div.current .circle label {
+  color: white;
+}
+.progress > div.empty .circle {
+  background-color: white;
+  border: 3px solid #009fe3;
+  padding: 3px;
+}
+.progress > div.empty .circle label {
+  color: #009fe3;
 }
 .center-content {
   grid-area: center;
@@ -719,8 +766,11 @@ a:hover {
   flex-flow: row;
   justify-content: space-between;
 }
+.spacer {
+  display: block;
+}
 .bottom {
-  grid-template: "bottom";
+  grid-template: "bottom-spacer";
   background-color: #444;
   display: flex;
   flex-direction: column;

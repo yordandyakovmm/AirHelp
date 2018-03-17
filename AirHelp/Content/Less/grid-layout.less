@@ -59,7 +59,7 @@ a:hover {
     grid-template-rows: 100px auto 40px;
     grid-gap: 0px;
     background-color: @background-color;
-    grid-template-areas: "Logo" "content" "bottom";
+    grid-template-areas: "Logo" "content" "bottom-spacer";
 }
 
 .index-container {
@@ -115,7 +115,7 @@ a:hover {
         text-decoration: none;
     }
 
-    .enter:hover{
+    .enter:hover {
         transform: scale(1.5) 1s;
     }
 
@@ -194,6 +194,7 @@ a:hover {
         align-content: center;
         justify-content: center;
         text-transform: uppercase;
+
         span {
             font-family: "PT Sans", sans-serif;
             font-size: 40px;
@@ -266,7 +267,6 @@ a:hover {
     grid-column-gap: 10px;
     display: grid;
     background-color: azure;
-
     font-family: Arial, Helvetica, sans-serif;
 
     span {
@@ -465,70 +465,70 @@ a:hover {
     }
 }
 
-    .compensation-steps {
-        grid-template: "compensation-steps";
-        grid-template-columns: auto 400px 400px 400px auto;
-        grid-template-rows: 100px auto 50px;
-        grid-column-gap: 15px;
-        display: grid;
-        font-family: "PT Sans", Helvetica, sans-serif;
-        background-color: rgba(0, 159, 227, 1);
+.compensation-steps {
+    grid-template: "compensation-steps";
+    grid-template-columns: auto 400px 400px 400px auto;
+    grid-template-rows: 100px auto 50px;
+    grid-column-gap: 15px;
+    display: grid;
+    font-family: "PT Sans", Helvetica, sans-serif;
+    background-color: rgba(0, 159, 227, 1);
+
+    span {
+        text-align: center;
+        margin: auto auto auto auto;
+    }
+
+    .header-text {
+        grid-row: 1;
+        grid-column-start: 2;
+        grid-column-end: 5;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 32px;
+        font-weight: 600;
+        color: rgba(255,255, 255, 1);
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        text-transform: uppercase;
 
         span {
-            text-align: center;
-            margin: auto auto auto auto;
-        }
-
-        .header-text {
-            grid-row: 1;
-            grid-column-start: 2;
-            grid-column-end: 5;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 32px;
-            font-weight: 600;
-            color: rgba(255,255, 255, 1);
             display: flex;
-            align-content: center;
-            justify-content: center;
-            text-transform: uppercase;
-
-            span {
-                display: flex;
-            }
-        }
-
-        .span {
-            display: flex;
-            flex-flow: column;
-            align-content: center;
-            justify-content: center;
-
-            > * {
-                margin-top: 8px;
-            }
-
-            > span.text-black {
-                margin: 10px 0 0 0;
-                font-size: 18px;
-                font-weight: 600;
-            }
-
-            > p {
-                margin: 10px auto;
-                text-align: center;
-                width: 250px;
-                font-size: 14px;
-            }
-
-            .image img {
-                display: block;
-                height: 80px;
-                margin: auto;
-            }
         }
     }
 
-    
+    .span {
+        display: flex;
+        flex-flow: column;
+        align-content: center;
+        justify-content: center;
+
+        > * {
+            margin-top: 8px;
+        }
+
+        > span.text-black {
+            margin: 10px 0 0 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        > p {
+            margin: 10px auto;
+            text-align: center;
+            width: 250px;
+            font-size: 14px;
+        }
+
+        .image img {
+            display: block;
+            height: 80px;
+            margin: auto;
+        }
+    }
+}
+
+
 
 .data-content {
     grid-template: "Content";
@@ -596,14 +596,75 @@ a:hover {
     flex-flow: column;
     font-family: "PT sans";
     font-size: 18px;
+    padding: 40px 0 0 0;
 
-    span {
-        width: 20px;
-        height: 20px;
-        border: solid 2px lighten(black, 30%);
-        border-radius: 50%;
+    label.text {
+        margin: 4px 0 0 8px;
     }
-    //background-color: aquamarine;
+
+    .circle {
+        border: 2px solid @blue-color;
+        padding: 3px;
+        box-sizing: border-box;
+        background-clip: content-box;
+        display: block;
+        border-radius: 100%;
+        display: flex;
+        width: 28px;
+        height: 28px;
+        align-items: center;
+        justify-content: center;
+        background-color: @blue-color;
+
+        label {
+            margin: 0;
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+        }
+    }
+
+    > div {
+        display: flex;
+        flex-flow: row;
+        margin: 0 0 20px 0;
+
+        &.past {
+            .circle {
+                background-color: grayscale @blue-color;
+                border: 2px solid @blue-color;
+                padding: 0px;
+
+                label {
+                    color: white;
+                }
+            }
+        }
+
+        &.current {
+            .circle {
+                background-color: @blue-color;
+                border: 2px solid @blue-color;
+                padding: 3px;
+
+                label {
+                    color: white;
+                }
+            }
+        }
+
+        &.empty {
+            .circle {
+                background-color: white;
+                border: 3px solid @blue-color;
+                padding: 3px;
+
+                label {
+                    color: @blue-color;
+                }
+            }
+        }
+    }
 }
 
 .center-content {
@@ -621,375 +682,379 @@ a:hover {
     //background-color: aquamarine;
 }
 
-    .form-row {
-        margin: 15px 0 0 0;
-        display: flex;
-        flex-flow: row;
-        justify-content: space-around;
-        align-content: space-around;
+.form-row {
+    margin: 15px 0 0 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.form-row-choise {
+    margin: 5px 0 0 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    label {
+        margin: 20px 0 0 0;
+        display: inline-flex;
+    }
+}
+
+
+
+.form-row-yes-no, .form-row-rodio {
+    margin: 5px 0 0 50px;
+    display: grid;
+    padding: 0 0 0 10px;
+    grid-template-columns: 80px 80px auto;
+
+    label {
+        margin: 10px 0 0 0;
+        display: inline-flex;
+    }
+}
+
+.form-box {
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    > div {
+        width: 100%;
     }
 
-    .form-row-choise {
-        margin: 5px 0 0 60px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-
+    &.left {
         label {
-            margin: 20px 0 0 0;
-            display: inline-flex;
+            margin-left: 0px;
+        }
+
+        input[type=text], ul {
+            margin-left: 0px;
         }
     }
 
-
-
-    .form-row-yes-no, .form-row-rodio {
-        margin: 5px 0 0 50px;
-        display: grid;
-        padding: 0 0 0 10px;
-        grid-template-columns: 80px 80px auto;
-
+    &.rigth {
         label {
-            margin: 10px 0 0 0;
-            display: inline-flex;
+            margin-left: 0px;
+        }
+
+        input[type=text], ul {
+            margin-left: 0px;
         }
     }
+}
 
-    .form-box {
-        width: 50%;
-        display: flex;
-        flex-flow: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-
-        >div{
-            width: 100%;
-        }
-
-        &.left {
-            label {
-                margin-left: 0px;
-            }
-
-            input[type=text], ul {
-                margin-left: 0px;
-            }
-        }
-
-        &.rigth {
-            label {
-                margin-left: 0px;
-            }
-
-            input[type=text], ul {
-                margin-left: 0px;
-            }
-        }
-    }
-
-    .form-box-width {
-        label {
-            margin-left: 50px;
-        }
-
-        width: 100%;
-        display: flex;
-        flex-flow: column;
-
-        textarea {
-            margin-left: 50px;
-            width: 860px;
-        }
-
-        input[type=text] {
-            width: 860px;
-            margin-left: 50px
-        }
-    }
-
-    .form-box-upload {
-        > div {
-            margin-left: 50px;
-        }
-
-        > label {
-            margin-left: 60px;
-        }
-
-        width: 100%;
-        display: flex;
-        flex-flow: column;
-        justify-content: flex-start;
-    }
-
-    .form-box-signiture {
-        > div {
-            margin-left: 50px;
-        }
-
-        > label {
-            margin-left: 60px;
-        }
-
-        width: 100%;
-        display: flex;
-        flex-flow: column;
-    }
-
-    .width {
-        width: 100%;
-        display: flex;
-        flex-flow: column;
-    }
-
-    #connectionAirPorts {
+.form-box-width {
+    label {
         margin-left: 50px;
     }
 
-    .form-box-connection {
-        > div {
-            flex-flow: column;
-            width: 410px;
-        }
+    width: 100%;
+    display: flex;
+    flex-flow: column;
 
-        &:first-child button.bDelete {
-            display: none;
-            margin-left: 10px;
-        }
-        //width: 50%;
-        display: flex;
-        flex-flow: row;
-        justify-content: flex-start;
-        margin: 8px 0 0 0;
+    textarea {
+        margin-left: 50px;
+        width: 860px;
     }
 
-    .upload-box div {
-        margin-bottom: 10px;
+    input[type=text] {
+        width: 860px;
+        margin-left: 50px
+    }
+}
+
+.form-box-upload {
+    > div {
+        margin-left: 50px;
     }
 
-    .list-container {
-        margin: 50px 50px;
-        display: grid;
-        grid-template-columns: 100%;
-        grid-gap: 10px;
-        font-family: Verdana, Helvetica, sans-serif;
-        font-size: 14px;
-
-        a:nth-child(odd) > div > div {
-            background-color: #ccc;
-        }
-
-        a:nth-child(even) > div > div {
-            background-color: #eee;
-        }
-
-        .claim-list {
-            display: grid;
-            grid-template-columns: 100px 200px 200px 200px 100px 100px;
-            grid-template-rows: 30px;
-            grid-gap: 5px;
-
-            > div {
-                > label {
-                    font-size: 15px;
-                    cursor: pointer;
-                    height: 20px;
-                    margin: auto 0;
-                }
-
-                display: flex;
-                align-content: center;
-                justify-content: flex-start;
-                padding-left: 4px;
-                border-radius: 3px;
-            }
-        }
-    }
-
-    .contact-main {
-        display: flex;
-        flex-direction: column;
-        align-content: space-around;
-        justify-content: center;
-        padding: 40px;
-        font-family: "PT Sans", sans-serif;
-
-        > div {
-            width: 700px;
-            margin: 10px auto 0 auto;
-        }
-
-        .contact-data > div {
-            margin: 15px 0 0 0;
-        }
-
-        .title {
-            width: 700px;
-            margin: 0;
-            font-size: 18px;
-            padding-left: 0;
-        }
-
-        .value {
-            width: 700px;
-            margin: 0;
-            font-size: 18px;
-            color: @blue-color;
-            padding-left: 0;
-        }
-
-        p {
-            text-align: justify;
-        }
-    }
-
-    .form-content {
-        grid-area: content;
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        justify-content: center;
-        padding: 50px 0;
-        background-image: url('../Assets/Background/login.jpg');
-        background-size: cover;
-        //min-height: 70vh;
-        span {
-            font-family: "PT Sans", sans-serif;
-            font-size: 28px;
-        }
-
-        .contact-form-main {
-
-            input[type=text], textarea {
-                width: 450px;
-            }
-
-
-            form > div {
-                margin-top: 15px;
-            }
-
-            .button-div {
-                display: flex;
-                flex-flow: row;
-                justify-content: space-between;
-            }
-        }
-
-        .login-form-main {
-
-            input[type=text], input[type=password], textarea {
-                width: 350px;
-            }
-
-
-            form{
-                margin: auto auto auto auto;
-                width: 500px;
-                padding-left: 50px;
-                //background-color: rgba( 0, 0, 0, 0.5);
-                > div {
-                    margin-top: 15px;
-                }
-            }
-
-            .button-div {
-                display: flex;
-                flex-flow: row;
-                justify-content: space-between;
-            }
-        }
-    }
-
-    .bottom {
-        grid-template: "bottom";
-        background-color: #444;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-
-        span {
-            font-family: "PT Sans", sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            color: white;
-        }
-    }
-
-    .links {
-        grid-template: "links";
-        display: grid;
-        height: 300px;
-        grid-template-rows: 50px auto 100px;
-        grid-template-columns: auto 300px 300px 300px auto;
-        background-color: #444;
-        font-family: Round, sans-serif;
-        font-size: 14px;
-        color: white;
-
-        > .span-1 {
-            grid-row-start: 2;
-            grid-row-end: 3;
-            grid-column-start: 2;
-            grid-column-end: 3;
-        }
-
-        > .span-2 {
-            grid-row-start: 2;
-            grid-row-end: 3;
-            grid-column-start: 3;
-            grid-column-end: 4;
-        }
-
-        > .span-3 {
-            grid-row-start: 2;
-            grid-row-end: 3;
-            grid-column-start: 4;
-            grid-column-end: 5;
-        }
-
-        .span {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-
-            > * {
-                margin-bottom: 5px;
-            }
-
-            a, a:visited {
-                text-decoration: underline;
-                color: white;
-            }
-
-
-            .heder {
-                font-size: 18px;
-                text-transform: uppercase;
-            }
-        }
-    }
-
-
-    .form-box > a > img {
-        width: 330px;
+    > label {
         margin-left: 60px;
     }
 
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+}
 
-    .form-row-list {
+.form-box-signiture {
+    > div {
+        margin-left: 50px;
+    }
+
+    > label {
+        margin-left: 60px;
+    }
+
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.width {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+#connectionAirPorts {
+    margin-left: 50px;
+}
+
+.form-box-connection {
+    > div {
+        flex-flow: column;
+        width: 410px;
+    }
+
+    &:first-child button.bDelete {
+        display: none;
+        margin-left: 10px;
+    }
+    //width: 50%;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    margin: 8px 0 0 0;
+}
+
+.upload-box div {
+    margin-bottom: 10px;
+}
+
+.list-container {
+    margin: 50px 50px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 10px;
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 14px;
+
+    a:nth-child(odd) > div > div {
+        background-color: #ccc;
+    }
+
+    a:nth-child(even) > div > div {
+        background-color: #eee;
+    }
+
+    .claim-list {
+        display: grid;
+        grid-template-columns: 100px 200px 200px 200px 100px 100px;
+        grid-template-rows: 30px;
+        grid-gap: 5px;
+
         > div {
-            padding: 20px 0 0 110px;
-
-            > label, div > label {
-                margin-left: 0;
-                padding-left: 0;
-            }
-
             > label {
-                margin-top: 10px;
+                font-size: 15px;
+                cursor: pointer;
+                height: 20px;
+                margin: auto 0;
             }
+
+            display: flex;
+            align-content: center;
+            justify-content: flex-start;
+            padding-left: 4px;
+            border-radius: 3px;
         }
     }
+}
+
+.contact-main {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: center;
+    padding: 40px;
+    font-family: "PT Sans", sans-serif;
+
+    > div {
+        width: 700px;
+        margin: 10px auto 0 auto;
+    }
+
+    .contact-data > div {
+        margin: 15px 0 0 0;
+    }
+
+    .title {
+        width: 700px;
+        margin: 0;
+        font-size: 18px;
+        padding-left: 0;
+    }
+
+    .value {
+        width: 700px;
+        margin: 0;
+        font-size: 18px;
+        color: @blue-color;
+        padding-left: 0;
+    }
+
+    p {
+        text-align: justify;
+    }
+}
+
+.form-content {
+    grid-area: content;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    padding: 50px 0;
+    background-image: url('../Assets/Background/login.jpg');
+    background-size: cover;
+    //min-height: 70vh;
+    span {
+        font-family: "PT Sans", sans-serif;
+        font-size: 28px;
+    }
+
+    .contact-form-main {
+
+        input[type=text], textarea {
+            width: 450px;
+        }
+
+
+        form > div {
+            margin-top: 15px;
+        }
+
+        .button-div {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+        }
+    }
+
+    .login-form-main {
+
+        input[type=text], input[type=password], textarea {
+            width: 350px;
+        }
+
+
+        form {
+            margin: auto auto auto auto;
+            width: 500px;
+            padding-left: 50px;
+            //background-color: rgba( 0, 0, 0, 0.5);
+            > div {
+                margin-top: 15px;
+            }
+        }
+
+        .button-div {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+        }
+    }
+}
+
+.spacer{
+    display: block;
+}
+
+.bottom {
+    grid-template: "bottom-spacer";
+    background-color: #444;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+
+    span {
+        font-family: "PT Sans", sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        color: white;
+    }
+}
+
+.links {
+    grid-template: "links";
+    display: grid;
+    height: 300px;
+    grid-template-rows: 50px auto 100px;
+    grid-template-columns: auto 300px 300px 300px auto;
+    background-color: #444;
+    font-family: Round, sans-serif;
+    font-size: 14px;
+    color: white;
+
+    > .span-1 {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    > .span-2 {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+
+    > .span-3 {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 4;
+        grid-column-end: 5;
+    }
+
+    .span {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        > * {
+            margin-bottom: 5px;
+        }
+
+        a, a:visited {
+            text-decoration: underline;
+            color: white;
+        }
+
+
+        .heder {
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+
+.form-box > a > img {
+    width: 330px;
+    margin-left: 60px;
+}
+
+
+.form-row-list {
+    > div {
+        padding: 20px 0 0 110px;
+
+        > label, div > label {
+            margin-left: 0;
+            padding-left: 0;
+        }
+
+        > label {
+            margin-top: 10px;
+        }
+    }
+}
