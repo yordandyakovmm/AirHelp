@@ -42,12 +42,28 @@ namespace AirHelp.Controllers
         [Route("проверка-полет")]
         public ActionResult CheckDirctFlightPost(string FlightNumber, string Date)
         {
+            // testing
+            Claim c = null;
+            Guid g = new Guid("ecbc3e69-71c0-4fab-971d-3acc3bd98480");
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                c = dc.Claims.Where(cl => cl.ClaimId == g).SingleOrDefault();
+                
+            }
+
+            return View("ColectData", c);
+
             var model = new VMDirectFlight()
             {
                 date = Date,
                 number = FlightNumber,
                 numberError = ""
             };
+            var arr = Date.Split('.');
+            var day = int.Parse(arr[0]);
+            var mont = int.Parse(arr[1]);
+            var year = int.Parse(arr[2]);
+
             FlightStatus fligth = CommonHeppler.GetFlight(FlightNumber,  Date);
 
             if (fligth.flightStatuses.Length == 0)
@@ -61,6 +77,7 @@ namespace AirHelp.Controllers
             Claim claim = new Claim
             {
                 ClaimId = Guid.NewGuid(),
+                Date = new DateTime( year, mont, day),
                 State = ClaimStatus.Accepted,
                 UserId = User.Identity.IsAuthenticated ? User.Identity.Name: null,
                 DateCreated = DateTime.Now,
@@ -75,8 +92,8 @@ namespace AirHelp.Controllers
                 double distance = 0;
                 if (number > 0)
                 {
-                    var sCoord = new GeoCoordinate(fligth.appendix.airports[number].longitude, fligth.appendix.airports[number].latitude);
-                    var eCoord = new GeoCoordinate(fligth.appendix.airports[number+1].longitude, fligth.appendix.airports[number+1].latitude);
+                    var sCoord = new GeoCoordinate(fligth.appendix.airports[number-1].longitude, fligth.appendix.airports[number-1].latitude);
+                    var eCoord = new GeoCoordinate(fligth.appendix.airports[number].longitude, fligth.appendix.airports[number].latitude);
 
                     distance = sCoord.GetDistanceTo(eCoord);
                 }

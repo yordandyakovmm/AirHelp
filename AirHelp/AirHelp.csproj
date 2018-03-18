@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201803141725074_refactoring.Designer.cs">
       <DependentUpon>201803141725074_refactoring.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803172137540_distance.cs" />
+    <Compile Include="Migrations\201803172137540_distance.Designer.cs">
+      <DependentUpon>201803172137540_distance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -396,6 +400,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\form.js" />
+    <Content Include="Scripts\logic.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
@@ -477,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803141725074_refactoring.resx">
       <DependentUpon>201803141725074_refactoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803172137540_distance.resx">
+      <DependentUpon>201803172137540_distance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

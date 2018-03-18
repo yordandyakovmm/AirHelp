@@ -202,7 +202,7 @@ button.claim-reset .icon::before {
   display: block;
 }
 .error-row {
-  margin: 5px 0 0 0;
+  margin: 10px 0 0 0;
   color: red;
 }
 .form-hedar {
@@ -228,7 +228,7 @@ button.claim-reset .icon::before {
   font-weight: 700;
   font-size: 24px;
   color: #009fe3;
-  margin: 20px 0 5px 50px;
+  margin: 30px 0 5px 0;
 }
 .form-subtext {
   font-family: "PT Sans", sans-serif;
@@ -549,3 +549,6 @@ button.submit-smal:hover {
 label.red {
   color: #7a0f0f;
 }
+/*[delay], [cancel], [denay], [willness] {
+    display: none;
+}*/

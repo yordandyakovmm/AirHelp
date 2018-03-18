@@ -83,6 +83,13 @@
                 $('#connectionAirPorts').hide();
             }
         }
+        if ($(this).is('[name="Type"]'))
+        {
+            changeType($(this).val());
+        }
+        if ($(this).is('[name="Reason"]')) {
+            changeReason($(this).val());
+        }
     });
 
     // convace 
@@ -102,6 +109,10 @@ var couunt = 0;
 function initSigniture() {
 
     el = document.getElementById('signiture-div');
+    if (!el)
+    {
+        return;
+    }
     conv = document.getElementById('signiture');
     ctx = conv.getContext('2d');
     ctx.strokeStyle = 0;

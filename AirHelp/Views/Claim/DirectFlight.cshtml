@@ -29,14 +29,14 @@
                 <div class="form-box left">
                     <label>Номер на полета<span class="requared">*</span></label>
                     <div>
-                        <input type="text" name="FlightNumber" id="FlightNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
+                        <input type="text" name="FlightNumber" id="FlightNumber" value="@Model.number" placeholder="Номер на полет" validate /><i class="icon"></i>
                     </div>
                     <label class="sub-error">@Model.numberError</label>
                 </div>
                 <div class="form-box rigth">
                     <label>Дата на полета<span class="requared">*</span></label>
                     <div>
-                        <input type="text" id="Date" name="Date" placeholder="Дата на полета" validate /><i class="icon"></i>
+                        <input type="text" id="Date" name="Date" value="@Model.date" placeholder="Дата на полета" validate /><i class="icon"></i>
                     </div>
                     <label class="sub-error"></label>
                 </div>

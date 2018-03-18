@@ -1,37 +1,176 @@
-﻿@model AirHelp.Models.VMDirectFlight
+﻿@model AirHelp.DAL.Claim
 
 <div class="register-form">
-    <div class="left-content">
+    <div class="progress">
+        <div class="past">
+            <div class="circle"><label>1</label></div>
+            <label class="text">Калкулиране на обезщетение</label>
+        </div>
+        <div class="current">
+            <div class="circle"><label>2</label></div>
+            <label class="text">Регистрация</label>
+        </div>
+        <div class="empty">
+            <div class="circle"><label>3</label></div>
+            <label class="text">Подаване на иск</label>
+        </div>
+
     </div>
     <div class="center-content">
         <form method="post" enctype="multipart/form-data">
-            @*<input type="hidden" name="Type"  value="@category" />*@
-            <input type="hidden" name="ConnectionAriports" value="" />
-            <input type="hidden" name="json" value="" />
-            <input type="hidden" name="SignitureImage" value="" />
-          
+
+            <input type="hidden" name="ClaimID" value="" />
+
             <div class="form-hedar">
-                Информаця за полета
+                Моля опишете проблема
             </div>
-            <div class="form-row">
-                <div class="form-box left">
-                    <label>Номер на полета<span class="requared">*</span></label>
-                    <div>
-                        <input type="text" name="FlightNumber" id="FlightNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
-                    </div>
-                    <label class="sub-error">@Model.numberError</label>
-                </div>
-                <div class="form-box rigth">
-                    <label>Дата на полета<span class="requared">*</span></label>
-                    <div>
-                        <input type="text" id="Date" name="Date" placeholder="Дата на полета" validate  /><i class="icon"></i>
-                    </div>
-                   
-                   
-                </div>
+            <div class="form-row-radio" style="justify-content: flex-start">
+
+                <label class="radio">
+                    <input type="radio" value="delay" name="Type">
+                    <span>Полета ми закъсня</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="cancel" name="Type">
+                    <span>Полета ми беше отменен</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="denay" name="Type">
+                    <span>Не бях допуснат до борда</span>
+                </label>
 
             </div>
-           <div class="form-row">
+            <!-- delay -->
+            <div class="form-subheder" delay cancel reason>
+                Причина за закъснението
+            </div>
+            <div class="form-row-radio" style="justify-content:flex-start" delay cancel reason>
+
+                <label class="radio">
+                    <input type="radio" value="Технически проблем" name="Reason">
+                    <span>Технически проблем</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="Повлиян от други полети" name="Reason">
+                    <span>Повлиян от други полети</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="Стачка" name="Reason">
+                    <span>Стачка</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="Лошо време" name="Reason">
+                    <span>Лошо време</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="По вина на летището" name="Reason">
+                    <span>По вина на летището</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="Не беше дадена причина" name="Reason">
+                    <span>Не беше дадена причина</span>
+                </label>
+            </div>
+
+            <!--делаy -->
+
+            <div class="form-hedar" delay actual-delay>
+                Полетат Ви закъсня ли с повече от три часа?
+            </div>
+            <div class="form-row-radio" delay actual-delay>
+                <label class="radio">
+                    <input type="radio" value="yes" name="Delay">
+                    <span>Да</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="no" name="Delay">
+                    <span>Не</span>
+                </label>
+            </div>
+
+            <!-- cancel-->
+            <div class="form-subheder" cancel cancel-announsment>
+                Кога бяхте уведомени от превозвача за отмяната на полета ?
+            </div>
+            <div class="form-row-radio" style="justify-content:flex-start" cancel cancel-announsment>
+                <label class="radio">
+                    <input type="radio" value="Повече от 14 дни преди полета" name="Annonsment">
+                    <span>Повече от 14 дни преди полета</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="По-малко от 14 дни преди полета" name="Annonsment">
+                    <span>По-малко от 14 дни преди полета</span>
+                </label>
+            </div>
+
+            <div class="form-subheder" cancel cancel-delay>
+                Колко голямо беше закъснението до крайната дистанция ?
+            </div>
+            <div class="form-row-radio" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr;" cancel cancel-delay>
+
+                <label class="radio">
+                    <input type="radio" value="0-2" name="HowMuch">
+                    <span>0-2 часа</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="2-3" name="HowMuch">
+                    <span>2-3 часа</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="3-4" name="HowMuch">
+                    <span>3-4 часа</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="4" name="HowMuch">
+                    <span>над 4 часа</span>
+                </label>
+            </div>
+            
+            <!-- denay -->
+            <div class="form-subheder" denay arival>
+                Пристигнахте ли на чек-ин-а поне 30 минути преди излитането на самолета?
+            </div>
+            <div class="form-row-radio" style="justify-content:flex-start" denay arival>
+                <label class="radio">
+                    <input type="radio" value="yes" name="Arival">
+                    <span>Да</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="no" name="Arival">
+                    <span>Не</span>
+                </label>
+            </div>
+
+            <div class="form-subheder" denay document-security>
+                Достъпът беше ли ви отказан заради проблеми с документите или от съображения за сигурност?
+            </div>
+            <div class="form-row-radio" style="justify-content:flex-start" denay document-security>
+                <label class="radio">
+                    <input type="radio" value="yes" name="DocumentSecurity">
+                    <span>Да</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="no" name="DocumentSecurity">
+                    <span>Не</span>
+                </label>
+            </div>
+
+            <div class="form-subheder" denay willness>
+                Доброволно ли преотстъпихте мястото си на борда на самолета ?
+            </div>
+            <div class="form-row-radio" style="justify-content:flex-start" denay willness>
+                <label class="radio">
+                    <input type="radio" value="yes" name="Willness">
+                    <span>Да</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="no" name="Willness">
+                    <span>Не</span>
+                </label>
+            </div>
+
+
+            <div class="form-row">
                 <div class="form-box">
                     <button class="submit" type="submit" keypress="return false" onclick="return validateCommon()">Напред</button>
                 </div>
@@ -45,9 +184,9 @@
         </form>
     </div>
 
-    <div class="rigth-content">
 
-    </div>
 </div>
 
 <script src="~/Scripts/main.js"></script>
+
+<script src="~/Scripts/logic.js"></script>

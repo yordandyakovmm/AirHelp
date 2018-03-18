@@ -558,6 +558,18 @@ a:hover {
   margin: 20px 0 0 0;
   display: inline-flex;
 }
+.form-row-radio {
+  margin: 5px 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.form-row-radio label {
+  margin: 25px 0 0 0;
+  display: inline-flex;
+}
+.form-row-radio label span {
+  margin: 0 0 0 4px;
+}
 .form-row-yes-no,
 .form-row-rodio {
   margin: 5px 0 0 50px;
