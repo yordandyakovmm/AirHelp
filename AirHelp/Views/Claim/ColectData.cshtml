@@ -41,10 +41,10 @@
 
             </div>
             <!-- delay -->
-            <div class="form-subheder" delay cancel reason>
-                Причина за закъснението
+            <div class="form-subheder" style="display: none" delay cancel reason >
+                Каква беше причината?
             </div>
-            <div class="form-row-radio" style="justify-content:flex-start" delay cancel reason>
+            <div class="form-row-radio" style="display: none" delay cancel reason>
 
                 <label class="radio">
                     <input type="radio" value="Технически проблем" name="Reason">
@@ -74,10 +74,10 @@
 
             <!--делаy -->
 
-            <div class="form-hedar" delay actual-delay>
-                Полетат Ви закъсня ли с повече от три часа?
+            <div class="form-subheder" style="display: none" delay delay-delay>
+                @ViewBag.delayMessage
             </div>
-            <div class="form-row-radio" delay actual-delay>
+            <div class="form-row-radio" style="display: none" delay delay-delay>
                 <label class="radio">
                     <input type="radio" value="yes" name="Delay">
                     <span>Да</span>
@@ -89,24 +89,28 @@
             </div>
 
             <!-- cancel-->
-            <div class="form-subheder" cancel cancel-announsment>
+            <div class="form-subheder" style="display: none" cancel cancel-announsment>
                 Кога бяхте уведомени от превозвача за отмяната на полета ?
             </div>
-            <div class="form-row-radio" style="justify-content:flex-start" cancel cancel-announsment>
+            <div class="form-row-radio" style="display: none" cancel cancel-announsment>
+                <label class="radio">
+                    <input type="radio" value="По-малко от 7 дни преди полета" name="Annonsment">
+                    <span>По-малко от 7 дни преди полета</span>
+                </label>
                 <label class="radio">
                     <input type="radio" value="Повече от 14 дни преди полета" name="Annonsment">
-                    <span>Повече от 14 дни преди полета</span>
+                    <span>Между 7 и 14 дни преди полета</span>
                 </label>
                 <label class="radio">
                     <input type="radio" value="По-малко от 14 дни преди полета" name="Annonsment">
-                    <span>По-малко от 14 дни преди полета</span>
+                    <span>Повече от 14 дни преди полета</span>
                 </label>
             </div>
 
-            <div class="form-subheder" cancel cancel-delay>
+            <div class="form-subheder" style="display: none" cancel cancel-delay>
                 Колко голямо беше закъснението до крайната дистанция ?
             </div>
-            <div class="form-row-radio" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr;" cancel cancel-delay>
+            <div class="form-row-radio" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr; display:none" cancel cancel-delay>
 
                 <label class="radio">
                     <input type="radio" value="0-2" name="HowMuch">
@@ -127,10 +131,10 @@
             </div>
             
             <!-- denay -->
-            <div class="form-subheder" denay arival>
+            <div class="form-subheder" style="display: none" denay denay-arival>
                 Пристигнахте ли на чек-ин-а поне 30 минути преди излитането на самолета?
             </div>
-            <div class="form-row-radio" style="justify-content:flex-start" denay arival>
+            <div class="form-row-radio" style="display: none" denay denay-arival>
                 <label class="radio">
                     <input type="radio" value="yes" name="Arival">
                     <span>Да</span>
@@ -141,10 +145,10 @@
                 </label>
             </div>
 
-            <div class="form-subheder" denay document-security>
+            <div class="form-subheder" style="display: none" denay document-security>
                 Достъпът беше ли ви отказан заради проблеми с документите или от съображения за сигурност?
             </div>
-            <div class="form-row-radio" style="justify-content:flex-start" denay document-security>
+            <div class="form-row-radio" style="display: none" style="justify-content:flex-start" denay document-security>
                 <label class="radio">
                     <input type="radio" value="yes" name="DocumentSecurity">
                     <span>Да</span>
@@ -155,10 +159,10 @@
                 </label>
             </div>
 
-            <div class="form-subheder" denay willness>
+            <div class="form-subheder" style="display: none" denay willness>
                 Доброволно ли преотстъпихте мястото си на борда на самолета ?
             </div>
-            <div class="form-row-radio" style="justify-content:flex-start" denay willness>
+            <div class="form-row-radio" style="display: none" style="justify-content:flex-start" denay willness>
                 <label class="radio">
                     <input type="radio" value="yes" name="Willness">
                     <span>Да</span>
@@ -170,7 +174,7 @@
             </div>
 
 
-            <div class="form-row">
+            <div class="form-row" style="display: none" button>
                 <div class="form-box">
                     <button class="submit" type="submit" keypress="return false" onclick="return validateCommon()">Напред</button>
                 </div>

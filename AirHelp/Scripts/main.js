@@ -83,12 +83,31 @@
                 $('#connectionAirPorts').hide();
             }
         }
+
         if ($(this).is('[name="Type"]'))
         {
             changeType($(this).val());
         }
         if ($(this).is('[name="Reason"]')) {
             changeReason($(this).val());
+        }
+        if ($(this).is('[name="Delay"]')) {
+            changeDelay($(this).val());
+        }
+        if ($(this).is('[name="Annonsment"]')) {
+            changeAnnonsment($(this).val());
+        }
+        if ($(this).is('[name="HowMuch"]')) {
+            changeHowMuch($(this).val());
+        }
+        if ($(this).is('[name="Arival"]')) {
+            changeArival($(this).val());
+        }
+        if ($(this).is('[name="DocumentSecurity"]')) {
+            changeDocumentSecurity($(this).val());
+        }
+        if ($(this).is('[name="Willness"]')) {
+            changeWillness($(this).val());
         }
     });
 
