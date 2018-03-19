@@ -42,16 +42,16 @@ namespace AirHelp.Controllers
         [Route("проверка-полет")]
         public ActionResult CheckDirctFlightPost(string FlightNumber, string Date)
         {
-            // testing
-            Claim c = null;
-            Guid g = new Guid("ecbc3e69-71c0-4fab-971d-3acc3bd98480");
-            using (AirHelpDBContext dc = new AirHelpDBContext())
-            {
-                c = dc.Claims.Where(cl => cl.ClaimId == g).SingleOrDefault();
+            //// testing
+            //Claim c = null;
+            //Guid g = new Guid("ecbc3e69-71c0-4fab-971d-3acc3bd98480");
+            //using (AirHelpDBContext dc = new AirHelpDBContext())
+            //{
+            //    c = dc.Claims.Where(cl => cl.ClaimId == g).SingleOrDefault();
                 
-            }
+            //}
 
-            return View("ColectData", c);
+            //return View("ColectData", c);
 
             var model = new VMDirectFlight()
             {

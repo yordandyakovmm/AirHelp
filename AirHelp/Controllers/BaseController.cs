@@ -18,6 +18,7 @@ namespace AirHelp.Controllers
     {
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
+            ViewBag.siteName = ConfigurationManager.AppSettings["siteName"].ToString();
             base.Initialize(requestContext);
 
             if (Session != null && Session["user"] != null)
