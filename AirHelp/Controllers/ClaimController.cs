@@ -29,6 +29,13 @@ namespace AirHelp.Controllers
     public class ClaimController : BaseController
     {
 
+        [HttpGet]
+        [Route("калкулиране-на-обезщетение")]
+        public ActionResult ColectFlightDataFlight()
+        {
+            var model = new VMDirectFlight();
+            return View("ColectFlightDataFlight", model);
+        }
 
         [HttpGet]
         [Route("проверка-полет")]
@@ -37,7 +44,7 @@ namespace AirHelp.Controllers
             var model = new VMDirectFlight();
             return View("DirectFlight", model);
         }
-
+                
         [HttpPost]
         [Route("проверка-полет")]
         public ActionResult CheckDirctFlightPost(string FlightNumber, string Date)

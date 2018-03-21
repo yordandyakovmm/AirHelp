@@ -22,6 +22,23 @@ namespace AirHelp.Models
         public string commonError { get; set; }
     }
 
+
+    public class VMFlightData
+    {
+        public VMFlightData()
+        {
+            number = "";
+            date = "";
+            numberError = "";
+            commonError = "";
+        }
+        public string number { get; set; }
+        public string date { get; set; }
+        public string numberError { get; set; }
+        public string commonError { get; set; }
+    }
+
+
     public class VMUser
     {
         public string UserId { get; set; }
