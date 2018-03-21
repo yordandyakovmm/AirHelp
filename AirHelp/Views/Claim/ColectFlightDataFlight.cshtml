@@ -4,7 +4,7 @@
     <div class="progress">
         <div class="past">
             <div class="circle"><label>1</label></div>
-            <label class="text">Калкулиране на обезщетение</label> 
+            <label class="text">Калкулиране на обезщетение</label>
         </div>
         <div class="current">
             <div class="circle"><label>2</label></div>
@@ -14,7 +14,7 @@
             <div class="circle"><label>3</label></div>
             <label class="text">Подаване на иск</label>
         </div>
-        
+
     </div>
     <div class="center-content">
         <form method="post" enctype="multipart/form-data">
@@ -73,10 +73,34 @@
                 </div>
             </div>
 
+            <div class="form-row" pragress>
+                <div class="form-box">
+                    <button class="submit" type="button" keypress="return false" onclick="return validateCommon()">Напред</button>
+                </div>
+                <div class="form-box">
+                    <
+                </div>
+            </div>
+
+            <div class="form-row" progress>
+                <div class="form-box left">
+                    <label>Номер на полета<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" name="FlightNumber" id="FlightNumber" value="@Model.number" placeholder="Номер на полет" validate /><i class="icon"></i>
+                    </div>
+                    <label class="sub-error">@Model.numberError</label>
+                </div>
+                <div class="form-box rigth">
+                    <label>Дата на полета<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="Date" name="Date" value="@Model.date" placeholder="Дата на полета" validate /><i class="icon"></i>
+                    </div>
+                    <label class="sub-error"></label>
+                </div>
+            </div>
 
 
-
-            <div class="form-row">
+            <div class="form-row" style="display:none" number>
                 <div class="form-box left">
                     <label>Номер на полета<span class="requared">*</span></label>
                     <div>
@@ -104,7 +128,7 @@
                 }
             </div>
 
-            <div class="form-row">
+            <div class="form-row" style="display:none;" pragress>
                 <div class="form-box">
                     <button class="submit" type="submit" keypress="return false" onclick="return validateCommon()">Напред</button>
                 </div>
@@ -132,3 +156,4 @@
 </div>
 
 <script src="~/Scripts/main.js"></script>
+<script src="~/Scripts/flyght-form.js"></script>
