@@ -425,7 +425,6 @@ function validate() {
         $('.form-box-signiture').removeClass('success').addClass('error');
     }
     if (result) {
-        debugger;
         var json = {};
         json.airports = [];
         json.airports.push($('[name="DepartureAirport"]').data('data'));

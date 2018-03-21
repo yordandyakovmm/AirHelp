@@ -1,4 +1,5 @@
 ﻿@model AirHelp.DAL.Claim
+@using AirHelp.Models
 
 <div class="register-form">
     <div class="progress">
@@ -24,50 +25,50 @@
             <div class="form-hedar">
                 Моля опишете проблема
             </div>
-            <div class="form-row-radio" style="justify-content: flex-start">
+            <div class="form-row-radio" type-issue>
 
                 <label class="radio">
-                    <input type="radio" value="delay" name="Type">
+                    <input type="radio" value="@((int)ProblemType.Delay)" name="Type">
                     <span>Полета ми закъсня</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="cancel" name="Type">
+                    <input type="radio" value="@((int)ProblemType.Cancel)" name="Type">
                     <span>Полета ми беше отменен</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="denay" name="Type">
+                    <input type="radio" value="@((int)ProblemType.Overbooking)" name="Type">
                     <span>Не бях допуснат до борда</span>
                 </label>
 
             </div>
             <!-- delay -->
-            <div class="form-subheder" style="display: none" delay cancel reason >
+            <div class="form-subheder" style="display: none" delay cancel reason>
                 Каква беше причината?
             </div>
             <div class="form-row-radio" style="display: none" delay cancel reason>
 
                 <label class="radio">
-                    <input type="radio" value="Технически проблем" name="Reason">
+                    <input type="radio" value="@((int)Reason.TechnicalIssue)" name="Reason">
                     <span>Технически проблем</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="Повлиян от други полети" name="Reason">
+                    <input type="radio" value="@((int)Reason.InfuenceOtherFlight)" name="Reason">
                     <span>Повлиян от други полети</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="Стачка" name="Reason">
+                    <input type="radio" value="@((int)Reason.Strike)" name="Reason">
                     <span>Стачка</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="Лошо време" name="Reason">
+                    <input type="radio" value="@((int)Reason.BadWeather)" name="Reason">
                     <span>Лошо време</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="По вина на летището" name="Reason">
+                    <input type="radio" value="@((int)Reason.AirportFault)" name="Reason">
                     <span>По вина на летището</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="Не беше дадена причина" name="Reason">
+                    <input type="radio" value="@((int)Reason.WithoutReason)" name="Reason">
                     <span>Не беше дадена причина</span>
                 </label>
             </div>
@@ -79,13 +80,20 @@
             </div>
             <div class="form-row-radio" style="display: none" delay delay-delay>
                 <label class="radio">
-                    <input type="radio" value="yes" name="Delay">
+                    <input type="radio" value="@((int)Delay.LessThat3)" name="Delay">
                     <span>Да</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="no" name="Delay">
+                    <input type="radio" value="@((int)Delay.MoreThat3)" name="Delay">
                     <span>Не</span>
                 </label>
+                @if (false)
+                {
+                    <label class="radio">
+                        <input type="radio" value="@((int)Delay.MoreThat3)" name="Delay">
+                        <span>Закъсня с повече от 4 часа</span>
+                    </label>
+                }
             </div>
 
             <!-- cancel-->
@@ -94,16 +102,16 @@
             </div>
             <div class="form-row-radio" style="display: none" cancel cancel-announsment>
                 <label class="radio">
-                    <input type="radio" value="По-малко от 7 дни преди полета" name="Annonsment">
-                    <span>По-малко от 7 дни преди полета</span>
+                    <input type="radio" value="@((int)CancelAnnonsment.MoreThan14)" name="Annonsment">
+                    <span>Повече от 14 дни преди полета</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="Повече от 14 дни преди полета" name="Annonsment">
+                    <input type="radio" value="@((int)CancelAnnonsment.Beetwen7_14)" name="Annonsment">
                     <span>Между 7 и 14 дни преди полета</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="По-малко от 14 дни преди полета" name="Annonsment">
-                    <span>Повече от 14 дни преди полета</span>
+                    <input type="radio" value="@((int)CancelAnnonsment.LessThat7)" name="Annonsment">
+                    <span>По-малко от 7 дни преди полета</span>
                 </label>
             </div>
 
@@ -113,34 +121,34 @@
             <div class="form-row-radio" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr; display:none" cancel cancel-delay>
 
                 <label class="radio">
-                    <input type="radio" value="0-2" name="HowMuch">
+                    <input type="radio" value="@((int)CancelDelay.Beetwen0_2)" name="HowMuch">
                     <span>0-2 часа</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="2-3" name="HowMuch">
+                    <input type="radio" value="@((int)CancelDelay.Beetwen2_3)" name="HowMuch">
                     <span>2-3 часа</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="3-4" name="HowMuch">
+                    <input type="radio" value="@((int)CancelDelay.Beetwen3_4)" name="HowMuch">
                     <span>3-4 часа</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="4" name="HowMuch">
+                    <input type="radio" value="@((int)CancelDelay.MoreThan4)" name="HowMuch">
                     <span>над 4 часа</span>
                 </label>
             </div>
-            
+
             <!-- denay -->
             <div class="form-subheder" style="display: none" denay denay-arival>
                 Пристигнахте ли на чек-ин-а поне 30 минути преди излитането на самолета?
             </div>
             <div class="form-row-radio" style="display: none" denay denay-arival>
                 <label class="radio">
-                    <input type="radio" value="yes" name="Arival">
+                    <input type="radio" value="@((int)DenayArival.Before30)" name="Arival">
                     <span>Да</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="no" name="Arival">
+                    <input type="radio" value="@((int)DenayArival.After30)" name="Arival">
                     <span>Не</span>
                 </label>
             </div>
@@ -148,13 +156,13 @@
             <div class="form-subheder" style="display: none" denay document-security>
                 Достъпът беше ли ви отказан заради проблеми с документите или от съображения за сигурност?
             </div>
-            <div class="form-row-radio" style="display: none" style="justify-content:flex-start" denay document-security>
+            <div class="form-row-radio" style="display: none"  denay document-security>
                 <label class="radio">
-                    <input type="radio" value="yes" name="DocumentSecurity">
+                    <input type="radio" value="@((int)DocumentSecurity.MyFault)" name="DocumentSecurity">
                     <span>Да</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="no" name="DocumentSecurity">
+                    <input type="radio" value="@((int)DocumentSecurity.NotMyFault)" name="DocumentSecurity">
                     <span>Не</span>
                 </label>
             </div>
@@ -162,24 +170,24 @@
             <div class="form-subheder" style="display: none" denay willness>
                 Доброволно ли преотстъпихте мястото си на борда на самолета ?
             </div>
-            <div class="form-row-radio" style="display: none" style="justify-content:flex-start" denay willness>
+            <div class="form-row-radio" style="display: none" denay willness>
                 <label class="radio">
-                    <input type="radio" value="yes" name="Willness">
+                    <input type="radio" value="@((int)Willness.Voluntary)" name="Willness">
                     <span>Да</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="no" name="Willness">
+                    <input type="radio" value="@((int)Willness.NotVoluntary)" name="Willness">
                     <span>Не</span>
                 </label>
             </div>
 
 
-            <div class="form-row" style="display: none" button>
+            <div class="form-row" none" button>
                 <div class="form-box">
-                    <button class="submit" type="submit" keypress="return false" onclick="return validateCommon()">Напред</button>
+                    <button class="submit" disabled type="submit" keypress="return false" onclick="return validateCommon()">Напред</button>
                 </div>
                 <div class="form-box">
-                    <button class="reset" type="reset" keypress="return false" onclick="clearForm()">Изчисти</button>
+                    <button class="reset" type="reset" keypress="return false" onclick="clearCheckClaim()">Изчисти</button>
                 </div>
             </div>
             <div class="form-row">

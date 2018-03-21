@@ -20,7 +20,7 @@
   filter: hue-rotate(180deg);
 }
 .rss.opacity {
-  filter: opacity(50%);
+  filter: opacity(40%);
 }
 * {
   margin: 0;
