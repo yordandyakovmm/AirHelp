@@ -435,6 +435,7 @@
     <Content Include="site1.PublishSettings" />
     <Content Include="Views\Claim\DirectFlight.cshtml" />
     <Content Include="Views\Claim\ColectData.cshtml" />
+    <Content Include="Views\Claim\ColectFlightDataFlight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

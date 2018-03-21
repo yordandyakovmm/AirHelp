@@ -574,7 +574,7 @@ a:hover {
 }
 .form-row-yes-no,
 .form-row-rodio {
-  margin: 5px 0 0 50px;
+  margin: 5px 0 0 0;
   display: grid;
   padding: 0 0 0 10px;
   grid-template-columns: 80px 80px auto;
@@ -653,7 +653,7 @@ a:hover {
   flex-flow: column;
 }
 #connectionAirPorts {
-  margin-left: 50px;
+  margin-left: 0;
 }
 .form-box-connection {
   display: flex;
@@ -663,7 +663,7 @@ a:hover {
 }
 .form-box-connection > div {
   flex-flow: column;
-  width: 410px;
+  width: 320px;
 }
 .form-box-connection:first-child button.bDelete {
   display: none;

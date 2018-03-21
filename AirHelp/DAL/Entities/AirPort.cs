@@ -19,6 +19,9 @@ namespace AirHelp.DAL
         [ForeignKey("ClaimId")]
         public virtual Claim Claim { get; set; }
         
+        public string FlightNumber { get; set; }
+        public string FlightDate { get; set; }
+
         public int number { get; set; }
 
         public string iata { get; set; }

@@ -267,7 +267,7 @@ function ddKeyUp(_this, e) {
 
         var isAirtport = $this.not('[name="AirCompany"]').length == 1;
 
-        var url = (isAirtport ? '/api/airports?id=' : '/api/airline?id=') + $this.val();
+        var url = (isAirtport ? '/api/airports?text=' : '/api/airline?text=') + $this.val();
         $.get(url, function (data) {
             data = JSON.parse(data);
             if (data.status == 1) {
