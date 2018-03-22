@@ -31,7 +31,7 @@
                 <div class="form-box left">
                     <label>Начално летище<span class="requared">*</span></label>
                     <div>
-                        <input type="text" name="DepartureAirport" autocomplete="off" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Начално летище" />
+                        <input type="text" validate name="DepartureAirport" autocomplete="off" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Начално летище" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin"></ul>
                     </div>
@@ -39,7 +39,7 @@
                 <div class="form-box rigth">
                     <label>Крайно летище<span class="requared">*</span></label>
                     <div>
-                        <input type="text" name="DestinationAirports" autocomplete="off" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Крайно летище" />
+                        <input type="text" validate name="DestinationAirports" autocomplete="off" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Крайно летище" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin"></ul>
                     </div>
@@ -62,7 +62,7 @@
             <div class="form-row" id="connectionAirPorts" style="flex-flow: column; display:none;">
                 <div class="form-box-connection">
                     <div>
-                        <input type="text" name="ConnectionAirports" autocomplete="off" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
+                        <input type="text" validate name="ConnectionAirports" autocomplete="off" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
                         <i class="icon"></i>
                         <ul class="lSuggestoin"></ul>
                     </div>
@@ -75,30 +75,19 @@
 
             <div class="form-row" pragress>
                 <div class="form-box">
-                    <button class="submit" type="button" keypress="return false" onclick="return validateCommon()">Напред</button>
+                    <button class="submit" type="button" keypress="return false" onclick="return progress(this)">Напред</button>
                 </div>
                 <div class="form-box">
-                    <
+                    
                 </div>
             </div>
 
-            <div class="form-row" progress>
-                <div class="form-box left">
-                    <label>Номер на полета<span class="requared">*</span></label>
-                    <div>
-                        <input type="text" name="FlightNumber" id="FlightNumber" value="@Model.number" placeholder="Номер на полет" validate /><i class="icon"></i>
-                    </div>
-                    <label class="sub-error">@Model.numberError</label>
-                </div>
-                <div class="form-box rigth">
-                    <label>Дата на полета<span class="requared">*</span></label>
-                    <div>
-                        <input type="text" id="Date" name="Date" value="@Model.date" placeholder="Дата на полета" validate /><i class="icon"></i>
-                    </div>
-                    <label class="sub-error"></label>
-                </div>
+            <div class="form-hedar" style="display:none" choise-flight>
+                При кой полет имахте проблем
             </div>
-
+            <div class="form-row-radio" style="display:none" choise-flight >
+                
+            </div>
 
             <div class="form-row" style="display:none" number>
                 <div class="form-box left">
@@ -117,8 +106,6 @@
                 </div>
             </div>
 
-
-
             <div class="form-subtext">
                 @if (Model.commonError != "")
                 {
@@ -128,7 +115,7 @@
                 }
             </div>
 
-            <div class="form-row" style="display:none;" pragress>
+            <div class="form-row" style="display:none;" post>
                 <div class="form-box">
                     <button class="submit" type="submit" keypress="return false" onclick="return validateCommon()">Напред</button>
                 </div>
@@ -147,13 +134,23 @@
 <div id="template" style="display:none;">
     <div class="form-box-connection">
         <div>
-            <input type="text" name="ConnectionAirports" autocomplete="off" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
+            <input type="text" validate name="ConnectionAirports" autocomplete="off" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
             <i class="icon"></i>
             <ul class="lSuggestoin"></ul>
         </div>
         <button class="bDelete" onmousedown="$(this).parent().remove(); return false;"><i class="icon"></i></button>
     </div>
 </div>
+
+<div id="template1" style="display:none;">
+    <label class="radio">
+        <input type="radio" value="{1}"  name="Flight">
+        <span>{2}</span>
+    </label>
+</div>
+
+
+
 
 <script src="~/Scripts/main.js"></script>
 <script src="~/Scripts/flyght-form.js"></script>
