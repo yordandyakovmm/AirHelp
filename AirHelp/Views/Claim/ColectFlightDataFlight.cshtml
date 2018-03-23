@@ -22,11 +22,11 @@
             <input type="hidden" name="json" value="" />
             <input type="hidden" name="SignitureImage" value="" />
 
-            <div class="form-hedar">
+            <div class="form-hedar" first>
                 Информаця за полета
             </div>
 
-            <div class="form-row">
+            <div class="form-row" first>
 
                 <div class="form-box left">
                     <label>Начално летище<span class="requared">*</span></label>
@@ -45,10 +45,10 @@
                     </div>
                 </div>
             </div>
-            <div class="form-subheder">
+            <div class="form-subheder" first>
                 Имахте ли прекачвания по пътя?
             </div>
-            <div class="form-row-rodio" style="justify-content:flex-start">
+            <div class="form-row-rodio" style="justify-content:flex-start" first>
 
                 <label class="radio">
                     <input type="radio" id="rYes" name="HasConnection">
@@ -59,7 +59,7 @@
                     <span>Не</span>
                 </label>
             </div>
-            <div class="form-row" id="connectionAirPorts" style="flex-flow: column; display:none;">
+            <div class="form-row" id="connectionAirPorts" style="flex-flow: column; display:none;" first>
                 <div class="form-box-connection">
                     <div>
                         <input type="text" validate name="ConnectionAirports" autocomplete="off" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
@@ -73,20 +73,24 @@
                 </div>
             </div>
 
-            <div class="form-row" pragress>
+            <div class="form-row" progress>
                 <div class="form-box">
                     <button class="submit" type="button" keypress="return false" onclick="return progress(this)">Напред</button>
                 </div>
                 <div class="form-box">
-                    
+
                 </div>
             </div>
 
             <div class="form-hedar" style="display:none" choise-flight>
                 При кой полет имахте проблем
             </div>
-            <div class="form-row-radio" style="display:none" choise-flight >
-                
+            <div class="form-row-radio" style="display:none" choise-flight>
+
+            </div>
+
+            <div class="form-hedar" style="display:none" number>
+                Ноля попълнете номера и дата на полета
             </div>
 
             <div class="form-row" style="display:none" number>
@@ -106,13 +110,11 @@
                 </div>
             </div>
 
-            <div class="form-subtext">
-                @if (Model.commonError != "")
-                {
-                    <label class="error-row">
-                        @Model.commonError
-                    </label>
-                }
+            <div class="form-hedar" style="display:none" multinumber-row>
+                Ноля попълнете номерата на полетите
+            </div>
+            <div multinumber style="display:none">
+
             </div>
 
             <div class="form-row" style="display:none;" post>
@@ -144,11 +146,32 @@
 
 <div id="template1" style="display:none;">
     <label class="radio">
-        <input type="radio" value="{1}"  name="Flight">
+        <input type="radio" onclick="flightChange(this)" value="{1}" name="Flight">
         <span>{2}</span>
     </label>
 </div>
 
+<div id="template2" style="display:none;">
+    <div class="form-subheder">
+        {2}
+    </div>
+    <div class="form-row" id="{1}">
+        <div class="form-box left">
+            <label>Номер на полета<span class="requared">*</span></label>
+            <div>
+                <input type="text" validate name="FlightNumber" id="FlightNumber" value="@Model.number" placeholder="Номер на полет" validate /><i class="icon"></i>
+            </div>
+            <label class="sub-error">Невалиден номер</label>
+        </div>
+        <div class="form-box rigth">
+            <label>Дата на полета<span class="requared">*</span></label>
+            <div>
+                <input type="text" validate id="Date" name="Date" value="" placeholder="Дата на полета" validate /><i class="icon"></i>
+            </div>
+            <label class="sub-error">Невалидна дата</label>
+        </div>
+    </div>
+</div>
 
 
 

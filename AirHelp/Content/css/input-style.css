@@ -243,6 +243,7 @@ button.claim-reset .icon::before {
   position: absolute;
   margin: -1px 0 0 0;
   background-color: white;
+  width: 300px;
   box-sizing: border-box;
   border-style: none solid solid solid;
   border-width: 1px;
@@ -555,4 +556,7 @@ label.red {
 [disabled] {
   filter: opacity(50%);
   cursor: not-allowed;
+}
+.blur {
+  filter: blur(5px);
 }

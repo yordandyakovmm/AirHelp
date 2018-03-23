@@ -8,14 +8,14 @@
     });
 
     //nitialize width of position absolute elements
-    $('.lSuggestoin').each(function (el) {
-        $(this).width($(this).parent().find('input').width() + 50);
-    });
-    $(window).resize(function () {
-        $('.lSuggestoin').each(function (el) {
-            $(this).width($(this).parent().find('input').width() + 50);
-        });
-    });
+    //$('.lSuggestoin').each(function (el) {
+    //    $(this).width($(this).parent().find('input').width() + 50);
+    //});
+    //$(window).resize(function () {
+    //    $('.lSuggestoin').each(function (el) {
+    //        $(this).width($(this).parent().find('input').width() + 50);
+    //    });
+    //});
 
     $.datepicker.setDefaults($.datepicker.regional['bg']);
 
@@ -53,21 +53,19 @@
             else {
                 var re = /(^[a-zA-Z]){1}([a-zA-Z]|[0-9]){1}([0-9]*$)/;
                 result = re.test(text);
-                $(this).parent().parent().find('.sub-error').text('Невалиден номмер');
+                $(this).parent().parent().find('.sub-error').text('Невалиден номер');
             }
             
         }
         else {
             result = data.length >= 3;
         }
-
+       
         if (result && $(this).not('[dropdown]').length > 0) {
             $(this).parent().parent().removeClass('error');
             $(this).parent().parent().addClass('success');
         }
-        else {
-            $(this).parent().parent().removeClass('success');
-        }
+       
     });
 
     $('input[type=radio]').change(function () {
@@ -218,7 +216,7 @@ function ddKeyUp(_this, e) {
     if (e.which == 37 || e.which == 39) {
         return;
     }
-
+    console.log(e.which);
     var $this = $(_this);
     $this.parent().parent().removeClass('error');
     $this.parent().parent().removeClass('success');
@@ -234,7 +232,7 @@ function ddKeyUp(_this, e) {
         $this.removeClass('remove-shadow');
         $dropDown.hide();
         e.stopPropagation();
-
+        return;
     }
         // up
     else if (e.which == 38) {

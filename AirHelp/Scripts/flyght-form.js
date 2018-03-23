@@ -1,14 +1,18 @@
 ﻿function progress(_this)
 {
-    var res = validateCommon();
+    var res = validateFlight();
     if (res) {
         var flights = [];
         var first = $('[name="DepartureAirport"]').data('data');
         var last = $('[name="DestinationAirports"]').data('data');
-        var airports = $('[name="connectionAirPorts"]');
+        var airports = [];
+
+        $('[name=ConnectionAirports]:visible').each(function (index) {
+            var data = $($('[name=ConnectionAirports]')[index]).data('data');
+            airports.push(data);
+        });
 
         if (airports.length == 0) {
-            debugger;
             var flight = {
                 number: first.iata,
                 departure: first.country + ' (' + first.city + ') ',
@@ -45,22 +49,62 @@
 
         }
 
+        window.flights = flights;
+
         if (flights.length > 1) {
             $('[choise-flight].form-row-radio').show();
 
-            for (var i = 0; i < airports.length - 1; i++) {
+            for (var i = 0; i < flights.length; i++) {
                 var tempate = $('#template1').html();
                 tempate = tempate
-                    .replace('{1}', airports[i].number)
-                    .replace('{2}', airports[i].departure + ' -- ' + airports[i].arrival);
+                    .replace('{1}', flights[i].number)
+                    .replace('{2}', flights[i].departure + ' -- ' + flights[i].arrival);
                 $('[choise-flight].form-row-radio').append(tempate);
+
+                tempate = $('#template2').html();
+                tempate = tempate
+                    .replace('{1}', flights[i].number)
+                    .replace('{2}', flights[i].departure + ' -- ' + flights[i].arrival);
+                $('[multinumber]').append(tempate);
             }
+            $('[choise-flight]').show();
+
         }
         else {
+            $('[post]').show();
             $('[number]').show();
+            
         }
         
-        $('[pragress]').hide();
+        $('[first] input').attr('disabled', 'disabled');
+        $('[first]').addClass('blur');
+
+        $('[progress]').hide();
         
     }
+}
+
+
+function validateFlight() {
+    var result = true;
+    $('input:visible[validate]').each(function (el) {
+        if ($(this).parent().parent().not('.success').length > 0) {
+            $(this).parent().parent().addClass('error');
+            result = false;
+        }
+    });
+    return result;
+}
+
+
+function flightChange(_this)
+{
+    $(_this).parent().parent().find('label').removeClass('selected');
+    $(_this).parent().addClass('selected');
+    $('[multinumber-row]').show();
+    $('[multinumber]').show();
+    $('[post]').show();
+    $('[first] input').attr('disabled', 'disabled');
+    $('[first]').addClass('blur');
+
 }
