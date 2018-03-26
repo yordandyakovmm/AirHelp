@@ -22,51 +22,9 @@
     $('#Date').datepicker({ dateFormat: 'dd.mm.yy' });
     $('#Date').datepicker($.datepicker.regional['bg']);
 
-    $('input[type=text]').change(function () {
+    $('input[type=text]').change(onChageInput);
 
-        $('.error-row').hide();
-
-        var data = $(this).val();
-        var result = false;
-
-        if (this.id == 'Date') {
-            try {
-                data = $.datepicker.parseDate('dd.mm.yy', data);
-                result = true;
-            }
-            catch (ex) {
-                result = false
-            }
-        }
-        else if (this.id == 'Email') {
-            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            result = re.test(data);
-        }
-        else if (this.id == 'Tel') {
-            result = data.length >= 8;
-        }
-        else if (this.id == 'FlightNumber') {
-            var text = data.replace(' ', '').replace('-', '');
-            if (text.length < 3) {
-                result = false;
-            }
-            else {
-                var re = /(^[a-zA-Z]){1}([a-zA-Z]|[0-9]){1}([0-9]*$)/;
-                result = re.test(text);
-                $(this).parent().parent().find('.sub-error').text('Невалиден номер');
-            }
-            
-        }
-        else {
-            result = data.length >= 3;
-        }
-       
-        if (result && $(this).not('[dropdown]').length > 0) {
-            $(this).parent().parent().removeClass('error');
-            $(this).parent().parent().addClass('success');
-        }
-       
-    });
+    
 
     $('input[type=radio]').change(function () {
         $(this).parent().parent().removeClass('error');
@@ -212,11 +170,57 @@ function menuItemClick(_this) {
     $parent.hide();
 }
 
+
+function onChageInput() {
+
+    $('.error-row').hide();
+
+    var data = $(this).val();
+    var result = false;
+
+    if (this.id == 'Date') {
+        try {
+            data = $.datepicker.parseDate('dd.mm.yy', data);
+            result = true;
+        }
+        catch (ex) {
+            result = false
+        }
+    }
+    else if (this.id == 'Email') {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        result = re.test(data);
+    }
+    else if (this.id == 'Tel') {
+        result = data.length >= 8;
+    }
+    else if (this.id == 'FlightNumber') {
+        var text = data.replace(' ', '').replace('-', '');
+        if (text.length < 3) {
+            result = false;
+        }
+        else {
+            var re = /(^[a-zA-Z]){1}([a-zA-Z]|[0-9]){1}([0-9]*$)/;
+            result = re.test(text);
+            $(this).parent().parent().find('.sub-error').text('Невалиден номер');
+        }
+
+    }
+    else {
+        result = data.length >= 3;
+    }
+
+    if (result && $(this).not('[dropdown]').length > 0) {
+        $(this).parent().parent().removeClass('error');
+        $(this).parent().parent().addClass('success');
+    }
+
+}
+
 function ddKeyUp(_this, e) {
     if (e.which == 37 || e.which == 39) {
         return;
     }
-    console.log(e.which);
     var $this = $(_this);
     $this.parent().parent().removeClass('error');
     $this.parent().parent().removeClass('success');

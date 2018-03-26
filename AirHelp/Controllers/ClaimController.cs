@@ -37,6 +37,95 @@ namespace AirHelp.Controllers
             return View("ColectFlightDataFlight", model);
         }
 
+        [HttpPost]
+        [Route("калкулиране-на-обезщетение")]
+        public ActionResult ColectFlightDataFlightPost()
+        {
+            
+
+            Guid newGuid = Guid.NewGuid();
+            
+            var jsonString = Request.Form["jsonAirport"];
+            var issueDepartureCode = Request.Form["Flight"];
+            var nubmer = Request.Form["FlightNumber"];
+            var nubmers = Request.Form["FlightNumbers"];
+            var date = Request.Form["Date"];
+            var dates = Request.Form["Dates"];
+
+            string[] flightNumbers = nubmers.Split(',');
+            string[] flightDates = dates.Split(',');
+
+            var json = new JavaScriptSerializer();
+            Airport[] airports = json.Deserialize<Airport[]>(jsonString);
+            
+            Claim claim = new Claim
+            {
+                ClaimId = Guid.NewGuid(),
+                State = ClaimStatus.WaitForDocument,
+                UserId = null,
+                DateCreated = DateTime.Now,
+                Type = ProblemType.Pending,
+             };
+                        
+
+            int number = 1;
+            airports.ToList().ForEach(a => {
+                AirPort airport = new AirPort
+                {
+                    Id = Guid.NewGuid(),
+                    ap_name = a.ap_name,
+                    city = a.city,
+                    country = a.country,
+                    elevation = int.Parse(a.elevation),
+                    iata = a.iata,
+                    number = number,
+                    name = a.name,
+                    timezone = double.Parse(a.timezone),
+                    icao = a.icao,
+                    type = a.type,
+                    x = double.Parse(a.x),
+                    y = double.Parse(a.y),
+                    FlightNumber = flightNumbers[number - 1],
+                    FlightDate = flightDates[number - 1],
+                    startIssue = (number == 1 && airports.Length == 2) || (a.iata == issueDepartureCode)
+                };
+                number++;
+                claim.AirPorts.Add(airport);
+            });
+
+            double allDistance = 0;
+            double issuDistance = 0;
+            bool flag = false;
+            var claimAirPorts = claim.AirPorts.ToArray();
+            for (int i = 0; i < claimAirPorts.Length - 1; i++)
+            {
+                var sCoord = new GeoCoordinate(claimAirPorts[i].y, claimAirPorts[i].x);
+                var eCoord = new GeoCoordinate(claimAirPorts[i + 1].y, claimAirPorts[i + 1].x);
+
+                var d  = sCoord.GetDistanceTo(eCoord);
+                claimAirPorts[i].distanceToNext = d;
+                allDistance += d;
+                flag = flag || (claimAirPorts[i].iata == issueDepartureCode);
+                if (flag)
+                {
+                    issuDistance += d;
+                }
+
+            }
+
+            claim.issueDistance = issuDistance;
+            claim.allDistance = allDistance;
+
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                dc.Claims.Add(claim);
+                dc.SaveChanges();
+            }
+
+            return View("ColectData", claim);
+            
+        }
+
         [HttpGet]
         [Route("проверка-полет")]
         public ActionResult DirctFlight()
@@ -58,8 +147,8 @@ namespace AirHelp.Controllers
 
 
                 ViewBag.IsEu = c.AirPorts.Any(a => CommonHeppler.IsEuCountry(a.countryCode));
-                ViewBag.delayMessage = (c.distance < 1500000 ? "Полета ви закъсня ли с повече от 2 часа?" :
-                    (c.distance < 3500000 || ViewBag.IsEu ? "Полета ви закъсня ли с повече от 3 часа?" : "Полета ви закъсня ли с повече от 3 часа ?"));
+                ViewBag.delayMessage = (c.issueDistance < 1500000 ? "Полета ви закъсня ли с повече от 2 часа?" :
+                    (c.issueDistance < 3500000 || ViewBag.IsEu ? "Полета ви закъсня ли с повече от 3 часа?" : "Полета ви закъсня ли с повече от 3 часа ?"));
             }
                 return View("ColectData", c);
 
@@ -124,13 +213,13 @@ namespace AirHelp.Controllers
                     type =  "",
                     x = a.latitude,
                     y = a.longitude,
-                    distance = distance
+                    distanceToNext = distance
                 };
                 number++;
                 claim.AirPorts.Add(airport);
             });
 
-            claim.distance = claim.AirPorts.Sum(a => a.distance);
+            claim.allDistance = claim.AirPorts.Sum(a => a.distanceToNext);
 
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
@@ -191,22 +280,16 @@ namespace AirHelp.Controllers
                 UserId = null,
                 DateCreated = DateTime.Now,
 
-                BordCardUrl = BordCardUrl,
-                BookConfirmationUrl = BookConfirmationUrl,
+                
                 Type = ProblemType.Cancel,
                 FlightNumber = Request.Form["FlightNumber"],
-                Reason = Request.Form["Reason"],
-                HowMuch = Request.Form["HowMuch"],
-                Annonsment = Request.Form["Annonsment"],
-                BookCode = Request.Form["BookCode"],
+                
+               
                 AirCompany = data.airline.al_name,
                 AirCompanyCountry = data.airline.country,
                 AdditionalInfo = Request.Form["AdditionalInfo"],
                 Confirm = Request.Form["Confirm"],
-                Arival = Request.Form["Arival"],
-                DocumentSecurity = Request.Form["DocumentSecurity"],
-                Willness = Request.Form["Willness"],
-                Delay = Request.Form["Delay"],
+              
                 SignitureImage = Request.Form["SignitureImage"],
                 AttorneyUrl = AttorneyUrl
             };

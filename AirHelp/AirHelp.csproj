@@ -201,6 +201,7 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="DAL\Entities\Abstract\EntityBase.cs" />
     <Compile Include="DAL\Entities\Abstract\EntityID.cs" />
+    <Compile Include="DAL\Entities\Documents.cs" />
     <Compile Include="DAL\Entities\Claim.cs" />
     <Compile Include="DAL\Entities\AirPort.cs" />
     <Compile Include="DAL\Entities\AdditionalUsers.cs" />
@@ -208,45 +209,9 @@
     <Compile Include="DAL\Initializers\DbInitializer.cs" />
     <Compile Include="Hellpers\CommonHeppler.cs" />
     <Compile Include="Hellpers\UserHeppler.cs" />
-    <Compile Include="Migrations\201711302245583_InitialCreate.cs" />
-    <Compile Include="Migrations\201711302245583_InitialCreate.Designer.cs">
-      <DependentUpon>201711302245583_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711302315470_FixDate.cs" />
-    <Compile Include="Migrations\201711302315470_FixDate.Designer.cs">
-      <DependentUpon>201711302315470_FixDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801210223207_Claim.cs" />
-    <Compile Include="Migrations\201801210223207_Claim.Designer.cs">
-      <DependentUpon>201801210223207_Claim.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801212341321_miising-fields.cs" />
-    <Compile Include="Migrations\201801212341321_miising-fields.Designer.cs">
-      <DependentUpon>201801212341321_miising-fields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801240015096_signitureImage.cs" />
-    <Compile Include="Migrations\201801240015096_signitureImage.Designer.cs">
-      <DependentUpon>201801240015096_signitureImage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801242216573_merge.cs" />
-    <Compile Include="Migrations\201801242216573_merge.Designer.cs">
-      <DependentUpon>201801242216573_merge.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801312225558_airpoirt.cs" />
-    <Compile Include="Migrations\201801312225558_airpoirt.Designer.cs">
-      <DependentUpon>201801312225558_airpoirt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802041826460_AirCompany.cs" />
-    <Compile Include="Migrations\201802041826460_AirCompany.Designer.cs">
-      <DependentUpon>201802041826460_AirCompany.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803141725074_refactoring.cs" />
-    <Compile Include="Migrations\201803141725074_refactoring.Designer.cs">
-      <DependentUpon>201803141725074_refactoring.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803172137540_distance.cs" />
-    <Compile Include="Migrations\201803172137540_distance.Designer.cs">
-      <DependentUpon>201803172137540_distance.cs</DependentUpon>
+    <Compile Include="Migrations\201803261402371_Initial.cs" />
+    <Compile Include="Migrations\201803261402371_Initial.Designer.cs">
+      <DependentUpon>201803261402371_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -458,35 +423,8 @@
     <Folder Include="UserDocuments\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711302245583_InitialCreate.resx">
-      <DependentUpon>201711302245583_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711302315470_FixDate.resx">
-      <DependentUpon>201711302315470_FixDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801210223207_Claim.resx">
-      <DependentUpon>201801210223207_Claim.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801212341321_miising-fields.resx">
-      <DependentUpon>201801212341321_miising-fields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801240015096_signitureImage.resx">
-      <DependentUpon>201801240015096_signitureImage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801242216573_merge.resx">
-      <DependentUpon>201801242216573_merge.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801312225558_airpoirt.resx">
-      <DependentUpon>201801312225558_airpoirt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802041826460_AirCompany.resx">
-      <DependentUpon>201802041826460_AirCompany.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803141725074_refactoring.resx">
-      <DependentUpon>201803141725074_refactoring.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803172137540_distance.resx">
-      <DependentUpon>201803172137540_distance.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803261402371_Initial.resx">
+      <DependentUpon>201803261402371_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

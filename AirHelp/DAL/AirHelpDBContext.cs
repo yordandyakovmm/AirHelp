@@ -16,6 +16,7 @@ namespace AirHelp.DAL
         public DbSet<Claim> Claims { get; set; }
         public DbSet<AdditionalUser> AdditionalUsers { get; set; }
         public DbSet<AirPort> AirPorts { get; set; }
+        public DbSet<Document> Documents { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

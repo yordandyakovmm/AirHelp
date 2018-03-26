@@ -33,8 +33,6 @@ namespace AirHelp.DAL
 
         public DateTime DateCreated { get; set; }
         
-        public string BordCardUrl { get; set; }
-        public string BookConfirmationUrl { get; set; }
         public string AttorneyUrl { get; set; }
 
         public ProblemType Type { get; set; }
@@ -43,37 +41,53 @@ namespace AirHelp.DAL
 
         public DateTime Date { get; set; }
 
-        public string Reason { get; set; }
+        public double allDistance { get; set; }
 
-        public string HowMuch { get; set; }
+        public double issueDistance { get; set; }
+        
 
-        public string Annonsment { get; set; }
+        public Reason Reason { get; set; }
 
-        public string BookCode { get; set; }
+        public DelayDelay DelayDelay { get; set; }
+
+        public CancelOverbokingDelay CancelDelay { get; set; }
+
+        public CancelAnnonsment CancelAnnonsment { get; set; }
+
+        public DenayArival DenayArival { get; set; }
+
+        public DocumentSecurity DocumentSecurity { get; set; }
+
+        public Willness Willness { get; set; }
+
+
+        public string BookingCode { get; set; }
+
+        public string TikedNumber { get; set; }
+
 
         public string AirCompany { get; set; }
 
         public string AirCompanyCountry { get; set; }
 
+        public string AirCompanyCode { get; set; }
+
+
         public string AdditionalInfo { get; set; }
 
         public string Confirm { get; set; }
 
-        public string Arival { get; set; }
-
-        public string DocumentSecurity { get; set; }
-
-        public string Willness { get; set; }
-
-        public string Delay { get; set; }
-
         public string SignitureImage { get; set; }
+
+
 
         public virtual ICollection<AirPort> AirPorts { get; set; }
 
         public virtual ICollection<AdditionalUser> AdditionalUsers { get; set; }
 
-        public double distance { get; set; }
+        public virtual ICollection<Document> Documents { get; set; }
+
+        
 
 
     }

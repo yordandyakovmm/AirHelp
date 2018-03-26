@@ -13,6 +13,11 @@ namespace AirHelp.Models
         public Airline airline { get; set; }
     }
 
+    public class AirportList
+    {
+        public Airport[] airports { get; set; }
+    }
+
     public class Airline
     {
         public string name { get; set; }

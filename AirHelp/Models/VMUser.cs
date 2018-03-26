@@ -68,8 +68,7 @@ namespace AirHelp.Models
             User = null;
             DateCreated = claim.DateCreated;
 
-            BordCardUrl = claim.BordCardUrl;
-            BookConfirmationUrl = claim.BookConfirmationUrl;
+            
             Type = claim.Type.ToString();
             
             FirstName = claim.User.FirstName;
@@ -82,17 +81,11 @@ namespace AirHelp.Models
             FlightNumber = claim.FlightNumber;
             Date = claim.Date.ToString("dd.MM.yyyy");
     
-            Reason = claim.Reason;
-            HowMuch = claim.HowMuch;
-            Annonsment = claim.Annonsment;
-            BookCode = claim.BookCode;
+           
             AirCompany = claim.AirCompany;
             AdditionalInfo = claim.AdditionalInfo;
             Confirm = claim.Confirm;
-            Arival = claim.Arival;
-            DocumentSecurity = claim.DocumentSecurity;
-            Willness = claim.Willness;
-            Delay = claim.Delay;
+           
             SignitureImage = claim.SignitureImage;
             AttorneyUrl = claim.AttorneyUrl;
             AirporstDistance = new List<AirportDistance>();
@@ -107,8 +100,7 @@ namespace AirHelp.Models
             User = null;
             DateCreated = claim.DateCreated;
 
-            BordCardUrl = claim.BordCardUrl;
-            BookConfirmationUrl = claim.BookConfirmationUrl;
+            
             Type  = "";
             FirstName = claim.User.FirstName;
             LastName = claim.User.LastName;
@@ -119,17 +111,11 @@ namespace AirHelp.Models
             Tel = claim.User.Tel;
             FlightNumber = claim.FlightNumber;
             Date = claim.Date.ToString("dd.MM.yyyy");
-            Reason = claim.Reason;
-            HowMuch = claim.HowMuch;
-            Annonsment = claim.Annonsment;
-            BookCode = claim.BookCode;
+           
             AirCompany = claim.AirCompany;
             AdditionalInfo = claim.AdditionalInfo;
             Confirm = claim.Confirm;
-            Arival = claim.Arival;
-            DocumentSecurity = claim.DocumentSecurity;
-            Willness = claim.Willness;
-            Delay = claim.Delay;
+           
             SignitureImage = claim.SignitureImage;
             AttorneyUrl = claim.AttorneyUrl;
             return this;

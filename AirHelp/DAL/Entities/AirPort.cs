@@ -47,7 +47,10 @@ namespace AirHelp.DAL
         public int elevationFeet { get; set; }
         public int classification { get; set; }
         public bool active { get; set; }
-        public double distance { get; set; }
+
+        public double distanceToNext { get; set; }
+        
+        public bool startIssue { get; set; }
 
     }
 }

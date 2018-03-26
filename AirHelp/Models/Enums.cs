@@ -22,14 +22,6 @@ namespace AirHelp.Models
         Rejected = 5
     }
 
-    public enum emType
-    {
-        Pending = 0,
-        Delay = 1,
-        Cancel = 2,
-        Overbooking = 3
-    }
-
     public enum Reason
     {
         TechnicalIssue = 0,
@@ -41,7 +33,7 @@ namespace AirHelp.Models
 
     }
 
-    public enum Delay
+    public enum DelayDelay
     {
         LessThat3 = 0,
         MoreThat3 = 1,
@@ -55,12 +47,14 @@ namespace AirHelp.Models
         LessThat7 = 2
     }
 
-    public enum CancelDelay
+    public enum CancelOverbokingDelay
     {
         Beetwen0_2 = 0,
         Beetwen2_3 = 1,
         Beetwen3_4 = 2,
-        MoreThan4 = 3
+        MoreThan4 = 3,
+        NotArrive = 4
+
     }
 
     public enum DenayArival

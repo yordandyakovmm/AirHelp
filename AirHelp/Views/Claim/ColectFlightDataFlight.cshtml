@@ -18,8 +18,7 @@
     </div>
     <div class="center-content">
         <form method="post" enctype="multipart/form-data">
-            <input type="hidden" name="ConnectionAriports" value="" />
-            <input type="hidden" name="json" value="" />
+            <input type="hidden" name="jsonAirport" value="" />
             <input type="hidden" name="SignitureImage" value="" />
 
             <div class="form-hedar" first>
@@ -119,7 +118,7 @@
 
             <div class="form-row" style="display:none;" post>
                 <div class="form-box">
-                    <button class="submit" type="submit" keypress="return false" onclick="return validateCommon()">Напред</button>
+                    <button class="submit" type="submit" keypress="return false" onclick="return validateFlights()">Напред</button>
                 </div>
                 <div class="form-box">
                     <button class="reset" type="reset" keypress="return false" onclick="clearForm()">Изчисти</button>
@@ -159,20 +158,19 @@
         <div class="form-box left">
             <label>Номер на полета<span class="requared">*</span></label>
             <div>
-                <input type="text" validate name="FlightNumber" id="FlightNumber" value="@Model.number" placeholder="Номер на полет" validate /><i class="icon"></i>
+                <input type="text" validate name="FlightNumbers" id="FlightNumber" value="" placeholder="Номер на полет" validate /><i class="icon"></i>
             </div>
             <label class="sub-error">Невалиден номер</label>
         </div>
         <div class="form-box rigth">
             <label>Дата на полета<span class="requared">*</span></label>
             <div>
-                <input type="text" validate id="Date" name="Date" value="" placeholder="Дата на полета" validate /><i class="icon"></i>
+                <input type="text" validate id="{1}d" name="Dates" value="" placeholder="Дата на полета" validate /><i class="icon"></i>
             </div>
             <label class="sub-error">Невалидна дата</label>
         </div>
     </div>
 </div>
-
 
 
 <script src="~/Scripts/main.js"></script>
