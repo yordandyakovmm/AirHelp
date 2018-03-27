@@ -74,4 +74,20 @@ namespace AirHelp.Models
         Voluntary = 0,
         NotVoluntary = 1
     }
+
+    public enum IsEUFlight
+    {
+        EU = 0,
+        NonEU = 1,
+        EUMixed =2
+    }
+
+    public enum FlightType
+    {
+        F1500 = 0,
+        FTo3500 = 1,
+        FmoreThen3500 = 2,
+        NotSupported
+    }
+
 }

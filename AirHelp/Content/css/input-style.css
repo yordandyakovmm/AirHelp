@@ -230,6 +230,16 @@ button.claim-reset .icon::before {
   color: #009fe3;
   margin: 30px 0 5px 0;
 }
+.form-subheder-dark {
+  font-family: "PT Sans", sans-serif;
+  color: #141a30;
+  font-size: 15px;
+  font-weight: 400;
+  font-weight: 700;
+  font-size: 24px;
+  color: #00344a;
+  margin: 30px 0 5px 0;
+}
 .form-subtext {
   font-family: "PT Sans", sans-serif;
   color: #141a30;

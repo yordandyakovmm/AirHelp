@@ -1,0 +1,51 @@
+﻿@model AirHelp.Models.RelectClaim
+
+<div class="register-form">
+    <div class="progress">
+        <div class="past">
+            <div class="circle"><label>1</label></div>
+            <label class="text">Данни за полета</label>
+        </div>
+        <div class="past">
+            <div class="circle"><label>2</label></div>
+            <label class="text">Описание на проблема</label>
+        </div>
+        <div class="past">
+            <div class="circle"><label>3</label></div>
+            <label class="text">Калкулиране на обезщетението</label>
+        </div>
+        <div class="current">
+            <div class="circle"><label>4</label></div>
+            <label class="text">Причина за отказ</label>
+        </div>
+
+    </div>
+    <div class="center-content">
+        <form method="post" enctype="multipart/form-data" action="/описание-на-проблема">
+
+            <div class="form-hedar">
+                За съжаление ХЕЛПКЛЕЙМ ООД не може да обработи заявката Ви
+            </div>
+            <div class="form-subheder" style="display: none" delay cancel reason>
+                Причина
+            </div>
+
+            <div class="form-subtext">
+                @Model.Reason
+            </div>
+
+            <div class="form-row" none" button>
+                <div class="form-box">
+                    <button class="submit" type="button" keypress="return false" onclick="window.location = '/калкулиране-на-обезщетение'">Провери друг полет</button>
+                </div>
+                <div class="form-box">
+
+                </div>
+            </div>
+            <div class="form-row">
+                &nbsp;
+            </div>
+        </form>
+    </div>
+
+</div>

@@ -111,6 +111,13 @@ namespace AirHelp.Hellpers
             return CountryCodeArr.ToList().Any(c => c == countryCode);
         }
 
+
+        public static bool IsEuCountryByName(string CountryName)
+        {
+            CountryName = CountryName.ToLower();
+            return CountryNameArr.ToList().Any(c => c.ToLower() == CountryName);
+        }
+
         private static string[] CountryCodeArr = {
             "BE",
             "BG",
@@ -142,5 +149,35 @@ namespace AirHelp.Hellpers
             "UK",
         };
 
+        private static string[] CountryNameArr = {
+            "Austria",
+            "Belgium",
+            "Bulgaria",
+            "Croatia",
+            "Cyprus ",
+            "Czech Republic",
+            "Denmark",
+            "Estonia",
+            "Finland",
+            "France",
+            "Germany",
+            "Greece",
+            "Hungary",
+            "Ireland",
+            "Italy",
+            "Latvia",
+            "Lithuania",
+            "Luxembourg",
+            "Malta",
+            "Netherland",
+            "Poland",
+            "Portugal",
+            "Romania",
+            "Slovakia",
+            "Slovenia ",
+            "Spain",
+            "Sweden",
+            "United Kingdom"
+        };
     }
 }

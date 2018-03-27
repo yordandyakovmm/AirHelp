@@ -3,7 +3,7 @@ namespace AirHelp.DAL.Migration
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -87,8 +87,6 @@ namespace AirHelp.DAL.Migration
                         classification = c.Int(nullable: false),
                         active = c.Boolean(nullable: false),
                         distanceToNext = c.Double(nullable: false),
-                        flightNumber = c.String(),
-                        flightDate = c.String(),
                         startIssue = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

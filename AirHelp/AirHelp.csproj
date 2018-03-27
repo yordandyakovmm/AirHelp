@@ -209,14 +209,23 @@
     <Compile Include="DAL\Initializers\DbInitializer.cs" />
     <Compile Include="Hellpers\CommonHeppler.cs" />
     <Compile Include="Hellpers\UserHeppler.cs" />
-    <Compile Include="Migrations\201803261402371_Initial.cs" />
-    <Compile Include="Migrations\201803261402371_Initial.Designer.cs">
-      <DependentUpon>201803261402371_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201803262023038_initial.cs" />
+    <Compile Include="Migrations\201803262023038_initial.Designer.cs">
+      <DependentUpon>201803262023038_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803270843289_flighDate.cs" />
+    <Compile Include="Migrations\201803270843289_flighDate.Designer.cs">
+      <DependentUpon>201803270843289_flighDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803271434282_add-compensationAmount.cs" />
+    <Compile Include="Migrations\201803271434282_add-compensationAmount.Designer.cs">
+      <DependentUpon>201803271434282_add-compensationAmount.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RejectClaim.cs" />
     <Compile Include="Models\Flight.cs" />
     <Compile Include="Models\Object.cs" />
     <Compile Include="Models\Enums.cs" />
@@ -351,6 +360,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Compile Include="DAL\AirHelpDBContext.cs" />
+    <Content Include="Scripts\RegisterUser.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
@@ -402,6 +412,9 @@
     <Content Include="Views\Claim\DirectFlight.cshtml" />
     <Content Include="Views\Claim\ColectData.cshtml" />
     <Content Include="Views\Claim\ColectFlightDataFlight.cshtml" />
+    <Content Include="Views\Claim\RejectClaim.cshtml" />
+    <Content Include="Views\Claim\CalculatorResult.cshtml" />
+    <Content Include="Views\Claim\ConfirmClaim.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -423,8 +436,14 @@
     <Folder Include="UserDocuments\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803261402371_Initial.resx">
-      <DependentUpon>201803261402371_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803262023038_initial.resx">
+      <DependentUpon>201803262023038_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803270843289_flighDate.resx">
+      <DependentUpon>201803270843289_flighDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803271434282_add-compensationAmount.resx">
+      <DependentUpon>201803271434282_add-compensationAmount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -42,7 +42,6 @@ namespace AirHelp.Controllers
         public ActionResult ColectFlightDataFlightPost()
         {
             
-
             Guid newGuid = Guid.NewGuid();
             
             var jsonString = Request.Form["jsonAirport"];
@@ -52,8 +51,8 @@ namespace AirHelp.Controllers
             var date = Request.Form["Date"];
             var dates = Request.Form["Dates"];
 
-            string[] flightNumbers = nubmers.Split(',');
-            string[] flightDates = dates.Split(',');
+            string[] flightNumbers = nubmers != null ? nubmers.Split(',') : new string[]{ nubmer, ""};
+            string[] flightDates = dates != null ? dates.Split(',') : new string[] {date ,"" };
 
             var json = new JavaScriptSerializer();
             Airport[] airports = json.Deserialize<Airport[]>(jsonString);
@@ -85,8 +84,8 @@ namespace AirHelp.Controllers
                     type = a.type,
                     x = double.Parse(a.x),
                     y = double.Parse(a.y),
-                    FlightNumber = flightNumbers[number - 1],
-                    FlightDate = flightDates[number - 1],
+                    FlightNumber = airports.Length == number ? "" : flightNumbers[number - 1],
+                    FlightDate = airports.Length == number ? "" : flightDates[number - 1],
                     startIssue = (number == 1 && airports.Length == 2) || (a.iata == issueDepartureCode)
                 };
                 number++;
@@ -125,6 +124,7 @@ namespace AirHelp.Controllers
             return View("ColectData", claim);
             
         }
+
 
         [HttpGet]
         [Route("проверка-полет")]
@@ -176,7 +176,7 @@ namespace AirHelp.Controllers
             Claim claim = new Claim
             {
                 ClaimId = Guid.NewGuid(),
-                Date = new DateTime( year, mont, day),
+                FlightDate = Date,
                 State = ClaimStatus.Accepted,
                 UserId = User.Identity.IsAuthenticated ? User.Identity.Name: null,
                 DateCreated = DateTime.Now,
@@ -228,6 +228,276 @@ namespace AirHelp.Controllers
             }
 
             return View("ColectData", claim);
+        }
+
+        [HttpPost]
+        [Route("описание-на-проблема")]
+        public ActionResult IssueData()
+        {
+            
+            Guid ClaimId = Guid.Parse(Request.Form["ClaimID"]);
+            ProblemType Type = (ProblemType)(int.Parse(Request.Form["Type"]));
+            Reason Reason = (Reason)(int.Parse(Request.Form["Reason"]));
+            DelayDelay DelayDelay = (DelayDelay)(int.Parse(Request.Form["DelayDelay"]));
+            CancelAnnonsment CancelAnnonsment = (CancelAnnonsment)(int.Parse(Request.Form["CancelAnnonsment"]));
+            CancelOverbokingDelay CancelOverbokingDelay = (CancelOverbokingDelay)(int.Parse(Request.Form["CancelOverbokingDelay"]));
+            DenayArival DenayArival = (DenayArival)(int.Parse(Request.Form["DenayArival"]));
+            DocumentSecurity DocumentSecurity = (DocumentSecurity)(int.Parse(Request.Form["DocumentSecurity"]));
+            Willness Willness = (Willness)(int.Parse(Request.Form["Willness"]));
+
+            Claim claim = null;
+
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                claim = dc.Claims.Include("AirPorts").Where(c => c.ClaimId == ClaimId).SingleOrDefault();
+
+
+                // Check EU flagth
+                IsEUFlight isEUFlight = IsEUFlight.NonEU;
+                if (claim.AirPorts.All(a => CommonHeppler.IsEuCountryByName(a.country)))
+                {
+                    isEUFlight = IsEUFlight.EU;
+                }
+                else if (claim.AirPorts.Any(a => CommonHeppler.IsEuCountryByName(a.country)))
+                {
+                    isEUFlight = IsEUFlight.EUMixed;
+                }
+
+                double distance = (Type == ProblemType.Delay) ? claim.allDistance : claim.issueDistance;
+
+                FlightType flightType = FlightType.NotSupported;
+
+                if (isEUFlight == IsEUFlight.NonEU)
+                {
+                    flightType = FlightType.NotSupported;
+                }
+                else if (distance <= 1500000)
+                {
+                    flightType = FlightType.F1500;
+                }
+                else if (distance <= 3500000 || isEUFlight == IsEUFlight.EU)
+                {
+                    flightType = FlightType.FTo3500;
+                }
+                else
+                {
+                    flightType = FlightType.FmoreThen3500;
+                }
+
+                // reject by not in EU
+                if (flightType == FlightType.NotSupported)
+                {
+                    RelectClaim model = new RelectClaim()
+                    {
+                        Reason = "Полета е изцяло извън рамките на Европейският съюз. Регламент 261/2004 не покрива полети извън EU"
+                    };
+                    return View("RejectClaim", model);
+                }
+
+                // Reject by reason 
+                if (Reason == Reason.Strike || Reason == Reason.BadWeather)
+                {
+                    RelectClaim model = new RelectClaim()
+                    {
+                        Reason = "Причини за проблем с полета \"Стачка\" или \"Лошо време\" се водят форсмажорни обстоятрлства. " +
+                        "Авиокомпанията не дължи обезщетение по регламент 261/2004"
+                    };
+                    return View("RejectClaim", model);
+                }
+
+                if (Type == ProblemType.Delay)
+                {
+                    // Reject less than 3 hours
+                    if (DelayDelay == DelayDelay.LessThat3)
+                    {
+                        RelectClaim model = new RelectClaim()
+                        {
+                            Reason = "Закъснението на полета трябва да е повече от 3 часа."
+                        };
+                        return View("RejectClaim", model);
+                    }
+
+                    if (flightType == FlightType.F1500)
+                    {
+                        claim.CompensationAmount = 250;
+                        claim.CompensationReason = "Закъснял полет с дистанция до 1500 км";
+                    }
+
+                    else if (flightType == FlightType.FTo3500)
+                    {
+                        claim.CompensationAmount = 400;
+                        claim.CompensationReason = "Закъснял полет с дистанция до 3500 км или в ранмите на EU";
+                    }
+                    else if (flightType == FlightType.FmoreThen3500 && DelayDelay == DelayDelay.MoreThat3)
+                    {
+                        claim.CompensationAmount = 300;
+                        claim.CompensationReason = "Закъснял полет с дистанция над 3500 км. Ако полета заъснее с повече от 3 и по-малко от 4 часа, обезщетението се намалява с 50 %";
+                    }
+                    else
+                    {
+                        claim.CompensationAmount = 600;
+                        claim.CompensationReason = "Закъснял полет с дистанция над 3500 км със закъснение над 4 часа.";
+                    }
+
+                }
+
+                if (Type == ProblemType.Cancel)
+                {
+                    if (CancelAnnonsment == CancelAnnonsment.MoreThan14)
+                    {
+                        RelectClaim model = new RelectClaim()
+                        {
+                            Reason = "Авиокомпанията не дължи обезщетение при опоестяване 2 седмици преди отмяната на полета."
+                        };
+                        return View("RejectClaim", model);
+                    }
+
+                    if (CancelAnnonsment == CancelAnnonsment.Beetwen7_14 && CancelOverbokingDelay < CancelOverbokingDelay.MoreThan4)
+                    {
+                        RelectClaim model = new RelectClaim()
+                        {
+                            Reason = "При отмяна на полета с оповестяване на отмяната повече от 7 дни преди полета е нужно закъснение от поне 4 часа."
+                        };
+                        return View("RejectClaim", model);
+                    }
+
+                    if (CancelAnnonsment == CancelAnnonsment.LessThat7 && CancelOverbokingDelay < CancelOverbokingDelay.Beetwen2_3)
+                    {
+                        RelectClaim model = new RelectClaim()
+                        {
+                            Reason = "При отмяна на полета с оповестяване на отмяната по-малко от 7 дни преди полета е нужно закъснение от поне 2 часа."
+                        };
+                        return View("RejectClaim", model);
+                    }
+
+                    // cut off compensation 
+                    if (flightType == FlightType.F1500 && CancelOverbokingDelay == CancelOverbokingDelay.Beetwen0_2)
+                    {
+                        claim.CompensationAmount = 125;
+                        claim.CompensationReason = "Отмяна на полета или откзан достъп до борда за полет " +
+                            "до 1500 км и премаршрутизиране със закъснение до 2 ч. имат 50 % намеление на обезщетението.";
+
+                    }
+
+                    else if (flightType == FlightType.FTo3500 && CancelOverbokingDelay <= CancelOverbokingDelay.Beetwen2_3)
+                    {
+                        claim.CompensationAmount = 200;
+                        claim.CompensationReason = "Отмяна на полета или откзан достъп до борда за полет " +
+                            "до 3500 км и премаршрутизиране със закъснение до 3 ч. имат 50 % намеление на обезщетението.";
+
+                    }
+                    else if (flightType == FlightType.FmoreThen3500 && CancelOverbokingDelay <= CancelOverbokingDelay.Beetwen3_4)
+                    {
+                        claim.CompensationAmount = 300;
+                        claim.CompensationReason = "Отмяна на полета или откзан достъп до борда за полет " +
+                            "над 3500 км и премаршрутизиране със закъснение до 4 ч. имат 50 % намеление на обезщетението.";
+
+                    }
+                    else if (flightType == FlightType.F1500)
+                    {
+                        claim.CompensationAmount = 250;
+                        claim.CompensationReason = "Отменен полет до 1500 км";
+
+                    }
+                    else if (flightType == FlightType.FTo3500)
+                    {
+                        claim.CompensationAmount = 400;
+                        claim.CompensationReason = "Отменен полет до 3500 км";
+
+                    }
+                    else if (flightType == FlightType.FmoreThen3500)
+                    {
+                        claim.CompensationAmount = 600;
+                        claim.CompensationReason = "Отменен полет над 3500 км";
+
+                    }
+
+                }
+                if (Type == ProblemType.Overbooking)
+                {
+                    if (DenayArival == DenayArival.After30)
+                    {
+                        RelectClaim model = new RelectClaim()
+                        {
+                            Reason = "Причина за отказа е неявяване на чек-ина 30 мин преди полета."
+                        };
+                        return View("RejectClaim", model);
+                    }
+
+                    if (DocumentSecurity == DocumentSecurity.MyFault)
+                    {
+                        RelectClaim model = new RelectClaim()
+                        {
+                            Reason = "При проблем със документите нямате право на обезщетение."
+                        };
+                        return View("RejectClaim", model);
+                    }
+                    if (Willness == Willness.Voluntary)
+                    {
+                        RelectClaim model = new RelectClaim()
+                        {
+                            Reason = "При доброволно педосъпване място си, нямате право на обезщетение по член 7 от регламент 261/2004."
+                        };
+                        return View("RejectClaim", model);
+                    }
+                    // cut off compensation 
+                    if (flightType == FlightType.F1500 && CancelOverbokingDelay == CancelOverbokingDelay.Beetwen0_2)
+                    {
+                        claim.CompensationAmount = 125;
+                        claim.CompensationReason = "Отмяна на полета или откзан достъп до борда за полет " +
+                            "до 1500 км и премаршрутизиране със закъснение до 2 ч. имат 50 % намеление на обезщетението.";
+
+                    }
+
+                    else if (flightType == FlightType.FTo3500 && CancelOverbokingDelay <= CancelOverbokingDelay.Beetwen2_3)
+                    {
+                        claim.CompensationAmount = 200;
+                        claim.CompensationReason = "Отмяна на полета или откзан достъп до борда за полет " +
+                            "до 3500 км и премаршрутизиране със закъснение до 3 ч. имат 50 % намеление на обезщетението.";
+
+                    }
+                    else if (flightType == FlightType.FmoreThen3500 && CancelOverbokingDelay <= CancelOverbokingDelay.Beetwen3_4)
+                    {
+                        claim.CompensationAmount = 300;
+                        claim.CompensationReason = "Отмяна на полета или откзан достъп до борда за полет " +
+                            "над 3500 км и премаршрутизиране със закъснение до 4 ч. имат 50 % намеление на обезщетението.";
+
+                    }
+                    else if (flightType == FlightType.F1500)
+                    {
+                        claim.CompensationAmount = 250;
+                        claim.CompensationReason = "Отменен полет до 1500 км";
+
+                    }
+                    else if (flightType == FlightType.FTo3500)
+                    {
+                        claim.CompensationAmount = 400;
+                        claim.CompensationReason = "Отменен полет до 3500 км";
+
+                    }
+                    else if (flightType == FlightType.FmoreThen3500)
+                    {
+                        claim.CompensationAmount = 600;
+                        claim.CompensationReason = "Отменен полет над 3500 км";
+
+                    }
+
+                }
+
+                dc.SaveChanges();
+
+            }
+
+            return View("CalculatorResult", claim);
+            
+        }
+
+
+        [HttpPost]
+        [Route("регистриране-на-потребител")]
+        public ActionResult RegisterUserToClaim()
+        {
+            return View("ConfirmClaim");
         }
 
         [HttpGet]

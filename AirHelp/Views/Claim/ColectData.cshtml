@@ -5,10 +5,14 @@
     <div class="progress">
         <div class="past">
             <div class="circle"><label>1</label></div>
-            <label class="text">Калкулиране на обезщетение</label>
+            <label class="text">Данни за полета</label>
         </div>
         <div class="current">
             <div class="circle"><label>2</label></div>
+            <label class="text">Описание на проблема</label>
+        </div>
+        <div class="empty">
+            <div class="circle"><label>3</label></div>
             <label class="text">Регистрация</label>
         </div>
         <div class="empty">
@@ -18,9 +22,9 @@
 
     </div>
     <div class="center-content">
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" action="/описание-на-проблема">
 
-            <input type="hidden" name="ClaimID" value="" />
+            <input type="hidden" name="ClaimID" value="@Model.ClaimId" />
 
             <div class="form-hedar">
                 Моля опишете проблема
@@ -76,24 +80,21 @@
             <!--делаy -->
 
             <div class="form-subheder" style="display: none" delay delay-delay>
-                @ViewBag.delayMessage
+                Какво беше закъснението до крайната дестинация
             </div>
             <div class="form-row-radio" style="display: none" delay delay-delay>
                 <label class="radio">
-                    <input type="radio" value="@((int)Delay.LessThat3)" name="Delay">
-                    <span>Да</span>
+                    <input type="radio" value="@((int)DelayDelay.LessThat3)" name="DelayDelay">
+                    <span>По-малко от 3 часа</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="@((int)Delay.MoreThat3)" name="Delay">
-                    <span>Не</span>
+                    <input type="radio" value="@((int)DelayDelay.MoreThat3)" name="DelayDelay">
+                    <span>Повече от 3 часа</span>
                 </label>
-                @if (false)
-                {
-                    <label class="radio">
-                        <input type="radio" value="@((int)Delay.MoreThat3)" name="Delay">
-                        <span>Закъсня с повече от 4 часа</span>
-                    </label>
-                }
+                <label class="radio">
+                    <input type="radio" value="@((int)DelayDelay.MoreThan4)" name="DelayDelay">
+                    <span>Повече от 4 часа</span>
+                </label>
             </div>
 
             <!-- cancel-->
@@ -121,19 +122,19 @@
             <div class="form-row-radio" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr; display:none" cancel cancel-delay>
 
                 <label class="radio">
-                    <input type="radio" value="@((int)CancelDelay.Beetwen0_2)" name="HowMuch">
+                    <input type="radio" value="@((int)CancelOverbokingDelay.Beetwen0_2)" name="HowMuch">
                     <span>0-2 часа</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="@((int)CancelDelay.Beetwen2_3)" name="HowMuch">
+                    <input type="radio" value="@((int)CancelOverbokingDelay.Beetwen2_3)" name="HowMuch">
                     <span>2-3 часа</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="@((int)CancelDelay.Beetwen3_4)" name="HowMuch">
+                    <input type="radio" value="@((int)CancelOverbokingDelay.Beetwen3_4)" name="HowMuch">
                     <span>3-4 часа</span>
                 </label>
                 <label class="radio">
-                    <input type="radio" value="@((int)CancelDelay.MoreThan4)" name="HowMuch">
+                    <input type="radio" value="@((int)CancelOverbokingDelay.MoreThan4)" name="HowMuch">
                     <span>над 4 часа</span>
                 </label>
             </div>

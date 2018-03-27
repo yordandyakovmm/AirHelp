@@ -2,12 +2,16 @@
 
 <div class="register-form">
     <div class="progress">
-        <div class="past">
-            <div class="circle"><label>1</label></div>
-            <label class="text">Калкулиране на обезщетение</label>
-        </div>
         <div class="current">
+            <div class="circle"><label>1</label></div>
+            <label class="text">Данни за полета</label>
+        </div>
+        <div class="empty">
             <div class="circle"><label>2</label></div>
+            <label class="text">Описание на проблема</label>
+        </div>
+        <div class="empty">
+            <div class="circle"><label>3</label></div>
             <label class="text">Регистрация</label>
         </div>
         <div class="empty">
@@ -48,7 +52,7 @@
                 Имахте ли прекачвания по пътя?
             </div>
             <div class="form-row-rodio" style="justify-content:flex-start" first>
-
+                
                 <label class="radio">
                     <input type="radio" id="rYes" name="HasConnection">
                     <span>Да</span>
@@ -59,6 +63,9 @@
                 </label>
             </div>
             <div class="form-row" id="connectionAirPorts" style="flex-flow: column; display:none;" first>
+                <div class="form-subtext">
+                    Моле посочете всички междинни летища, които са част от същата резервация
+                </div>
                 <div class="form-box-connection">
                     <div>
                         <input type="text" validate name="ConnectionAirports" autocomplete="off" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />

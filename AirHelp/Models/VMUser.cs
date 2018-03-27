@@ -79,7 +79,7 @@ namespace AirHelp.Models
             Email = claim.User.Email;
             Tel = claim.User.Tel;
             FlightNumber = claim.FlightNumber;
-            Date = claim.Date.ToString("dd.MM.yyyy");
+            Date = claim.FlightDate;
     
            
             AirCompany = claim.AirCompany;
@@ -110,7 +110,7 @@ namespace AirHelp.Models
             Email = claim.User.Email;
             Tel = claim.User.Tel;
             FlightNumber = claim.FlightNumber;
-            Date = claim.Date.ToString("dd.MM.yyyy");
+            Date = claim.FlightDate;
            
             AirCompany = claim.AirCompany;
             AdditionalInfo = claim.AdditionalInfo;

@@ -1,0 +1,122 @@
+﻿@model AirHelp.DAL.Claim
+
+<div class="register-form">
+    <div class="progress">
+        <div class="past">
+            <div class="circle"><label>1</label></div>
+            <label class="text">Данни за полета</label>
+        </div>
+        <div class="past">
+            <div class="circle"><label>2</label></div>
+            <label class="text">Описание на проблема</label>
+        </div>
+        <div class="current">
+            <div class="circle"><label>3</label></div>
+            <label class="text">Регистрация</label>
+        </div>
+        <div class="empty">
+            <div class="circle"><label>3</label></div>
+            <label class="text">Подаване на иск</label>
+        </div>
+
+    </div>
+    <div class="center-content">
+        <form method="post" enctype="multipart/form-data" action="/регистриране-на-потребител">
+            <input type="hidden" name="claimId" value="@Model.ClaimId" />
+            <input type="hidden" name="SignitureImage" value="" />
+
+            <div class="form-hedar" first>
+                Имате право на обезщетение от <span>@Model.CompensationAmount € </span> на пътник
+            </div>
+
+            <div class="form-hedar">
+                Данни за контакт
+            </div>
+            <div class="form-row">
+                <div class="form-box left">
+                    <label>Име<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" inputmode="latin" name="FirstName" placeholder="Име" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth">
+                    <label>Фамиля<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" name="LastName" placeholder="Фамилия" validate /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-box left">
+                    <label>Град<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="City" name="City" placeholder="Град" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth success">
+                    <label>Държава<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="Country" name="Country" placeholder="България" value="България" validate /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-box-width">
+                    <label>Адрес<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="Adress" name="Adress" placeholder="Адрес" validate /><i class="icon"></i>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row ">
+                <div class="form-box left">
+                    <label>Емаил<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="Email" name="Email" placeholder="Емаил" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth">
+                    <label>Телефон</label>
+                    <div>
+                        <input type="text" id="Tel" name="Tel" placeholder="Телефон" /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row ">
+                <div class="form-box left">
+                    <label>Парола<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="Password" name="Password" placeholder="Емаил" validate /><i class="icon"></i>
+                    </div>
+                    <label class="sub-error">Паролата трябва да е най-малко 8 символа</label>
+                </div>
+                <div class="form-box rigth">
+                    <label>Повтори паролата</label>
+                    <div>
+                        <input type="text" id="Tel" name="Confirm-password" placeholder="Телефон" /><i class="icon"></i>
+                    </div>
+                    <label class="sub-error">Паролите не съвпадат</label>
+                </div>
+            </div>
+
+
+            <div class="form-row" style="display:none;" post>
+                <div class="form-box">
+                    <button class="submit" type="submit" keypress="return false" onclick="return validateUserForm()">Напред</button>
+                </div>
+                <div class="form-box">
+                    <button class="reset" type="reset" keypress="return false" onclick="clearForm()">Изчисти</button>
+                </div>
+            </div>
+            <div class="form-row">
+                &nbsp;
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+<script src="~/Scripts/main.js"></script>
+<script src="~/Scripts/RegisterUser.js"></script>

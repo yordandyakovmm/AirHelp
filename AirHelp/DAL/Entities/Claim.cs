@@ -39,7 +39,7 @@ namespace AirHelp.DAL
 
         public string FlightNumber { get; set; }
 
-        public DateTime Date { get; set; }
+        public string FlightDate { get; set; }
 
         public double allDistance { get; set; }
 
@@ -80,7 +80,11 @@ namespace AirHelp.DAL
         public string SignitureImage { get; set; }
 
 
+        public int CompensationAmount { get; set; }
 
+        public string CompensationReason { get; set; }
+                
+            
         public virtual ICollection<AirPort> AirPorts { get; set; }
 
         public virtual ICollection<AdditionalUser> AdditionalUsers { get; set; }

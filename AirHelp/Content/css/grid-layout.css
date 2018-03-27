@@ -20,7 +20,7 @@
   filter: hue-rotate(180deg);
 }
 .rss.opacity {
-  filter: opacity(40%);
+  filter: opacity(50%);
 }
 * {
   margin: 0;
@@ -576,8 +576,8 @@ a:hover {
 .form-row-rodio {
   margin: 5px 0 0 0;
   display: grid;
-  padding: 0 0 0 10px;
-  grid-template-columns: 80px 80px auto;
+  padding: 0 0 0 0px;
+  grid-template-columns: 70px 70px auto;
 }
 .form-row-yes-no label,
 .form-row-rodio label {
@@ -859,4 +859,7 @@ a:hover {
 }
 .form-row-list > div > label {
   margin-top: 10px;
+}
+[progress] {
+  margin-top: 60px;
 }

@@ -1,0 +1,366 @@
+﻿@{
+    var category = ViewBag.category;
+}
+<div class="register-form">
+    <div class="left-content">
+    </div>
+    <div class="center-content">
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" name="Type"  value="@category" />
+            <input type="hidden" name="ConnectionAriports" value="" />
+            <input type="hidden" name="json" value="" />
+            <input type="hidden" name="SignitureImage" value="" />
+            <div class="form-hedar">
+                Данни за контакт
+            </div>
+            <div class="form-row">
+                <div class="form-box left">
+                    <label>Име<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" inputmode="latin" name="FirstName" placeholder="Име" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth">
+                    <label>Фамиля<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" name="LastName" placeholder="Фамилия" validate /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-box left">
+                    <label>Град<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="City" name="City" placeholder="Град" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth success">
+                    <label>Държава<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="Country" name="Country" placeholder="България" value="България" validate /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-box-width">
+                    <label>Адрес<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="Adress" name="Adress" placeholder="Адрес" validate /><i class="icon"></i>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-row ">
+                <div class="form-box left">
+                    <label>Емаил<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="Email" name="Email" placeholder="Емаил" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth">
+                    <label>Телефон</label>
+                    <div>
+                        <input type="text" id="Tel" name="Tel" placeholder="Телефон" /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-hedar">
+                Информаця за полета
+            </div>
+            <div class="form-row">
+                <div class="form-box left">
+                    <label>Номер на полета<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" name="FlightNumber" placeholder="Номер на полет" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth">
+                    <label>Дата на полета<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="Date" name="Date" placeholder="Дата на полета" validate /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+
+                <div class="form-box left">
+                    <label>Начално летище<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" name="DepartureAirport" autocomplete="off" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Начално летище" />
+                        <i class="icon"></i>
+                        <ul class="lSuggestoin">
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-box rigth">
+                    <label>Крайно летище<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" name="DestinationAirports" autocomplete="off" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Крайно летище" />
+                        <i class="icon"></i>
+                        <ul class="lSuggestoin">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="form-subheder">
+                Имахте ли прекачвания по пътя?
+            </div>
+            <div class="form-row-rodio" style="justify-content:flex-start">
+
+                <label class="radio">
+                    <input type="radio" id="rYes" name="HasConnection">
+                    <span>Да</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" id="rNo" name="HasConnection">
+                    <span>Не</span>
+                </label>
+            </div>
+            <div class="form-row" id="connectionAirPorts" style="flex-flow: column; display:none;">
+                <div class="form-box-connection">
+                    <div>
+                        <input type="text" name="ConnectionAirports" autocomplete="off" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
+                        <i class="icon"></i>
+                        <ul class="lSuggestoin">
+                           
+                        </ul>
+                    </div>
+                    <button class="bDelete" onmousedown="$(this).parent().remove(); return false;"><i class="icon"></i></button>
+                </div>
+                <div class="form-box">
+                    <button class="bAdd" onclick="addCbAiports(this); return false;"><i class="icon"></i></button>
+                </div>
+            </div>
+            <!-- delay -->
+            <div class="form-subheder">
+                Причина за закъснението 1-2
+            </div>
+            <div class="form-row-choise" style="justify-content:flex-start">
+
+                <label class="checkbox">
+                    <input type="radio" value="Технически проблем" name="Reason">
+                    <span>Технически проблем</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" value="Повлиян от други полети" name="Reason">
+                    <span>Повлиян от други полети</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" value="Стачка" name="Reason">
+                    <span>Стачка</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" value="Лошо време" name="Reason">
+                    <span>Лошо време</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" value="По вина на летището" name="Reason">
+                    <span>По вина на летището</span>
+                </label>
+                <label class="checkbox">
+                    <input type="radio" value="Не беше дадена причина" name="Reason">
+                    <span>Не беше дадена причина</span>
+                </label>
+            </div>
+            @if (category == "закъснял-полет")
+            {
+                <div class="form-hedar">
+                    Полетат Ви закъсня ли с повече от три часа?
+                </div>
+                <div class="form-row-yes-no">
+                    <label class="checkbox">
+                        <input type="radio" value="Да" name="Delay">
+                        <span>Да</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="radio" value="Не" name="Delay">
+                        <span>Не</span>
+                    </label>
+                </div>
+            }
+            @if (category == "отменен-полет")
+            {
+                <div class="form-subheder">
+                    Колко голямо беше закъснението до крайната дистанция ?
+                </div>
+                <div class="form-row-choise" style="grid-template-columns: 1fr 1fr 1fr 1fr 2fr;">
+
+                    <label class="checkbox">
+                        <input type="radio" value="0-2" name="HowMuch">
+                        <span>0-2 часа</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="radio" value="2-3" name="HowMuch">
+                        <span>2-3 часа</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="radio" value="3-4" name="HowMuch">
+                        <span>3-4 часа</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="radio" value="4" name="HowMuch">
+                        <span>над 4 часа</span>
+                    </label>
+                </div>
+                <div class="form-subheder">
+                    Кога бяхте уведомени от превозвача за отмяната на полета ?
+                </div>
+                <div class="form-row-choise" style="justify-content:flex-start">
+                    <label class="checkbox">
+                        <input type="radio" value="Повече от 14 дни преди полета" name="Annonsment">
+                        <span>Повече от 14 дни преди полета</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="radio" value="По-малко от 14 дни преди полета" name="Annonsment">
+                        <span>По-малко от 14 дни преди полета</span>
+                    </label>
+                </div>
+            }
+            @if (category == "отказан-досъп-до-борд")
+            {
+                <div class="form-subheder">
+                    Пристигнахте ли на чек-ин-а поне 30 минути преди излитането на самолета?
+                </div>
+                <div class="form-row-yes-no" style="justify-content:flex-start">
+                    <label class="checkbox">
+                        <input type="radio" value="Да" name="Arival">
+                        <span>Да</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="radio" value="Не" name="Arival">
+                        <span>Не</span>
+                    </label>
+                </div>
+
+                <div class="form-subheder">
+                    Достъпът беше ли ви отказан заради проблеми с документите или от съображения за сигурност ?
+                </div>
+                <div class="form-row-yes-no" style="justify-content:flex-start">
+                    <label class="checkbox">
+                        <input type="radio" value="Да" name="DocumentSecurity">
+                        <span>Да</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="radio" value="Не" name="DocumentSecurity">
+                        <span>Не</span>
+                    </label>
+                </div>
+
+                <div class="form-subheder">
+                    Доброволно ли преотстъпихте мястото си на борда на самолета ?
+                </div>
+                <div class="form-row-yes-no" style="justify-content:flex-start">
+                    <label class="checkbox">
+                        <input type="radio" value="Да" name="Willness">
+                        <span>Да</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="radio" value="Не" name="Willness">
+                        <span>Не</span>
+                    </label>
+                </div>
+            }
+            <div class="form-row" id="AirCompany">
+                <div class="form-box left">
+                    <label>Номер на резервация или код за потвърждение <span class="requared">*</span></label>
+                    <div>
+                        <input type="text" name="BookCode" placeholder="Номер на резервация" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth">
+                    <label>Въдушен превозвач<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" name="AirCompany" autocomplete="off" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" placeholder="Въдушен превозвач" />
+                        <i class="icon"></i>
+                        <ul class="lSuggestoin">
+                            
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row" id="Info" style="flex-flow: column;">
+                <div class="form-box-width">
+                    <label>Допълнителна информация</label>
+                    <div>
+                        <textarea rows="6" cols="80" name="AdditionalInfo" placeholder=""></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-hedar">
+                Копия на необходими документи
+            </div>
+            <div class="form-row">
+                <div class="form-box-upload upload-box">
+                    <label>Бордова карта</label>
+                    <div>
+                        <button class="upload" onclick="uploadClick(this); return false;">Ибор на файл</button><i class="icon"></i>
+                        <input type="file" name="BordCard" accept="image/*" id="uBordCard" style="display:none" onchange="uploadChange(this)" />
+                        <label class="file-upload"> -- </label>
+                    </div>
+                    <label>Потвърждение за резервация</label>
+                    <div>
+                        <button class="upload" onclick="uploadClick(this); return false;">Ибор на файл</button><i class="icon"></i>
+                        <input type="file" name="BookConfirmation" accept="image/*" id="uReservation" style="display:none" onchange="uploadChange(this)" />
+                        <label class="file-upload"> -- </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-box-signiture">
+                    <label>Подпис</label>
+                    <div class="convas-holder">
+                        <div  id="signiture-div" width="500" height="300">
+                            </div>
+                        <canvas id="signiture" width="500" height="300"></canvas>
+                        <img name="signiture-img" style="display:none;">
+                    </div>
+                    <div>
+                        <button class="clear" type="button" onclick="return clearSignature(this); return false;"><span>Изчисти</span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row-yes-no" style="grid-template-columns: auto">
+                <label class="checkbox">
+                    <input type="radio" name="confirm">
+                    <span>Потвърждавам, че давам съгласието си AirHelp да обработи претенцията от мое име</span>
+                </label>
+            </div>
+            <div class="form-row">
+                <div class="form-box">
+                    <button class="submit" type="submit" keypress="alert(1); return false" onclick="return validate()"><i class="icon"></i><span>Изпрати</span></button>
+                </div>
+                <div class="form-box">
+                    <button class="reset" type="reset" keypress="return false" onclick="clearForm()"><i class="icon"></i><span>Изчисти</span></button>
+                </div>
+            </div>
+            <div class="form-row">
+                &nbsp;
+            </div>
+        </form>
+    </div>
+
+    <div class="rigth-content">
+
+    </div>
+</div>
+
+
+<div id="template" style="display:none;">
+    <div class="form-box-connection">
+        <div>
+            <input type="text" name="ConnectionAirports" autocomplete="off" onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" dropdown placeholder="Летище" />
+            <i class="icon"></i>
+            <ul class="lSuggestoin">
+                
+            </ul>
+        </div>
+        <button class="bDelete" onmousedown="$(this).parent().remove(); return false;"><i class="icon"></i></button>
+    </div>
+</div>
+<script src="~/Scripts/main.js"></script>
