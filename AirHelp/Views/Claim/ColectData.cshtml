@@ -83,18 +83,47 @@
                 Какво беше закъснението до крайната дестинация
             </div>
             <div class="form-row-radio" style="display: none" delay delay-delay>
-                <label class="radio">
-                    <input type="radio" value="@((int)DelayDelay.LessThat3)" name="DelayDelay">
-                    <span>По-малко от 3 часа</span>
-                </label>
-                <label class="radio">
-                    <input type="radio" value="@((int)DelayDelay.MoreThat3)" name="DelayDelay">
-                    <span>Повече от 3 часа</span>
-                </label>
-                <label class="radio">
-                    <input type="radio" value="@((int)DelayDelay.MoreThan4)" name="DelayDelay">
-                    <span>Повече от 4 часа</span>
-                </label>
+                @if (Model.FlightType == FlightType.F1500)
+                {
+                    <label class="radio">
+                        <input type="radio" value="@((int)DelayDelay.Beetwen0_2)" name="DelayDelay">
+                        <span>По-малко от 2 часа</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="@((int)DelayDelay.Beetwen2_3)" name="DelayDelay">
+                        <span>Между 2 и 3 часа</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="@((int)DelayDelay.Beetwen3_4)" name="DelayDelay">
+                        <span>Повече от 3 часа</span>
+                    </label>
+                }
+                @if (Model.FlightType == FlightType.FTo3500)
+                {
+                    <label class="radio">
+                        <input type="radio" value="@((int)DelayDelay.Beetwen2_3)" name="DelayDelay">
+                        <span>По-малко от 3 часа</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="@((int)DelayDelay.Beetwen3_4)" name="DelayDelay">
+                        <span>Повече от 3 часа</span>
+                    </label>
+                }
+                @if (Model.FlightType == FlightType.FmoreThen3500)
+                {
+                    <label class="radio">
+                        <input type="radio" value="@((int)DelayDelay.Beetwen2_3)" name="DelayDelay">
+                        <span>По-малко от 3 часа</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="@((int)DelayDelay.Beetwen3_4)" name="DelayDelay">
+                        <span>Между 3 и 4 часа</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" value="@((int)DelayDelay.MoreThan4)" name="DelayDelay">
+                        <span>Повече от 4 часа</span>
+                    </label>
+                }
             </div>
 
             <!-- cancel-->

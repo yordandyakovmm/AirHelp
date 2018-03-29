@@ -46,7 +46,6 @@ namespace AirHelp.DAL
 
         public double issueDistance { get; set; }
         
-
         public Reason Reason { get; set; }
 
         public DelayDelay DelayDelay { get; set; }
@@ -84,8 +83,13 @@ namespace AirHelp.DAL
         public int CompensationAmount { get; set; }
 
         public string CompensationReason { get; set; }
-                
-            
+
+
+        public IsEUFlight IsEUFlight { get; set; }
+
+        public FlightType FlightType  { get; set; }
+
+
         public virtual ICollection<AirPort> AirPorts { get; set; }
 
         public virtual ICollection<AdditionalUser> AdditionalUsers { get; set; }

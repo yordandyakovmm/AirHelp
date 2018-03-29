@@ -120,6 +120,41 @@ namespace AirHelp.Controllers
             claim.issueDistance = issuDistance;
             claim.allDistance = allDistance;
 
+            // Check EU flagth
+            IsEUFlight isEUFlight = IsEUFlight.NonEU;
+            if (claim.AirPorts.All(a => CommonHeppler.IsEuCountryByName(a.country)))
+            {
+                isEUFlight = IsEUFlight.EU;
+            }
+            else if (claim.AirPorts.Any(a => CommonHeppler.IsEuCountryByName(a.country)))
+            {
+                isEUFlight = IsEUFlight.EUMixed;
+            }
+
+            double distance = (claim.Type == ProblemType.Delay) ? claim.allDistance : claim.issueDistance;
+
+            FlightType flightType = FlightType.NotSupported;
+
+            if (isEUFlight == IsEUFlight.NonEU)
+            {
+                flightType = FlightType.NotSupported;
+            }
+            else if (distance <= 1500000)
+            {
+                flightType = FlightType.F1500;
+            }
+            else if (distance <= 3500000 || isEUFlight == IsEUFlight.EU)
+            {
+                flightType = FlightType.FTo3500;
+            }
+            else
+            {
+                flightType = FlightType.FmoreThen3500;
+            }
+
+            claim.IsEUFlight = isEUFlight;
+            claim.FlightType = flightType;
+
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
                 dc.Claims.Add(claim);
@@ -163,37 +198,8 @@ namespace AirHelp.Controllers
                 claim = dc.Claims.Include("AirPorts").Where(c => c.ClaimId == ClaimId).SingleOrDefault();
 
 
-                // Check EU flagth
-                IsEUFlight isEUFlight = IsEUFlight.NonEU;
-                if (claim.AirPorts.All(a => CommonHeppler.IsEuCountryByName(a.country)))
-                {
-                    isEUFlight = IsEUFlight.EU;
-                }
-                else if (claim.AirPorts.Any(a => CommonHeppler.IsEuCountryByName(a.country)))
-                {
-                    isEUFlight = IsEUFlight.EUMixed;
-                }
-
-                double distance = (Type == ProblemType.Delay) ? claim.allDistance : claim.issueDistance;
-
-                FlightType flightType = FlightType.NotSupported;
-
-                if (isEUFlight == IsEUFlight.NonEU)
-                {
-                    flightType = FlightType.NotSupported;
-                }
-                else if (distance <= 1500000)
-                {
-                    flightType = FlightType.F1500;
-                }
-                else if (distance <= 3500000 || isEUFlight == IsEUFlight.EU)
-                {
-                    flightType = FlightType.FTo3500;
-                }
-                else
-                {
-                    flightType = FlightType.FmoreThen3500;
-                }
+                var isEUFlight = claim.IsEUFlight;
+                var flightType = claim.FlightType;
 
                 // reject by not in EU
                 if (flightType == FlightType.NotSupported)
@@ -240,7 +246,7 @@ namespace AirHelp.Controllers
                     if (flightType == FlightType.F1500 && DelayDelay > DelayDelay.Beetwen0_2)
                     {
                         claim.CompensationAmount = 250;
-                        claim.CompensationReason = "Закъснение с повече от 2 часа за полет с дистанция до 1500 км".;
+                        claim.CompensationReason = "Закъснение с повече от 2 часа за полет с дистанция до 1500 км.";
                     }
                     else if (flightType == FlightType.FTo3500)
                     {
