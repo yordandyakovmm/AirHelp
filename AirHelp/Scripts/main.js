@@ -22,7 +22,7 @@
     $('#Date').datepicker({ dateFormat: 'dd.mm.yy' });
     $('#Date').datepicker($.datepicker.regional['bg']);
 
-    $('input[type=text]').change(onChageInput);
+    $('input[type=text], input[type=password]').change(onChageInput);
 
     
 
@@ -47,14 +47,14 @@
         if ($(this).is('[name="Reason"]')) {
             changeReason($(this).val());
         }
-        if ($(this).is('[name="Delay"]')) {
+        if ($(this).is('[name="DelayDelay"]')) {
             changeDelay($(this).val());
         }
-        if ($(this).is('[name="Annonsment"]')) {
+        if ($(this).is('[name="CancelAnnonsment"]')) {
             changeAnnonsment($(this).val());
         }
-        if ($(this).is('[name="HowMuch"]')) {
-            changeHowMuch($(this).val());
+        if ($(this).is('[name="CancelOverbokingDelay"]')) {
+            changeCancelOverbokingDelay($(this).val());
         }
         if ($(this).is('[name="Arival"]')) {
             changeArival($(this).val());
@@ -79,6 +79,11 @@ var conv;
 var ctx;
 var isDrawing;
 var couunt = 0;
+var type = 0;
+var x = 0;
+var y = 0;
+
+
 
 
 function initSigniture() {
@@ -88,36 +93,44 @@ function initSigniture() {
     {
         return;
     }
+       
+
     conv = document.getElementById('signiture');
     ctx = conv.getContext('2d');
     ctx.strokeStyle = 0;
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 3;
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = '#000000';
+    ctx.shadowColor = '#000000';
+    ctx.shadowBlur = 0.6;
     isDrawing = false;;
     couunt = 0;
 
     el.onmousedown = function (e) {
         isDrawing = true;
-        ctx.lineWidth = 3;
-        ctx.lineJoin = ctx.lineCap = 'round';
-        ctx.moveTo(e.offsetX, e.offsetY);
-        //console.log('down', e.offsetX, e.offsetY);
-
+        x = e.offsetX;
+        y = e.offsetY;
+        ctx.moveTo(e.offsetX, e.offsetX);
     };
+    
     el.onmousemove = function (e) {
         if (isDrawing) {
             couunt++;
+            var distance = (x - e.offsetX) ** 2 + (y - e.offsetY) ** 2;
+            setContext(ctx, distance, x, y)
             ctx.lineTo(e.offsetX, e.offsetY);
+            x = e.offsetX;
+            y = e.offsetY;
             ctx.stroke();
-            //console.log('move', e.offsetX, e.offsetY);
         }
-        if (couunt > 60) {
+        if (couunt > 80) {
             $('.form-box-signiture').removeClass('error').addClass('success');
             saveSigiture();
         }
     };
     el.mouseout = function (e) {
         isDrawing = false;
-        //console.log('out');
+        
     };
 
     el.mousein = function (e) {
@@ -205,6 +218,21 @@ function onChageInput() {
             $(this).parent().parent().find('.sub-error').text('Невалиден номер');
         }
 
+    }
+    else if (this.id == 'Password') {
+        result = data.length >= 8;
+    }
+    else if (this.id == 'Confirm-password') {
+        result = data == $('#Password').val();
+    }
+    else if (this.id == 'BookCode') {
+        var re = /([a-z]|[A-Z]|[0-9]){6}/;
+        result = re.test(data);
+    }
+    else if (this.id == 'TikedNumber') {
+        var text = data.replace(' ', '').replace('-', '');
+        var re = /([0-9]){12}/;
+        result = re.test(text);
     }
     else {
         result = data.length >= 3;

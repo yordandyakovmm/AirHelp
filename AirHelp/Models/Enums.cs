@@ -24,6 +24,7 @@ namespace AirHelp.Models
 
     public enum Reason
     {
+        empty = -1,
         TechnicalIssue = 0,
         InfuenceOtherFlight = 1,
         Strike = 2,
@@ -35,13 +36,16 @@ namespace AirHelp.Models
 
     public enum DelayDelay
     {
-        LessThat3 = 0,
-        MoreThat3 = 1,
-        MoreThan4 = 2
+        empty = -1,
+        Beetwen0_2 = 0,
+        Beetwen2_3 = 1,
+        Beetwen3_4 = 2,
+        MoreThan4 = 3,
     }
 
     public enum CancelAnnonsment
     {
+        empty = -1,
         MoreThan14 = 0,
         Beetwen7_14 = 1,
         LessThat7 = 2
@@ -49,6 +53,7 @@ namespace AirHelp.Models
 
     public enum CancelOverbokingDelay
     {
+        empty = -1,
         Beetwen0_2 = 0,
         Beetwen2_3 = 1,
         Beetwen3_4 = 2,
@@ -59,18 +64,21 @@ namespace AirHelp.Models
 
     public enum DenayArival
     {
+        empty = -1,
         Before30 = 0,
         After30 = 1
     }
 
     public enum DocumentSecurity
     {
+        empty = -1,
         MyFault = 0,
         NotMyFault = 1
     }
 
     public enum Willness
     {
+        empty = -1,
         Voluntary = 0,
         NotVoluntary = 1
     }
@@ -84,10 +92,11 @@ namespace AirHelp.Models
 
     public enum FlightType
     {
+        NotSupported = -1,
         F1500 = 0,
         FTo3500 = 1,
-        FmoreThen3500 = 2,
-        NotSupported
+        FmoreThen3500 = 2
+        
     }
 
 }

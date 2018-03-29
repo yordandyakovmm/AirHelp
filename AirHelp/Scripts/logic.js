@@ -52,7 +52,7 @@ function changeAnnonsment()
     $('[cancel-delay]').show();
 }
 
-function changeHowMuch()
+function changeCancelOverbokingDelay()
 {
     $('.submit').removeAttr('disabled');
 }

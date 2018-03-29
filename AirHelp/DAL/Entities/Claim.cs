@@ -16,6 +16,7 @@ namespace AirHelp.DAL
         {
             this.AirPorts = new List<AirPort>();
             this.AdditionalUsers = new List<AdditionalUser>();
+            this.Documents = new LinkedList<Document>();
         }
 
         [Key]

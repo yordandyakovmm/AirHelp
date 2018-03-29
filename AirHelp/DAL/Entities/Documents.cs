@@ -13,7 +13,7 @@ namespace AirHelp.DAL
 	{
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string Id { get; set;}
+        public Guid Id { get; set; }
 
         public string DocumentName { get; set; }
 

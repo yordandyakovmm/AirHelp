@@ -17,16 +17,24 @@ namespace AirHelp.Controllers
     public class LoginController : BaseController
     {
         [HttpGet]
-        [Route("вход")]
+        [Route("вход/{claimId}")]
         public ActionResult Login(string ReturnUrl)
         {
             return View("Login");
         }
 
         [HttpPost]
-        [Route("вход")]
-        public ActionResult Login(string Email, string Password, string ReturnUrl= "/")
+        [Route("вход/{claimId}")]
+        public ActionResult LoginPost(string claimId)
         {
+
+            var Email = Request.Form["Email"];
+            var Password = Request.Form["Password"];
+            var ReturnUrl = Request.Form["ReturnUrl"];
+            if (ReturnUrl == null)
+            {
+                ReturnUrl = "/";
+            }
 
             string hashPassword = GetHash(Password);
 
@@ -34,6 +42,15 @@ namespace AirHelp.Controllers
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
                 user = dc.Users.Where(u => u.Email == Email && u.password == hashPassword).SingleOrDefault();
+                
+
+                if (claimId != null)
+                {
+                    var ClaimId = Guid.Parse(claimId);
+                    var claim = dc.Claims.Where(c => c.ClaimId == ClaimId).SingleOrDefault();
+                    claim.UserId = user.UserId;
+                    dc.SaveChanges();
+                }
             }
 
             if (user == null)
@@ -59,6 +76,11 @@ namespace AirHelp.Controllers
             HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName,
                                                FormsAuthentication.Encrypt(authTicket));
             Response.Cookies.Add(cookie);
+
+            if (claimId != null)
+            {
+                return Redirect($"/потвърждение-на-иск/{claimId}");
+            }
             return Redirect(ReturnUrl);
 
         }

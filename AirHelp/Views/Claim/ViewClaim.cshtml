@@ -1,73 +1,88 @@
-﻿@model AirHelp.Models.VMClaim
+﻿@using AirHelp.Hellpers
+@model AirHelp.DAL.Claim
 
 <div class="register-form">
-    <div class="left-content">
+    <div class="progress">
+        <div class="past">
+            <div class="circle"><label>1</label></div>
+            <label class="text">Данни за полета</label>
+        </div>
+        <div class="past">
+            <div class="circle"><label>2</label></div>
+            <label class="text">Описание на проблема</label>
+        </div>
+        <div class="past">
+            <div class="circle"><label>3</label></div>
+            <label class="text">Регистрация</label>
+        </div>
+        <div class="past">
+            <div class="circle"><label>4</label></div>
+            <label class="text">Подаване на иск</label>
+        </div>
+
     </div>
     <div class="center-content">
         <form method="post">
             <input type="hidden" name="claimid" value="@Model.ClaimId">
-            <div class="form-hedar view">
-                @Model.Type.Replace('-', ' ')
+            <div class="form-hedar uppercase">
+                Благодарим Ви, че избрахте усугите на ХЕЛПКЛЕЙМС ООД
+            </div>
+            <div class="form-hedar uppercase">
+                Проблем:  &nbsp;&nbsp; <span class="blue"> @Model.Type.ViewString() </span>
+            </div>
+            <div class="form-hedar ">
+                Статус на заявката: <span class="blue">  @Model.State.ViewString() </span>
+            </div>
+            <div class="form-hedar">
+                <span>Право на обезщетение</span> &nbsp;&nbsp; <span class="blue"> €@Model.CompensationAmount</span>
             </div>
 
-            <div class="form-hedar view">
-                Статус на заявката: <span class="blue">  @Model.State </span>
+            <div class="form-subtext">
+                Данни за потребителя
             </div>
 
-            @if (Model.rightOfCompensation)
-            {
-                <div class="form-hedar view">
-                    <span>Право на обезщетение</span> &nbsp;&nbsp; <span class="blue"> €@Model.CompensationAmount</span>
-                </div>
-            }
-            else
-            {
-                <div class="form-hedar view">
-                    @Model.reasonOfRejection
-                </div>
-            }
             <div class="form-row">
                 <div class="form-box ">
-                    <label class="heder left">Име</label>
+                    <label class="heder ">Име</label>
                     <div>
-                        <label class="data left">
-                            @Model.FirstName
+                        <label class="data ">
+                            @Model.User.FirstName
                         </label>
                     </div>
                 </div>
                 <div class="form-box">
-                    <label class="heder rigth">Фамиля</label>
+                    <label class="heder ">Фамиля</label>
                     <div>
-                        <label class="data rigth">
-                            @Model.LastName
+                        <label class="data ">
+                            @Model.User.LastName
                         </label>
                     </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-box">
-                    <label class="heder left">Град</label>
+                    <label class="heder ">Град</label>
                     <div>
-                        <label class="data left">
-                            @Model.City
+                        <label class="data ">
+                            @Model.User.City
                         </label>
                     </div>
                 </div>
                 <div class="form-box">
-                    <label class="heder rigth">Държава </label>
+                    <label class="heder ">Държава </label>
                     <div>
-                        <label class="data rigth">
-                            @Model.Country
+                        <label class="data ">
+                            @Model.User.Country
                         </label>
                     </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-box-width">
-                    <label class="heder left">Адрес</label>
+                    <label class="heder ">Адрес</label>
                     <div>
-                        <label class="data left">
-                            @Model.Adress
+                        <label class="data ">
+                            @Model.User.Adress
                         </label>
                     </div>
                 </div>
@@ -75,170 +90,157 @@
             </div>
             <div class="form-row ">
                 <div class="form-box">
-                    <label class="heder left">Емаил</label>
+                    <label class="heder ">Емаил</label>
                     <div>
-                        <label class="data left">
-                            @Model.Email
+                        <label class="data ">
+                            @Model.User.Email
                         </label>
                     </div>
                 </div>
                 <div class="form-box ">
-                    <label class="heder rigth"> Телефон</label>
+                    <label class="heder "> Телефон</label>
                     <div>
-                        <label class="data rigth">
-                            @Model.Tel
+                        <label class="data ">
+                            @Model.User.Tel
                         </label>
                     </div>
                 </div>
             </div>
 
-            <div class="form-row">
-                <div class="form-box">
-                    <label class="heder left">Номер на полета</label>
-                    <div>
-                        <label class="data left">
-                            @Model.FlightNumber
-                        </label>
-                    </div>
-                </div>
-                <div class="form-box">
-                    <label class="heder rigth">Дата на полета</label>
-                    <div>
-                        <label class="data rigth">
-                            @Model.Date
-                        </label>
-                    </div>
-                </div>
+            <div class="form-subtext">
+                Данни за полета
             </div>
-            <div class="form-row">
 
-                <div class="form-box">
-                    <label class="heder left">Начално летище</label>
-                    <div>
-                        <label class="data left">
-                            @Model.DepartureAirport
+
+            @{
+                var airPorts = Model.AirPorts.ToArray();
+            }
+
+            @for (int i = 0; i < airPorts.Length - 1; i++)
+            {
+                <div class="form-row atternate">
+                    <div class="form-box-10">
+                        @if (@airPorts[i].startIssue)
+                        {
+                            <b><label class="data ">@airPorts[i].FlightNumber</label></b>
+                        }
+                        else
+                        {
+                            <label class="data ">@airPorts[i].FlightNumber</label>
+                        }
+                    </div>
+                    <div class="form-box-25">
+                        <label class="heder ">
+                            @airPorts[i].name (@airPorts[i].iata)
+                        </label>
+                        <label class="data">
+                            @airPorts[i].city (@airPorts[i].country)
+                        </label>
+
+                    </div>
+                    <div class="form-box-25">
+                        <label class="heder ">
+                            @airPorts[i].name (@airPorts[i + 1].iata)
+                        </label>
+                        <label class="data">
+                            @airPorts[i].city (@airPorts[i + 1].country)
                         </label>
                     </div>
-                </div>
-                <div class="form-box ">
-                    <label class="heder rigth">Крайно летище</label>
-                    <div>
-                        <label class="data rigth">
-                            @Model.DestinationAirports
+                    @if (User.IsInRole("admin"))
+                    {
+                        <label class="heder">
+                            (@airPorts[i].distanceToNext/1000).ToString("0000")
                         </label>
-                    </div>
+                    }
                 </div>
-            </div>
+
+            }
 
             @if (User.IsInRole("admin"))
             {
-                <div class="form-row-list">
+                <div class="form-row">
 
-                    <div>
-                        @foreach (var item in Model.AirporstDistance)
-                        {
-                            <label class="heder">@item.From --> <span class="red"> @item.To </span> </label>
-                            <div>
-                                <label class="data">
-                                    @item.distance.ToString("00") km
-                                </label>
-                            </div>
-                            <div><span>&nbsp;</span></div>
-                        }
-
-
-                        <label class="heder"> Обща дължина на полета </label>
+                    <div class="form-box">
+                        <label class="heder ">Обща дистанция на полета</label>
                         <div>
-                            <label class="data red">
-                                @Model.totalDistance.ToString("00") km
+                            <label class="data ">
+                                (@Model.allDistance/1000).ToString("0000")
+
                             </label>
                         </div>
                     </div>
+                    <div class="form-box ">
+                        <label class="heder ">Дистанция за обезщетение</label>
+                        <div>
+                            <label class="data ">
+                                (@Model.issueDistance/1000).ToString("0000")
 
-                </div>
-            }
-            @if (Model.HasConnection == "yes")
-            {
-                <div class="form-row" id="connectionAirPorts" style="flex-flow: column;">
-                    <div class="form-box">
-
-                        @foreach (var li in Model.ConnectionAirports.Split("<-->".ToCharArray()))
-                {
-                            <div class="form-box-connection">
-                                <label class="data left"> li </label>
-                            </div>
-                        }
+                            </label>
+                        </div>
                     </div>
                 </div>
             }
 
+
             <div class="form-row" style="justify-content:flex-start">
                 <div class="form-box">
-                    <label class="heder left">
-                        Причина за закъснението
+                    <label class="heder ">
+                        Причина за проблема
                     </label>
                     <div>
-                        <label class="data left">
-                            @Model.Reason
+                        <label class="data ">
+                            @Model.Reason.ViewString()
                         </label>
                     </div>
                 </div>
             </div>
-            @if (Model.Type == "закъснял-полет")
+            @if (Model.Type == AirHelp.Models.ProblemType.Delay)
             {
                 <div class="form-row" style="justify-content:flex-start">
                     <div class="form-box">
-                        <label class="heder left">
+                        <label class="heder ">
                             Закъснение на полета
                         </label>
                         <div>
-                            <label class="data left">
-                                @(Model.Delay == "Да" ? "повече от 3 часа" : "по-малко от 3 часа")
+                            <label class="data ">
+                                @Model.DelayDelay.ViewString(Model.allDistance)
                             </label>
                         </div>
                     </div>
                 </div>
             }
 
-            @if (Model.Type == "отменен-полет")
+            @if (Model.Type == AirHelp.Models.ProblemType.Cancel)
             {
+
                 <div class="form-row" style="justify-content:flex-start">
                     <div class="form-box">
-                        <label class="heder left">
-                            Закъснение до крайната дестинация
+                        <label class="heder ">
+                            Уведомление за отмяната на полета
                         </label>
                         <div>
-                            <label class="data left">
-                                @Model.HowMuch часа
+                            <label class="data ">
+                                @Model.CancelAnnonsment.ViewString()
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-row" style="justify-content:flex-start">
-                    <div class="form-box">
-                        <label class="heder left">
-                            Уведомление  за отмяната на полета
-                        </label>
-                        <div>
-                            <label class="data left">
-                                @Model.Annonsment
-                            </label>
-                        </div>
-                    </div>
-                </div>
+
+
+
             }
-            @if (Model.Type == "отказан-досъп-до-борд")
+            @if (Model.Type == AirHelp.Models.ProblemType.Overbooking)
             {
 
                 <div class="form-row" style="justify-content:flex-start">
                     <div class="form-box">
-                        <label class="heder left">
+                        <label class="heder ">
                             Пристигane на чек-ин-а 30 минути преди излитането на самолета?
                         </label>
                         <div>
-                            <label class="data left">
-                                @Model.Arival
+                            <label class="data ">
+                                @Model.DenayArival.ViewString()
                             </label>
                         </div>
                     </div>
@@ -246,12 +248,12 @@
 
                 <div class="form-row" style="justify-content:flex-start">
                     <div class="form-box">
-                        <label class="heder left">
+                        <label class="heder ">
                             Отказан достъп поради проблеми с документите или от съображения за сигурност
                         </label>
                         <div>
-                            <label class="data left">
-                                @Model.DocumentSecurity
+                            <label class="data ">
+                                @Model.DocumentSecurity.ViewString()
                             </label>
                         </div>
                     </div>
@@ -259,31 +261,48 @@
 
                 <div class="form-row" style="justify-content:flex-start">
                     <div class="form-box">
-                        <label class="heder left">
+                        <label class="heder ">
                             Доброволно предостъпено на мястото на борда
                         </label>
                         <div>
-                            <label class="data left">
-                                @Model.Willness
+                            <label class="data ">
+                                @Model.Willness.ViewString()
                             </label>
                         </div>
                     </div>
                 </div>
 
             }
+            @if (Model.Type == AirHelp.Models.ProblemType.Overbooking || Model.Type == AirHelp.Models.ProblemType.Cancel)
+            {
+                <div class="form-row" style="justify-content:flex-start">
+                    <div class="form-box">
+                        <label class="heder ">
+                            Закъснение до крайната дестинация
+                        </label>
+                        <div>
+                            <label class="data ">
+                                @Model.CancelDelay.ViewString()
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
             <div class="form-row" id="AirCompany" style="justify-content:flex-start">
                 <div class="form-box">
-                    <label class="heder left">Номер на резервация или код за потвърждение</label>
+                    <label class="heder ">Номер на резервация или код за потвърждение</label>
                     <div>
-                        <label class="data left">
-                            @Model.BookCode
+                        <label class="data ">
+                            @Model.BookingCode
                         </label>
                     </div>
                 </div>
                 <div class="form-box" style="justify-content:flex-start">
-                    <label class="heder rigth">Въдушен превозвач</label>
+                    <label class="heder ">Въдушен превозвач</label>
                     <div>
-                        <label class="data rigth">
+                        <label class="data ">
                             @Model.AirCompany
                         </label>
                     </div>
@@ -295,8 +314,8 @@
             {
                 <div class="form-row" id="Info" style="flex-flow: column;">
                     <div class="form-box-width">
-                        <label class="heder left">Допълнителна информация</label>
-                        <p class="left">
+                        <label class="heder">Допълнителна информация</label>
+                        <p class="">
                             @Model.AdditionalInfo
                         </p>
                     </div>
@@ -310,72 +329,24 @@
             <div class="form-row">
                 <div class="form-box">
 
-                    @if (Model.BordCardUrl != "")
-            {
-                        <a href="@Model.BordCardUrl" target="_blank">
-                            <img src="@Model.BordCardUrl" />
+                    @foreach (var doc in Model.Documents)
+                    {
+                        <a href="@doc.Url" target="_blank">
+                            <img src="@doc.Url" />
                         </a>
                     }
-                    @if (Model.BordCardUrl == "" && Model.BookConfirmationUrl != "")
-            {
-                        <a href="@Model.BookConfirmationUrl" target="_blank">
-                            <img src="@Model.BookConfirmationUrl" />
-                        </a>
-                    }
-                </div>
-                <div class="form-box">
-                    @if (Model.BordCardUrl != "" && Model.BookConfirmationUrl != "")
-            {
-                        <a href="@Model.BookConfirmationUrl" target="_blank">
-                            <img src="@Model.BookConfirmationUrl" />
-                        </a>
-                    }
+
+
                 </div>
             </div>
 
-            @if (User.IsInRole("temp"))
-            {
-                <div class="info">
 
-                    <p>
-                        Ние ще ви информираме за развитието по вашето обезщетение по емаил и телефон.
-                    </p>
-                    <p>
-                        Ако желаете може да се рагистрирате в нашата система. Ще можете да следите статуса на вашето обезщетение в профила си.
-                    </p>
-                </div>
-                <div class="form-row">
-                    <div class="form-box left">
-                        <label class="heder left">Парола<span class="requared">*</span></label>
-                        <div>
-                            <input class="left" type="password" inputmode="latin" name="password" placeholder="парола" validate /><i class="icon"></i>
-                        </div>
-                    </div>
-                    <div class="form-box rigth">
-                        <label class="heder rigth">Повтори паролата<span class="requared">*</span></label>
-                        <div>
-                            <input class="rigth" type="password" name="password1" placeholder="парола" validate /><i class="icon"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="autentication-error left" style="display: none;">
-
-                </div>
-                <div class="form-row">
-                    <div class="form-box">
-                        <button class="submit-claim left-claim" type="submit" onclick="return validate()"><i class="icon"></i><span>Регистрирай ме</span></button>
-                    </div>
-                    <div class="form-box">
-                        <button class="submit-claim claim-reset rigth-claim" onclick="clearForm()" type="reset"><i class="icon"></i><span>изчисти</span></button>
-                    </div>
-                </div>
-            }
 
             @if (User.IsInRole("admin"))
             {
                 <div class="form-row">
                     <div class="form-box">
-                        <button class="submit-claim left-claim" type="button" onclick="window.open('/пълномощно/@Model.ClaimId', '_blank')"><i class="icon"></i><span>Пълномощно</span></button>
+                        <button class="submit-claim left-claim" type="button" onclick="window.open('@Model.AttorneyUrl', '_blank')"><i class="icon"></i><span>Пълномощно</span></button>
                     </div>
                     <div class="form-box">
                         <button class="submit-claim rigth-claim" type="button"><i class="icon"></i><span>Жалба</span></button>
@@ -388,9 +359,7 @@
         </form>
     </div>
 
-    <div class="rigth-content">
 
-    </div>
 </div>
 
 <script src="~/Scripts/form.js"></script>

@@ -23,14 +23,17 @@
     <div class="center-content">
         <form method="post" enctype="multipart/form-data" action="/регистриране-на-потребител">
             <input type="hidden" name="claimId" value="@Model.ClaimId" />
-            <input type="hidden" name="SignitureImage" value="" />
-
-            <div class="form-hedar" first>
-                Имате право на обезщетение от <span>@Model.CompensationAmount € </span> на пътник
+            
+            <div class="form-hedar uppercase" first>
+                Имате право на обезщетение от <span class="euro">€@Model.CompensationAmount</span> на пътник
             </div>
 
-            <div class="form-hedar">
+            <div class="form-subheder">
                 Данни за контакт
+            </div>
+            <div class="form-subtext">
+                Въведената от вас лична информация ще се използва само във връска за получаване на обезщетения от авиокомпнии по регламент 261/2004 на EU.
+                Ако вече сте регистриран потребител може влезте <a href="/вход/@Model.ClaimId"> тук </a>
             </div>
             <div class="form-row">
                 <div class="form-box left">
@@ -69,6 +72,9 @@
                 </div>
 
             </div>
+            <div class="form-subtext">
+                Емайлат Ви ще се използва само за връзка с вас по отношение на иска ви за обезщетение
+            </div>
             <div class="form-row ">
                 <div class="form-box left">
                     <label>Емаил<span class="requared">*</span></label>
@@ -77,31 +83,34 @@
                     </div>
                 </div>
                 <div class="form-box rigth">
-                    <label>Телефон</label>
+                    <label>Телефон (опционално)</label>
                     <div>
                         <input type="text" id="Tel" name="Tel" placeholder="Телефон" /><i class="icon"></i>
                     </div>
                 </div>
             </div>
+            <div class="form-subtext">
+                Паролата Ви се съхранява в криптиран вид и не достъпна за никой
+            </div>
             <div class="form-row ">
                 <div class="form-box left">
                     <label>Парола<span class="requared">*</span></label>
                     <div>
-                        <input type="text" id="Password" name="Password" placeholder="Емаил" validate /><i class="icon"></i>
+                        <input type="password" id="Password" name="Password" placeholder="Парола" validate /><i class="icon"></i>
                     </div>
                     <label class="sub-error">Паролата трябва да е най-малко 8 символа</label>
                 </div>
                 <div class="form-box rigth">
                     <label>Повтори паролата</label>
                     <div>
-                        <input type="text" id="Tel" name="Confirm-password" placeholder="Телефон" /><i class="icon"></i>
+                        <input type="password" id="Confirm-password" name="Confirm-password" validate placeholder="Повтори паролата" /><i class="icon"></i>
                     </div>
                     <label class="sub-error">Паролите не съвпадат</label>
                 </div>
             </div>
 
 
-            <div class="form-row" style="display:none;" post>
+            <div class="form-row" style="margin-top: 50px" post>
                 <div class="form-box">
                     <button class="submit" type="submit" keypress="return false" onclick="return validateUserForm()">Напред</button>
                 </div>

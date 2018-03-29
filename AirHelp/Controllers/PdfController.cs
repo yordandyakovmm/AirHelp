@@ -35,7 +35,7 @@ namespace AirHelp.Controllers
 
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
-                claim = dc.Claims.Where(c => c.ClaimId == id).SingleOrDefault();
+                claim = dc.Claims.Include("User").Where(c => c.ClaimId == id).SingleOrDefault();
             }
 
             var model = new VMClaim(claim);
@@ -51,7 +51,7 @@ namespace AirHelp.Controllers
 
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
-                claim = dc.Claims.Where(c => c.ClaimId == id).SingleOrDefault();
+                claim = dc.Claims.Include("User").Where(c => c.ClaimId == id).SingleOrDefault();
             }
 
             var model = new VMClaim(claim);
@@ -80,7 +80,6 @@ namespace AirHelp.Controllers
             Response.ContentType = "application/pdf";
             doc.Save(Response.OutputStream);
             doc.Close();
-
             Response.End();
             return null;
         }

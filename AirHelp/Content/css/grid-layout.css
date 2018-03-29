@@ -608,21 +608,42 @@ a:hover {
 .form-box.rigth ul {
   margin-left: 0px;
 }
+.form-box-10 {
+  width: 10%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.form-box-25 {
+  width: 25%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.form-box-40 {
+  width: 40%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 .form-box-width {
   width: 100%;
   display: flex;
   flex-flow: column;
 }
 .form-box-width label {
-  margin-left: 50px;
+  margin-left: 0;
 }
 .form-box-width textarea {
-  margin-left: 50px;
-  width: 860px;
+  margin-left: 0px;
+  width: 690px;
 }
 .form-box-width input[type=text] {
-  width: 860px;
-  margin-left: 50px;
+  width: 690px;
+  margin-left: 0;
 }
 .form-box-upload {
   width: 100%;
@@ -631,10 +652,10 @@ a:hover {
   justify-content: flex-start;
 }
 .form-box-upload > div {
-  margin-left: 50px;
+  margin-left: 0;
 }
 .form-box-upload > label {
-  margin-left: 60px;
+  margin-left: 0;
 }
 .form-box-signiture {
   width: 100%;
@@ -642,10 +663,10 @@ a:hover {
   flex-flow: column;
 }
 .form-box-signiture > div {
-  margin-left: 50px;
+  margin-left: 0;
 }
 .form-box-signiture > label {
-  margin-left: 60px;
+  margin-left: 0;
 }
 .width {
   width: 100%;
@@ -862,4 +883,7 @@ a:hover {
 }
 [progress] {
   margin-top: 60px;
+}
+.atternate:nth-child(odd) {
+  background-color: lightgray;
 }

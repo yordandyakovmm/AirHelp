@@ -116,8 +116,12 @@ button.reset:hover {
   background-color: #566987;
 }
 button.clear {
+  margin: 10px 0 0 0;
+  width: 120px;
+  height: 35px;
   border-color: #009fe3;
   background-color: #ffffff;
+  border: solid 1px #8d9db6;
 }
 button.clear:hover {
   background-color: #ffffff;
@@ -246,7 +250,8 @@ button.claim-reset .icon::before {
   font-size: 15px;
   font-weight: 400;
   font-size: 14px;
-  /*margin: 0 5px;*/
+  margin: 25px 0 0 0;
+  width: 690px;
 }
 .lSuggestoin {
   color: #009fe3;
@@ -569,4 +574,10 @@ label.red {
 }
 .blur {
   filter: blur(5px);
+}
+span.euro {
+  color: indianred;
+}
+.uppercase {
+  text-transform: uppercase;
 }

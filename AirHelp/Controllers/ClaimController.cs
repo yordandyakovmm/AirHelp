@@ -41,9 +41,9 @@ namespace AirHelp.Controllers
         [Route("калкулиране-на-обезщетение")]
         public ActionResult ColectFlightDataFlightPost()
         {
-            
+
             Guid newGuid = Guid.NewGuid();
-            
+
             var jsonString = Request.Form["jsonAirport"];
             var issueDepartureCode = Request.Form["Flight"];
             var nubmer = Request.Form["FlightNumber"];
@@ -51,12 +51,12 @@ namespace AirHelp.Controllers
             var date = Request.Form["Date"];
             var dates = Request.Form["Dates"];
 
-            string[] flightNumbers = nubmers != null ? nubmers.Split(',') : new string[]{ nubmer, ""};
-            string[] flightDates = dates != null ? dates.Split(',') : new string[] {date ,"" };
+            string[] flightNumbers = nubmers != null ? nubmers.Split(',') : new string[] { nubmer, "" };
+            string[] flightDates = dates != null ? dates.Split(',') : new string[] { date, "" };
 
             var json = new JavaScriptSerializer();
             Airport[] airports = json.Deserialize<Airport[]>(jsonString);
-            
+
             Claim claim = new Claim
             {
                 ClaimId = Guid.NewGuid(),
@@ -64,11 +64,16 @@ namespace AirHelp.Controllers
                 UserId = null,
                 DateCreated = DateTime.Now,
                 Type = ProblemType.Pending,
-             };
-                        
+            };
+
+            if (issueDepartureCode == null)
+            {
+                issueDepartureCode = airports[0].iata;
+            }
 
             int number = 1;
-            airports.ToList().ForEach(a => {
+            airports.ToList().ForEach(a =>
+            {
                 AirPort airport = new AirPort
                 {
                     Id = Guid.NewGuid(),
@@ -101,7 +106,7 @@ namespace AirHelp.Controllers
                 var sCoord = new GeoCoordinate(claimAirPorts[i].y, claimAirPorts[i].x);
                 var eCoord = new GeoCoordinate(claimAirPorts[i + 1].y, claimAirPorts[i + 1].x);
 
-                var d  = sCoord.GetDistanceTo(eCoord);
+                var d = sCoord.GetDistanceTo(eCoord);
                 claimAirPorts[i].distanceToNext = d;
                 allDistance += d;
                 flag = flag || (claimAirPorts[i].iata == issueDepartureCode);
@@ -122,7 +127,7 @@ namespace AirHelp.Controllers
             }
 
             return View("ColectData", claim);
-            
+
         }
 
 
@@ -133,117 +138,23 @@ namespace AirHelp.Controllers
             var model = new VMDirectFlight();
             return View("DirectFlight", model);
         }
-                
-        [HttpPost]
-        [Route("проверка-полет")]
-        public ActionResult CheckDirctFlightPost(string FlightNumber, string Date)
-        {
-            // testing
-            Claim c = null;
-            Guid g = new Guid("ecbc3e69-71c0-4fab-971d-3acc3bd98480");
-            using (AirHelpDBContext dc = new AirHelpDBContext())
-            {
-                c = dc.Claims.Where(cl => cl.ClaimId == g).SingleOrDefault();
 
 
-                ViewBag.IsEu = c.AirPorts.Any(a => CommonHeppler.IsEuCountry(a.countryCode));
-                ViewBag.delayMessage = (c.issueDistance < 1500000 ? "Полета ви закъсня ли с повече от 2 часа?" :
-                    (c.issueDistance < 3500000 || ViewBag.IsEu ? "Полета ви закъсня ли с повече от 3 часа?" : "Полета ви закъсня ли с повече от 3 часа ?"));
-            }
-                return View("ColectData", c);
-
-            var model = new VMDirectFlight()
-            {
-                date = Date,
-                number = FlightNumber,
-                numberError = ""
-            };
-            var arr = Date.Split('.');
-            var day = int.Parse(arr[0]);
-            var mont = int.Parse(arr[1]);
-            var year = int.Parse(arr[2]);
-
-            FlightStatus fligth = CommonHeppler.GetFlight(FlightNumber,  Date);
-
-            if (fligth.flightStatuses.Length == 0)
-            {
-                model.commonError = "Невалидна комбинция от номер и дата на полета";
-                return View("DirectFlight", model);
-            }
-
-            var AirLine = fligth.appendix.airlines.ToList().Find(a => a.iata == fligth.flightStatuses[0].primaryCarrierFsCode);
-
-            Claim claim = new Claim
-            {
-                ClaimId = Guid.NewGuid(),
-                FlightDate = Date,
-                State = ClaimStatus.Accepted,
-                UserId = User.Identity.IsAuthenticated ? User.Identity.Name: null,
-                DateCreated = DateTime.Now,
-                Type = ProblemType.Pending,
-                FlightNumber = FlightNumber,
-                AirCompany = AirLine.name,
-                AirCompanyCountry = ""
-            };
-
-            int number = 0;
-            fligth.appendix.airports.ToList().ForEach(a => {
-                double distance = 0;
-                if (number > 0)
-                {
-                    var sCoord = new GeoCoordinate(fligth.appendix.airports[number-1].longitude, fligth.appendix.airports[number-1].latitude);
-                    var eCoord = new GeoCoordinate(fligth.appendix.airports[number].longitude, fligth.appendix.airports[number].latitude);
-
-                    distance = sCoord.GetDistanceTo(eCoord);
-                }
-                AirPort airport = new AirPort
-                {
-                    Id = Guid.NewGuid(),
-                    ap_name = a.name,
-                    city = a.city,
-                    cityCode = a.cityCode,
-                    country = a.countryName,
-                    countryCode = a.countryCode,
-                    elevation = a.elevationFeet,
-                    iata = a.iata,
-                    number = number,
-                    name = a.name,
-                    timezone = 0,
-                    icao = a.icao,
-                    type =  "",
-                    x = a.latitude,
-                    y = a.longitude,
-                    distanceToNext = distance
-                };
-                number++;
-                claim.AirPorts.Add(airport);
-            });
-
-            claim.allDistance = claim.AirPorts.Sum(a => a.distanceToNext);
-
-            using (AirHelpDBContext dc = new AirHelpDBContext())
-            {
-                dc.Claims.Add(claim);
-                dc.SaveChanges();
-            }
-
-            return View("ColectData", claim);
-        }
 
         [HttpPost]
         [Route("описание-на-проблема")]
         public ActionResult IssueData()
         {
-            
+
             Guid ClaimId = Guid.Parse(Request.Form["ClaimID"]);
-            ProblemType Type = (ProblemType)(int.Parse(Request.Form["Type"]));
-            Reason Reason = (Reason)(int.Parse(Request.Form["Reason"]));
-            DelayDelay DelayDelay = (DelayDelay)(int.Parse(Request.Form["DelayDelay"]));
-            CancelAnnonsment CancelAnnonsment = (CancelAnnonsment)(int.Parse(Request.Form["CancelAnnonsment"]));
-            CancelOverbokingDelay CancelOverbokingDelay = (CancelOverbokingDelay)(int.Parse(Request.Form["CancelOverbokingDelay"]));
-            DenayArival DenayArival = (DenayArival)(int.Parse(Request.Form["DenayArival"]));
-            DocumentSecurity DocumentSecurity = (DocumentSecurity)(int.Parse(Request.Form["DocumentSecurity"]));
-            Willness Willness = (Willness)(int.Parse(Request.Form["Willness"]));
+            ProblemType Type = (ProblemType)(int.Parse(Request.Form["Type"] ?? "-1"));
+            Reason Reason = (Reason)(int.Parse(Request.Form["Reason"] ?? "-1"));
+            DelayDelay DelayDelay = (DelayDelay)(int.Parse(Request.Form["DelayDelay"] ?? "-1"));
+            CancelAnnonsment CancelAnnonsment = (CancelAnnonsment)(int.Parse(Request.Form["CancelAnnonsment"] ?? "-1"));
+            CancelOverbokingDelay CancelOverbokingDelay = (CancelOverbokingDelay)(int.Parse(Request.Form["CancelOverbokingDelay"] ?? "-1"));
+            DenayArival DenayArival = (DenayArival)(int.Parse(Request.Form["DenayArival"] ?? "-1"));
+            DocumentSecurity DocumentSecurity = (DocumentSecurity)(int.Parse(Request.Form["DocumentSecurity"] ?? "-1"));
+            Willness Willness = (Willness)(int.Parse(Request.Form["Willness"] ?? "-1"));
 
             Claim claim = null;
 
@@ -307,28 +218,36 @@ namespace AirHelp.Controllers
 
                 if (Type == ProblemType.Delay)
                 {
+                    // Reject less than 2 hours
+                    if (flightType == FlightType.F1500 && DelayDelay < DelayDelay.Beetwen2_3)
+                    {
+                            RelectClaim model = new RelectClaim()
+                            {
+                                Reason = "Закъснението на полети до 1500 км трябва да е повече от 2 часа."
+                            };
+                            return View("RejectClaim", model);
+                    }
                     // Reject less than 3 hours
-                    if (DelayDelay == DelayDelay.LessThat3)
+                    if (flightType > FlightType.F1500 && DelayDelay < DelayDelay.Beetwen3_4)
                     {
                         RelectClaim model = new RelectClaim()
                         {
-                            Reason = "Закъснението на полета трябва да е повече от 3 часа."
+                            Reason = "Закъснението на полети над 1500 км трябва да е повече от 3 часа."
                         };
                         return View("RejectClaim", model);
-                    }
 
-                    if (flightType == FlightType.F1500)
+                    }
+                    if (flightType == FlightType.F1500 && DelayDelay > DelayDelay.Beetwen0_2)
                     {
                         claim.CompensationAmount = 250;
-                        claim.CompensationReason = "Закъснял полет с дистанция до 1500 км";
+                        claim.CompensationReason = "Закъснение с повече от 2 часа за полет с дистанция до 1500 км".;
                     }
-
                     else if (flightType == FlightType.FTo3500)
                     {
                         claim.CompensationAmount = 400;
                         claim.CompensationReason = "Закъснял полет с дистанция до 3500 км или в ранмите на EU";
                     }
-                    else if (flightType == FlightType.FmoreThen3500 && DelayDelay == DelayDelay.MoreThat3)
+                    else if (flightType == FlightType.FmoreThen3500 && DelayDelay == DelayDelay.Beetwen3_4)
                     {
                         claim.CompensationAmount = 300;
                         claim.CompensationReason = "Закъснял полет с дистанция над 3500 км. Ако полета заъснее с повече от 3 и по-малко от 4 часа, обезщетението се намалява с 50 %";
@@ -489,7 +408,7 @@ namespace AirHelp.Controllers
             }
 
             return View("CalculatorResult", claim);
-            
+
         }
 
 
@@ -497,7 +416,245 @@ namespace AirHelp.Controllers
         [Route("регистриране-на-потребител")]
         public ActionResult RegisterUserToClaim()
         {
-            return View("ConfirmClaim");
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                var claimId = Guid.Parse(Request.Form["claimId"]);
+                var FirstName = Request.Form["FirstName"];
+                var LastName = Request.Form["LastName"];
+                var City = Request.Form["City"];
+                var Country = Request.Form["Country"];
+                var Email = Request.Form["Email"];
+                var Adress = Request.Form["Adress"];
+                var Tel = Request.Form["Tel"];
+                var Password = Request.Form["Password"];
+
+
+                var claim = dc.Claims.Where(c => c.ClaimId == claimId).SingleOrDefault();
+
+                var newUserBD = new User()
+                {
+                    UserId = Email,
+                    FirstName = FirstName,
+                    LastName = LastName,
+                    Email = Email,
+                    password = GetHash(Password),
+                    PictureUrl = "",
+                    CreateDate = DateTime.Now,
+                    Role = "user"
+                };
+
+                dc.Users.Add(newUserBD);
+                claim.UserId = newUserBD.UserId;
+                dc.SaveChanges();
+
+                return View("ConfirmClaim", claim);
+
+            }
+
+        }
+
+        [HttpGet]
+        [Route("потвърждение-на-иск/{claimId}")]
+        public ActionResult ConfirmClaim(string claimId)
+        {
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                var ClaimId = Guid.Parse(claimId);
+                var claim = dc.Claims.Include("User").Where(c => c.ClaimId == ClaimId).SingleOrDefault();
+                return View("ConfirmClaim", claim);
+            }
+        }
+
+        [HttpPost]
+        [Route("потвърждение-на-иск")]
+        public ActionResult ConfirmClaimPost(IEnumerable<HttpPostedFileBase> UserFiles)
+        {
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+
+                var BookCode = Request.Form["BookCode"];
+                var TikedNumber = Request.Form["TikedNumber"];
+                var AdditionalInfo = Request.Form["AdditionalInfo"];
+                var claimId = Request.Form["claimId"];
+                var SignitureImage = Request.Form["SignitureImage"];
+
+                var ClaimId = Guid.Parse(claimId);
+                var claim = dc.Claims
+                    .Include("User")
+                    .Include("Documents")
+                    .Include("AdditionalUsers")
+                    .Where(c => c.ClaimId == ClaimId).SingleOrDefault();
+
+                claim.SignitureImage = SignitureImage;
+                claim.AdditionalInfo = AdditionalInfo;
+                claim.TikedNumber = TikedNumber;
+                claim.BookingCode = BookCode;
+
+
+                foreach (var file in UserFiles)
+                {
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
+                        file.SaveAs(Server.MapPath("~/UserDocuments/" + name));
+                        claim.Documents.Add(new Document
+                        {
+                            Id = Guid.NewGuid(),
+                            DocumentName = file.FileName,
+                            Url = "/UserDocuments/" + name
+                        });
+                    }
+                }
+
+                if (claim.Documents.Count > 0)
+                {
+                    claim.State = ClaimStatus.InProgress;
+                }
+
+                Guid newGuid = Guid.NewGuid();
+                string AttorneyUrl = $"/UserDocuments/{newGuid}.pdf";
+
+
+
+                string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
+
+                String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{claim.ClaimId}";
+
+                SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+                SelectPdf.PdfDocument doc = converter.ConvertUrl(url);
+                doc.Save(Server.MapPath($"~/UserDocuments/{newGuid}.pdf"));
+                doc.Close();
+                claim.AttorneyUrl = $"/UserDocuments/{newGuid}.pdf";
+                dc.SaveChanges();
+
+                Session["claim"] = claim;
+
+                return View("ViewClaim", claim);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        [HttpPost]
+        [Route("проверка-полет")]
+        public ActionResult CheckDirctFlightPost(string FlightNumber, string Date)
+        {
+            // testing
+            Claim c = null;
+            Guid g = new Guid("ecbc3e69-71c0-4fab-971d-3acc3bd98480");
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                c = dc.Claims.Where(cl => cl.ClaimId == g).SingleOrDefault();
+
+
+                ViewBag.IsEu = c.AirPorts.Any(a => CommonHeppler.IsEuCountry(a.countryCode));
+                ViewBag.delayMessage = (c.issueDistance < 1500000 ? "Полета ви закъсня ли с повече от 2 часа?" :
+                    (c.issueDistance < 3500000 || ViewBag.IsEu ? "Полета ви закъсня ли с повече от 3 часа?" : "Полета ви закъсня ли с повече от 3 часа ?"));
+            }
+            return View("ColectData", c);
+
+            var model = new VMDirectFlight()
+            {
+                date = Date,
+                number = FlightNumber,
+                numberError = ""
+            };
+            var arr = Date.Split('.');
+            var day = int.Parse(arr[0]);
+            var mont = int.Parse(arr[1]);
+            var year = int.Parse(arr[2]);
+
+            FlightStatus fligth = CommonHeppler.GetFlight(FlightNumber, Date);
+
+            if (fligth.flightStatuses.Length == 0)
+            {
+                model.commonError = "Невалидна комбинция от номер и дата на полета";
+                return View("DirectFlight", model);
+            }
+
+            var AirLine = fligth.appendix.airlines.ToList().Find(a => a.iata == fligth.flightStatuses[0].primaryCarrierFsCode);
+
+            Claim claim = new Claim
+            {
+                ClaimId = Guid.NewGuid(),
+                FlightDate = Date,
+                State = ClaimStatus.Accepted,
+                UserId = User.Identity.IsAuthenticated ? User.Identity.Name : null,
+                DateCreated = DateTime.Now,
+                Type = ProblemType.Pending,
+                FlightNumber = FlightNumber,
+                AirCompany = AirLine.name,
+                AirCompanyCountry = ""
+            };
+
+            int number = 0;
+            fligth.appendix.airports.ToList().ForEach(a =>
+            {
+                double distance = 0;
+                if (number > 0)
+                {
+                    var sCoord = new GeoCoordinate(fligth.appendix.airports[number - 1].longitude, fligth.appendix.airports[number - 1].latitude);
+                    var eCoord = new GeoCoordinate(fligth.appendix.airports[number].longitude, fligth.appendix.airports[number].latitude);
+
+                    distance = sCoord.GetDistanceTo(eCoord);
+                }
+                AirPort airport = new AirPort
+                {
+                    Id = Guid.NewGuid(),
+                    ap_name = a.name,
+                    city = a.city,
+                    cityCode = a.cityCode,
+                    country = a.countryName,
+                    countryCode = a.countryCode,
+                    elevation = a.elevationFeet,
+                    iata = a.iata,
+                    number = number,
+                    name = a.name,
+                    timezone = 0,
+                    icao = a.icao,
+                    type = "",
+                    x = a.latitude,
+                    y = a.longitude,
+                    distanceToNext = distance
+                };
+                number++;
+                claim.AirPorts.Add(airport);
+            });
+
+            claim.allDistance = claim.AirPorts.Sum(a => a.distanceToNext);
+
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                dc.Claims.Add(claim);
+                dc.SaveChanges();
+            }
+
+            return View("ColectData", claim);
         }
 
         [HttpGet]
@@ -550,22 +707,23 @@ namespace AirHelp.Controllers
                 UserId = null,
                 DateCreated = DateTime.Now,
 
-                
+
                 Type = ProblemType.Cancel,
                 FlightNumber = Request.Form["FlightNumber"],
-                
-               
+
+
                 AirCompany = data.airline.al_name,
                 AirCompanyCountry = data.airline.country,
                 AdditionalInfo = Request.Form["AdditionalInfo"],
                 Confirm = Request.Form["Confirm"],
-              
+
                 SignitureImage = Request.Form["SignitureImage"],
                 AttorneyUrl = AttorneyUrl
             };
 
             int number = 1;
-            data.airports.ToList().ForEach(a => {
+            data.airports.ToList().ForEach(a =>
+            {
                 AirPort airport = new AirPort
                 {
                     Id = Guid.NewGuid(),
