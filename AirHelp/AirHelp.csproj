@@ -225,6 +225,18 @@
     <Compile Include="Migrations\201803291040410_UserDocument.Designer.cs">
       <DependentUpon>201803291040410_UserDocument.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803301151543_update-claim.cs" />
+    <Compile Include="Migrations\201803301151543_update-claim.Designer.cs">
+      <DependentUpon>201803301151543_update-claim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803301451353_rename.cs" />
+    <Compile Include="Migrations\201803301451353_rename.Designer.cs">
+      <DependentUpon>201803301451353_rename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803301520001_remane.cs" />
+    <Compile Include="Migrations\201803301520001_remane.Designer.cs">
+      <DependentUpon>201803301520001_remane.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -453,6 +465,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803291040410_UserDocument.resx">
       <DependentUpon>201803291040410_UserDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803301151543_update-claim.resx">
+      <DependentUpon>201803301151543_update-claim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803301451353_rename.resx">
+      <DependentUpon>201803301451353_rename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803301520001_remane.resx">
+      <DependentUpon>201803301520001_remane.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

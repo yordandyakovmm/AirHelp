@@ -108,7 +108,7 @@
                 <img src="~/Content/Assets/Icon/cc-icon-03.svg" />
             </div>
             <span class="text-black"> Без начално плащане </span>
-            <p>Не дължите нищо. След успешно получено обезщетение, ще удържим 20% комисиона. </p>
+            <p>Не дължите нищо. След успешно получено обезщетение, ще удържим 25% комисиона. </p>
         </div>
 
     </div>
@@ -124,11 +124,11 @@
 
         </div>
         <div class="span-2 span">
-            <span class="heder">Коеф ООД</span>
+            <span class="heder">@ViewBag.company</span>
             <a href="~/контакти" target="_blank">за котакти</a>
             <a href="~/за-нас" target="_blank">за нас</a>
-            <span>тел: 0885 504656</span>
-            <span>емайл: koef@mail.bg</span>
+            <span>тел: @ViewBag.tel</span>
+            <span>емайл: @ViewBag.email</span>
 
         </div>
         <div class="span-3 span">

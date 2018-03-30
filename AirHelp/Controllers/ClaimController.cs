@@ -37,6 +37,7 @@ namespace AirHelp.Controllers
             return View("ColectFlightDataFlight", model);
         }
 
+        // ----- 1 ---------------
         [HttpPost]
         [Route("калкулиране-на-обезщетение")]
         public ActionResult ColectFlightDataFlightPost()
@@ -89,8 +90,8 @@ namespace AirHelp.Controllers
                     type = a.type,
                     x = double.Parse(a.x),
                     y = double.Parse(a.y),
-                    FlightNumber = airports.Length == number ? "" : flightNumbers[number - 1],
-                    FlightDate = airports.Length == number ? "" : flightDates[number - 1],
+                    FlightNumber = airports.Length == number ? (nubmer != null ? nubmer : "") : flightNumbers[number - 1],
+                    FlightDate = airports.Length == number ? (date != null ? date : "") : flightDates[number - 1],
                     startIssue = (number == 1 && airports.Length == 2) || (a.iata == issueDepartureCode)
                 };
                 number++;
@@ -166,6 +167,7 @@ namespace AirHelp.Controllers
         }
 
 
+        // ----- 1 ---------------
         [HttpGet]
         [Route("проверка-полет")]
         public ActionResult DirctFlight()
@@ -175,7 +177,7 @@ namespace AirHelp.Controllers
         }
 
 
-
+        // ----- 2 ---------------
         [HttpPost]
         [Route("описание-на-проблема")]
         public ActionResult IssueData()
@@ -197,9 +199,17 @@ namespace AirHelp.Controllers
             {
                 claim = dc.Claims.Include("AirPorts").Where(c => c.ClaimId == ClaimId).SingleOrDefault();
 
-
                 var isEUFlight = claim.IsEUFlight;
                 var flightType = claim.FlightType;
+
+                claim.Type = Type;
+                claim.Reason = Reason;
+                claim.DelayDelay = DelayDelay;
+                claim.CancelAnnonsment = CancelAnnonsment;
+                claim.CancelOverbokingDelay = CancelOverbokingDelay;
+                claim.DenayArival = DenayArival;
+                claim.DocumentSecurity = DocumentSecurity;
+                claim.Willness = Willness;
 
                 // reject by not in EU
                 if (flightType == FlightType.NotSupported)
@@ -417,7 +427,7 @@ namespace AirHelp.Controllers
 
         }
 
-
+        // ----- 3 ---------------
         [HttpPost]
         [Route("регистриране-на-потребител")]
         public ActionResult RegisterUserToClaim()
@@ -442,6 +452,10 @@ namespace AirHelp.Controllers
                     UserId = Email,
                     FirstName = FirstName,
                     LastName = LastName,
+                    City = City, 
+                    Adress = Adress, 
+                    Country = Country,
+                    Tel = Tel,
                     Email = Email,
                     password = GetHash(Password),
                     PictureUrl = "",
@@ -459,6 +473,7 @@ namespace AirHelp.Controllers
 
         }
 
+        // ----- 4 ---------------
         [HttpGet]
         [Route("потвърждение-на-иск/{claimId}")]
         public ActionResult ConfirmClaim(string claimId)
@@ -471,6 +486,8 @@ namespace AirHelp.Controllers
             }
         }
 
+
+        // ----- 4 ---------------
         [HttpPost]
         [Route("потвърждение-на-иск")]
         public ActionResult ConfirmClaimPost(IEnumerable<HttpPostedFileBase> UserFiles)
@@ -483,12 +500,13 @@ namespace AirHelp.Controllers
                 var AdditionalInfo = Request.Form["AdditionalInfo"];
                 var claimId = Request.Form["claimId"];
                 var SignitureImage = Request.Form["SignitureImage"];
-
+                
                 var ClaimId = Guid.Parse(claimId);
                 var claim = dc.Claims
                     .Include("User")
                     .Include("Documents")
                     .Include("AdditionalUsers")
+                    .Include("AirPorts")
                     .Where(c => c.ClaimId == ClaimId).SingleOrDefault();
 
                 claim.SignitureImage = SignitureImage;
@@ -542,9 +560,48 @@ namespace AirHelp.Controllers
 
 
 
+        [HttpPost]
+        [Route("ъпдейт-на-иск")]
+        public ActionResult UpdateClaimPost(IEnumerable<HttpPostedFileBase> UserFiles)
+        {
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
 
+                var claimId = Request.Form["claimId"];
 
+                var ClaimId = Guid.Parse(claimId);
+                var claim = dc.Claims
+                    .Include("User")
+                    .Include("Documents")
+                    .Include("AdditionalUsers")
+                    .Include("AirPorts")
+                    .Where(c => c.ClaimId == ClaimId).SingleOrDefault();
 
+                foreach (var file in UserFiles)
+                {
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
+                        file.SaveAs(Server.MapPath("~/UserDocuments/" + name));
+                        claim.Documents.Add(new Document
+                        {
+                            Id = Guid.NewGuid(),
+                            DocumentName = file.FileName,
+                            Url = "/UserDocuments/" + name
+                        });
+                    }
+                }
+
+                if (claim.Documents.Count > 0)
+                {
+                    claim.State = ClaimStatus.InProgress;
+                }
+
+                return View("ViewClaim", claim);
+            }
+
+        }
 
 
 

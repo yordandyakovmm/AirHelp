@@ -93,7 +93,6 @@ function initSigniture() {
     {
         return;
     }
-       
 
     conv = document.getElementById('signiture');
     ctx = conv.getContext('2d');
@@ -337,8 +336,20 @@ function uploadClick(obj) {
 function uploadChange(obj) {
     var fileName = obj.files[0].name.split('.')[0];
     var $parent = $(obj).parent();
-    if (fileName.length > 30) {
-        fileName = fileName.substring(0, 30) + '...';
+    //if (fileName.length > 30) {
+    //    fileName = fileName.substring(0, 30) + '...';
+    //}
+    if (obj.files.length == 0)
+    {
+        fileName = ""
+    }
+    else if (obj.files.length == 1)
+    {
+        fileName = "1 избран файл";
+    }
+    else if (obj.files.length >= 1)
+    {
+        fileName = obj.files.length + " избрани файла";
     }
     $parent.find('label').text(fileName);
     $parent.find('button').addClass('success');

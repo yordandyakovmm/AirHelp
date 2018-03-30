@@ -34,7 +34,6 @@ a:hover {
   grid-template-columns: 1fr;
   grid-template-rows: 100px auto 40px;
   grid-gap: 0px;
-  background-color: #fafafa;
   grid-template-areas: "Logo" "content" "bottom-spacer";
 }
 .index-container {
@@ -572,6 +571,13 @@ a:hover {
 .form-row-radio label span {
   margin: 0 0 0 4px;
 }
+.form-row-radio > a {
+  text-align: left;
+  margin: 5px 5px 0 0;
+  font-family: "PT Sans", sans-serif;
+  color: #141a30;
+  font-size: 15px;
+}
 .form-row-yes-no,
 .form-row-rodio {
   margin: 5px 0 0 0;
@@ -609,21 +615,32 @@ a:hover {
   margin-left: 0px;
 }
 .form-box-10 {
+  padding: 3px 0 0 3px;
   width: 10%;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.form-box-25 {
-  width: 25%;
+.form-box-35 {
+  padding: 3px 0 0 3px;
+  width: 35%;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.form-box-40 {
-  width: 40%;
+.form-box-35 {
+  padding: 3px 0 0 3px;
+  width: 35%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.form-box-20 {
+  padding: 3px 0 0 3px;
+  width: 30%;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
@@ -764,7 +781,6 @@ a:hover {
   align-content: center;
   justify-content: center;
   padding: 50px 0;
-  background-image: url('../Assets/Background/login.jpg');
   background-size: cover;
 }
 .form-content span {
@@ -885,5 +901,5 @@ a:hover {
   margin-top: 60px;
 }
 .atternate:nth-child(odd) {
-  background-color: lightgray;
+  background-color: aliceblue;
 }

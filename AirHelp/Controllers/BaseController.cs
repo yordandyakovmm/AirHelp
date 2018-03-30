@@ -19,6 +19,13 @@ namespace AirHelp.Controllers
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             ViewBag.siteName = ConfigurationManager.AppSettings["siteName"].ToString();
+            ViewBag.company = ConfigurationManager.AppSettings["company"].ToString();
+            ViewBag.address = ConfigurationManager.AppSettings["address"].ToString();
+            ViewBag.number = ConfigurationManager.AppSettings["number"].ToString();
+            ViewBag.UIC = ConfigurationManager.AppSettings["UIC"].ToString();
+            ViewBag.email = ConfigurationManager.AppSettings["email"].ToString();
+            ViewBag.tel = ConfigurationManager.AppSettings["tel"].ToString();
+
             base.Initialize(requestContext);
 
             if (Session != null && Session["user"] != null)
@@ -31,6 +38,8 @@ namespace AirHelp.Controllers
                 Session["user"] = user;
                 ViewBag.user = Session["user"];
             }
+
+            
 
         }
 

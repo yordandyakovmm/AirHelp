@@ -18,19 +18,28 @@ namespace AirHelp.Controllers
     {
         [HttpGet]
         [Route("вход/{claimId}")]
-        public ActionResult Login(string ReturnUrl)
+        public ActionResult Login()
         {
             return View("Login");
         }
 
+        [HttpGet]
+        [Route("вход")]
+        public ActionResult LoginDirect()
+        {
+            return View("Login");
+        }
+
+
         [HttpPost]
+        [Route("вход")]
         [Route("вход/{claimId}")]
         public ActionResult LoginPost(string claimId)
         {
 
+            var ReturnUrl = Request.QueryString["ReturnUrl"];
             var Email = Request.Form["Email"];
             var Password = Request.Form["Password"];
-            var ReturnUrl = Request.Form["ReturnUrl"];
             if (ReturnUrl == null)
             {
                 ReturnUrl = "/";
@@ -42,7 +51,12 @@ namespace AirHelp.Controllers
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
                 user = dc.Users.Where(u => u.Email == Email && u.password == hashPassword).SingleOrDefault();
-                
+
+                if (user == null)
+                {
+                    ViewBag.error = "Грешно потребителско име или парола";
+                    return View("Login");
+                }
 
                 if (claimId != null)
                 {
@@ -52,12 +66,7 @@ namespace AirHelp.Controllers
                     dc.SaveChanges();
                 }
             }
-
-            if (user == null)
-            {
-                ViewBag.error = "Грешно потребителско име или парола";
-                return View("Login");
-            }
+                      
 
             var VMuser = new VMUser()
             {

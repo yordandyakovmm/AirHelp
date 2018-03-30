@@ -50,7 +50,7 @@ namespace AirHelp.DAL
 
         public DelayDelay DelayDelay { get; set; }
 
-        public CancelOverbokingDelay CancelDelay { get; set; }
+        public CancelOverbokingDelay CancelOverbokingDelay { get; set; }
 
         public CancelAnnonsment CancelAnnonsment { get; set; }
 
