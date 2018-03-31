@@ -25,13 +25,16 @@
         </div>
 
     </div>
-    <div class="center-content">
+    <div class="center-content view-claim">
         <form method="post" enctype="multipart/form-data" action="/ъпдейт-на-иск">
             <input type="hidden" name="claimid" value="@Model.ClaimId">
-            <div class="form-hedar uppercase">
-                Благодарим Ви, че избрахте усугите на ХЕЛПКЛЕЙМС ООД
-            </div>
-
+            <input type="submit" name="upload" style="display:none" value="upload">
+            @if (!User.IsInRole("admin"))
+            {
+                <div class="form-hedar uppercase">
+                    Благодарим Ви, че избрахте усугите на ХЕЛПКЛЕЙМС ООД
+                </div>
+            }
             <div class="form-hedar ">
                 @Model.AirCompany  (@Model.AirCompanyCode )  <span class="blue">  @Model.Type.ViewString() </span>
             </div>
@@ -115,8 +118,11 @@
 
 
             @{
-                var airPorts = Model.AirPorts.ToArray();
+                var airPorts = Model.AirPorts.OrderBy(a => a.number).ToArray();
             }
+            <div class="form-row">
+
+            </div>
 
             @for (int i = 0; i < airPorts.Length - 1; i++)
             {
@@ -124,34 +130,35 @@
                     <div class="form-box-10">
                         @if (@airPorts[i].startIssue)
                         {
-                            <b><label class="data ">@airPorts[i].FlightNumber</label></b>
+                            <b><label style="font-size: 15px; font-weight: 600; margin : 0 0 0 0;">@airPorts[i].FlightNumber.ToUpper()</label></b>
                         }
                         else
                         {
-                            <label class="data ">@airPorts[i].FlightNumber</label>
+                            <label style="font-size: 15px; font-weight: 600; margin : 0 0 0 0;">@airPorts[i].FlightNumber.ToUpper()</label>
                         }
+                        <label style="font-size: 14px; color: #008fd3;">@airPorts[i].FlightDate</label>
                     </div>
                     <div class="form-box-35">
-                        <label class="heder ">
+                        <label style="font-size: 15px; font-weight: 600; margin : 0 0 0 0;">
                             @airPorts[i].name (@airPorts[i].iata)
                         </label>
-                        <label class="data">
+                        <label style="font-size: 14px; color: #008fd3;">
                             @airPorts[i].city (@airPorts[i].country)
                         </label>
 
                     </div>
                     <div class="form-box-35">
-                        <label class="heder ">
+                        <label style="font-size: 15px; font-weight: 600; margin : 0 0 0 0;">
                             @airPorts[i + 1].name (@airPorts[i + 1].iata)
                         </label>
-                        <label class="data">
+                        <label style="font-size: 14px; color: #008fd3;">
                             @airPorts[i + 1].city (@airPorts[i + 1].country)
                         </label>
                     </div>
                     @if (User.IsInRole("admin"))
                     {
                         <div class="form-box-20">
-                            <label class="heder">
+                            <label style="font-size: 15px; font-weight: 600; margin : 0 0 0 0;">
                                 @((airPorts[i].distanceToNext / 1000).ToString("000")) км
                             </label>
                         </div>
@@ -159,7 +166,7 @@
                     else
                     {
                         <div class="form-box-20">
-                            <label class="heder">
+                            <label class="name">
 
                             </label>
                         </div>
@@ -184,7 +191,7 @@
                         <label class="heder ">Дистанция за обезщетение</label>
                         <div>
                             <label class="data ">
-                                @((Model.issueDistance/1000).ToString("000")) км
+                                @((Model.issueDistance / 1000).ToString("000")) км
                             </label>
                         </div>
                     </div>
@@ -337,9 +344,9 @@
             </div>
 
             <div class="form-subtext">
-                Може да добавите копия на документи към вашата претенция 
+                Може да добавите копия на документи към вашата претенция
             </div>
-            
+
             <div class="form-row">
                 <div class="form-box-upload upload-box">
                     <label>Моля изберете документ</label>
@@ -355,16 +362,16 @@
             <div class="form-row-radio" style="justify-content:flex-start" first>
                 @foreach (var doc in Model.Documents)
                 {
-                    
-                        <a href="@doc.Url" target="_blank">
-                            @doc.DocumentName
-                        </a>
-                    
+
+                    <a href="@doc.Url" target="_blank">
+                        @doc.DocumentName
+                    </a>
+
                 }
 
             </div>
 
-            
+
 
             <div class="form-subheder">
                 Документи
@@ -390,17 +397,7 @@
 
             </div>
 
-            @if (User.IsInRole("admin"))
-            {
-                <div class="form-row">
-                    <div class="form-box">
-                        <button class="submit-claim left-claim" type="button" onclick="window.open('@Model.AttorneyUrl', '_blank')"><i class="icon"></i><span>Пълномощно</span></button>
-                    </div>
-                    <div class="form-box">
-                        <button class="submit-claim rigth-claim" type="button"><i class="icon"></i><span>Жалба</span></button>
-                    </div>
-                </div>
-            }
+
             <div class="form-row">
                 &nbsp;
             </div>
@@ -410,5 +407,5 @@
 
 </div>
 
-<script src="~/Scripts/form.js"></script>
+<script src="~/Scripts/main.js"></script>
 

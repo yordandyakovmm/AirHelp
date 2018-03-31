@@ -434,22 +434,11 @@ label.file-upload {
 }
 label.heder {
   font-size: 18px;
-}
-label.heder.left {
-  margin-left: 100px;
-}
-label.heder.rigth {
-  margin-left: 50px;
+  font-weight: 600;
 }
 label.data {
   font-size: 18px;
-  color: #009fe3;
-}
-label.data.left {
-  margin-left: 100px;
-}
-label.data.rigth {
-  margin-left: 50px;
+  color: #008dca;
 }
 p.left {
   font-size: 16px;

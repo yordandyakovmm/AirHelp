@@ -1,38 +1,79 @@
-﻿@model List<AirHelp.Models.VMClaim>
+﻿@model List<AirHelp.DAL.Claim>
 
 <div class="register-form">
-    <div class="left-content">
+    <div class="progress">
+        @if (User.IsInRole("admin"))
+        {
+
+            <div class="current">
+                <div class="circle"><label> </label></div>
+                <label class="text">Всички</label>
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <label class="text">Необработени</label>
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <label class="text">Приключени</label>
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <label class="text">В прогрес</label>
+            </div>
+
+        }
+        else
+        {
+            <div class="current">
+                <div class="circle"><label> </label></div>
+                <label class="text">Всички</label>
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <label class="text">В прогрес</label>
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <label class="text">Приключени</label>
+            </div>
+            
+        }
     </div>
+
     <div class="center-content">
+        <div class="form-hedar uppercase">
+            @ViewBag.user.FirstName  @ViewBag.user.LastName
+        </div>
         <div class="list-container">
 
             @foreach (var claim in Model)
             {
-                <a href="/обезщетение-списък/@claim.ClaimId">
+                <a href="/ъпдейт-на-иск/@claim.ClaimId">
                     <div class="claim-list">
                         <div style="grid-column-start: 1; grid-column-end: 2;">
                             <label>
-                                @claim.FlightNumber
+                                #@claim.referalNumber
                             </label>
                         </div>
                         <div style="grid-column-start: 2; grid-column-end: 3;">
                             <label>
-                                @claim.FirstName @claim.LastName
+                                @claim.AirPorts.Where(a => a.startIssue).Select(a => a.FlightNumber).SingleOrDefault()
                             </label>
                         </div>
                         <div style="grid-column-start: 3; grid-column-end: 4;">
                             <label>
-                                @claim.DepartureAirport
+                                @claim.DateCreated.ToString("dd.MM.yyyy") 
                             </label>
                         </div>
                         <div style="grid-column-start: 4; grid-column-end: 5;">
                             <label>
-                                @claim.DestinationAirports
+                                €@claim.CompensationAmount
                             </label>
                         </div>
                         <div style="grid-column-start: 5; grid-column-end: 6;">
                             <label>
-                                @claim.AirCompany
+                                @claim.AirCompany  --
                             </label>
                         </div>
                     </div>
@@ -42,7 +83,5 @@
 
     </div>
 
-    <div class="rigth-content">
 
-    </div>
 </div>

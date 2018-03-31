@@ -331,11 +331,11 @@ button.claim-reset {
     #font;
     font-weight: 700;
     font-size: 24px;
-    color: lighten(@border-blue-color, -30%);
-    margin: 30px 0 5px 0;
+    color: lighten(@border-blue-col
 }
 
-.form-subtext {
+.form-subtext {or, -30%);
+    margin: 30px 0 5px 0;
     #font;
     font-size: 18px;
     font-weight: 500;
@@ -544,10 +544,9 @@ label {
     #font;
     font-size: 15px;
     font-weight: 500;
-       
     margin: 0 0 5px 0;
     justify-content: flex-start;
-    
+
     span.requared {
         margin-left: 2px;
         color: red;
@@ -559,30 +558,16 @@ label {
 
     &.heder {
         font-size: 18px;
-
-        &.left {
-            margin-left: 100px;
-        }
-
-        &.rigth {
-            margin-left: 50px;
-        }
+        font-weight: 600;
     }
 
     &.data {
         font-size: 18px;
-        color: @blue-color;
-
-        &.left {
-            margin-left: 100px;
-        }
-
-
-        &.rigth {
-            margin-left: 50px;
-        }
+        color: lighten(@blue-color, -5%);
     }
+
 }
+
 
 p.left {
     font-size: 16px;
@@ -694,7 +679,6 @@ button.submit-smal {
 
 [disabled] {
     filter: opacity(50%);
-    cursor: not-allowed;
 }
 
 .blur{

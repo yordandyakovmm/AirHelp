@@ -566,7 +566,6 @@ a:hover {
             font-size: 40px;
             text-transform: uppercase;
             font-weight: 600;
-            
         }
 
         h2 {
@@ -738,8 +737,6 @@ a:hover {
         margin: 10px 0 0 0;
         display: inline-flex;
     }
-
-   
 }
 
 .form-box {
@@ -775,25 +772,18 @@ a:hover {
 }
 
 .form-box-10 {
-    padding: 3px 0 0 3px;
-    width: 10%;
+    padding: 7px 0 0 5px;
+    width: 15%;
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
+
 .form-box-35 {
-    padding: 3px 0 0 3px;
-    width: 35%;
-    display: flex;
-    flex-flow: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-.form-box-35 {
-    padding: 3px 0 0 3px;
-    width: 35%;
+    padding: 7px 0 0 0;
+    width: 40%;
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
@@ -801,12 +791,12 @@ a:hover {
 }
 
 .form-box-20 {
-    padding: 3px 0 0 3px;
-    width: 30%;
+    padding: 7px 5px 0 0;
+    width: 15%;
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-end;
 }
 
 
@@ -891,40 +881,41 @@ a:hover {
 }
 
 .list-container {
-    margin: 50px 50px;
+    margin: 30px 0 0 0;
     display: grid;
     grid-template-columns: 100%;
-    grid-gap: 10px;
+    grid-gap: 1px;
     font-family: Verdana, Helvetica, sans-serif;
     font-size: 14px;
 
     a:nth-child(odd) > div > div {
-        background-color: #ccc;
+        background-color: #eee;
     }
 
     a:nth-child(even) > div > div {
-        background-color: #eee;
+        background-color: #ddd;
     }
 
     .claim-list {
         display: grid;
-        grid-template-columns: 100px 200px 200px 200px 100px 100px;
-        grid-template-rows: 30px;
-        grid-gap: 5px;
+        grid-template-columns: 80px 150px 150px 100px 80px;
+        grid-template-rows: 35px;
+        grid-gap: 1px;
 
         > div {
             > label {
+                padding: 7px 0 0 6px;
                 font-size: 15px;
                 cursor: pointer;
-                height: 20px;
-                margin: auto 0;
+                height: 35px;
+                margin: 0 0;
             }
 
             display: flex;
             align-content: center;
             justify-content: flex-start;
             padding-left: 4px;
-            border-radius: 3px;
+            border-radius: 0px;
         }
     }
 }
@@ -1023,7 +1014,7 @@ a:hover {
     }
 }
 
-.spacer{
+.spacer {
     display: block;
 }
 
@@ -1127,7 +1118,13 @@ a:hover {
 }
 
 .atternate {
-    &:nth-child(odd){
-        background-color: aliceblue; 
+    margin: 0;
+
+    &:nth-child(odd) {
+        background-color: lighten(lightgray, 10%);
+    }
+
+    &:nth-child(even) {
+        background-color: lighten(lightgray, 15%);
     }
 }

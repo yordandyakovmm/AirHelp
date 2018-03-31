@@ -64,7 +64,7 @@ namespace AirHelp.Controllers
                 State = ClaimStatus.WaitForDocument,
                 UserId = null,
                 DateCreated = DateTime.Now,
-                Type = ProblemType.Pending,
+                Type = ProblemType.Pending
             };
 
             if (issueDepartureCode == null)
@@ -514,20 +514,22 @@ namespace AirHelp.Controllers
                 claim.TikedNumber = TikedNumber;
                 claim.BookingCode = BookCode;
 
-
-                foreach (var file in UserFiles)
+                if (UserFiles != null)
                 {
-
-                    if (file != null && file.ContentLength > 0)
+                    foreach (var file in UserFiles)
                     {
-                        var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
-                        file.SaveAs(Server.MapPath("~/UserDocuments/" + name));
-                        claim.Documents.Add(new Document
+
+                        if (file != null && file.ContentLength > 0)
                         {
-                            Id = Guid.NewGuid(),
-                            DocumentName = file.FileName,
-                            Url = "/UserDocuments/" + name
-                        });
+                            var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
+                            file.SaveAs(Server.MapPath("~/UserDocuments/" + name));
+                            claim.Documents.Add(new Document
+                            {
+                                Id = Guid.NewGuid(),
+                                DocumentName = file.FileName,
+                                Url = "/UserDocuments/" + name
+                            });
+                        }
                     }
                 }
 
@@ -559,15 +561,14 @@ namespace AirHelp.Controllers
         }
 
 
-
-        [HttpPost]
         [Route("ъпдейт-на-иск")]
-        public ActionResult UpdateClaimPost(IEnumerable<HttpPostedFileBase> UserFiles)
+        [Route("ъпдейт-на-иск/{id}")]
+        public ActionResult UpdateClaimPost(IEnumerable<HttpPostedFileBase> UserFiles,string id)
         {
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
 
-                var claimId = Request.Form["claimId"];
+                var claimId = Request.Form["claimId"] ?? id;
 
                 var ClaimId = Guid.Parse(claimId);
                 var claim = dc.Claims
@@ -577,19 +578,22 @@ namespace AirHelp.Controllers
                     .Include("AirPorts")
                     .Where(c => c.ClaimId == ClaimId).SingleOrDefault();
 
-                foreach (var file in UserFiles)
+                if (UserFiles != null)
                 {
-
-                    if (file != null && file.ContentLength > 0)
+                    foreach (var file in UserFiles)
                     {
-                        var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
-                        file.SaveAs(Server.MapPath("~/UserDocuments/" + name));
-                        claim.Documents.Add(new Document
+
+                        if (file != null && file.ContentLength > 0)
                         {
-                            Id = Guid.NewGuid(),
-                            DocumentName = file.FileName,
-                            Url = "/UserDocuments/" + name
-                        });
+                            var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
+                            file.SaveAs(Server.MapPath("~/UserDocuments/" + name));
+                            claim.Documents.Add(new Document
+                            {
+                                Id = Guid.NewGuid(),
+                                DocumentName = file.FileName,
+                                Url = "/UserDocuments/" + name
+                            });
+                        }
                     }
                 }
 
@@ -598,13 +602,28 @@ namespace AirHelp.Controllers
                     claim.State = ClaimStatus.InProgress;
                 }
 
+                dc.SaveChanges();
                 return View("ViewClaim", claim);
             }
 
         }
 
 
-
+        [Authorize(Roles = "admin,user")]
+        [Route("обезщетение-списък")]
+        public ActionResult ClaimList(string category)
+        {
+            var isAdmin = User.IsInRole("admin");
+            List<Claim> list = null;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                list = dc.Claims
+                    .Include("AirPorts")
+                    .Where(c => c.Type != ProblemType.Pending && (c.UserId == User.Identity.Name || isAdmin) ).Select(c => c)
+                    .ToList();
+            }
+            return View("ClaimList", list);
+        }
 
 
 
@@ -918,21 +937,7 @@ namespace AirHelp.Controllers
 
         }
 
-        [Authorize(Roles = "admin,user")]
-        [Route("обезщетение-списък")]
-        public ActionResult ClaimList(string category)
-        {
-            var list = new List<VMClaim>();
-            var isAdmin = User.IsInRole("admin");
-            using (AirHelpDBContext dc = new AirHelpDBContext())
-            {
-                list = dc.Claims.Where(c => c.UserId == User.Identity.Name || isAdmin).Select(claim => claim)
-                    .ToList()
-                    .Select(claim => new VMClaim(claim))
-                    .ToList();
-            }
-            return View("ClaimList", list);
-        }
+        
 
 
 

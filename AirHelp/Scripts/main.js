@@ -353,6 +353,10 @@ function uploadChange(obj) {
     }
     $parent.find('label').text(fileName);
     $parent.find('button').addClass('success');
+    if ($('[name="upload"]').length > 0)
+    {
+        $('[name="upload"]').click();
+    }
 }
 
 

@@ -615,36 +615,28 @@ a:hover {
   margin-left: 0px;
 }
 .form-box-10 {
-  padding: 3px 0 0 3px;
-  width: 10%;
+  padding: 7px 0 0 5px;
+  width: 15%;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
 .form-box-35 {
-  padding: 3px 0 0 3px;
-  width: 35%;
-  display: flex;
-  flex-flow: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.form-box-35 {
-  padding: 3px 0 0 3px;
-  width: 35%;
+  padding: 7px 0 0 0;
+  width: 40%;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
 .form-box-20 {
-  padding: 3px 0 0 3px;
-  width: 30%;
+  padding: 7px 5px 0 0;
+  width: 15%;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 .form-box-width {
   width: 100%;
@@ -711,37 +703,38 @@ a:hover {
   margin-bottom: 10px;
 }
 .list-container {
-  margin: 50px 50px;
+  margin: 30px 0 0 0;
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 10px;
+  grid-gap: 1px;
   font-family: Verdana, Helvetica, sans-serif;
   font-size: 14px;
 }
 .list-container a:nth-child(odd) > div > div {
-  background-color: #ccc;
+  background-color: #eee;
 }
 .list-container a:nth-child(even) > div > div {
-  background-color: #eee;
+  background-color: #ddd;
 }
 .list-container .claim-list {
   display: grid;
-  grid-template-columns: 100px 200px 200px 200px 100px 100px;
-  grid-template-rows: 30px;
-  grid-gap: 5px;
+  grid-template-columns: 80px 150px 150px 100px 80px;
+  grid-template-rows: 35px;
+  grid-gap: 1px;
 }
 .list-container .claim-list > div {
   display: flex;
   align-content: center;
   justify-content: flex-start;
   padding-left: 4px;
-  border-radius: 3px;
+  border-radius: 0px;
 }
 .list-container .claim-list > div > label {
+  padding: 7px 0 0 6px;
   font-size: 15px;
   cursor: pointer;
-  height: 20px;
-  margin: auto 0;
+  height: 35px;
+  margin: 0 0;
 }
 .contact-main {
   display: flex;
@@ -900,6 +893,12 @@ a:hover {
 [progress] {
   margin-top: 60px;
 }
+.atternate {
+  margin: 0;
+}
 .atternate:nth-child(odd) {
-  background-color: aliceblue;
+  background-color: #ececec;
+}
+.atternate:nth-child(even) {
+  background-color: #f9f9f9;
 }
