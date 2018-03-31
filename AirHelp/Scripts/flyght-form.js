@@ -5,8 +5,10 @@
         var flights = [];
         var first = $('[name="DepartureAirport"]').data('data');
         var last = $('[name="DestinationAirports"]').data('data');
+        var airCompany = $('[name="AirCompany"]').data('data');
         var allAirports = [];
         var airports = [];
+        window.airCompany = airCompany;
 
         $('[name=ConnectionAirports]:visible').each(function (index) {
             var data = $($('[name=ConnectionAirports]')[index]).data('data');
@@ -23,7 +25,7 @@
             allAirports.push(last);
             flights.push(flight);
         }
-
+        
         if (airports.length > 0) {
 
             var flight = {
@@ -57,6 +59,7 @@
 
         window.flights = flights;
         window.allAirports = allAirports;
+        
 
         if (flights.length > 1) {
             $('[choise-flight].form-row-radio').show();
@@ -71,29 +74,42 @@
                 tempate = $('#template2').html();
                 tempate = tempate
                     .replace(/\{1\}/g, flights[i].number)
-                    .replace('{2}', flights[i].departure + ' -- ' + flights[i].arrival);
+                    .replace('{2}', flights[i].departure + ' -- ' + flights[i].arrival)
+                    .replace(/\{3\}/g, airCompany.iata.toUpperCase());
                 $('[multinumber]').append(tempate);
-                                
-
+                             
             }
             $('[choise-flight]').show();
             $('[multinumber] input[type=text]').change(onChageInput);
 
         }
         else {
+            $('[name="FlightNumber"]').attr('data', airCompany.iata.toUpperCase()); 
+            $('[name="FlightNumber"]').val(airCompany.iata.toUpperCase());
             $('[post]').show();
-            $('[number]').show();
+            $('[number]').show(1000);
+            $('html, body').animate({
+                scrollTop: $("[number]").offset().top
+            }, 1000);
             
         }
         
         $('[first] input').attr('disabled', 'disabled');
         $('[first]').addClass('blur');
 
-        $('[progress]').hide();
+        $('[progress]').hide(1000);
         
     }
 }
 
+function fixNumber(_this) {
+    var data = $(_this).attr('data');
+    if (!$(_this).val().startsWith(data))
+    {
+        $(_this).val(data);
+        $(_this).focus();
+    }
+}
 
 function validateFlight() {
     var result = true;
@@ -117,6 +133,7 @@ function validateFlights() {
     if (result)
     {
         $('[name="jsonAirport"]').val(JSON.stringify(window.allAirports));
+        $('[name="jsonAirComapany"]').val(JSON.stringify(window.airCompany));
     }
     return result;
 }
@@ -125,14 +142,17 @@ function flightChange(_this)
 {
     var departureNubber = $(_this).val();
 
-    $('[multinumber] .form-box.rigth >').hide();
-    $('[multinumber] #' + departureNubber + ' .form-box.rigth >').show();
+    $('[multinumber] .form-box.rigth >').hide(1000);
+    $('[multinumber] #' + departureNubber + ' .form-box.rigth >').show(1000);
 
     $(_this).parent().parent().find('label').removeClass('selected');
     $(_this).parent().addClass('selected');
-    $('[multinumber-row]').show();
-    $('[multinumber]').show();
-    $('[post]').show();
+    $('[multinumber-row]').show(1000);
+    $('html, body').animate({
+        scrollTop: $("[multinumber-row]").offset().top
+    }, 1000);
+    $('[multinumber]').show(1000);
+    $('[post]').show(1000);
     $('[first] input').attr('disabled', 'disabled');
     $('[first]').addClass('blur');
 

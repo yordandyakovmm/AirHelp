@@ -289,7 +289,7 @@ function ddKeyUp(_this, e) {
             $dropDown.find('[index="' + index + '"]').addClass('selected');
         }
     }
-    else if ($this.val().length >= 2) {
+    else if ($this.val().length >= 3) {
         $this.addClass('remove-shadow');
         $this.parent().parent().removeClass('error');
 

@@ -100,9 +100,15 @@ namespace AirHelp.Hellpers
 
             }
 
-            result = result.Substring(result.IndexOf('{')).Replace("\n", ",");
-            result = "{\"status\": 1, \"airports\": [" + result + "]}";
-
+            try
+            {
+                result = result.Substring(result.IndexOf('{')).Replace("\n", ",");
+                result = "{\"status\": 1, \"airports\": [" + result + "]}";
+            }
+            catch (Exception ex)
+            {
+                result = "{\"status\": 0, \"airports\": []}";
+            }
             return result;
         }
         public static bool IsEuCountry(string countryCode)

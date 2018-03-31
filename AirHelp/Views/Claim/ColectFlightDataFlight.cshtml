@@ -23,6 +23,7 @@
     <div class="center-content">
         <form method="post" enctype="multipart/form-data">
             <input type="hidden" name="jsonAirport" value="" />
+            <input type="hidden" name="jsonAirComapany" value="" />
             <input type="hidden" name="SignitureImage" value="" />
 
             <div class="form-hedar" first>
@@ -48,11 +49,24 @@
                     </div>
                 </div>
             </div>
+            <div class="form-row" id="AirCompany" first>
+                <div class="form-box">
+                    <label>Въдушен превозвач<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" name="AirCompany" autocomplete="off" dropdown onkeyup="ddKeyUp(this, event)" onblur="cbBlur(this)" validate placeholder="Въдушен превозвач" />
+                        <i class="icon"></i>
+                        <ul class="lSuggestoin"></ul>
+                    </div>
+                </div>
+                <div class="form-box">
+
+                </div>
+            </div>
             <div class="form-subheder" first>
                 Имахте ли прекачвания по пътя?
             </div>
             <div class="form-row-rodio" style="justify-content:flex-start" first>
-                
+
                 <label class="radio">
                     <input type="radio" id="rYes" name="HasConnection">
                     <span>Да</span>
@@ -63,7 +77,7 @@
                 </label>
             </div>
             <div class="form-row" id="connectionAirPorts" style="flex-flow: column; display:none;" first>
-                <div class="form-subtext">
+                <div class="form-subtext" style="margin: 7px 0 7px 0;">
                     Моля посочете всички междинни летища, които са част от същата резервация
                 </div>
                 <div class="form-box-connection">
@@ -72,7 +86,6 @@
                         <i class="icon"></i>
                         <ul class="lSuggestoin"></ul>
                     </div>
-                    <button class="bDelete" onmousedown="$(this).parent().remove(); return false;"><i class="icon"></i></button>
                 </div>
                 <div class="form-box">
                     <button class="bAdd" onclick="addCbAiports(this); return false;"><i class="icon"></i></button>
@@ -96,14 +109,14 @@
             </div>
 
             <div class="form-hedar" style="display:none" number>
-                Ноля попълнете номера и дата на полета
+                Моля допълнете цифровата часа в номерата на полетите
             </div>
 
             <div class="form-row" style="display:none" number>
                 <div class="form-box left">
                     <label>Номер на полета<span class="requared">*</span></label>
                     <div>
-                        <input type="text" name="FlightNumber" id="FlightNumber" value="@Model.number" placeholder="Номер на полет" validate /><i class="icon"></i>
+                        <input type="text" name="FlightNumber" id="FlightNumber" onkeyup="fixNumber(this)" value="@Model.number" placeholder="Номер на полет" validate /><i class="icon"></i>
                     </div>
                     <label class="sub-error">@Model.numberError</label>
                 </div>
@@ -117,7 +130,7 @@
             </div>
 
             <div class="form-hedar" style="display:none" multinumber-row>
-                Ноля попълнете номерата на полетите
+                Моля допълнете цифровата часа в номерата на полетите
             </div>
             <div multinumber style="display:none">
 
@@ -165,7 +178,7 @@
         <div class="form-box left">
             <label>Номер на полета<span class="requared">*</span></label>
             <div>
-                <input type="text" validate name="FlightNumbers" id="FlightNumber" value="" placeholder="Номер на полет" validate /><i class="icon"></i>
+                <input type="text" validate name="FlightNumbers" onkeyup="fixNumber(this)" id="FlightNumber" data="{3}" value="{3}" placeholder="Номер на полет" validate /><i class="icon"></i>
             </div>
             <label class="sub-error">Невалиден номер</label>
         </div>

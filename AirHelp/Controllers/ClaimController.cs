@@ -46,6 +46,7 @@ namespace AirHelp.Controllers
             Guid newGuid = Guid.NewGuid();
 
             var jsonString = Request.Form["jsonAirport"];
+            var jsonAirCompany = Request.Form["jsonAirComapany"];
             var issueDepartureCode = Request.Form["Flight"];
             var nubmer = Request.Form["FlightNumber"];
             var nubmers = Request.Form["FlightNumbers"];
@@ -57,6 +58,7 @@ namespace AirHelp.Controllers
 
             var json = new JavaScriptSerializer();
             Airport[] airports = json.Deserialize<Airport[]>(jsonString);
+            Airline airCompany = json.Deserialize<Airline>(jsonAirCompany);
 
             Claim claim = new Claim
             {
@@ -64,7 +66,11 @@ namespace AirHelp.Controllers
                 State = ClaimStatus.WaitForDocument,
                 UserId = null,
                 DateCreated = DateTime.Now,
-                Type = ProblemType.Pending
+                Type = ProblemType.Pending,
+                AirCompany = airCompany.name,
+                AirCompanyCountry = airCompany.country,
+                AirCompanyCode = airCompany.iata
+
             };
 
             if (issueDepartureCode == null)
@@ -625,7 +631,42 @@ namespace AirHelp.Controllers
             return View("ClaimList", list);
         }
 
+        [HttpGet]
+        [Authorize(Roles = "admin", Users = "yordan.dyakov@mentormate.com")]
+        [Route("заявки-ъпдейт")]
+        public ActionResult ClaimListYordan()
+        {
+            var isAdmin = User.IsInRole("admin");
+            List<Claim> list = null;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                list = dc.Claims
+                    .Include("AirPorts")
+                    .ToList();
+            }
+            return View("ClaimListYordan", list);
+        }
 
+
+        [HttpGet]
+        [Authorize(Roles = "admin", Users="yordan.dyakov@mentormate.com")]
+        [Route("заявки-ъпдейт/{removeId}")]
+        public ActionResult ClaimListRemove(string removeId)
+        {
+            var isAdmin = User.IsInRole("admin");
+            List<Claim> list = null;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                var claimId = Guid.Parse(removeId);
+                var claim = dc.Claims.Where(c => c.ClaimId == claimId).SingleOrDefault();
+                dc.Claims.Remove(claim);
+                dc.SaveChanges();
+                list = dc.Claims
+                    .Include("AirPorts")
+                    .ToList();
+            }
+            return View("ClaimListYordan", list);
+        }
 
 
 

@@ -49,39 +49,44 @@
 
             @foreach (var claim in Model)
             {
-                <a href="/ъпдейт-на-иск/@claim.ClaimId">
 
-                    <div class="claim-list">
-                        <div style="grid-column-start: 1; grid-column-end: 2;">
 
+                <div class="claim-list">
+                    <div style="grid-column-start: 1; grid-column-end: 2;">
+                        <a href="/ъпдейт-на-иск/@claim.ClaimId">
                             <label>
                                 #@claim.referalNumber
                             </label>
-
-                        </div>
-
-                        <div style="grid-column-start: 2; grid-column-end: 3;">
-                            <label>
-                                @claim.AirPorts.Where(a => a.startIssue).Select(a => a.FlightNumber).SingleOrDefault()
-                            </label>
-                        </div>
-                        <div style="grid-column-start: 3; grid-column-end: 4;">
-                            <label>
-                                @claim.DateCreated.ToString("dd.MM.yyyy")
-                            </label>
-                        </div>
-                        <div style="grid-column-start: 4; grid-column-end: 5;">
-                            <label>
-                                €@claim.CompensationAmount
-                            </label>
-                        </div>
-                        <div style="grid-column-start: 5; grid-column-end: 6;">
-                            <label>
-                                @claim.AirCompany  --
-                            </label>
-                        </div>
+                        </a>
                     </div>
-                </a>
+
+                    <div style="grid-column-start: 2; grid-column-end: 3;">
+                        <label>
+                            @claim.AirPorts.Where(a => a.startIssue).Select(a => a.FlightNumber).SingleOrDefault()
+                        </label>
+                    </div>
+                    <div style="grid-column-start: 3; grid-column-end: 4;">
+                        <label>
+                            @claim.DateCreated.ToString("dd.MM.yyyy")
+                        </label>
+                    </div>
+                    <div style="grid-column-start: 4; grid-column-end: 5;">
+                        <label>
+                            €@claim.CompensationAmount
+                        </label>
+                    </div>
+                    <div style="grid-column-start: 5; grid-column-end: 6;">
+                        <label>
+                            @claim.AirCompany  --
+                        </label>
+                    </div>
+
+                    <div style="grid-column-start: 6; grid-column-end: 7;">
+                        <a href="/заявки-ъпдейт/@claim.ClaimId">Изтриване</a>
+                    </div>
+
+                </div>
+
             }
         </div>
 

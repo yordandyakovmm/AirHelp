@@ -7,13 +7,13 @@
     });
     if (type === '1')
     {
-        $('[reason]').show();
+       $('[reason]').show(1000);
     }
     if (type === '2') {
-        $('[reason]').show();
+        $('[reason]').show(1000);
     }
     if (type === '3') {
-        $('[denay-arival]').show();
+        $('[denay-arival]').show(1000);
     }
     $('.submit').attr('disabled');
 }
@@ -26,10 +26,16 @@ function changeReason(reason)
     });
 
     if ($('[name="Type"]:checked').val() === '1') {
-        $('[delay-delay]').show();
+        $('[delay-delay]').show(1000);
+        $('html, body').animate({
+            scrollTop: $("[delay-delay]").offset().top
+        }, 1000);
     }
     if ($('[name="Type"]:checked').val() === '2') {
-        $('[cancel-announsment]').show();
+        $('[cancel-announsment]').show(1000);
+        $('html, body').animate({
+            scrollTop: $("[cancel-announsment]").offset().top
+        }, 1000);
     }
     $('.submit').attr('disabled', 'disabled');
 
@@ -49,7 +55,10 @@ function changeAnnonsment()
         this.checked = false;
     });
     $('.submit').attr('disabled', 'disabled');
-    $('[cancel-delay]').show();
+    $('[cancel-delay]').show(1000);
+    $('html, body').animate({
+        scrollTop: $("[cancel-delay]").offset().top
+    }, 1000);
 }
 
 function changeCancelOverbokingDelay()
@@ -65,22 +74,37 @@ function changeArival()
         this.checked = false;
     });
     $('.submit').attr('disabled', 'disabled');
-    $('[document-security]').show();
+    $('[document-security]').show(1000);
+    $('html, body').animate({
+        scrollTop: $("[document-security]").offset().top
+    }, 1000);
 }
 
 function changeDocumentSecurity()
 {
-    $('[willness]').hide();
+    $('[willness]').hide(1000);
     $('[willness]').find('.selected').removeClass('selected');
     $('[willness]').find('[type=radio]:checked').each(function () {
         this.checked = false;
     });
     $('.submit').attr('disabled', 'disabled');
-    $('[willness]').show();
+    $('[willness]').show(1000);
+    $('html, body').animate({
+        scrollTop: $("[willness]").offset().top
+    }, 1000);
 }
 
 function changeWillness() {
-    $('.submit').removeAttr('disabled');
+    $('[cancel-delay], [delay-delay]').hide();
+    $('[cancel-delay], [delay-delay]').find('.selected').removeClass('selected');
+    $('[cancel-delay], [delay-delay]').find('[type=radio]:checked').each(function () {
+        this.checked = false;
+    });
+    $('.submit').attr('disabled', 'disabled');
+    $('[cancel-delay]').show(1000);
+    $('html, body').animate({
+        scrollTop: $("[cancel-delay]").offset().top
+    }, 1000);
 }
 
 function clearCheckClaim() {
