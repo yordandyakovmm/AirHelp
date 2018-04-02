@@ -73,13 +73,15 @@ a:hover {
 }
 
 .logo {
-    background-color: white;
+    background-color: aliceblue;
     color: @logo-text-color;
     display: flex;
     grid-template: "Logo";
 }
 
-
+.menu-button{
+    display:none;
+} 
 
 .logo-flex-container {
     display: flex;
@@ -154,9 +156,12 @@ a:hover {
     width: 100%;
     height: 400px;
     display: grid;
-    grid-template-columns: 100px 400px 100px auto;
+    grid-template-columns: auto 400px 100px 600px auto;
     grid-template-rows: repeat(5, 1fr);
-
+    background-image: url('@{big-image-url}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
     > div.image-plaine {
         grid-row-start: 2;
         grid-row-end: 5;
@@ -166,20 +171,6 @@ a:hover {
         align-items: center;
         justify-content: center;
     }
-
-    > div.background-big-image {
-        //#brightness;
-        background-image: url('@{big-image-url}');
-        background-repeat: no-repeat;
-        background-size: auto;
-        grid-row-start: 1;
-        grid-row-end: 6;
-        grid-column-start: 1;
-        grid-column-end: 5;
-        filter: opacity(85%);
-        z-index: 1;
-    }
-
     > * {
         z-index: 100;
     }

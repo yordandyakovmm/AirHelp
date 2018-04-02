@@ -285,6 +285,9 @@
     <Content Include="Content\Assets\Icon\images.png" />
     <Content Include="Content\Assets\Icon\login.png" />
     <Content Include="Content\Assets\Icon\logout.ico" />
+    <Content Include="Content\Assets\Logo\45-512.bmp" />
+    <Content Include="Content\Assets\Logo\45-512.png" />
+    <Content Include="Content\Assets\Logo\logo1.bmp" />
     <Content Include="Content\Assets\overbooking.jpg" />
     <Content Include="Content\Assets\woman-watch.jpeg" />
     <Content Include="Content\Assets\yellow-cloud-plaine.jpg" />
@@ -298,6 +301,12 @@
     <Content Include="Content\Assets\отказан-достъп-до-борда-1.jpg" />
     <Content Include="Content\Assets\отказан-достъп-до-борда.jpg" />
     <Content Include="Content\Assets\отменен-полет.jpg" />
+    <Content Include="Content\css\grid-layout - Copy - Copy.css">
+      <DependentUpon>mobile.css</DependentUpon>
+    </Content>
+    <Content Include="Content\css\grid-layout - Copy.min - Copy.css">
+      <DependentUpon>grid-layout - Copy - Copy.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\grid-layout.css" />
     <Content Include="Content\css\grid-layout.min.css">
       <DependentUpon>grid-layout.css</DependentUpon>
@@ -310,11 +319,21 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\css\mobile.min.css">
+      <DependentUpon>mobile.css</DependentUpon>
+    </Content>
     <Content Include="Content\css\Site.css" />
     <Content Include="Content\Docs\eu_complaint_form_bg-261.pdf" />
     <Content Include="Content\Docs\eu_complaint_form_en.pdf" />
     <Content Include="Content\Docs\eu_complaint_form_bg.pdf" />
+    <Content Include="Content\Less\grid-layout - Copy - Copy.css">
+      <DependentUpon>mobile.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Less\grid-layout - Copy.min - Copy.css">
+      <DependentUpon>grid-layout - Copy - Copy.css</DependentUpon>
+    </Content>
     <Content Include="Content\Less\input-style.less" />
+    <Content Include="Content\css\mobile.css" />
     <None Include="Content\Less\grid-layout.less" />
     <Content Include="Content\Less\grid-layout - Copy.css">
       <DependentUpon>input-style.less</DependentUpon>
@@ -384,6 +403,7 @@
     <Content Include="Scripts\jquery-1.12.4.min.map" />
     <Content Include="fonts\Round.ttf" />
     <Content Include="fonts\ALS_Schlange_sans_reg.ttf" />
+    <Content Include="Content\Less\mobile.less" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
@@ -451,7 +471,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Assets\Logo\" />
     <Folder Include="UserDocuments\" />
   </ItemGroup>
   <ItemGroup>

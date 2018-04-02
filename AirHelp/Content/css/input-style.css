@@ -201,7 +201,7 @@ button.claim-reset .icon::before {
   color: red;
 }
 .error .sub-error {
-  margin: 5px 0 ;
+  margin: 5px 0;
   color: red;
   display: block;
 }
@@ -242,9 +242,9 @@ button.claim-reset .icon::before {
   font-weight: 700;
   font-size: 24px;
   color: #00344a;
-  margin: 30px 0 5px 0;
 }
 .form-subtext {
+  margin: 30px 0 5px 0;
   font-family: "PT Sans", sans-serif;
   color: #141a30;
   font-size: 15px;
@@ -540,7 +540,7 @@ button.submit-smal:hover {
   margin-left: 110px;
 }
 .info p {
-  margin: 10px 0 0 110px ;
+  margin: 10px 0 0 110px;
   font-family: "PT Sans", sans-serif;
   color: #141a30;
   font-size: 16px;
@@ -560,10 +560,9 @@ label.red {
 }*/
 [disabled] {
   filter: opacity(50%);
-  cursor: not-allowed;
 }
 .blur {
-  filter: blur(5px);
+  filter: blur(2px);
 }
 span.euro {
   color: indianred;

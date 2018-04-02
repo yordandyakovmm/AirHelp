@@ -4,17 +4,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link href="~/Content/css/Site.css" rel="stylesheet" />
     <link href="~/Content/css/grid-layout.css" rel="stylesheet" />
     <link href="~/Content/css/input-style.css" rel="stylesheet" />
-    
+    <link href="~/Content/css/mobile.css" rel="stylesheet" />
+
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
 
     <link href="https://fonts.googleapis.com/css?family=Armata|Libre+Barcode+128+Text|Voces" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-    
+
     <script src="~/Scripts/jquery-1.12.4.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="~/Scripts/datepicker-bg.js"></script>
@@ -28,9 +29,8 @@
             <div class="logo-flex-container">
                 <div class="logo-image">
                     <a href="/" style="font-family: Round; font-weight: 700; font-size: 45px;">
-                          <span style="color: blue">HELP</span>
-                          <span style="color: #909090; font-size: 55px;">4</span>
-                          <span style="color:blueviolet">Fligth</span>
+
+                        <img src="~/Content/Assets/Logo/logo1.png" height="50px;" />
                     </a>
                 </div>
                 <div class="logo-menu">
@@ -39,22 +39,50 @@
                     <span class='(@ViewBag.menu=="claim": "selected" : ""'><a href="/обезщетение-при-полет">ПОДАЙ ИСК</a></span>
                     <span class='(@ViewBag.menu=="aboutus": "selected" : ""'><a href="/за-нас">ЗА НАС</a></span>
                     <span class='(@ViewBag.menu=="contact": "selected" : ""'><a href="/контакти">КОНТАКТИ</a></span>
-                   
+
                     @if (User.Identity.IsAuthenticated)
                         {
-                        <span class="enter"><a href="/изход">  <img src="~/Content/Assets/Icon/exit_delete_close_remove_door-512.png" /> <span style="margin:  0 0 0 5px;"> @ViewBag.user.FirstName @ViewBag.user.LastName</span></a> </span>
+                    <span class="enter"><a href="/изход">  <img src="~/Content/Assets/Icon/exit_delete_close_remove_door-512.png" /> <span style="margin:  0 0 0 5px;"> @ViewBag.user.FirstName @ViewBag.user.LastName</span></a> </span>
                     }
                     else
                     {
-                        <span class="enter"><a href="/вход">  <img  src="~/Content/Assets/Icon/login.png" /> <span style="margin:  0 0 0 5px;"> ВХОД </span></a> </span>
+                    <span class="enter"><a href="/вход">  <img src="~/Content/Assets/Icon/login.png" /> <span style="margin:  0 0 0 5px;"> ВХОД </span></a> </span>
                     }
 
 
+                </div>
+                <div class="menu-button" onclick="menu()">
+                    <button>menu</button>
                 </div>
             </div>
 
 
         </div>
+
+        <div class="menu" style="display:none">
+            <div class="logo-menu-mobile">
+                <span class='(@ViewBag.menu=="claims": "selected" : ""'><a href="/обезщетение-списък">ИСКОВЕ</a></span>
+                <span class='(@ViewBag.menu=="faq": "selected" : ""'><a href="/проблеми-с-полета/често-задавани-въпроси">ВЪПРОСИ</a></span>
+                <span class='(@ViewBag.menu=="claim": "selected" : ""'><a href="/обезщетение-при-полет">ПОДАЙ ИСК</a></span>
+                <span class='(@ViewBag.menu=="aboutus": "selected" : ""'><a href="/за-нас">ЗА НАС</a></span>
+                <span class='(@ViewBag.menu=="contact": "selected" : ""'><a href="/контакти">КОНТАКТИ</a></span>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <span class="enter"><a href="/изход"><span style="margin:  0 0 0 0;"> @ViewBag.user.FirstName @ViewBag.user.LastName</span></a> </span>
+                }
+                else
+                {
+                    <span class="enter"><a href="/вход"><span style="margin:  0 0 0 0;"> ВХОД </span></a> </span>
+                }
+
+
+            </div>
+
+        </div>
+
+
+
 
         @RenderBody()
         <div class="bottom-spacer">
@@ -70,25 +98,31 @@
 
     </div>
     <script type="text/javascript">
-      
-       fixSize();
-      
 
-       $(window).resize(function () {
-           fixSize();
-       });
-
-       function fixSize() {
-           var wHeigth = $(window).height();
-           var dHeigth = $('body').height();
-           if (dHeigth < wHeigth) {
-               $('.spacer').height(wHeigth - dHeigth);
-           }
+        fixSize();
 
 
-       }
+        $(window).resize(function () {
+            fixSize();
+        });
+
+        function fixSize() {
+            var wHeigth = $(window).height();
+            var dHeigth = $('body').height();
+            if (dHeigth < wHeigth) {
+                $('.spacer').height(wHeigth - dHeigth);
+            }
+
+
+        }
+
+        function menu() {
+            //$('.logo-menu-mobile').toggle();
+            $('.main-layout > div:not(:nth-child(1))').toggle();
+
+        }
+
     </script>
 </body>
 </html>
-
 
