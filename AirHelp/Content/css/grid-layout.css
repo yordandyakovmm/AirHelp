@@ -129,6 +129,9 @@ a:hover {
   align-items: center;
   justify-content: center;
 }
+.big-image img {
+  width: 1000px;
+}
 .big-image > * {
   z-index: 100;
 }
@@ -420,6 +423,53 @@ a:hover {
   display: block;
   height: 80px;
   margin: auto;
+}
+.links {
+  grid-template: "links";
+  display: grid;
+  height: 300px;
+  grid-template-rows: 50px auto 100px;
+  grid-template-columns: auto 300px 300px 300px auto;
+  background-color: #444;
+  font-family: Round, sans-serif;
+  font-size: 14px;
+  color: white;
+}
+.links > .span-1 {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.links > .span-2 {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+.links > .span-3 {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+.links .span {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.links .span > * {
+  margin-bottom: 5px;
+}
+.links .span a,
+.links .span a:visited {
+  text-decoration: underline;
+  color: white;
+}
+.links .span .heder {
+  font-size: 18px;
+  text-transform: uppercase;
 }
 .data-content {
   grid-template: "Content";
@@ -822,53 +872,6 @@ a:hover {
   font-size: 16px;
   font-weight: 500;
   color: white;
-}
-.links {
-  grid-template: "links";
-  display: grid;
-  height: 300px;
-  grid-template-rows: 50px auto 100px;
-  grid-template-columns: auto 300px 300px 300px auto;
-  background-color: #444;
-  font-family: Round, sans-serif;
-  font-size: 14px;
-  color: white;
-}
-.links > .span-1 {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 2;
-  grid-column-end: 3;
-}
-.links > .span-2 {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 3;
-  grid-column-end: 4;
-}
-.links > .span-3 {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 4;
-  grid-column-end: 5;
-}
-.links .span {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-.links .span > * {
-  margin-bottom: 5px;
-}
-.links .span a,
-.links .span a:visited {
-  text-decoration: underline;
-  color: white;
-}
-.links .span .heder {
-  font-size: 18px;
-  text-transform: uppercase;
 }
 .form-box > a > img {
   width: 330px;

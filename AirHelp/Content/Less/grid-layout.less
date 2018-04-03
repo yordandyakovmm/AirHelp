@@ -171,6 +171,11 @@ a:hover {
         align-items: center;
         justify-content: center;
     }
+
+    img{
+        width: 1000px;
+    }
+
     > * {
         z-index: 100;
     }
@@ -519,6 +524,60 @@ a:hover {
     }
 }
 
+.links {
+    grid-template: "links";
+    display: grid;
+    height: 300px;
+    grid-template-rows: 50px auto 100px;
+    grid-template-columns: auto 300px 300px 300px auto;
+    background-color: #444;
+    font-family: Round, sans-serif;
+    font-size: 14px;
+    color: white;
+
+    > .span-1 {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    > .span-2 {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 3;
+        grid-column-end: 4;
+    }
+
+    > .span-3 {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 4;
+        grid-column-end: 5;
+    }
+
+    .span {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        > * {
+            margin-bottom: 5px;
+        }
+
+        a, a:visited {
+            text-decoration: underline;
+            color: white;
+        }
+
+
+        .heder {
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+    }
+}
 
 
 .data-content {
@@ -1026,60 +1085,7 @@ a:hover {
     }
 }
 
-.links {
-    grid-template: "links";
-    display: grid;
-    height: 300px;
-    grid-template-rows: 50px auto 100px;
-    grid-template-columns: auto 300px 300px 300px auto;
-    background-color: #444;
-    font-family: Round, sans-serif;
-    font-size: 14px;
-    color: white;
 
-    > .span-1 {
-        grid-row-start: 2;
-        grid-row-end: 3;
-        grid-column-start: 2;
-        grid-column-end: 3;
-    }
-
-    > .span-2 {
-        grid-row-start: 2;
-        grid-row-end: 3;
-        grid-column-start: 3;
-        grid-column-end: 4;
-    }
-
-    > .span-3 {
-        grid-row-start: 2;
-        grid-row-end: 3;
-        grid-column-start: 4;
-        grid-column-end: 5;
-    }
-
-    .span {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-
-        > * {
-            margin-bottom: 5px;
-        }
-
-        a, a:visited {
-            text-decoration: underline;
-            color: white;
-        }
-
-
-        .heder {
-            font-size: 18px;
-            text-transform: uppercase;
-        }
-    }
-}
 
 
 .form-box > a > img {

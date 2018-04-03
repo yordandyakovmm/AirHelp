@@ -288,6 +288,7 @@
     <Content Include="Content\Assets\Logo\45-512.bmp" />
     <Content Include="Content\Assets\Logo\45-512.png" />
     <Content Include="Content\Assets\Logo\logo1.bmp" />
+    <Content Include="Content\Assets\Logo\logo1.png" />
     <Content Include="Content\Assets\overbooking.jpg" />
     <Content Include="Content\Assets\woman-watch.jpeg" />
     <Content Include="Content\Assets\yellow-cloud-plaine.jpg" />
@@ -334,6 +335,7 @@
     </Content>
     <Content Include="Content\Less\input-style.less" />
     <Content Include="Content\css\mobile.css" />
+    <Content Include="Content\Assets\Logo\logo1.xcf" />
     <None Include="Content\Less\grid-layout.less" />
     <Content Include="Content\Less\grid-layout - Copy.css">
       <DependentUpon>input-style.less</DependentUpon>

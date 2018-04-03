@@ -59,16 +59,14 @@
   .big-image {
     grid-template: "big-image";
     width: 100%;
-    height: 600px;
+    height: 800px;
     display: grid;
     grid-template-columns: auto 600px auto;
     grid-template-rows: repeat(8, 1fr);
-    background-image: url('/Content/Assets/обезщетение-при-полет.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    grid-row-gap: 50px;
+    grid-row-gap: 10px;
   }
   .big-image .header-text {
+    margin-top: 30px;
     grid-row-start: 1;
     grid-row-end: 1;
     grid-column-start: 2;
@@ -80,7 +78,6 @@
     text-transform: uppercase;
   }
   .big-image .header-text span {
-    font-family: "PT Sans", sans-serif;
     font-size: 40px;
     font-weight: 800;
     margin: auto 30px auto auto;
@@ -94,39 +91,164 @@
     align-items: center;
     justify-content: center;
   }
-  .big-image > * {
-    z-index: 100;
+  .big-image img {
+    width: 800px;
   }
   .big-image .header-subtext {
     grid-row-start: 5;
     grid-row-end: 8;
     grid-column-start: 2;
     grid-column-end: 3;
-    font-family: "Open Sans", sans-serif;
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .big-image .header-subtext p {
-    font-family: "PT Sans", sans-serif;
     font-size: 30px;
     color: #233;
     width: 700px;
     text-align: center;
   }
   .big-image .header-button {
+    margin-bottom: 30px;
     grid-row-start: 8;
     grid-row-end: 9;
     grid-column-start: 2;
     grid-column-end: 3;
-    font-family: "Open Sans", sans-serif;
-    font-size: 30px;
     display: flex;
-    align-content: center;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
   }
-  .big-image .header-button a {
-    margin: auto 30px auto auto;
+  .button-home {
+    width: 380px;
+    padding: 12px 5px 12px 5px;
+    align-content: center;
+    justify-content: center;
+  }
+  .span-1 {
+    grid-row: 2;
+    grid-column-start: 2;
+    grid-column-end: 2;
+  }
+  .span-2 {
+    grid-row: 3;
+    grid-column-start: 2;
+    grid-column-end: 2;
+  }
+  .span-3 {
+    grid-row: 4;
+    grid-column-start: 2;
+    grid-column-end: 2;
+  }
+  .compensation-type {
+    padding: 50px 0 150px 0;
+    grid-template: "compensation-type";
+    grid-template-columns: auto 600px auto;
+    grid-template-rows: auto auto auto auto;
+    grid-row-gap: 140px;
+    display: grid;
+  }
+  .compensation-type .header-text {
+    height: 200px;
+    grid-row: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+  .compensation-type .header-text span {
+    display: flex;
+  }
+  .compensation-type > .span {
+    padding: 30px 0;
+    transform: scale(1.3);
+  }
+  .compensation-amount {
+    grid-template: "compensation-amount";
+    grid-template-columns: auto 600px auto;
+    grid-template-rows: 100px repeat(3, 450px) 50px;
+    grid-column-gap: 10px;
+  }
+  .compensation-amount > div.background {
+    grid-row-start: 1;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background-position: center;
+    filter: opacity(20%);
+    z-index: 1;
+  }
+  .compensation-amount * {
+    z-index: 100;
+  }
+  .compensation-amount span {
+    color: #222;
+    text-align: center;
+    margin: auto auto 10px auto;
+  }
+  .compensation-amount .header-text {
+    grid-row: 1;
+    grid-column-start: 2;
+    grid-column-end: 2;
+  }
+  .compensation-steps {
+    grid-template: "compensation-steps";
+    grid-template-columns: auto 600px auto;
+    grid-template-rows: 100px repeat(400px, 3) 50px;
+    grid-column-gap: 15px;
+    display: grid;
+    padding: 50px 0;
+  }
+  .compensation-steps span {
+    text-align: center;
+    margin: auto auto auto auto;
+  }
+  .compensation-steps .header-text {
+    grid-row: 1;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    padding: 10px 0 30px 0;
+  }
+  .compensation-steps .span {
+    transform: scale(1.3);
+    padding: 50px 0;
+  }
+  .links {
+    grid-template: "links";
+    display: grid;
+    height: auto;
+    grid-template-rows: 50px repeat(3, 230px) 100px;
+    grid-template-columns: auto 600px auto;
+    font-size: 18px;
+    color: white;
+    padding: 0 0 0 110px;
+  }
+  .links > .span-1 {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column: 2;
+  }
+  .links > .span-2 {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column: 2;
+  }
+  .links > .span-3 {
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column: 2;
+  }
+  .links .span {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .links .span > * {
+    margin-bottom: 10px;
+  }
+  .links .span a,
+  .links .span a:visited {
+    text-decoration: underline;
+    color: white;
+  }
+  .links .span .heder {
+    font-size: 28px;
+    text-transform: uppercase;
   }
 }
