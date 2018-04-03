@@ -319,6 +319,7 @@ a:hover {
   grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 6;
+  background-image: url('/Content/Assets/Background/обезщетение-в-зависимост-от-разтоянието-на-полета.jpg');
   background-position: center;
   filter: opacity(20%);
   z-index: 1;
