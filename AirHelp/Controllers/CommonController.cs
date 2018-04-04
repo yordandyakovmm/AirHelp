@@ -3,7 +3,7 @@
 
 namespace AirHelp.Controllers
 {
-
+    [Authorize]
     public class CommonController : BaseController
     {
 

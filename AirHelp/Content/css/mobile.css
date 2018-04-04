@@ -1,4 +1,4 @@
-﻿@media only screen and (max-width: 1300px) {
+﻿@media only screen and (max-width: 720px) {
   .menu-button {
     display: flex;
     align-items: center;
@@ -26,17 +26,17 @@
   .logo-menu-mobile a {
     color: #444;
     font-family: 'Armata', sans-serif;
-    font-size: 16px;
+    font-size: 4vw;
     font-weight: 500;
     text-decoration: none;
   }
   .logo-menu-mobile > span {
     width: 100%;
     margin-top: 10px !important;
-    background-color: cornsilk;
-    height: 50px;
+    background-color: white;
+    height: 12vw;
     display: flex;
-    margin: 0 0 0 15px;
+    margin: 0 0 0 0px;
     flex-flow: row;
     align-items: center;
   }
@@ -146,7 +146,7 @@
     grid-template: "compensation-type";
     grid-template-columns: auto 600px auto;
     grid-template-rows: auto auto auto auto;
-    grid-row-gap: 140px;
+    grid-row-gap: 70px;
     display: grid;
   }
   .compensation-type .header-text {
@@ -154,9 +154,56 @@
     grid-row: 1;
     grid-column-start: 2;
     grid-column-end: 3;
+    font-size: 40px;
   }
   .compensation-type .header-text span {
     display: flex;
+  }
+  .compensation-type .span {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    justify-content: center;
+  }
+  .compensation-type .span > * {
+    margin-top: 40px;
+  }
+  .compensation-type .span > span {
+    font-size: 32px;
+    font-weight: 500;
+    color: #004663;
+    text-transform: uppercase;
+  }
+  .compensation-type .span > p {
+    font-size: 14px;
+    font-weight: 500;
+    color: grba(2, 2, 14, 1);
+  }
+  .compensation-type .span .image {
+    display: grid;
+    grid-template-columns: auto 350px auto;
+    grid-template-rows: 350px;
+  }
+  .compensation-type .span .image div {
+    grid-row: 1;
+    grid-column: 2;
+    box-shadow: 0 0 200px #009fe3;
+    border-radius: 100%;
+  }
+  .compensation-type .span .image.image-delay > div {
+    background-image: url('/Content/Assets/закъснение-полет.png');
+    background-position-x: -170px;
+    background-size: 620px;
+  }
+  .compensation-type .span .image.image-cancel > div {
+    background-image: url('/Content/Assets/излитащ-самолет.jpg');
+    background-position-x: -270px;
+    background-size: 630px;
+  }
+  .compensation-type .span .image.image-denied-bording > div {
+    background-image: url('/Content/Assets/overbooking.jpg');
+    background-position-x: -50px;
+    background-size: 550px;
   }
   .compensation-type > .span {
     padding: 30px 0;
@@ -165,14 +212,14 @@
     grid-template: "compensation-amount";
     grid-template-columns: auto 600px auto;
     grid-template-rows: 100px repeat(3, 450px) 50px;
-    grid-column-gap: 10px;
+    grid-row-gap: 50px;
   }
   .compensation-amount > div.background {
     grid-row-start: 1;
     grid-row-end: 6;
     grid-column-start: 1;
     grid-column-end: 4;
-    background-position: center;
+    background-size: cover;
     filter: opacity(20%);
     z-index: 1;
   }
@@ -188,6 +235,29 @@
     grid-row: 1;
     grid-column-start: 2;
     grid-column-end: 2;
+  }
+  .compensation-amount .span {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    justify-content: center;
+  }
+  .compensation-amount .span > * {
+    margin-top: 8px;
+  }
+  .compensation-amount .span > span.text-black {
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .compensation-amount .span > span.text-blue {
+    font-size: 36px;
+    font-weight: 700;
+    color: #009fe3;
+  }
+  .compensation-amount .span .image img {
+    display: block;
+    height: 320px;
+    margin: auto;
   }
   .compensation-steps {
     grid-template: "compensation-steps";
@@ -206,33 +276,48 @@
     grid-column-start: 2;
     grid-column-end: 3;
     padding: 10px 0 30px 0;
+    font-size: 34px;
   }
   .compensation-steps .span {
     padding: 50px 0;
+  }
+  .compensation-steps .span > span.text-black {
+    margin: 10px 0 0 0;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .compensation-steps .span > p {
+    margin: 10px auto;
+    text-align: center;
+    width: 350px;
+    font-size: 20px;
+  }
+  .compensation-steps .span .image img {
+    display: block;
+    height: 180px;
+    margin: auto;
   }
   .links {
     grid-template: "links";
     display: grid;
     height: auto;
-    grid-template-rows: 50px repeat(3, 230px) 100px;
+    grid-template-rows: 50px repeat(2, 230px) 100px;
     grid-template-columns: auto 600px auto;
     font-size: 18px;
     color: white;
   }
-  .links > .span-1 {
+  .links > .span-2 {
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column: 2;
   }
-  .links > .span-2 {
+  .links > .span-3 {
     grid-row-start: 3;
     grid-row-end: 4;
     grid-column: 2;
   }
-  .links > .span-3 {
-    grid-row-start: 4;
-    grid-row-end: 5;
-    grid-column: 2;
+  .links > .span-1 {
+    display: none !important;
   }
   .links .span {
     display: flex;
@@ -249,7 +334,53 @@
     color: white;
   }
   .links .span .heder {
-    font-size: 30px;
+    font-size: 35px;
     text-transform: uppercase;
+  }
+  button.claim {
+    display: block;
+    padding: 12px 5px 12px 5px;
+    box-sizing: border-box;
+    border: 0px none;
+    border-radius: 4px;
+    margin: 0 auto;
+    font-family: "PT Sans", sans-serif;
+    color: #141a30;
+    font-size: 20px;
+    font-weight: 500;
+    outline: none;
+    border-color: #009fe3;
+    background-color: #667292;
+    color: white;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 350px;
+    background-color: #009fe3;
+  }
+  button.claim:hover {
+    background-color: #00587d;
+  }
+  button.claim i {
+    margin-right: 10px;
+  }
+  .button-home {
+    width: 350px;
+    padding: 12px 5px 12px 5px;
+    box-sizing: border-box;
+    border: 0px none;
+    border-radius: 4px;
+    margin: 0 auto;
+    font-family: "PT Sans", sans-serif;
+    color: #141a30;
+    font-size: 22px;
+    font-weight: 500;
+    outline: none;
+    border-color: #009fe3;
+    background-color: #667292;
+    color: white;
+    display: flex;
+    align-content: center;
+    justify-content: center;
   }
 }

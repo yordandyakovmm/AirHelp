@@ -6,7 +6,7 @@
 @button-color: rgb(200, 200, 220);
 @button-hover-color: rgb(240, 240, 240);
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 720px) {
 
     .menu-button {
         display: flex;
@@ -43,7 +43,7 @@
         a {
             color: #444;
             font-family: 'Armata', sans-serif;
-            font-size: 16px;
+            font-size: 4vw;
             font-weight: 500;
             text-decoration: none;
         }
@@ -51,10 +51,10 @@
         > span {
             width: 100%;
             margin-top: 10px !important;
-            background-color: cornsilk;
-            height: 50px;
+            background-color: white;
+            height: 12vw;
             display: flex;
-            margin: 0 0 0 15px;
+            margin: 0 0 0 0px;
             flex-flow: row;
             align-items: center;
 
@@ -183,20 +183,78 @@
         grid-template: "compensation-type";
         grid-template-columns: auto 600px auto;
         grid-template-rows: auto auto auto auto;
-        grid-row-gap: 140px;
+        grid-row-gap: 70px;
         display: grid;
-                
+
 
         .header-text {
             height: 200px;
             grid-row: 1;
             grid-column-start: 2;
             grid-column-end: 3;
+            font-size: 40px;
+
             span {
                 display: flex;
             }
         }
-       
+
+        .span {
+            display: flex;
+            flex-flow: column;
+            align-content: center;
+            justify-content: center;
+            
+
+            > * {
+                margin-top: 40px;
+            }
+
+            > span {
+                font-size: 32px;
+                font-weight: 500;
+                color: lighten(@blue-color, -25%);
+                text-transform: uppercase;
+            }
+
+            > p {
+                font-size: 14px;
+                font-weight: 500;
+                color: grba(2,2,14,1);
+            }
+
+            .image {
+                display: grid;
+                grid-template-columns: auto 350px auto;
+                grid-template-rows: 350px;
+
+                div {
+                    grid-row: 1;
+                    grid-column: 2;
+                    //border: solid 4px lighten(@blue-color, 30%);
+                    box-shadow: 0 0 200px @blue-color;
+                    border-radius: 100%;
+                }
+
+                &.image-delay > div {
+                    background-image: url('/Content/Assets/закъснение-полет.png');
+                    background-position-x: -170px;
+                    background-size: 620px;
+                }
+
+                &.image-cancel > div {
+                    background-image: url('/Content/Assets/излитащ-самолет.jpg');
+                    background-position-x: -270px;
+                    background-size: 630px;
+                }
+
+                &.image-denied-bording > div {
+                    background-image: url('/Content/Assets/overbooking.jpg');
+                    background-position-x: -50px;
+                    background-size: 550px;
+                }
+            }
+        }
     }
 
 
@@ -210,14 +268,14 @@
         grid-template: "compensation-amount";
         grid-template-columns: auto 600px auto;
         grid-template-rows: 100px repeat(3, 450px) 50px;
-        grid-column-gap: 10px;
-       
+        grid-row-gap: 50px;
+
         > div.background {
             grid-row-start: 1;
             grid-row-end: 6;
             grid-column-start: 1;
             grid-column-end: 4;
-            background-position: center;
+            background-size: cover;
             filter: opacity(20%);
             z-index: 1;
         }
@@ -230,15 +288,42 @@
             color: #222;
             text-align: center;
             margin: auto auto 10px auto;
+                       
         }
 
         .header-text {
             grid-row: 1;
             grid-column-start: 2;
             grid-column-end: 2;
-            
         }
 
+        .span {
+            display: flex;
+            flex-flow: column;
+            align-content: center;
+            justify-content: center;
+
+            > * {
+                margin-top: 8px;
+            }
+
+            > span.text-black {
+                font-size: 28px;
+                font-weight: 600;
+            }
+
+            > span.text-blue {
+                font-size: 36px;
+                font-weight: 700;
+                color: @blue-color;
+            }
+
+            .image img {
+                display: block;
+                height: 320px;
+                margin: auto;
+            }
+        }
     }
 
 
@@ -249,7 +334,7 @@
         grid-column-gap: 15px;
         display: grid;
         padding: 50px 0;
-        
+
         span {
             text-align: center;
             margin: auto auto auto auto;
@@ -260,14 +345,31 @@
             grid-column-start: 2;
             grid-column-end: 3;
             padding: 10px 0 30px 0;
-            
-
+            font-size: 34px;
         }
 
         .span {
             //transform: scale(1.3);
             padding: 50px 0;
-           
+
+            > span.text-black {
+                margin: 10px 0 0 0;
+                font-size: 28px;
+                font-weight: 600;
+            }
+
+            > p {
+                margin: 10px auto;
+                text-align: center;
+                width: 350px;
+                font-size: 20px;
+            }
+
+            .image img {
+                display: block;
+                height: 180px;
+                margin: auto;
+            }
         }
     }
 
@@ -276,27 +378,25 @@
         grid-template: "links";
         display: grid;
         height: auto;
-        grid-template-rows: 50px repeat(3, 230px) 100px;
+        grid-template-rows: 50px repeat(2, 230px) 100px;
         grid-template-columns: auto 600px auto;
         font-size: 18px;
         color: white;
-       
-        > .span-1 {
+
+        > .span-2 {
             grid-row-start: 2;
             grid-row-end: 3;
             grid-column: 2;
         }
 
-        > .span-2 {
+        > .span-3 {
             grid-row-start: 3;
             grid-row-end: 4;
             grid-column: 2;
         }
 
-        > .span-3 {
-            grid-row-start: 4;
-            grid-row-end: 5;
-            grid-column: 2;
+        > .span-1 {
+            display: none !important;
         }
 
         .span {
@@ -316,11 +416,63 @@
 
 
             .heder {
-                font-size: 30px;
+                font-size: 35px;
                 text-transform: uppercase;
             }
         }
     }
 
+    button.claim {
+        display: block;
+        
+        padding: 12px 5px 12px 5px;
+        box-sizing: border-box;
+        border: 0px none;
+        border-radius: 4px;
+        margin: 0 auto;
+        font-family: "PT Sans", sans-serif;
+        color: rgb(20, 26, 48);
+        font-size: 20px;
+        font-weight: 500;
+        outline: none;
+        border-color: @blue-color;
+        background-color: #667292;
+        color: white;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        width: 350px;
+        background-color: @blue-color;
+
+        &:hover {
+            background-color: lighten(@blue-color, -20%);
+        }
+
+        i {
+            margin-right: 10px;
+        }
+                
+    }
+
+
+    .button-home {
+        width: 350px;
+        padding: 12px 5px 12px 5px;
+        box-sizing: border-box;
+        border: 0px none;
+        border-radius: 4px;
+        margin: 0 auto;
+        font-family: "PT Sans", sans-serif;
+        color: rgb(20, 26, 48);
+        font-size: 22px;
+        font-weight: 500;
+        outline: none;
+        border-color: @blue-color;
+        background-color: #667292;
+        color: white;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
 
 }

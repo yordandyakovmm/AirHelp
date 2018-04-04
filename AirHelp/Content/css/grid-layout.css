@@ -50,6 +50,7 @@ a:hover {
   color: #000;
   display: flex;
   grid-template: "Logo";
+  min-width: 650px;
 }
 .menu-button {
   display: none;
