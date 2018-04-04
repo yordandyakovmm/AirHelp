@@ -46,7 +46,36 @@
             @ViewBag.user.FirstName  @ViewBag.user.LastName
         </div>
         <div class="list-container">
+            <div class="claim-list-heder">
+                <div style="grid-column-start: 1; grid-column-end: 2;">
 
+                    <label>
+                        Иск #
+                    </label>
+
+                </div>
+
+                <div style="grid-column-start: 2; grid-column-end: 3;">
+                    <label>
+                        Полет #
+                    </label>
+                </div>
+                <div style="grid-column-start: 3; grid-column-end: 4;">
+                    <label>
+                        Дата на иска
+                    </label>
+                </div>
+                <div style="grid-column-start: 4; grid-column-end: 5;">
+                    <label>
+                        Обещетение
+                    </label>
+                </div>
+                <div style="grid-column-start: 5; grid-column-end: 6;">
+                    <label>
+                        Авиокомпания
+                    </label>
+                </div>
+            </div>
             @foreach (var claim in Model)
             {
                 <a href="/ъпдейт-на-иск/@claim.ClaimId">
@@ -77,7 +106,7 @@
                         </div>
                         <div style="grid-column-start: 5; grid-column-end: 6;">
                             <label>
-                                @claim.AirCompany  --
+                                @claim.AirCompany ( @claim.AirCompanyCode )
                             </label>
                         </div>
                     </div>

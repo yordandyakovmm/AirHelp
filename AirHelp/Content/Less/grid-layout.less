@@ -940,21 +940,46 @@ a:hover {
     font-size: 14px;
 
     a:nth-child(odd) > div > div {
-        background-color: #eee;
+        background-color: #EFEFEF;
     }
 
     a:nth-child(even) > div > div {
-        background-color: #ddd;
+        background-color: #fff;
     }
 
     .claim-list {
         display: grid;
-        grid-template-columns: 80px 150px 150px 100px 80px 80px;
+        grid-template-columns: 100px 150px 150px 120px 250px;
         grid-template-rows: 35px;
         grid-gap: 1px;
 
         > div {
             > label {
+                padding: 7px 0 0 6px;
+                font-size: 15px;
+                cursor: pointer;
+                height: 35px;
+                margin: 0 0;
+            }
+
+            display: flex;
+            align-content: center;
+            justify-content: flex-start;
+            padding-left: 4px;
+            border-radius: 0px;
+        }
+    }
+
+    .claim-list-heder {
+        display: grid;
+        grid-template-columns: 100px 150px 150px 120px 250px;
+        grid-template-rows: 35px;
+        grid-gap: 1px;
+        background-color: dimgray;
+
+        > div {
+            > label {
+                color: white;
                 padding: 7px 0 0 6px;
                 font-size: 15px;
                 cursor: pointer;
