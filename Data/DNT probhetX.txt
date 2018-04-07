@@ -1,0 +1,15 @@
+﻿Plamen Stoev MM,
+12:41 PM
+,
+Документация: http://ws1.dtn.com/MarketDataAPI/docs/1.0/chart_requests.html
+Уеб тулче за уебсокетите: http://ws1.dtn.com/MarketDataAPI/simple.html
+Потребител: plamen.stoev@mentormate.com
+Парола: o8XQw9
+Кода:
+dtn-thin-client-fe.zip
+за съжаление са в bitbucket, а не при нас в гитлаб (бях изключил)
+но това е цялото репо с .git/ папката
+като пулнах сега
+
+
+https://www.highcharts.com/docs

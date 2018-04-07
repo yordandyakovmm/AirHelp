@@ -62,3 +62,8 @@ a, a:hover {
 p, a {
     text-align: center;
 }
+
+
+.bottom-spacer .spacer {
+    height: calc(100% - 60px);
+}

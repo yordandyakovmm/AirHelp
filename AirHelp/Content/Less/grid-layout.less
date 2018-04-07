@@ -53,10 +53,15 @@ a:hover {
     text-decoration: none;
 }
 
+body, html {
+    height: 100%;
+}
+
 .main-layout {
     display: grid;
+    height: 100%;
     grid-template-columns: auto;
-    grid-template-rows: 100px auto 40px;
+    grid-template-rows: 100px auto auto;
     grid-gap: 0px;
     //background-color: @background-color;
     grid-template-areas: "Logo" "content" "bottom-spacer";
@@ -80,9 +85,9 @@ a:hover {
     min-width: 650px;
 }
 
-.menu-button{
-    display:none;
-} 
+.menu-button {
+    display: none;
+}
 
 .logo-flex-container {
     display: flex;
@@ -162,7 +167,7 @@ a:hover {
     background-image: url('@{big-image-url}');
     background-repeat: no-repeat;
     background-size: cover;
-    
+
     > div.image-plaine {
         grid-row-start: 2;
         grid-row-end: 5;
@@ -173,7 +178,7 @@ a:hover {
         justify-content: center;
     }
 
-    img{
+    img {
         width: 1000px;
     }
 
@@ -1091,27 +1096,35 @@ a:hover {
     }
 }
 
-.spacer {
-    display: block;
-}
-
-.bottom {
+.bottom-spacer {
     grid-template: "bottom-spacer";
-    background-color: #444;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
+    height: auto;
+    grid-template-rows: 1fr 60px;
 
-    span {
-        font-family: "PT Sans", sans-serif;
-        font-size: 16px;
-        font-weight: 500;
-        color: white;
+
+    .spacer {
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    .bottom {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        background-color: #444;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+
+        span {
+            font-family: "PT Sans", sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+        }
     }
 }
-
 
 
 
