@@ -1,4 +1,7 @@
 ﻿@media only screen and (max-width: 720px) {
+  .logo-image a img {
+    height: 10vw;
+  }
   .menu-button {
     display: flex;
     align-items: center;
@@ -382,5 +385,155 @@
     display: flex;
     align-content: center;
     justify-content: center;
+  }
+  .form-content {
+    grid-area: content;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    padding: 50px 0;
+    background-size: cover;
+  }
+  .form-content span {
+    font-family: "PT Sans", sans-serif;
+    font-size: 28px;
+  }
+  .form-content .contact-form-main input[type=text],
+  .form-content .contact-form-main textarea {
+    width: 450px;
+  }
+  .form-content .contact-form-main form > div {
+    margin-top: 15px;
+  }
+  .form-content .contact-form-main .button-div {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+  }
+  .form-content .login-form-main input[type=text],
+  .form-content .login-form-main input[type=password],
+  .form-content .login-form-main textarea {
+    width: 350px;
+  }
+  .form-content .login-form-main form {
+    margin: auto auto auto auto;
+    width: 380px;
+    padding-left: 30px;
+  }
+  .form-content .login-form-main form > div {
+    margin-top: 15px;
+  }
+  .form-content .login-form-main .button-div {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+  }
+  .register-form {
+    grid-template: "Content";
+    display: grid;
+    grid-template-columns: 20px 400px 20px;
+    grid-template-rows: 10px auto 20px;
+    grid-template-areas: ". . ." ". center . " ". . .";
+  }
+  .progress {
+    display: none;
+  }
+  .form-row {
+    margin: 15px 0 0 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-content: space-around;
+  }
+  .form-box {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .form-box > div {
+    width: 400px;
+  }
+  .form-box.left label {
+    margin: 15px 0 5px 0;
+  }
+  .form-box.left input[type=text],
+  .form-box.left ul {
+    margin-left: 0px;
+  }
+  .form-box.rigth label {
+    margin: 15px 0 5px 0;
+  }
+  .form-box.rigth input[type=text],
+  .form-box.rigth ul {
+    margin-left: 0px;
+  }
+  .center-content h2 {
+    margin: 10px 0 0 0;
+    font-family: "PT Sans", sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    width: 350px;
+  }
+  .center-content p {
+    text-align: left;
+    font-family: "PT Sans", sans-serif;
+    font-size: 16px;
+    width: 350px;
+  }
+  div.form-subtext {
+    width: 400px !important;
+  }
+  .form-box-width {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+  }
+  .form-box-width label {
+    margin-left: 0;
+  }
+  .form-box-width textarea {
+    margin-left: 0px;
+    width: 300px;
+  }
+  .form-box-width input[type=text] {
+    width: 250px;
+    margin-left: 0;
+  }
+  .form-box-upload {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+  }
+  .form-box-upload > div {
+    margin-left: 0;
+    display: flex;
+    flex-flow: column;
+  }
+  .form-box-upload > div label.file-upload {
+    margin-top: 7px;
+  }
+  .form-box-upload > label {
+    margin-left: 0;
+  }
+  .form-box-signiture {
+    width: 400px;
+    display: flex;
+    flex-flow: column;
+  }
+  .form-box-signiture > div {
+    margin-left: 0;
+  }
+  .form-box-signiture canvas {
+    display: none;
+    margin-right: 10px;
+    width: 400px;
+    height: 280px;
+  }
+  .form-box-signiture > label {
+    margin-left: 0;
   }
 }

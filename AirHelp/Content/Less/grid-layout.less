@@ -53,7 +53,7 @@ a:hover {
     text-decoration: none;
 }
 
-body, html {
+body, html, .main-layout {
     height: 100%;
 }
 
@@ -82,7 +82,7 @@ body, html {
     color: @logo-text-color;
     display: flex;
     grid-template: "Logo";
-    min-width: 650px;
+    //min-width: 650px;
 }
 
 .menu-button {
@@ -102,10 +102,12 @@ body, html {
     align-items: center;
 
     a {
-        font-family: 'Armata', sans-serif;
-        font-size: 24px;
-        font-weight: 800;
-        text-decoration: none;
+        display: flex;
+        justify-content: center;
+
+        img {
+            height: 3vw;
+        }
     }
 }
 
@@ -137,6 +139,7 @@ body, html {
         a {
             display: flex;
             flex-flow: row;
+            justify-content: center;
             align-items: center;
         }
 
@@ -904,6 +907,36 @@ body, html {
     width: 100%;
     display: flex;
     flex-flow: column;
+
+    
+    canvas {
+        margin-right: 10px;
+        display: block;
+        width: 500px;
+        height: 300px;
+    }
+
+    &.error {
+        label {
+            color: red;
+        }
+
+        canvas {
+            border: solid 2px red;
+            box-shadow: 0 0 4px red;
+        }
+    }
+
+    &.success {
+        label {
+            color: @blue-color;
+        }
+
+        canvas {
+            border: solid 2px @blue-color;
+            box-shadow: 0 0 4px @blue-color;
+        }
+    }
 }
 
 .width {

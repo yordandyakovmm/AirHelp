@@ -3,8 +3,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+                            
     <link href="~/Content/css/Site.css" rel="stylesheet" />
     <link href="~/Content/css/grid-layout.css" rel="stylesheet" />
     <link href="~/Content/css/input-style.css" rel="stylesheet" />
@@ -19,6 +19,7 @@
     <script src="~/Scripts/jquery-1.12.4.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
     <script src="~/Scripts/datepicker-bg.js"></script>
+   
 
 </head>
 <body>
@@ -30,7 +31,7 @@
                 <div class="logo-image">
                     <a href="/" style="font-family: Round; font-weight: 700; font-size: 45px;">
 
-                        <img src="~/Content/Assets/Logo/logo1.png" height="50px;" />
+                        <img src="~/Content/Assets/Logo/logo1.png" />
                     </a>
                 </div>
                 <div class="logo-menu">
@@ -100,22 +101,48 @@
     </div>
     <script type="text/javascript">
 
+       function getViewportWidth() {
+             if (window.innerWidth) {
+                 return window.innerWidth;
+             }
+             else if (document.body && document.body.offsetWidth) {
+                 return document.body.offsetWidth;
+             }
+             else {
+                 return 0;
+             }
+        }
+       
+        $(document).ready(function () {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                var actual_width = getViewportWidth();
+                var bodyWidth = document.querySelector('body').clientWidth;
+                var ratio = bodyWidth / actual_width;
+
+                document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + ratio + ', maximum-scale=' + ratio + ', minimum-scale=' + ratio + '');
+            }
+
+        });
+
+
+
+
         //fixSize();
 
 
-        $(window).resize(function () {
-            //fixSize();
-        });
+        //$(window).resize(function () {
+        //    //fixSize();
+        //});
 
-        function fixSize() {
-            var wHeigth = $(window).height();
-            var dHeigth = $('body').height();
-            if (dHeigth < wHeigth) {
-                $('.spacer').height(wHeigth - dHeigth);
-            }
+        //function fixSize() {
+        //    var wHeigth = $(window).height();
+        //    var dHeigth = $('body').height();
+        //    if (dHeigth < wHeigth) {
+        //        $('.spacer').height(wHeigth - dHeigth);
+        //    }
 
 
-        }
+        //}
 
         function menu() {
 

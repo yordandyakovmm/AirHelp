@@ -30,7 +30,8 @@ a:hover {
   text-decoration: none;
 }
 body,
-html {
+html,
+.main-layout {
   height: 100%;
 }
 .main-layout {
@@ -55,7 +56,6 @@ html {
   color: #000;
   display: flex;
   grid-template: "Logo";
-  min-width: 650px;
 }
 .menu-button {
   display: none;
@@ -72,10 +72,11 @@ html {
   align-items: center;
 }
 .logo-image a {
-  font-family: 'Armata', sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+.logo-image a img {
+  height: 3vw;
 }
 .logo-menu {
   display: flex;
@@ -100,6 +101,7 @@ html {
 .logo-menu > span a {
   display: flex;
   flex-flow: row;
+  justify-content: center;
   align-items: center;
 }
 .logo-menu > span img {
@@ -728,6 +730,26 @@ html {
 }
 .form-box-signiture > label {
   margin-left: 0;
+}
+.form-box-signiture canvas {
+  margin-right: 10px;
+  display: block;
+  width: 500px;
+  height: 300px;
+}
+.form-box-signiture.error label {
+  color: red;
+}
+.form-box-signiture.error canvas {
+  border: solid 2px red;
+  box-shadow: 0 0 4px red;
+}
+.form-box-signiture.success label {
+  color: #009fe3;
+}
+.form-box-signiture.success canvas {
+  border: solid 2px #009fe3;
+  box-shadow: 0 0 4px #009fe3;
 }
 .width {
   width: 100%;
