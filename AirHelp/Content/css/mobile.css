@@ -528,12 +528,56 @@
     margin-left: 0;
   }
   .form-box-signiture canvas {
-    display: none;
     margin-right: 10px;
-    width: 400px;
-    height: 280px;
   }
   .form-box-signiture > label {
     margin-left: 0;
+  }
+  div.width-550 {
+    width: 550px;
+  }
+  div.width-550 input[type=text] {
+    width: 500px;
+    font-size: 18px;
+  }
+  div.width-550 textarea {
+    width: 500px;
+    font-size: 18px;
+  }
+  div.width-550 label {
+    font-size: 18px;
+  }
+  div.width-550 .form-hedar {
+    font-size: 34px;
+  }
+  div.width-550 button.submit,
+  div.width-550 button.reset {
+    font-size: 18px;
+    width: 500px;
+  }
+  div.width-550 button.clear {
+    font-size: 16px;
+    width: 140px;
+    height: 42px;
+    margin: 15px 0;
+  }
+  div.width-550 button.clear {
+    font-size: 15px;
+  }
+  div.width-550 .form-subtext {
+    width: 500px !important;
+  }
+  div.width-550 .form-row-yes-no {
+    width: 500px;
+  }
+  div.width-550 .form-row-yes-no .checkbox {
+    display: grid;
+    grid-template-columns: 30px auto;
+  }
+  div.width-550 .form-row-yes-no .checkbox::before {
+    margin-top: 2px;
+  }
+  button.reset {
+    margin-top: 30px;
   }
 }

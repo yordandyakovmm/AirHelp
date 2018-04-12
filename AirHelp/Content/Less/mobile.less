@@ -543,7 +543,7 @@
         grid-template-areas: ". . ." ". center . " ". . .";
     }
 
-    .progress{
+    .progress {
         display: none;
     }
 
@@ -624,7 +624,6 @@
         }
 
         input[type=text] {
-            
             width: 250px;
             margin-left: 0;
         }
@@ -635,8 +634,8 @@
             margin-left: 0;
             display: flex;
             flex-flow: column;
-            label.file-upload
-            {
+
+            label.file-upload {
                 margin-top: 7px;
             }
         }
@@ -660,12 +659,12 @@
             margin-left: 0;
         }
 
-      
+
         canvas {
-            display:none;
+            //display:none;
             margin-right: 10px;
-            width: 400px;
-            height: 280px;
+            //width: 400px;
+            //height: 280px;
         }
 
 
@@ -675,4 +674,65 @@
         }
     }
 
+    div.width-550 {
+        width: 550px;
+
+        input[type=text] {
+            width: 500px;
+            font-size: 18px;
+        }
+
+        textarea {
+            width: 500px;
+            font-size: 18px;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        .form-hedar {
+            font-size: 34px;
+        }
+
+        button.submit, button.reset {
+            font-size: 18px;
+            width: 500px;
+        }
+
+        button.clear {
+            font-size: 16px;
+            width: 140px;
+            height: 42px;
+            margin: 15px 0;
+        }
+
+        button.clear {
+            font-size: 15px;
+        }
+
+        .form-subtext {
+            width: 500px !important;
+        }
+
+        .checkbox::before {
+        }
+
+        .form-row-yes-no {
+            width: 500px;
+
+            .checkbox {
+                display: grid;
+                grid-template-columns: 30px auto;
+
+                &::before {
+                    margin-top: 2px;
+                }
+            }
+        }
+    }
+
+    button.reset {
+        margin-top: 30px;
+    }
 }
