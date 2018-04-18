@@ -65,6 +65,7 @@ function onmousemove(e) {
         var newY = e.offsetY;
         //var distance = (x - newX) ** 2 + (y - newY) ** 2;
         //setContext(ctx, distance, x, y);
+        ctx.moveTo(x, y);
         ctx.lineTo(newX, newY);
         x = newX;
         y = newY;
@@ -87,6 +88,7 @@ function onmousemove1(e) {
         var newY = e.touches[0].clientY - rect.top;
         //var distance = (x - newX) ** 2 + (y - newY) ** 2;
         //setContext(ctx, distance, x, y);
+        ctx.moveTo(x, y);
         ctx.lineTo(newX, newY);
         x = newX;
         y = newY;
