@@ -181,15 +181,18 @@ button.claim-reset .icon::before {
 .sub-error {
   display: none;
 }
-.error input {
+.error input,
+.error textarea {
   border-color: red;
   color: red;
 }
-.error input:focus {
+.error input:focus,
+.error textarea:focus {
   outline: none;
   box-shadow: 0 0 8px #c80a0a;
 }
-.error input + .icon::before {
+.error input + .icon::before,
+.error textarea + .icon::before {
   content: '\e014';
   margin-left: -30px;
   color: red;

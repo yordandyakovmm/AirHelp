@@ -536,6 +536,9 @@
   div.width-550 {
     width: 550px;
   }
+  div.width-550 .form-box > div {
+    width: 550px;
+  }
   div.width-550 input[type=text] {
     width: 500px;
     font-size: 18px;

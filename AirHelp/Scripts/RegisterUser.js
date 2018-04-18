@@ -7,9 +7,9 @@
         }
     });
 
-    if ($('#Password').val().length < 8)
+    if ($('#Adress').val().length <= 10)
     {
-        $('#Password').parent().parent()
+        $('#Adress').parent().parent()
             .removeClass('success')
             .addClass('error');
         result = false;

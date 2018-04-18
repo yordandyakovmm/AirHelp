@@ -14,7 +14,8 @@
 
     $('input[type=text], input[type=password]').change(onChageInput);
 
-    
+    $('#Adress').bind('input propertychange', onChageInput);
+   
 
     $('input[type=radio]').change(function () {
         $(this).parent().parent().removeClass('error');
@@ -156,6 +157,9 @@ function onChageInput() {
         var re = /([0-9]){12}/;
         result = re.test(text);
     }
+    else if (this.id == 'Adress') {
+        result = data.length > 10;
+    }
     else {
         result = data.length >= 3;
     }
@@ -163,6 +167,9 @@ function onChageInput() {
     if (result && $(this).not('[dropdown]').length > 0) {
         $(this).parent().parent().removeClass('error');
         $(this).parent().parent().addClass('success');
+    }
+    else if ($(this).not('[dropdown]').length > 0) {
+        $(this).parent().parent().removeClass('success');
     }
 
 }

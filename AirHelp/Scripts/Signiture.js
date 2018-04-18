@@ -12,8 +12,8 @@
     ctx.lineJoin = 'round';
     ctx.strokeStyle = '#000000';
     ctx.shadowColor = '#000000';
-    ctx.shadowBlur = 0.6;
-    isDrawing = false;;
+    ctx.shadowBlur = 0.7;
+    isDrawing = false;
     couunt = 0;
 
 
@@ -30,6 +30,7 @@
     conv.onmousemove = onmousemove;
 
     conv.mouseout = function (e) {
+        x = y = null;
         isDrawing = false;
 
     };
@@ -62,8 +63,8 @@ function onmousemove(e) {
         couunt++;
         var newX = e.offsetX; 
         var newY = e.offsetY;
-        var distance = (x - newX) ** 2 + (y - newY) ** 2;
-        setContext(ctx, distance, x, y);
+        //var distance = (x - newX) ** 2 + (y - newY) ** 2;
+        //setContext(ctx, distance, x, y);
         ctx.lineTo(newX, newY);
         x = newX;
         y = newY;
@@ -84,8 +85,8 @@ function onmousemove1(e) {
         var rect = this.getBoundingClientRect();
         var newX = e.touches[0].clientX - rect.left;
         var newY = e.touches[0].clientY - rect.top;
-        var distance = (x - newX) ** 2 + (y - newY) ** 2;
-        setContext(ctx, distance, x, y);
+        //var distance = (x - newX) ** 2 + (y - newY) ** 2;
+        //setContext(ctx, distance, x, y);
         ctx.lineTo(newX, newY);
         x = newX;
         y = newY;

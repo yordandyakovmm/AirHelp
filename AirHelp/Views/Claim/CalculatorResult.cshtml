@@ -31,9 +31,12 @@
             <div class="form-subheder">
                 Данни за контакт
             </div>
+           
             <div class="form-subtext">
                 Въведената от вас лична информация ще се използва само във връска за получаване на обезщетения от авиокомпнии по регламент 261/2004 на EU.
-                Ако вече сте регистриран потребител може влезте <a href="/вход/@Model.ClaimId"> тук </a>
+            </div>
+            <div class="form-subtext">
+                Ако вече сте регистриран потребител може влезте  <a href="/вход/@Model.ClaimId"> тук </a>
             </div>
             <div class="form-row">
                 <div class="form-box left">
@@ -67,8 +70,7 @@
                 <div class="form-box-width">
                     <label>Адрес<span class="requared">*</span></label>
                     <div>
-                        <textarea type="text" id="Adress" rows="2" name="Adress" placeholder="Адрес" validate >
-                        </textarea> <i class="icon"></i>
+                        <textarea onchange="onChageInput(this)" id="Adress" rows="2" name="Adress" placeholder="Адрес" validate ></textarea>
                     </div>
                 </div>
 
@@ -97,14 +99,14 @@
                 <div class="form-box left">
                     <label>Парола<span class="requared">*</span></label>
                     <div>
-                        <input type="password" id="Password" name="Password" placeholder="Парола" validate /><i class="icon"></i>
+                        <input type="password" id="Password" autocomplete="off" name="Password" placeholder="Парола" validate /><i class="icon"></i>
                     </div>
                     <label class="sub-error">Паролата трябва да е най-малко 8 символа</label>
                 </div>
                 <div class="form-box rigth">
                     <label>Повтори паролата</label>
                     <div>
-                        <input type="password" id="Confirm-password" name="Confirm-password" validate placeholder="Повтори паролата" /><i class="icon"></i>
+                        <input type="password" autocomplete="off" id="Confirm-password"  name="Confirm-password" validate placeholder="Повтори паролата" /><i class="icon"></i>
                     </div>
                     <label class="sub-error">Паролите не съвпадат</label>
                 </div>
