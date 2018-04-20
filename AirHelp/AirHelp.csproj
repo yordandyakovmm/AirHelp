@@ -475,6 +475,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="UserDocuments\" />
+    <Folder Include="well-known\acme-challenge\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803262023038_initial.resx">
