@@ -21,7 +21,6 @@
 
         .hedar {
             font-size: 17px;
-
             text-align: center;
             font-weight: 700;
         }
@@ -62,10 +61,10 @@
             float: right;
             margin: 5px 75px 0 0;
         }
-        p{
+
+        p {
             line-height: 20px;
         }
-
     </style>
 </head>
 <body>
@@ -73,72 +72,54 @@
         <div class="left">
             <p class="hedar"> ПЪЛНОМОЩНО <p>
             <p class="content">
-                &nbsp; &nbsp;&nbsp;&nbsp;Долуподписаният/ата,
-                @Model.FirstName @Model.LastName  , с
-                адрес @Model.City, @Model.Adress,
-                като пътник на (въздушен транспорт) полет № @Model.FlightNumber
-                с планирано разписание: излитане на  @Model.Date г. от
-                летище @Model.DepartureAirport, на летище @Model.DestinationAirports ,
-                извършван от въздушния превозвач
-                @Model.AirCompany, с номер на резервация (бордова
-                карта) @Model.BookCode, като ВЪЗЛАГАМ и
+                &nbsp; &nbsp;&nbsp;Долуподписаният/ата: @Model.FirstName @Model.LastName, с адрес: @Model.City, @Model.Adress,
             </p>
             <p class="hedar"> УПЪЛНОМОЩАВАМ <p>
             <p class="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;"Коеф" ЕООД, вписано в Търговския регистър
-                под ЕИК 666666666, със седалище и адрес на управление:
-                Република България, гр. В. Търново, ул. "В. левски" №22, представлявано от управителя адвокат Коеф,
-                <b>за следното: </b>
+                &nbsp;&nbsp;&nbsp; @ViewBag.company, със седалище и адрес на управление: @ViewBag.address, ЕИК: @ViewBag.UNC с управител @ViewBag.manager
+                <!-- <b>за следното: </b>  addition -->
             </p>
             <p class="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;Да ме представлява пред горепосочения въздушен
-                превозвач, трети лица и организации, както и пред
-                съответния Национален орган за прилагане срещу
-                извършени от въздушния превозвач нарушения, във връзка с
-                получаване на дължащото ми се обезщетение по Регламент
-                ЕО 261/2004 на Европейския парламент и на Съвета и
-                свързани с това вземания относно посочения по-горе полет,
-                като извършва от мое име всички необходими правни и
-                фактически действия, включително: предявява
-                извънсъдебни претенции; изготвя, подписва, подава и
-                получава всякакви документи; заявява и декларира всякакви
-                данни и обстоятелства; преупълномощава с всички или част
-                от правата.
+                &nbsp;&nbsp;&nbsp;Да ме представлява пред съответната Авиокомпания @Model.AirCompany или друг въздушен превозвач издал билета
+                или направил резервацията с номер @Model.BookCode <!-- *** --> за полет излитащ <!--  *--> по разписание на дата @Model.Date от @Model.DepartureAirport
+                и пристигащ по разписание в @Model.DestinationAirports, трети лица и/или организации във връзка с получаване на дължимо обезщетение съгласно Регламент ЕО 261/2004.
             </p>
             <p class="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;"Коеф" ЕООД има право да извършва действия
-                по събирането и фактическото получаване на сумите,
-                изплатени от горепосочения въздушен превозвач,
-                независимо дали същите се изплащат доброволно или по
-                изпълнително дело, представляващи обезщетения и/или
-                разноски по граждански/търговски/изпълнителни дела, по
-                сметка на дружеството (включително по банкова сметка
-                IBAN: 6666666666666666665, BIC CODE:
-                ******, “Банка *****” АД с титуляр
-                "Коеф" ЕООД).
+                &nbsp;&nbsp;&nbsp;Да се свързва с компетентната Гражданска Въздухоплавателна Администрация и да предприема всякакви
+                действия с цел получаване на дължимото обезщетение съгласно Регламент ЕО 261/2004.
             </p>
             <p class="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;"Коеф" ЕООД има право да ме представлява пред
-                съд (всички съдебни инстанции) като завежда дела (искова
-                молба / заявление за издаване на заповед за изпълнение),
-                води (частни) граждански/търговски дела във всички
-                инстанции до приключване на делата, извършва всички
-                съдопроизводствени действия, включително получава
-                депозирани разноски, сключва спогодби (съдебни и
-                извънсъдебни), намалява, оттегля или прави отказ от иск,
-                признава исканията на другата страна, както и да извършва
-                действия, представляващи разпореждане с предмета на
-                делото, както и представителство по изпълнителни дела,
-                съответно да преупълномощава трети лица (адвокати) с
-                дадените права и сключва с тях договори за правна помощ и
-                съдействие от мое име.
+                &nbsp;&nbsp;&nbsp;Да извършва от мое име всички действия –предявява, изготвя и подписва претенции и други необходими документи.
             </p>
             <p class="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;Заявявам, че: съм запознат/та, приемам и са ми предадени
-                Общите условия на "Коеф" ЕООД; съгласен/на
-                съм предоставените мои лични данни да се съхраняват,
-                използват и бъдат обработвани във връзка с горепосочените
-                възложени дейности.
+                &nbsp;&nbsp;&nbsp;Да заявява и декларира всякакви данни и обстоятелства.
+            </p>
+            <p class="content">
+                &nbsp;&nbsp;&nbsp;Да ме представлява пред всички съдебни инстанции и всички частни съдебни изпълнители,
+                и завежда искова молба и заявление за издаване на заповед за изпълнение
+            </p>
+            <p class="content">
+                &nbsp;&nbsp;&nbsp;Да извършва съдопроизводствени действия,да сключва спогодби,
+                да извършва действия с предмета на делото.
+            </p>
+            <p class="content">
+                &nbsp;&nbsp;&nbsp;Да получи в пълен размер и от мое име паричното обезщетение съгласно Регламент ЕО 261 2004,
+                дължимо и платимо в резултат на гореизброените действия по сметка на @ViewBag.company @ViewBag.bankAccount.
+            </p>
+            <p class="content">
+                &nbsp;&nbsp;&nbsp;Във връзка с описаните по – горе действия от мое име да получава и подписва всякакви документи,
+                да декларира всякакви обстоятелства и да извършва всички правни и фактически действия, където е необходимо.
+                Долуподписаният/ата декларирам, че съм запознат/та, приемам и са ми предадени Общите условия, съгласен съм/съгласна съм предоставените от мен мои лични данни да се съхраняват,
+                използват и бъдат обработвани във връзка с горепосочените действия.
+            </p>
+            <p class="content">
+                &nbsp;&nbsp;&nbsp;Настоящото пълномощно следва да се тълкува изцяло в полза на правото на пълномощника да ме представлява.
+            </p>
+            <p class="content">
+                &nbsp;&nbsp;&nbsp; Упълномощеният има право да преупълномощава трети лица с правата по настоящото пълномощно.
+            </p>
+            <p class="content">
+                &nbsp;&nbsp;&nbsp; Пълномощното се прекратява с извършване на конкретните действия, за които е издадено.
             </p>
 
         </div>
@@ -146,22 +127,24 @@
             <p class="hedar">POWER OF ATTORNEY</p>
             <p class="content">
                 &nbsp;&nbsp;&nbsp;&nbsp;I, the undersigned @Model.FirstName @Model.LastName, residing
-                at @Model.City, @Model.Adress, as an (air)
-                passenger of flight No @Model.FlightNumber scheduled to: take off on
-                @Model.Date from @Model.DepartureAirport airport, land at @Model.DestinationAirports airport,
-                performed by the air carrier @Model.AirCompany,
-                booking (boarding pass) number @Model.BookCode,
-                ASSIGNING and
+                at @Model.City, @Model.Adress.
             </p>
             <p class="hedar"> AUTHORIZING </p>
             <p class="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;Koef EOOD, registered in the Trade Register under
-                UIN 66666666, seat and registered address: Republic of
-                Bulgaria, V. Turnovo taun, 12 V. levski, represented by the loyer Koef, <b>
-                    as follows:
-                </b>
+                &nbsp;&nbsp;&nbsp; @ViewBag.company, registered in the Trade Register under
+                UIN @ViewBag.UNC, seat and registered address: Republic of
+                Bulgaria, Veliko Tarnovo, @ViewBag.address, represented by @ViewBag.manager.
+            </p>
             <p class="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;To represent me before the aforementioned air carrier, third
+                &nbsp;&nbsp;&nbsp;Да ме представлява пред съответната Авиокомпания @Model.AirCompany или друг въздушен превозвач издал билета
+                или направил резервацията с номер @Model.BookCode <!-- *** --> за полет излитащ <!--  *--> по разписание на дата @Model.Date от @Model.DepartureAirport
+                и пристигащ по разписание в @Model.DestinationAirports, трети лица и/или организации във връзка с получаване на дължимо обезщетение съгласно Регламент ЕО 261/2004.
+            </p>
+            <p class="content">
+                &nbsp;&nbsp;&nbsp;&nbsp;To represent me before the respective air carrier @Model.AirCompany or other air carrier issued the tiket or made a booking number @Model.BookCode
+                for a flight scheduled to: take off on @Model.Date from @Model.DepartureAirport airport, land at @Model.DestinationAirports airport, third parties or 
+                
+
                 parties and organizations, as well as before the respective
                 National designated body on account of infringements
                 committed by the air carrier in connection with obtaining the
@@ -222,10 +205,10 @@
             </div>
             @*<div class="div-3">
 
-                <div>
-                    <span class="span-3">(подпис/signature)</span>
-                </div>
-            </div>*@
+                    <div>
+                        <span class="span-3">(подпис/signature)</span>
+                    </div>
+                </div>*@
 
         </div>
 
