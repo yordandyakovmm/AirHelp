@@ -12,11 +12,8 @@
         }
 
         .main {
-            //width: 21cm;
-            //display: grid;
-            //grid-template-columns: 52% 48%;
-            //grid-auto-rows: auto;
-            padding: 30px 70px;
+            width: 100%;
+            padding: 30px 0;
         }
 
         .hedar {
@@ -24,13 +21,29 @@
             text-align: center;
             font-weight: 700;
         }
-
-        .left, .rigth {
-            padding: 0 8px;
+        .container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+         .left, .rigth {
+            width: 48%;
         }
 
         .left {
-            /*border-right: solid 1px rgba(55, 55, 55, 1);*/
+            float: left;
+            padding: 0 15px 0 0;
+            border-right: solid 1px rgba(55, 55, 55, 0.5);
+        }
+
+        .rigth {
+            padding: 0 0 0 16px;
+            float: right;
+        }
+
+        .signiture {
+            width: 100%;
+            float: left;
         }
 
         .content {
@@ -69,130 +82,131 @@
 </head>
 <body>
     <div class="main">
-        <div class="left">
-            <p class="hedar"> ПЪЛНОМОЩНО <p>
-            <p class="content">
-                &nbsp; &nbsp;&nbsp;Долуподписаният/ата: @Model.FirstName @Model.LastName, с адрес: @Model.City, @Model.Adress,
-            </p>
-            <p class="hedar"> УПЪЛНОМОЩАВАМ <p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp; @ViewBag.company, със седалище и адрес на управление: @ViewBag.address, ЕИК: @ViewBag.UNC с управител @ViewBag.manager
-                <!-- <b>за следното: </b>  addition -->
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;Да ме представлява пред съответната Авиокомпания @Model.AirCompany или друг въздушен превозвач издал билета
-                или направил резервацията с номер @Model.BookCode <!-- *** --> за полет излитащ <!--  *--> по разписание на дата @Model.Date от @Model.DepartureAirport
-                и пристигащ по разписание в @Model.DestinationAirports, трети лица и/или организации във връзка с получаване на дължимо обезщетение съгласно Регламент ЕО 261/2004.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;Да се свързва с компетентната Гражданска Въздухоплавателна Администрация и да предприема всякакви
-                действия с цел получаване на дължимото обезщетение съгласно Регламент ЕО 261/2004.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;Да извършва от мое име всички действия –предявява, изготвя и подписва претенции и други необходими документи.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;Да заявява и декларира всякакви данни и обстоятелства.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;Да ме представлява пред всички съдебни инстанции и всички частни съдебни изпълнители,
-                и завежда искова молба и заявление за издаване на заповед за изпълнение
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;Да извършва съдопроизводствени действия,да сключва спогодби,
-                да извършва действия с предмета на делото.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;Да получи в пълен размер и от мое име паричното обезщетение съгласно Регламент ЕО 261 2004,
-                дължимо и платимо в резултат на гореизброените действия по сметка на @ViewBag.company @ViewBag.bankAccount.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;Във връзка с описаните по – горе действия от мое име да получава и подписва всякакви документи,
-                да декларира всякакви обстоятелства и да извършва всички правни и фактически действия, където е необходимо.
-                Долуподписаният/ата декларирам, че съм запознат/та, приемам и са ми предадени Общите условия, съгласен съм/съгласна съм предоставените от мен мои лични данни да се съхраняват,
-                използват и бъдат обработвани във връзка с горепосочените действия.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;Настоящото пълномощно следва да се тълкува изцяло в полза на правото на пълномощника да ме представлява.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp; Упълномощеният има право да преупълномощава трети лица с правата по настоящото пълномощно.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp; Пълномощното се прекратява с извършване на конкретните действия, за които е издадено.
-            </p>
+        <div class="container">
+            <div class="left">
+                <p class="hedar"> ПЪЛНОМОЩНО <p>
+                <p class="content">
+                    Долуподписаният/ата: @Model.FirstName @Model.LastName, с адрес: @Model.City, @Model.Adress,
+                </p>
+                <p class="hedar"> УПЪЛНОМОЩАВАМ <p>
+                <p class="content">
+                    @ViewBag.company, със седалище и адрес на управление: @ViewBag.address, ЕИК: @ViewBag.UIC с управител @ViewBag.manager
+                    <!-- <b>за следното: </b>  addition -->
+                </p>
+                <p class="content">
+                    Да ме представлява пред съответната Авиокомпания @Model.AirCompany или друг въздушен превозвач издал билета
+                    или направил резервацията с номер @Model.BookCode <!-- *** --> за полет излитащ <!--  *--> по разписание на дата @Model.Date от @Model.DepartureAirport
+                    и пристигащ по разписание в @Model.DestinationAirports, трети лица и/или организации във връзка с получаване на дължимо обезщетение съгласно Регламент ЕО 261/2004.
+                </p>
+                <p class="content">
+                    Да се свързва с компетентната Гражданска Въздухоплавателна Администрация и да предприема всякакви
+                    действия с цел получаване на дължимото обезщетение съгласно Регламент ЕО 261/2004.
+                </p>
+                <p class="content">
+                    Да извършва от мое име всички действия –предявява, изготвя и подписва претенции и други необходими документи.
+                </p>
+                <p class="content">
+                    Да заявява и декларира всякакви данни и обстоятелства.
+                </p>
+                <p class="content">
+                    Да ме представлява пред всички съдебни инстанции и всички частни съдебни изпълнители,
+                    и завежда искова молба и заявление за издаване на заповед за изпълнение
+                </p>
+                <p class="content">
+                    Да извършва съдопроизводствени действия,да сключва спогодби,
+                    да извършва действия с предмета на делото.
+                </p>
+                <p class="content">
+                    Да получи в пълен размер и от мое име паричното обезщетение съгласно Регламент ЕО 261 2004,
+                    дължимо и платимо в резултат на гореизброените действия по сметка на @ViewBag.company @ViewBag.bankAccount.
+                </p>
+                <p class="content">
+                    Във връзка с описаните по – горе действия от мое име да получава и подписва всякакви документи,
+                    да декларира всякакви обстоятелства и да извършва всички правни и фактически действия, където е необходимо.
+                    Долуподписаният/ата декларирам, че съм запознат/та, приемам и са ми предадени Общите условия, съгласен съм/съгласна съм предоставените от мен мои лични данни да се съхраняват,
+                    използват и бъдат обработвани във връзка с горепосочените действия.
+                </p>
+                <p class="content">
+                    Настоящото пълномощно следва да се тълкува изцяло в полза на правото на пълномощника да ме представлява.
+                </p>
+                <p class="content">
+                    Упълномощеният има право да преупълномощава трети лица с правата по настоящото пълномощно.
+                </p>
+                <p class="content">
+                    Пълномощното се прекратява с извършване на конкретните действия, за които е издадено.
+                </p>
 
+            </div>
+            <div class="rigth">
+                <p class="hedar">POWER OF ATTORNEY</p>
+                <p class="content">
+                    I, the undersigned @Model.FirstName @Model.LastName, residing
+                    at @Model.City, @Model.Adress.
+                </p>
+                <p class="hedar"> AUTHORIZING </p>
+                <p class="content">
+                    &nbsp;&nbsp;&nbsp; @ViewBag.company, registered in the Trade Register under
+                    UIN @ViewBag.UNC, seat and registered address: Republic of
+                    Bulgaria, Veliko Tarnovo, @ViewBag.address, represented by @ViewBag.manager.
+                </p>
+                <p class="content">
+                    Да ме представлява пред съответната Авиокомпания @Model.AirCompany или друг въздушен превозвач издал билета
+                    или направил резервацията с номер @Model.BookCode <!-- *** --> за полет излитащ <!--  *--> по разписание на дата @Model.Date от @Model.DepartureAirport
+                    и пристигащ по разписание в @Model.DestinationAirports, трети лица и/или организации във връзка с получаване на дължимо обезщетение съгласно Регламент ЕО 261/2004.
+                </p>
+                <p class="content">
+                    To represent me before the respective air carrier @Model.AirCompany or other air carrier issued the tiket or made a booking number @Model.BookCode
+                    for a flight scheduled to: take off on @Model.Date from @Model.DepartureAirport airport, land at @Model.DestinationAirports airport, third parties or
+
+
+                    parties and organizations, as well as before the respective
+                    National designated body on account of infringements
+                    committed by the air carrier in connection with obtaining the
+                    compensation I am entitled to pursuant to Regulation (EC) No
+                    261/2004 of the European Parliament and of the Council and
+                    any receivables pertaining thereto with respect to the said flight
+                    and to execute on my behalf all requisite legal and factual
+                    actions, including: bring out-of-court claims; prepare, sign, file
+                    and receive any documents; state and declare any information
+                    and particulars; sub-delegate all or part of the powers
+                    hereunder.
+                </p>
+                <p class="content">
+                    Koef EOOD shall have the power to execute actions
+                    on the collection and factual receipt of the amounts paid by the
+                    said air carrier, irrespective of whether such amounts have been
+                    paid voluntarily or under a writ of execution, representing
+                    compensations and/or costs on civil/commercial/enforcement
+                    lawsuits, to the account of the company (including to bank
+                    account IBAN: 666666666666666666666, BIC CODE:
+                    *******, Banck Banck, account holder
+                    koef EOOD).
+                </p>
+                <p class="content">
+                    Koef EOOD shall have the right to represent me
+                    before a court of law (courts of all instances) by filing lawsuits
+                    (statement of claim/ application for writ of execution), pursue
+                    (private) civil/commercial legal actions at all instances until
+                    adjudication, execute all legal procedure actions, including to
+                    receive deposited costs, enter into settlements (court and outof-court,
+                    reduce, withdraw or cancel claims, recognize claims
+                    of the opposing party, as well as to execute actions constituting
+                    disposition with the subject matter of the case, as well as to act
+                    as representative in enforcement lawsuits and to sub-delegate
+                    the powers given hereunder to third parties (lawyers),
+                    respectively, and to enter into legal assistance agreements with
+                    them on my behalf.
+                </p>
+                <p class="content">
+                    &nbsp;&nbsp;&nbsp;&nbsp;I state and represent as follows: I have read and I have been
+                    provided with Koef EOOD General Terms and
+                    Conditions; I give my consent for my personal data to be stored,
+                    used and processed in connection with the aforementioned
+                    assigned activities.
+                </p>
+
+            </div>
         </div>
-        <div class="rigth">
-            <p class="hedar">POWER OF ATTORNEY</p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;I, the undersigned @Model.FirstName @Model.LastName, residing
-                at @Model.City, @Model.Adress.
-            </p>
-            <p class="hedar"> AUTHORIZING </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp; @ViewBag.company, registered in the Trade Register under
-                UIN @ViewBag.UNC, seat and registered address: Republic of
-                Bulgaria, Veliko Tarnovo, @ViewBag.address, represented by @ViewBag.manager.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;Да ме представлява пред съответната Авиокомпания @Model.AirCompany или друг въздушен превозвач издал билета
-                или направил резервацията с номер @Model.BookCode <!-- *** --> за полет излитащ <!--  *--> по разписание на дата @Model.Date от @Model.DepartureAirport
-                и пристигащ по разписание в @Model.DestinationAirports, трети лица и/или организации във връзка с получаване на дължимо обезщетение съгласно Регламент ЕО 261/2004.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;To represent me before the respective air carrier @Model.AirCompany or other air carrier issued the tiket or made a booking number @Model.BookCode
-                for a flight scheduled to: take off on @Model.Date from @Model.DepartureAirport airport, land at @Model.DestinationAirports airport, third parties or 
-                
-
-                parties and organizations, as well as before the respective
-                National designated body on account of infringements
-                committed by the air carrier in connection with obtaining the
-                compensation I am entitled to pursuant to Regulation (EC) No
-                261/2004 of the European Parliament and of the Council and
-                any receivables pertaining thereto with respect to the said flight
-                and to execute on my behalf all requisite legal and factual
-                actions, including: bring out-of-court claims; prepare, sign, file
-                and receive any documents; state and declare any information
-                and particulars; sub-delegate all or part of the powers
-                hereunder.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;Koef EOOD shall have the power to execute actions
-                on the collection and factual receipt of the amounts paid by the
-                said air carrier, irrespective of whether such amounts have been
-                paid voluntarily or under a writ of execution, representing
-                compensations and/or costs on civil/commercial/enforcement
-                lawsuits, to the account of the company (including to bank
-                account IBAN: 666666666666666666666, BIC CODE:
-                *******, Banck Banck, account holder
-                koef EOOD).
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;Koef EOOD shall have the right to represent me
-                before a court of law (courts of all instances) by filing lawsuits
-                (statement of claim/ application for writ of execution), pursue
-                (private) civil/commercial legal actions at all instances until
-                adjudication, execute all legal procedure actions, including to
-                receive deposited costs, enter into settlements (court and outof-court,
-                reduce, withdraw or cancel claims, recognize claims
-                of the opposing party, as well as to execute actions constituting
-                disposition with the subject matter of the case, as well as to act
-                as representative in enforcement lawsuits and to sub-delegate
-                the powers given hereunder to third parties (lawyers),
-                respectively, and to enter into legal assistance agreements with
-                them on my behalf.
-            </p>
-            <p class="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;I state and represent as follows: I have read and I have been
-                provided with Koef EOOD General Terms and
-                Conditions; I give my consent for my personal data to be stored,
-                used and processed in connection with the aforementioned
-                assigned activities.
-            </p>
-
-        </div>
-
         <div class="signiture">
             <div class="div-1">
                 <div class="span-1">

@@ -36,6 +36,8 @@ namespace AirHelp.DAL
         
         public string AttorneyUrl { get; set; }
 
+        public string contractUrl { get; set; }
+
         public ProblemType Type { get; set; }
 
         public string FlightNumber { get; set; }

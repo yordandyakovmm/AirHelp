@@ -69,10 +69,10 @@ namespace AirHelp.Controllers
 
             SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
 
-            converter.Options.MarginTop = 18;
+            converter.Options.MarginTop = 30;
             converter.Options.MarginBottom = 10;
-            converter.Options.MarginLeft = 10;
-            converter.Options.MarginRight = 10;
+            converter.Options.MarginLeft = 20;
+            converter.Options.MarginRight = 20;
             converter.Options.PdfPageSize = SelectPdf.PdfPageSize.A4;
 
             SelectPdf.PdfDocument doc = converter.ConvertUrl(url);

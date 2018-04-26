@@ -25,6 +25,8 @@ namespace AirHelp.Controllers
             ViewBag.UIC = ConfigurationManager.AppSettings["UIC"].ToString();
             ViewBag.email = ConfigurationManager.AppSettings["email"].ToString();
             ViewBag.tel = ConfigurationManager.AppSettings["tel"].ToString();
+            ViewBag.bankAccount = ConfigurationManager.AppSettings["bankAccount"].ToString();
+            ViewBag.manager = ConfigurationManager.AppSettings["manager"].ToString();
 
             base.Initialize(requestContext);
 

@@ -545,20 +545,25 @@ namespace AirHelp.Controllers
                 }
 
                 Guid newGuid = Guid.NewGuid();
-                string AttorneyUrl = $"/UserDocuments/{newGuid}.pdf";
-
+                claim.AttorneyUrl = $"/UserDocuments/atorny-{claim.referalNumber}.pdf";
+                claim.contractUrl = $"/UserDocuments/contract-{claim.referalNumber}.pdf";
+              
+                dc.SaveChanges();
 
 
                 string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
 
-                String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{claim.ClaimId}";
+                String aUrl = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{claim.ClaimId}";
+                String cUrl = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/contractPdf/{claim.ClaimId}";
 
                 SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
-                SelectPdf.PdfDocument doc = converter.ConvertUrl(url);
-                doc.Save(Server.MapPath($"~/UserDocuments/{newGuid}.pdf"));
+                SelectPdf.PdfDocument doc = converter.ConvertUrl(aUrl);
+                doc.Save(Server.MapPath($"~{claim.AttorneyUrl}"));
                 doc.Close();
-                claim.AttorneyUrl = $"/UserDocuments/{newGuid}.pdf";
-                dc.SaveChanges();
+
+                doc = converter.ConvertUrl(cUrl);
+                doc.Save(Server.MapPath($"~{claim.contractUrl}"));
+                doc.Close();
 
                 Session["claim"] = claim;
 
