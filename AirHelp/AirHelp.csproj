@@ -457,7 +457,7 @@
     <Content Include="Views\Claim\ConfirmClaim.cshtml" />
     <Content Include="Views\Claim\ClaimListYordan.cshtml" />
     <Content Include="Views\Common\Success.cshtml" />
-    <Content Include="Views\Pdf\Contraction.cshtml" />
+    <Content Include="Views\Pdf\ContractPdf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
