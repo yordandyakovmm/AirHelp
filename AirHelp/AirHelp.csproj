@@ -457,6 +457,7 @@
     <Content Include="Views\Claim\ConfirmClaim.cshtml" />
     <Content Include="Views\Claim\ClaimListYordan.cshtml" />
     <Content Include="Views\Common\Success.cshtml" />
+    <Content Include="Views\Pdf\Contraction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -475,6 +476,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="UserDocuments\" />
+    <Folder Include="well-known\acme-challenge\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803262023038_initial.resx">
