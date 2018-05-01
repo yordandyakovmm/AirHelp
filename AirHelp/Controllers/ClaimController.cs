@@ -63,7 +63,7 @@ namespace AirHelp.Controllers
             Claim claim = new Claim
             {
                 ClaimId = Guid.NewGuid(),
-                State = ClaimStatus.WaitForDocument,
+                State = ClaimStatus.Pending,
                 UserId = null,
                 DateCreated = DateTime.Now,
                 Type = ProblemType.Pending,
@@ -243,11 +243,11 @@ namespace AirHelp.Controllers
                     // Reject less than 2 hours
                     if (flightType == FlightType.F1500 && DelayDelay < DelayDelay.Beetwen2_3)
                     {
-                            RelectClaim model = new RelectClaim()
-                            {
-                                Reason = "Закъснението на полети до 1500 км трябва да е повече от 2 часа."
-                            };
-                            return View("RejectClaim", model);
+                        RelectClaim model = new RelectClaim()
+                        {
+                            Reason = "Закъснението на полети до 1500 км трябва да е повече от 2 часа."
+                        };
+                        return View("RejectClaim", model);
                     }
                     // Reject less than 3 hours
                     if (flightType > FlightType.F1500 && DelayDelay < DelayDelay.Beetwen3_4)
@@ -458,8 +458,8 @@ namespace AirHelp.Controllers
                     UserId = Email,
                     FirstName = FirstName,
                     LastName = LastName,
-                    City = City, 
-                    Adress = Adress, 
+                    City = City,
+                    Adress = Adress,
                     Country = Country,
                     Tel = Tel,
                     Email = Email,
@@ -488,6 +488,11 @@ namespace AirHelp.Controllers
             {
                 var ClaimId = Guid.Parse(claimId);
                 var claim = dc.Claims.Include("User").Where(c => c.ClaimId == ClaimId).SingleOrDefault();
+                if (claim.State > ClaimStatus.Pending)
+                {
+                    var url = $"/иск/{claim.ClaimId}";
+                    //Response.Redirect(url);
+                }
                 return View("ConfirmClaim", claim);
             }
         }
@@ -506,7 +511,11 @@ namespace AirHelp.Controllers
                 var AdditionalInfo = Request.Form["AdditionalInfo"];
                 var claimId = Request.Form["claimId"];
                 var SignitureImage = Request.Form["SignitureImage"];
-                
+                var Name = Request.Form["Name"];
+                var Family = Request.Form["Family"];
+
+                bool signOnEmail = Request.Form["SignViaEmail"] == "yes" ? true: false;
+
                 var ClaimId = Guid.Parse(claimId);
                 var claim = dc.Claims
                     .Include("User")
@@ -515,6 +524,19 @@ namespace AirHelp.Controllers
                     .Include("AirPorts")
                     .Where(c => c.ClaimId == ClaimId).SingleOrDefault();
 
+                if (!string.IsNullOrEmpty(Name))
+                {
+                    var arrN = Name.Split(',');
+                    var arrF = Family.Split(',');
+                    for (var i = 0; i < arrN.Length; i++)
+                    {
+                        AdditionalUser user = new AdditionalUser {
+                            FirstName = arrN[i],
+                            LastName = arrF[i]
+                        };
+                        claim.AdditionalUsers.Add(user);
+                    }
+                }
                 claim.SignitureImage = SignitureImage;
                 claim.AdditionalInfo = AdditionalInfo;
                 claim.TikedNumber = TikedNumber;
@@ -538,16 +560,12 @@ namespace AirHelp.Controllers
                         }
                     }
                 }
-
-                if (claim.Documents.Count > 0)
-                {
-                    claim.State = ClaimStatus.InProgress;
-                }
-
+                claim.State = signOnEmail ? ClaimStatus.WaitForAttorny : (claim.Documents.Count > 0 ? ClaimStatus.InProgress : ClaimStatus.WaitForDocument);
+                
                 Guid newGuid = Guid.NewGuid();
                 claim.AttorneyUrl = $"/UserDocuments/atorny-{claim.referalNumber}.pdf";
                 claim.contractUrl = $"/UserDocuments/contract-{claim.referalNumber}.pdf";
-              
+
                 dc.SaveChanges();
 
 
@@ -571,16 +589,15 @@ namespace AirHelp.Controllers
             }
         }
 
-
-        [Route("ъпдейт-на-иск")]
-        [Route("ъпдейт-на-иск/{id}")]
-        public ActionResult UpdateClaimPost(IEnumerable<HttpPostedFileBase> UserFiles,string id)
+        // commom View / Update claim 
+        [Route("иск")]
+        [Route("иск/{id}")]
+        public ActionResult UpdateClaimPost(IEnumerable<HttpPostedFileBase> UserFiles, string id)
         {
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
-
                 var claimId = Request.Form["claimId"] ?? id;
-
+                
                 var ClaimId = Guid.Parse(claimId);
                 var claim = dc.Claims
                     .Include("User")
@@ -606,9 +623,10 @@ namespace AirHelp.Controllers
                             });
                         }
                     }
-                }
+                    claim.isDurty = !User.IsInRole("admin");
 
-                if (claim.Documents.Count > 0)
+                }
+                if (claim.State == ClaimStatus.WaitForAttorny && claim.Documents.Count > 0)
                 {
                     claim.State = ClaimStatus.InProgress;
                 }
@@ -630,7 +648,8 @@ namespace AirHelp.Controllers
             {
                 list = dc.Claims
                     .Include("AirPorts")
-                    .Where(c => c.Type != ProblemType.Pending && (c.UserId == User.Identity.Name || isAdmin) ).Select(c => c)
+                    .Where(c => c.Type != ProblemType.Pending && (c.UserId == User.Identity.Name || isAdmin)).Select(c => c)
+                    .OrderByDescending(c => c.DateCreated)
                     .ToList();
             }
             return View("ClaimList", list);
@@ -638,7 +657,7 @@ namespace AirHelp.Controllers
 
         [HttpGet]
         [Authorize(Roles = "admin", Users = "yordan.dyakov@mentormate.com")]
-        [Route("заявки-ъпдейт")]
+        [Route("manager")]
         public ActionResult ClaimListYordan()
         {
             var isAdmin = User.IsInRole("admin");
@@ -649,13 +668,14 @@ namespace AirHelp.Controllers
                     .Include("AirPorts")
                     .ToList();
             }
+            
             return View("ClaimListYordan", list);
         }
 
 
         [HttpGet]
-        [Authorize(Roles = "admin", Users="yordan.dyakov@mentormate.com")]
-        [Route("заявки-ъпдейт/{removeId}")]
+        [Authorize(Roles = "admin", Users = "yordan.dyakov@mentormate.com")]
+        [Route("manager/{removeId}")]
         public ActionResult ClaimListRemove(string removeId)
         {
             var isAdmin = User.IsInRole("admin");
@@ -830,7 +850,7 @@ namespace AirHelp.Controllers
             Claim claim = new Claim
             {
                 ClaimId = Guid.NewGuid(),
-                State = ClaimStatus.Accepted,
+                State = ClaimStatus.Pending,
 
                 UserId = null,
                 DateCreated = DateTime.Now,
@@ -951,7 +971,7 @@ namespace AirHelp.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "admin,temp")]
+        [Authorize(Roles = "admin,user")]
         [Route("обезщетение-списък/{id}")]
         public ActionResult ClaimUpdate(Guid id)
         {
@@ -983,7 +1003,7 @@ namespace AirHelp.Controllers
 
         }
 
-        
+
 
 
 

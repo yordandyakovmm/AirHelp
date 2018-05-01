@@ -604,6 +604,13 @@ html,
   justify-content: space-around;
   align-content: space-around;
 }
+.form-row-left {
+  margin: 15px 0 0 0;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-content: space-around;
+}
 .form-row-choise {
   margin: 5px 0 0 60px;
   display: grid;
@@ -667,6 +674,38 @@ html,
 .form-box.rigth input[type=text],
 .form-box.rigth ul {
   margin-left: 0px;
+}
+.form-box-45 {
+  width: 42%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.form-box-45 > div {
+  width: 100%;
+}
+.form-box-45.left label {
+  margin-left: 0px;
+}
+.form-box-45.left input[type=text],
+.form-box-45.left ul {
+  margin-left: 0px;
+}
+.form-box-45.rigth label {
+  margin-left: 0px;
+}
+.form-box-45.rigth input[type=text],
+.form-box-45.rigth ul {
+  margin-left: 0px;
+}
+.form-box-5 {
+  padding: 0 0 9px 0;
+  width: 16%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 .form-box-10 {
   padding: 7px 0 0 5px;

@@ -22,12 +22,12 @@
     </div>
     <div class="center-content width-550">
         <form method="post" enctype="multipart/form-data" action="/потвърждение-на-иск">
-            <input type="hidden" name="claimId"  value="@Model.ClaimId" />
+            <input type="hidden" name="claimId" value="@Model.ClaimId" />
             <input type="hidden" name="SignitureImage" value="" />
             <div class="form-hedar">
                 Подаване на иск
             </div>
-          
+
             <div class="form-row" id="AirCompany">
                 <div class="form-box left">
                     <label>Номер на резервация или код за потвърждение <span class="requared">*</span></label>
@@ -56,7 +56,7 @@
             </div>
 
             <div class="form-hedar">
-                Копия на необходими документи
+                Копия на документи
             </div>
             <div class="form-row">
                 <div class="form-box-upload upload-box">
@@ -69,14 +69,45 @@
                 </div>
             </div>
             <div class="form-subtext">
-                С подписването на настоящото <a href="/пълномощно/@Model.ClaimId" target="_blank">пълномощно </a> и <a>договор</a> се съгласявам с <a href="/общи-условия" target="_blank">общите условия</a>
+                С подписването на настоящото <a href="/пълномощно/@Model.ClaimId" target="_blank">пълномощно </a> и <a href="/договор/@Model.ClaimId" target="_blank">договор</a> се съгласявам с <a href="/общи-условия" target="_blank">общите условия</a>
             </div>
 
+            <div class="form-hedar">
+                Добавяне на пътници
+            </div>
             <div class="form-subtext">
+                Моля добавяте всички пътници към същата резервация или билет. Дължимото обезщетение е за всеки пътник.
+            </div>
+
+
+            <div>
+               
+                <div class="form-row-left">
+                    <button class="bbAdd" onclick="addPassager(this); return false;"><i class="icon"></i> <label> Добавяне на пътник </label> </button>
+                </div> 
+            </div>
+            
+
+
+
+            <div class="form-hedar">
+                Подпис на документи
+            </div>
+            <div class="form-row-radio">
+
+                <label class="radio selected">
+                    <input type="radio" value="no" checked="checked" name="SignViaEmail">
+                    <span>Искам да подпиша пълномощно и договор онлайн</span>
+                </label>
+                <label class="radio">
+                    <input type="radio" value="yes" name="SignViaEmail">
+                    <span>Искам да получа пълномощно и договор за подпис по емейл</span>
+                </label>
+            </div>
+            <div class="form-subtext" signiture>
                 Моля подпишете <b> @Model.User.FirstName @Model.User.LastName </b>
             </div>
-
-            <div class="form-row">
+            <div class="form-row" signiture>
                 <div class="form-box-signiture">
                     <label>Подпис</label>
                     <div class="convas-holder">
@@ -88,6 +119,10 @@
                         <button class="clear" type="button" onclick="return clearSignature(this); return false;"><span>Изчисти</span></button>
                     </div>
                 </div>
+            </div>
+
+            <div class="form-subtext" email style="display:none">
+                Пълномощното и договора ще Ви бъдат испратени на @Model.User.Email
             </div>
             <div class="form-row-yes-no" style="grid-template-columns: auto">
                 <label class="checkbox">
@@ -109,9 +144,31 @@
         </form>
     </div>
 
-   
+
 </div>
 
+
+<script id="template">
+    <div class="form-row">
+        <div class="form-box-45 left">
+            <label>Име<span class="requared">*</span></label>
+            <div>
+                <input type="text" id="BookCode" value="" onchange="onchangeInput(this)" validate name="Name" placeholder="Име" validate /><i class="icon"></i>
+            </div>
+            <label class="sub-error">Въведете на латиница</label>
+        </div>
+        <div class="form-box-45 rigth">
+            <label>Фамилия<span class="requared">*</span></label>
+            <div>
+                <input type="text" value="" name="Family" onchange="onchangeInput(this)" validate placeholder="Фамилия" /><i class="icon"></i>
+            </div>
+            <label class="sub-error">Въведете на латиница</label>
+        </div>
+        <div class="form-box-5">
+            <button class="bDelete" onmousedown="$(this).parent().parent().remove(); return false;"><i class="icon"></i></button>
+        </div
+    </div>
+</script>
 
 <script src="~/Scripts/main.js"></script>
 <script src="~/Scripts/ConfirmClaim.js"></script>

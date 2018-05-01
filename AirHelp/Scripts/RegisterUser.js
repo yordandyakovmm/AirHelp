@@ -26,7 +26,11 @@
             .addClass('error');
         result = false;
     }
-
+    if (!result) {
+        $('html, body').animate({
+            scrollTop: $(".error").first().offset().top
+        }, 1000);
+    }
     return result;
 }
 

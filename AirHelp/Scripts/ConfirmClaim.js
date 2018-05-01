@@ -1,4 +1,19 @@
-﻿function validateConfirmClaim() {
+﻿$('[name=SignViaEmail][type=radio]').change(function () {
+    $(this).parent().parent().find('label').removeClass('selected');
+    $(this).parent().addClass('selected');
+    if ($(this).val() == 'yes') {
+        $('[signiture]').hide();
+        $('[email]').show();
+    }
+    else
+    {
+        $('[signiture]').show();
+        $('[email]').hide();
+    }
+});
+
+
+function validateConfirmClaim() {
     var result = true;
     $('input:visible[validate]').each(function (el) {
         if ($(this).parent().parent().not('.success').length > 0) {
@@ -6,6 +21,7 @@
             result = false;
         }
     });
+    
     if ($("input[name='confirm']").length) {
         var howMuch = $("input[name='confirm']:checked").val();
         if (!howMuch) {
@@ -16,13 +32,32 @@
             $("input[name='confirm']").parent().parent().removeClass('error');
         }
     }
-    if (!($('.form-box-signiture').is('.success'))) {
+    if (!($('.form-box-signiture').is('.success')) && $('[SignViaEmail]').val() == 'no') {
         result = false;
         $('.form-box-signiture').removeClass('success').addClass('error');
     } 
-
+    if (!result) {
+        $('html, body').animate({
+            scrollTop: $(".error").first().offset().top
+        }, 1000);
+    }
     return result;
 }
 
 
+function onchangeInput(_this) {
+    var data = $(_this).val();
+    if (data.length < 3) {
+        $(_this).parent().parent().removeClass('success');
+    }
+    else
+    {
+        $(_this).parent().parent().addClass('success');
+    }
+}
 
+function addPassager() {
+    var $this = $(".bbAdd");
+    var template = $('#template').html();
+    $this.parent().before(template);
+}

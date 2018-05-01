@@ -237,6 +237,14 @@
     <Compile Include="Migrations\201803301520001_remane.Designer.cs">
       <DependentUpon>201803301520001_remane.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805011024062_ContractUrl.cs" />
+    <Compile Include="Migrations\201805011024062_ContractUrl.Designer.cs">
+      <DependentUpon>201805011024062_ContractUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805011511292_isDurty.cs" />
+    <Compile Include="Migrations\201805011511292_isDurty.Designer.cs">
+      <DependentUpon>201805011511292_isDurty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -499,6 +507,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803301520001_remane.resx">
       <DependentUpon>201803301520001_remane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011024062_ContractUrl.resx">
+      <DependentUpon>201805011024062_ContractUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011511292_isDurty.resx">
+      <DependentUpon>201805011511292_isDurty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

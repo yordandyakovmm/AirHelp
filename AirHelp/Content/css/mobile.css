@@ -536,8 +536,18 @@
   div.width-550 {
     width: 550px;
   }
-  div.width-550 .form-box > div {
+  div.width-550 .form-box-45 {
     width: 550px;
+  }
+  div.width-550 form-box > div {
+    width: 550px;
+  }
+  div.width-550 form-box-45 > div {
+    width: 550px;
+  }
+  div.width-550 .form-box-45.rigth,
+  div.width-550 .form-box-5 {
+    margin-top: 9px;
   }
   div.width-550 input[type=text] {
     width: 500px;

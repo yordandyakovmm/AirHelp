@@ -26,7 +26,7 @@
 
     </div>
     <div class="center-content view-claim">
-        <form method="post" enctype="multipart/form-data" action="/ъпдейт-на-иск">
+        <form method="post" enctype="multipart/form-data" action="/иск">
             <input type="hidden" name="claimid" value="@Model.ClaimId">
             <input type="submit" name="upload" style="display:none" value="upload">
             @if (!User.IsInRole("admin"))
@@ -390,7 +390,7 @@
                     <label class="heder ">Договор</label>
                     <div>
                         <label class="data ">
-                            <a href="" target="_blank"> Виж договор </a>
+                            <a href="@Model.contractUrl" target="_blank"> Виж договор </a>
                         </label>
                     </div>
                 </div>

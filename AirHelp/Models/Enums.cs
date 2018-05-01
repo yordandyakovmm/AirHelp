@@ -15,11 +15,13 @@ namespace AirHelp.Models
 
     public enum ClaimStatus
     {
-        WaitForDocument = 1,
-        Accepted = 2,
-        InProgress = 3,
-        Compleeted = 4, 
-        Rejected = 5
+        Pending = 0,
+        WaitForAttorny = 1,
+        WaitForDocument = 2,
+        Accepted = 3,
+        InProgress = 4,
+        Compleeted = 5, 
+        Rejected = 6
     }
 
     public enum Reason
