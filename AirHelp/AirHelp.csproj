@@ -245,6 +245,10 @@
     <Compile Include="Migrations\201805011511292_isDurty.Designer.cs">
       <DependentUpon>201805011511292_isDurty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805071551490_additonaluser.cs" />
+    <Compile Include="Migrations\201805071551490_additonaluser.Designer.cs">
+      <DependentUpon>201805071551490_additonaluser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -513,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805011511292_isDurty.resx">
       <DependentUpon>201805011511292_isDurty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805071551490_additonaluser.resx">
+      <DependentUpon>201805071551490_additonaluser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

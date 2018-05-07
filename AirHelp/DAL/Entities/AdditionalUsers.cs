@@ -11,7 +11,6 @@ namespace AirHelp.DAL
 {
 	public class AdditionalUser : EntityBase
 	{
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set;}
 
