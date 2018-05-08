@@ -12,7 +12,6 @@ namespace AirHelp.DAL
 	public class AirPort : EntityBase
 	{
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid Id { get; set; }
 
         public Guid ClaimId { get; set; }

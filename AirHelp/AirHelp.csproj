@@ -249,6 +249,14 @@
     <Compile Include="Migrations\201805071551490_additonaluser.Designer.cs">
       <DependentUpon>201805071551490_additonaluser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805080924277_key.cs" />
+    <Compile Include="Migrations\201805080924277_key.Designer.cs">
+      <DependentUpon>201805080924277_key.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805080931505_keygiud.cs" />
+    <Compile Include="Migrations\201805080931505_keygiud.Designer.cs">
+      <DependentUpon>201805080931505_keygiud.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -520,6 +528,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805071551490_additonaluser.resx">
       <DependentUpon>201805071551490_additonaluser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080924277_key.resx">
+      <DependentUpon>201805080924277_key.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080931505_keygiud.resx">
+      <DependentUpon>201805080931505_keygiud.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

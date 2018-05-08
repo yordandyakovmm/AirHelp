@@ -531,6 +531,7 @@ namespace AirHelp.Controllers
                     for (var i = 0; i < arrN.Length; i++)
                     {
                         AdditionalUser user = new AdditionalUser {
+                            AdditionalUserId = Guid.NewGuid(),
                             FirstName = arrN[i],
                             LastName = arrF[i]
                         };
