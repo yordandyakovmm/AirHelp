@@ -20,13 +20,15 @@ namespace AirHelp.Controllers
         {
             ViewBag.siteName = ConfigurationManager.AppSettings["siteName"].ToString();
             ViewBag.company = ConfigurationManager.AppSettings["company"].ToString();
+            ViewBag.companyEn = ConfigurationManager.AppSettings["companyEn"].ToString();
             ViewBag.address = ConfigurationManager.AppSettings["address"].ToString();
-            ViewBag.number = ConfigurationManager.AppSettings["number"].ToString();
+            
             ViewBag.UIC = ConfigurationManager.AppSettings["UIC"].ToString();
             ViewBag.email = ConfigurationManager.AppSettings["email"].ToString();
             ViewBag.tel = ConfigurationManager.AppSettings["tel"].ToString();
             ViewBag.bankAccount = ConfigurationManager.AppSettings["bankAccount"].ToString();
             ViewBag.manager = ConfigurationManager.AppSettings["manager"].ToString();
+
 
             base.Initialize(requestContext);
 

@@ -1,25 +1,8 @@
-﻿using Facebook;
-using Newtonsoft.Json.Linq;
-using AirHelp.DAL;
+﻿using AirHelp.DAL;
 using AirHelp.Models;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
-using System.Threading;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-using System.Web.Helpers;
-using System.Web.Script.Serialization;
-using System.Device.Location;
 
 namespace AirHelp.Controllers
 {
@@ -66,14 +49,14 @@ namespace AirHelp.Controllers
             string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
 
             String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{id}";
-
+            url = "https://google.com";
             SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
 
-            converter.Options.MarginTop = 30;
-            converter.Options.MarginBottom = 10;
-            converter.Options.MarginLeft = 20;
-            converter.Options.MarginRight = 20;
-            converter.Options.PdfPageSize = SelectPdf.PdfPageSize.A4;
+            //converter.Options.MarginTop = 30;
+            //converter.Options.MarginBottom = 10;
+            //converter.Options.MarginLeft = 20;
+            //converter.Options.MarginRight = 20;
+            //converter.Options.PdfPageSize = SelectPdf.PdfPageSize.A4;
 
             SelectPdf.PdfDocument doc = converter.ConvertUrl(url);
 
