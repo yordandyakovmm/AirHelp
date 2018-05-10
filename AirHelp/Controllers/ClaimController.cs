@@ -563,6 +563,12 @@ namespace AirHelp.Controllers
                 String cUrl = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/contractPdf/{claim.ClaimId}";
 
                 SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
+                converter.Options.MarginTop = 30;
+                converter.Options.MarginBottom = 10;
+                converter.Options.MarginLeft = 20;
+                converter.Options.MarginRight = 20;
+                converter.Options.PdfPageSize = SelectPdf.PdfPageSize.A4;
+
                 SelectPdf.PdfDocument doc = converter.ConvertUrl(aUrl);
                 doc.Save(Server.MapPath($"~{claim.AttorneyUrl}"));
                 doc.Close();

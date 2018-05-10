@@ -8,11 +8,11 @@
     conv = document.getElementById('signiture');
     ctx = conv.getContext('2d');
     ctx.strokeStyle = 0;
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 0.5;
     ctx.lineJoin = 'round';
     ctx.strokeStyle = '#000000';
     ctx.shadowColor = '#000000';
-    ctx.shadowBlur = 2;
+    ctx.shadowBlur = 1;
     isDrawing = false;
     couunt = 0;
 

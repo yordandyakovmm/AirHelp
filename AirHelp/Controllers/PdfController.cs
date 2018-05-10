@@ -11,21 +11,7 @@ namespace AirHelp.Controllers
     public class PdfController : BaseController
     {
 
-        //[Route("attorney/{id}")]
-        //public ActionResult AttorneyHtml(Guid id)
-        //{
-        //    Claim claim = null;
-
-        //    using (AirHelpDBContext dc = new AirHelpDBContext())
-        //    {
-        //        claim = dc.Claims.Include("User").Where(c => c.ClaimId == id).SingleOrDefault();
-        //    }
-
-        //    var model = new VMClaim(claim);
-
-        //    return PartialView("Attorney", model);
-        //}
-
+       
         [Route("attorneyPdf/{id}")]
         public ActionResult AttorneyHtml(Guid id)
         {
@@ -49,14 +35,14 @@ namespace AirHelp.Controllers
             string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
 
             String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{id}";
-            url = "https://google.com";
+           
             SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
 
-            //converter.Options.MarginTop = 30;
-            //converter.Options.MarginBottom = 10;
-            //converter.Options.MarginLeft = 20;
-            //converter.Options.MarginRight = 20;
-            //converter.Options.PdfPageSize = SelectPdf.PdfPageSize.A4;
+            converter.Options.MarginTop = 30;
+            converter.Options.MarginBottom = 10;
+            converter.Options.MarginLeft = 20;
+            converter.Options.MarginRight = 20;
+            converter.Options.PdfPageSize = SelectPdf.PdfPageSize.A4;
 
             SelectPdf.PdfDocument doc = converter.ConvertUrl(url);
 
@@ -67,21 +53,7 @@ namespace AirHelp.Controllers
             return null;
         }
 
-        //[Route("contract/{id}")]
-        //public ActionResult ContractHtml(Guid id)
-        //{
-        //    Claim claim = null;
-
-        //    using (AirHelpDBContext dc = new AirHelpDBContext())
-        //    {
-        //        claim = dc.Claims.Include("User").Where(c => c.ClaimId == id).SingleOrDefault();
-        //    }
-
-        //    var model = new VMClaim(claim);
-
-        //    return PartialView("Contract", model);
-        //}
-
+        
         [Route("contractPdf/{id}")]
         public ActionResult ContractHtml(Guid id)
         {

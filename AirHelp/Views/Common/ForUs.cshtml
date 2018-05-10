@@ -1,8 +1,8 @@
-﻿<div class="data-content">
+﻿<div class="">
     <div class="center-content">
         <div class="contact-main">
             <div class="contact-heder">
-                <span style="color: darkred; font-size: 60px; font-weight: 700;"> ЛОГО </span> <span style="font-size: 60px; font-weight: 700;"> Koed OOD </span>
+                @ViewBag.company е дружество регистрирано в България със седалище гр. Велико Търново
             </div>
             <div class="contact-data">
 
@@ -10,39 +10,7 @@
                     <label class="title">Адрес</label>
                     <div>
                         <label class="value">
-                            Велико Търново, Алеко Константинов 17Б, ет 3
-                        </label>
-                    </div>
-                </div>
-                <div class="">
-                    <label class="title">ЕИК</label>
-                    <div>
-                        <label class="value">
-                            325 987 234
-                        </label>
-                    </div>
-                </div>
-                <div class="">
-                    <label class="title">Идентификационен номер по ДДС</label>
-                    <div>
-                        <label class="value">
-                            BG203643295
-                        </label>
-                    </div>
-                </div>
-                <div class="">
-                    <label class="title">Телефон</label>
-                    <div>
-                        <label class="value">
-                            + 3588 87504 957
-                        </label>
-                    </div>
-                </div>
-                <div class="">
-                    <label class="title">Емаил</label>
-                    <div>
-                        <label class="value">
-                            koefmail@mail.com
+                            @ViewBag.address
                         </label>
                     </div>
                 </div>
@@ -50,15 +18,32 @@
                     <label class="title">Управител</label>
                     <div>
                         <label class="value">
-                            Коеф
+                            @ViewBag.manager
                         </label>
                     </div>
                 </div>
-                <div class="form-box">
-                    <label class="title">Коеф ООД е регистрирн като администратор на лични данни с номер</label>
+                <div class="">
+                    <label class="title">ЕИК</label>
                     <div>
                         <label class="value">
-                            234 564
+                            @ViewBag.UIC
+                        </label>
+                    </div>
+                </div>
+
+                <div class="">
+                    <label class="title">Телефон</label>
+                    <div>
+                        <label class="value">
+                            <a href="tel:+359885504957">0885 504 957</a>
+                        </label>
+                    </div>
+                </div>
+                <div class="">
+                    <label class="title">Емайл</label>
+                    <div>
+                        <label class="value">
+                            <a href="mailto:office@helpclaim.eu">office@helpclaim.eu</a>
                         </label>
                     </div>
                 </div>
@@ -66,26 +51,26 @@
                     <label class="title">IBAN</label>
                     <div>
                         <label class="value">
-                            BG88FINV78987987883372
+                            @ViewBag.bankAccount
                         </label>
                     </div>
                     <div>
                         <label class="value">
-                            Koef OOD
+                            Банка ДСК
                         </label>
                     </div>
-                    <div>
-                        <label class="value">
-                            Първа Инвестиционна Банка
-                        </label>
-                    </div>
+
                 </div>
-
-
             </div>
-            <div class="contact-row">
-                <p> Коеф ООД помага на свойте клиент в при подаван ена изкове за обезщетени. С цел удобство и минимални усиля, пт 2018 г предлага и веб форма за получаване на обезщетени при полед съгласно регламент 261 от 2004. </p>
-            </div>
+            <div class="contact-heder" style="margin-top: 40px;">
+              
+                    @ViewBag.company съдейства на свойте клиенти при получаване на онезщетение при полет
+                    съгласно
+                    <a href="https://eur-lex.europa.eu/legal-content/BG/TXT/?uri=celex%3A32004R0261" target="_blank">
+                        регламент 261 от 2004
+                    </a>. С цел удобство на своите клиенти @ViewBag.company предлага
+                    <a href="/обезщетение-при-полет">калкулатор на обезщетение </a>.
+              </div>
 
         </div>
     </div>

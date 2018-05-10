@@ -590,6 +590,12 @@
   div.width-550 .form-row-yes-no .checkbox::before {
     margin-top: 2px;
   }
+  .contact-main .contact-heder {
+    width: 500px;
+  }
+  .contact-main .contact-data {
+    width: 500px;
+  }
   button.reset {
     margin-top: 30px;
   }
