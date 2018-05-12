@@ -501,6 +501,8 @@ html,
 .data-content .info-page {
   grid-area: center;
   padding: 10px 20px;
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
 }
 .data-content .info-page h1 {
   margin: 15px 0 0 0;
@@ -508,6 +510,12 @@ html,
   font-size: 40px;
   text-transform: uppercase;
   font-weight: 600;
+}
+.data-content .info-page li {
+  margin: 0 0 0 40px;
+  text-align: justify;
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
 }
 .data-content .info-page h2 {
   margin: 15px 0 0 0;
