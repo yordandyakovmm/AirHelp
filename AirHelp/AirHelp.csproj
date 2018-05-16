@@ -455,7 +455,6 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Pdf\Attorney.cshtml" />
     <Content Include="Views\Common\ForUs.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Claim\RegisterClaim.cshtml" />

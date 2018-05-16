@@ -702,6 +702,24 @@ namespace AirHelp.Controllers
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         [HttpPost]
         [Route("проверка-полет")]
         public ActionResult CheckDirctFlightPost(string FlightNumber, string Date)

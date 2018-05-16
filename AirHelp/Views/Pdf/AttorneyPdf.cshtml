@@ -50,6 +50,7 @@
 
         .content {
             text-align: justify;
+            line-height: 19px;
         }
 
         .signiture {
@@ -87,7 +88,7 @@
             <div class="left">
                 <p class="hedar"> ПЪЛНОМОЩНО <p>
                 <p class="content">
-                    Долуподписаният/ата: @Model.FirstName @Model.LastName, с адрес: @Model.City, @Model.Adress,
+                    Долуподписаният/ата: @Model.FirstName @Model.LastName, с адрес: @Model.City, @Model.Adress.
                 </p>
                 <p class="hedar"> УПЪЛНОМОЩАВАМ <p>
                 <p class="content">
@@ -146,9 +147,9 @@
                 </p>
                 <p class="hedar"> AUTHORIZING </p>
                 <p class="content">
-                    &nbsp;&nbsp;&nbsp; @ViewBag.company, registered in the Trade Register under
-                    UIN @ViewBag.UNC, seat and registered address: Republic of
-                    Bulgaria, Veliko Tarnovo, @ViewBag.address, represented by @ViewBag.manager.
+                    &nbsp;&nbsp;&nbsp; @ViewBag.companyEn, registered in the Trade Register under
+                    UIN @ViewBag.UIC, seat and registered address: Republic of
+                    Bulgaria, @ViewBag.addressEn, represented by @ViewBag.managerEn.
                 </p>
                 <p class="content">
                     To represent me to the coresponding airline carier @Model.AirCompany or another airline carier that issued the ticket
@@ -175,7 +176,7 @@
                 </p>
                 <p class="content">
                     To receive in full and on my behalf the cash benefit under Regulation EC 261/2004,
-                    due and payable as a result of the above actions on the  @ViewBag.company @ViewBag.bankAccount account.
+                    due and payable as a result of the above actions on the  @ViewBag.companyEn @ViewBag.bankAccount account.
                 </p>
                 <p class="content">
                     In connection with the actions described above on my behalf, receive and sign any documents,
@@ -201,7 +202,12 @@
                     <span><b>Дата/Date: @Model.DateCreated.ToString("dd.MM.yyyy") </b></span>
                 </div>
                 <div class="span-2">
-                    <span><b>Упълномощител / Principal:</b>&nbsp;</span><div style="display: inline-block; position:absolute"> <img src="@Model.SignitureImage" style="margin: -70px 0 0 10px; width: 200px; height:150px;" /> </div>
+                    <span><b>Упълномощител / Principal:</b>&nbsp;</span><div style="display: inline-block; position:absolute"> 
+                    @if (!string.IsNullOrEmpty(@Model.SignitureImage))
+                    {
+                        <img src="@Model.SignitureImage" style="margin: -70px 0 0 10px; width: 200px; height:150px;" /> 
+                    }
+                    </div>
                 </div>
 
             </div>

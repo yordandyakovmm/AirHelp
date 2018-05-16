@@ -20,7 +20,10 @@ namespace AirHelp.Controllers
 
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
-                claim = dc.Claims.Include("User").Where(c => c.ClaimId == id).SingleOrDefault();
+                claim = dc.Claims
+                    .Include("User")
+                    .Include("AirPorts")
+                    .Where(c => c.ClaimId == id).SingleOrDefault();
             }
 
             var model = new VMClaim(claim);
@@ -62,7 +65,10 @@ namespace AirHelp.Controllers
 
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
-                claim = dc.Claims.Include("User").Where(c => c.ClaimId == id).SingleOrDefault();
+                claim = dc.Claims
+                    .Include("User")
+                    .Include("AirPorts")
+                    .Where(c => c.ClaimId == id).SingleOrDefault();
             }
 
             var model = new VMClaim(claim);

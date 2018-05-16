@@ -62,13 +62,18 @@ namespace AirHelp.Models
 
         public VMClaim(Claim claim)
         {
+            var departure = claim.AirPorts.ToArray()[0];
+            var destinaation = claim.AirPorts.ToArray()[claim.AirPorts.Count() - 1];
+
             ClaimId = claim.ClaimId;
             State = "";
 
             User = null;
             DateCreated = claim.DateCreated;
+            DepartureAirport = $"{departure.name} ({departure.iata})";
+            DestinationAirports = $"{destinaation.name} ({destinaation.iata})";
+            BookCode = claim.BookingCode;
 
-            
             Type = claim.Type.ToString();
             
             FirstName = claim.User.FirstName;
@@ -79,10 +84,10 @@ namespace AirHelp.Models
             Email = claim.User.Email;
             Tel = claim.User.Tel;
             FlightNumber = claim.FlightNumber;
-            Date = claim.FlightDate;
-    
-           
-            AirCompany = claim.AirCompany;
+            Date = claim.AirPorts.ToList().Where(a => a.startIssue).SingleOrDefault().FlightDate;
+
+
+            AirCompany = $"{claim.AirCompany} ({claim.AirCompanyCode})";
             AdditionalInfo = claim.AdditionalInfo;
             Confirm = claim.Confirm;
            
@@ -94,13 +99,19 @@ namespace AirHelp.Models
 
         public VMClaim FromClaim(Claim claim)
         {
+            var departure = claim.AirPorts.ToArray()[0];
+            var destinaation = claim.AirPorts.ToArray()[claim.AirPorts.Count() - 1];
+
             ClaimId = claim.ClaimId;
             State = claim.State.ToString();
 
             User = null;
             DateCreated = claim.DateCreated;
+            DepartureAirport = $"{departure.name} ({departure.iata})";
+            DestinationAirports = $"{destinaation.name} ({destinaation.iata})";
+            BookCode = claim.BookingCode;
 
-            
+
             Type  = "";
             FirstName = claim.User.FirstName;
             LastName = claim.User.LastName;
@@ -110,9 +121,9 @@ namespace AirHelp.Models
             Email = claim.User.Email;
             Tel = claim.User.Tel;
             FlightNumber = claim.FlightNumber;
-            Date = claim.FlightDate;
+            Date = claim.AirPorts.ToList().Where(a => a.startIssue).SingleOrDefault().FlightDate;
            
-            AirCompany = claim.AirCompany;
+            AirCompany = $"{claim.AirCompany} ({claim.AirCompanyCode})";
             AdditionalInfo = claim.AdditionalInfo;
             Confirm = claim.Confirm;
            
