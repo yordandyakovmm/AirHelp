@@ -32,7 +32,7 @@ function validateConfirmClaim() {
             $("input[name='confirm']").parent().parent().removeClass('error');
         }
     }
-    if (!($('.form-box-signiture').is('.success')) && $('[SignViaEmail]').val() == 'no') {
+    if (!($('.form-box-signiture').is('.success')) && $('[name="SignViaEmail"]').val() == 'no') {
         result = false;
         $('.form-box-signiture').removeClass('success').addClass('error');
     } 

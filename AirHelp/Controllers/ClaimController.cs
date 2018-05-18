@@ -478,7 +478,7 @@ namespace AirHelp.Controllers
                 if (claim.State > ClaimStatus.Pending)
                 {
                     var url = $"/иск/{claim.ClaimId}";
-                    //Response.Redirect(url);
+                    Response.Redirect(url);
                 }
                 return View("ConfirmClaim", claim);
             }
@@ -511,6 +511,12 @@ namespace AirHelp.Controllers
                     .Include("AirPorts")
                     .Where(c => c.ClaimId == ClaimId).SingleOrDefault();
 
+                if (claim.State > ClaimStatus.Pending)
+                {
+                    var url = $"/иск/{claim.ClaimId}";
+                    Response.Redirect(url);
+                }
+                
                 if (!string.IsNullOrEmpty(Name))
                 {
                     var arrN = Name.Split(',');

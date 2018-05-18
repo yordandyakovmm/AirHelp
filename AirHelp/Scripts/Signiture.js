@@ -71,7 +71,7 @@ function onmousemove(e) {
         y = newY;
         ctx.stroke();
     }
-    if (couunt > 80) {
+    if (couunt > 60) {
         $('.form-box-signiture').removeClass('error').addClass('success');
         //saveSigiture();
     }

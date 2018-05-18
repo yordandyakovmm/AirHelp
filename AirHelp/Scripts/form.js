@@ -1,4 +1,8 @@
 ﻿
+$('input, textarea').focus(function () {
+    $(this).parent().removeClass('error');
+});
+
 function fixSize() {
     var heigth = $(window).height() - 240;
     $('.form-content').height(heigth);
@@ -42,6 +46,25 @@ function validate() {
     return result;
 }
 
+
+
+function validateContact() {
+    var result = true;
+
+    var email = $("input[name='Email']").val();
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    result = re.test(email);
+    if (!result) {
+        $("input[name='Email']").parent().addClass('error');
+    }
+
+    if ($("[name='AdditionalInfo']").val().length < 20) {
+        $("[name='AdditionalInfo']").parent().addClass('error');
+        result = false;
+    }
+    
+    return result;
+}
 
 function clearForm()
 {

@@ -104,6 +104,8 @@
                     <span>Искам да получа пълномощно и договор за подпис по емейл</span>
                 </label>
             </div>
+            <div class="form-hedar">
+            </div>
             <div class="form-subtext" signiture>
                 Моля подпишете <b> @Model.User.FirstName @Model.User.LastName </b>
             </div>
@@ -121,9 +123,17 @@
                 </div>
             </div>
 
-            <div class="form-subtext" email style="display:none">
-                Пълномощното и договора ще Ви бъдат испратени на @Model.User.Email
+            <div class="form-hedar" email  style="display:none; margin-top: 20px;">
             </div>
+            <div class="form-subtext" email style="display:none">
+                Пълномощното и договора ще Ви бъдат испратени на емаил: @Model.User.Email
+            </div>
+
+          
+            <div class="form-hedar"  style="margin-top: 40px;">
+            </div>
+           
+           
             <div class="form-row-yes-no" style="grid-template-columns: auto">
                 <label class="checkbox">
                     <input type="radio" name="confirm">
