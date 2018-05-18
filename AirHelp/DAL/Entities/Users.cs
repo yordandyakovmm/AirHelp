@@ -41,5 +41,9 @@ namespace AirHelp.DAL
 
         public string type { get; set; }
 
+        public string changePasswordCode { get; set; }
+
+        public DateTime changePasswordCodeValudation { get; set; }
+
     }
 }

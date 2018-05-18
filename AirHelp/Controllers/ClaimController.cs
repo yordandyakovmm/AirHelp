@@ -623,7 +623,7 @@ namespace AirHelp.Controllers
                             });
                         }
                     }
-                    claim.isDurty = !User.IsInRole("admin");
+                    claim.isDurtyAdmin = !User.IsInRole("admin");
 
                 }
                 if (claim.State == ClaimStatus.WaitForAttorny && claim.Documents.Count > 0)
@@ -655,6 +655,21 @@ namespace AirHelp.Controllers
             return View("ClaimList", list);
         }
 
+        [Authorize(Roles = "admin")]
+        [Route("потребители")]
+        public ActionResult UserList(string category)
+        {
+            var isAdmin = User.IsInRole("admin");
+            List<User> list = null;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                list = dc.Users
+                    .Include("Claims")
+                    .OrderByDescending(c => c.CreateDate)
+                    .ToList();
+            }
+            return View("UserList", list);
+        }
         [HttpGet]
         [Authorize(Roles = "admin", Users = "yordan.dyakov@mentormate.com")]
         [Route("manager")]

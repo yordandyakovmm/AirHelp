@@ -257,6 +257,10 @@
     <Compile Include="Migrations\201805080931505_keygiud.Designer.cs">
       <DependentUpon>201805080931505_keygiud.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805182117065_password.cs" />
+    <Compile Include="Migrations\201805182117065_password.Designer.cs">
+      <DependentUpon>201805182117065_password.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -418,6 +422,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Compile Include="DAL\AirHelpDBContext.cs" />
     <Content Include="Scripts\ConfirmClaim.js" />
+    <Content Include="Scripts\ChangePassword.js" />
     <Content Include="Scripts\Signiture.js" />
     <Content Include="Scripts\RegisterUser.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -477,6 +482,9 @@
     <Content Include="Views\Claim\ClaimListYordan.cshtml" />
     <Content Include="Views\Common\Success.cshtml" />
     <Content Include="Views\Pdf\ContractPdf.cshtml" />
+    <Content Include="Views\Claim\UserList.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
+    <Content Include="Views\Login\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -533,6 +541,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805080931505_keygiud.resx">
       <DependentUpon>201805080931505_keygiud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805182117065_password.resx">
+      <DependentUpon>201805182117065_password.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

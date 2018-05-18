@@ -49,6 +49,7 @@ namespace AirHelp.Controllers
                 return View("Success");
             }
 
+            ViewBag.text = "Запитването е изпратено успешно";
             return View("Success");
         }
 

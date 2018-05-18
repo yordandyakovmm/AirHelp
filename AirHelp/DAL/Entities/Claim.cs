@@ -98,7 +98,9 @@ namespace AirHelp.DAL
 
         public virtual ICollection<Document> Documents { get; set; }
 
-        public bool isDurty { get; set; }       
+        public bool isDurtyAdmin { get; set; }   
+        
+        public bool isDurtyuser { get; set; }
 
 
     }

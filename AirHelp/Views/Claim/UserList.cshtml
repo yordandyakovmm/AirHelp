@@ -1,17 +1,18 @@
-﻿@model List<AirHelp.DAL.Claim>
+﻿@model List<AirHelp.DAL.User>
 
 <div class="register-form">
     <div class="progress">
         @if (User.IsInRole("admin"))
         {
 
-            <div class="current">
-                <div class="circle"><label> </label></div>
-                <label class="text">Искове</label>
-            </div>
             <div class="empty">
                 <div class="circle"><label> </label></div>
-                <a class="text" href="/потребители"> Потребители </a>
+                <a class="text" href="/обезщетение-списък"> Искове </a>
+                
+            </div>
+            <div class="current">
+                <div class="circle"><label> </label></div>
+                <label class="text"> Потребители </label>
             </div>
             <div class="empty">
                 <div class="circle"><label> </label></div>
@@ -40,68 +41,60 @@
         </div>
         <div class="list-container">
             <div class="claim-list-heder">
-                <div style="grid-column-start: 1; grid-column-end: 2;">
+                
 
+                <div style="grid-column-start: 1; grid-column-end: 3;">
                     <label>
-                        Иск #
-                    </label>
-
-                </div>
-
-                <div style="grid-column-start: 2; grid-column-end: 3;">
-                    <label>
-                        Полет #
+                        Име
                     </label>
                 </div>
                 <div style="grid-column-start: 3; grid-column-end: 4;">
                     <label>
-                        Дата на иска
+                        Искове 
                     </label>
                 </div>
                 <div style="grid-column-start: 4; grid-column-end: 5;">
                     <label>
-                        Обещетение
+                        Телефон
                     </label>
                 </div>
                 <div style="grid-column-start: 5; grid-column-end: 6;">
                     <label>
-                        Авиокомпания
+                        Имейл
+                       
                     </label>
                 </div>
             </div>
-            @foreach (var claim in Model)
+            @foreach (var user in Model)
             {
-                <a href="/иск/@claim.ClaimId">
+                <a href="/потрбител/@user.UserId">
 
                     <div class="claim-list">
-                        <div style="grid-column-start: 1; grid-column-end: 2;">
+                        <div style="grid-column-start: 1; grid-column-end: 3;">
 
                             <label>
-                                #@claim.referalNumber
+                                @user.FirstName @user.LastName
                             </label>
 
                         </div>
 
-                        <div style="grid-column-start: 2; grid-column-end: 3;">
-                            <label>
-                                @claim.AirPorts.Where(a => a.startIssue).Select(a => a.FlightNumber).SingleOrDefault()
-                            </label>
-                        </div>
                         <div style="grid-column-start: 3; grid-column-end: 4;">
                             <label>
-                                @claim.DateCreated.ToString("dd.MM.yyyy")
+                                @user.Claims.Count() - €@user.Claims.Sum(c => c.CompensationAmount)
                             </label>
+                           
                         </div>
                         <div style="grid-column-start: 4; grid-column-end: 5;">
                             <label>
-                                €@claim.CompensationAmount
+                                @(string.IsNullOrEmpty(user.Tel) ? "--" : user.Tel)
                             </label>
                         </div>
                         <div style="grid-column-start: 5; grid-column-end: 6;">
                             <label>
-                                @claim.AirCompany ( @claim.AirCompanyCode )
+                                @user.Email
                             </label>
                         </div>
+                        
                     </div>
                 </a>
             }

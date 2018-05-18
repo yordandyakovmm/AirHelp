@@ -30,6 +30,46 @@ namespace AirHelp.Controllers
             return View("Login");
         }
 
+        [Authorize]
+        [HttpGet]
+        [Route("смяна-на-парола")]
+        public ActionResult ChangePassword()
+        {
+            ViewBag.error = false;
+            return View("ChangePassword");
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("смяна-на-парола")]
+        public ActionResult ChangePasswordPost()
+        {
+            var oldPassword = Request.Form["oldPassword"];
+            var Password = Request.Form["Password"];
+            string hashPassword = GetHash(oldPassword);
+
+            User user = null;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                user = dc.Users.Where(u => u.Email == User.Identity.Name).SingleOrDefault();
+
+
+                if (user.password != hashPassword)
+                {
+                    ViewBag.error = true;
+                    return View("ChangePassword");
+                }
+                else
+                {
+                    user.password = GetHash(oldPassword);
+                    dc.SaveChanges();
+                    ViewBag.text = "Паролата Ви е сменена успешно";
+                    return View("Success");
+                }
+
+            }
+            return View("Success");
+        }
 
         [HttpPost]
         [Route("вход")]
