@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 
 using AirHelp.Hellpers;
+using System.Net.Mail;
 
 namespace AirHelp.Controllers
 {
@@ -141,6 +142,153 @@ namespace AirHelp.Controllers
             Session.Remove("user");
             return Redirect("/");
         }
+
+
+        [HttpGet]
+        [Route("забравена-парола")]
+        public ActionResult ForgottenPassword()
+        {
+            return View("ForgottenPassword");
+
+        }
+
+        [HttpPost]
+        [Route("забравена-парола")]
+        public ActionResult ForgottenPasswordPost()
+        {
+            var Email = Request.Form["Email"];
+
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                
+                var user = dc.Users.Where(u => u.Email == Email ).SingleOrDefault();
+
+                if (user == null)
+                {
+                    ViewBag.error = " Няма потребител с такъв email ";
+                    return View("ForgottenPassword");
+                }
+                else {
+                    DateTime limit = DateTime.Now.AddMinutes(30);
+                    Guid guid1 = Guid.NewGuid();
+                    Guid guid2 = Guid.NewGuid();
+                    var securityKey = GetHash(guid1.ToString()) + GetHash(guid2.ToString());
+                    securityKey = securityKey
+                        .Replace("=", "")
+                        .Replace("/", "")
+                        .Replace("\\", "")
+                        .Replace("+", "");
+                    var url = $"helpclaim.eu/забравена-парола/{securityKey}";
+                    user.changePasswordCode = securityKey;
+                    user.changePasswordCodeValudation = limit;
+                    dc.SaveChanges();
+
+                    string bosy = $"<h1>Възстановяване на забравена парола </h1>"+ 
+                        $"<p>Възстановяване на забравена парола за потребител на helpclaim.eu. потребител имейл: {user.Email}</p>" +
+                        $"<p> Моля последваите лика за избор на нова парола: <a href='{url}' target='_blank'> генериране на парола </a></p>" +
+                        $"<p><b>{ConfigurationManager.AppSettings["company"]} 2018</b></p>";
+
+
+
+                    MailMessage message = new MailMessage();
+                    message.To.Add(new MailAddress(user.Email));
+                    message.Subject = "Забравена парола";
+                    message.Body = bosy;
+                    message.IsBodyHtml = true;
+
+                    try
+                    {
+                        using (var smtp = new SmtpClient())
+                        {
+                            smtp.Port = 25;
+                            smtp.EnableSsl = false;
+                            smtp.Credentials = new System.Net.NetworkCredential("postmaster@helpclaim.eu", "K4hvd2357@");
+                            smtp.Host = "mail.helpclaim.eu";
+                            smtp.Send(message);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewBag.text = "Грешка при изпращането на имейл за възстановяване на парола";
+                        return View("Success");
+
+                    }
+
+                    ViewBag.text = "Изпратен емейл";
+                    ViewBag.text = "Изпратен Ви е имейл с линк за избор на нова парола. Валидността на линка е 30 мин.";
+                    return View("Success");
+
+                }
+                
+            }
+
+            return View("ForgottenPassword");
+
+        }
+
+
+        [HttpGet]
+        [Route("забравена-парола/{code}")]
+        public ActionResult ForgottenPasswordP(string code)
+        {
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+
+                var user = dc.Users.Where(u => u.changePasswordCode == code).SingleOrDefault();
+
+                if (user == null) {
+                    ViewBag.text = "Невалидан линк";
+                    return View("Success");
+                }
+
+                if (user != null && DateTime.Now > user.changePasswordCodeValudation)
+                {
+                    ViewBag.text = "Линка е с изтекла валидност";
+                    return View("Success");
+                }
+
+                return View("ForgottenPasswordP");
+
+            }
+
+            return View("ForgottenPasswordP");
+        }
+
+        [HttpPost]
+        [Route("забравена-парола/{code}")]
+        public ActionResult ForgottenPasswordPP(string code)
+        {
+            var Password = Request.Form["Password"];
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+
+                var user = dc.Users.Where(u => code != null && u.changePasswordCode == code).SingleOrDefault();
+
+                if (user == null)
+                {
+                    ViewBag.text = "Невалидан линк";
+                    return View("Success");
+                }
+
+                if (user != null && DateTime.Now > user.changePasswordCodeValudation)
+                {
+                    ViewBag.text = "Линка е с изтекла валидност";
+                    return View("Success");
+                }
+
+                Password = GetHash(Password);
+                user.password = Password;
+                user.changePasswordCode = null;
+                dc.SaveChanges();
+
+                ViewBag.text = "Паролата е зададена успешно";
+                return View("Success");
+
+            }
+
+            return View("ForgottenPasswordP");
+        }
+
 
         [AllowAnonymous]
         public ActionResult Facebook()

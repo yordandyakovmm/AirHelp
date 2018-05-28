@@ -2,5 +2,11 @@
     <div class="contact-form-main">
         <span> @ViewBag.text  </span>
     </div>
+    @if (!string.IsNullOrEmpty(@ViewBag.subtext))
+    {
+    <div class="contact-form-main" style="font-size: 16px;">
+        <span> @ViewBag.subtext  </span>
+    </div>
+    }
 </div>
 <script src="~/Scripts/form.js"></script>
