@@ -448,12 +448,13 @@ namespace AirHelp.Controllers
                     City = City,
                     Adress = Adress,
                     Country = Country,
+                    CreateDate = DateTime.Now,
                     Tel = Tel,
                     Email = Email,
                     password = GetHash(Password),
                     PictureUrl = "",
-                    CreateDate = DateTime.Now,
-                    Role = "user"
+                    Role = "user",
+                    changePasswordCodeValudation = new DateTime(2000, 1, 1)
                 };
 
                 dc.Users.Add(newUserBD);
@@ -543,13 +544,13 @@ namespace AirHelp.Controllers
 
                         if (file != null && file.ContentLength > 0)
                         {
-                            var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
+                            var name = Guid.NewGuid().ToString().Replace("-", "") + "." + file.FileName.Split('.')[1];
                             file.SaveAs(Server.MapPath("~/UserDocuments/" + name));
                             claim.Documents.Add(new Document
                             {
                                 Id = Guid.NewGuid(),
                                 DocumentName = file.FileName,
-                                Url = "/UserDocuments/" + name
+                                Url = "/документи/" + name.Split('.')[0] + "/" + name.Split('.')[1]
                             });
                         }
                     }
@@ -557,8 +558,8 @@ namespace AirHelp.Controllers
                 claim.State = signOnEmail ? ClaimStatus.WaitForAttorny : (claim.Documents.Count > 0 ? ClaimStatus.InProgress : ClaimStatus.WaitForDocument);
                 
                 Guid newGuid = Guid.NewGuid();
-                claim.AttorneyUrl = $"/UserDocuments/atorny-{claim.referalNumber}.pdf";
-                claim.contractUrl = $"/UserDocuments/contract-{claim.referalNumber}.pdf";
+                claim.AttorneyUrl = $"/документи/attorny{string.Format("{0}:0000", claim.referalNumber)}/pdf";
+                claim.contractUrl = $"/документи/contract-{string.Format("{0}:0000", claim.referalNumber)}/pdf";
 
                 dc.SaveChanges();
 

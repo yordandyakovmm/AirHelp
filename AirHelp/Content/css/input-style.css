@@ -636,3 +636,6 @@ p.info {
   font-size: 15px;
   font-weight: 400;
 }
+a {
+  font-family: "PT Sans", sans-serif;
+}

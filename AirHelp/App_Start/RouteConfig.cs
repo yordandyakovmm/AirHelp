@@ -12,6 +12,8 @@ namespace AirHelp
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //routes.IgnoreRoute("UserDocuments");
+
 
             routes.MapRoute(
                name: "Login",

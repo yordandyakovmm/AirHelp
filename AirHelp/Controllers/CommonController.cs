@@ -1,7 +1,8 @@
-﻿using System;
+﻿using AirHelp.DAL;
+using System;
 using System.Net.Mail;
 using System.Web.Mvc;
-
+using System.Linq;
 
 namespace AirHelp.Controllers
 {
@@ -81,6 +82,52 @@ namespace AirHelp.Controllers
             return View("CommonRules");
         }
 
+        [Authorize]
+        [HttpGet]
+        [Route("документи/{doc}/{ext}")]
+        public ActionResult ProtectedDocuments(string doc, string ext)
+        {
+            var userID = User.Identity.Name;
+            doc = doc + "." +  ext;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                var isAdmin = User.IsInRole("admin");
+                var filePath = "";
+                var fileName = "";
+                var document = dc.Documents.Where(d => d.DocumentName == doc && (d.Claim.UserId == userID || isAdmin)).SingleOrDefault();
+                if (document != null)
+                {
+                    filePath = $"~/UserDocuments/{document.DocumentName}";
+                    fileName = document.DocumentName;
+
+
+                    var length = new System.IO.FileInfo(Server.MapPath(filePath)).Length;
+                    Response.BufferOutput = false;
+                    Response.AddHeader("Content-Length", length.ToString());
+                    return File(Server.MapPath(filePath), System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+                }
+                else
+                {
+                    var url = $"UserDocuments/{doc}";
+                    var pdf = dc.Claims.Where(c => (c.UserId == userID || isAdmin) && (c.AttorneyUrl == url || c.contractUrl == url)).SingleOrDefault();
+                    if (pdf != null)
+                    {
+                        filePath = $"~/UserDocuments/{doc}";
+                        fileName = doc;
+
+                        var length = new System.IO.FileInfo(Server.MapPath(filePath)).Length;
+                        Response.BufferOutput = false;
+                        Response.AddHeader("Content-Length", length.ToString());
+                        return File(Server.MapPath(filePath), System.Net.Mime.MediaTypeNames.Application.Pdf, fileName);
+                    }
+                }
+
+            }
+
+            ViewBag.text = "защитена информация";
+            ViewBag.subtext = "файла е защитен от неауторизиран достъп";
+            return View("Success");
+        }
 
     }
 }
