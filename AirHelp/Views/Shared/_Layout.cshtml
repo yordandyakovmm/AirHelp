@@ -3,14 +3,17 @@
 <html>
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117938824-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-117938824-1');
-    </script>
+    
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117938824-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'UA-117938824-1');
+        </script>
+    }
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
@@ -53,7 +56,7 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <span class="enter"><a href="/изход">  <img src="~/Content/Assets/Icon/exit_delete_close_remove_door-512.png" /> <span style="margin:  0 0 0 5px;"> @ViewBag.user.FirstName @ViewBag.user.LastName</span></a> </span>
+                        <span class="logged"><a href="/изход"> <span style="margin:  0 0 0 5px;"> @ViewBag.user.FirstName @ViewBag.user.LastName</span></a> </span>
                     }
                     else
                     {
@@ -64,7 +67,7 @@
                 </div>
                 <div class="menu-button" onclick="menu()">
                     <button>
-                        <img src="~/Content/Assets/Icon/mobile.png" height="30px" />
+                        <img src="~/Content/Assets/Icon/mobile.png" height="45px" />
                     </button>
                 </div>
             </div>
@@ -82,7 +85,7 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <span class="enter"><a href="/изход"><span style="margin:  0 0 0 0;"> @ViewBag.user.FirstName @ViewBag.user.LastName</span></a> </span>
+                    <span class="logged"><a href="/изход"><span style="margin:  0 0 0 0;"> @ViewBag.user.FirstName @ViewBag.user.LastName</span></a> </span>
                 }
                 else
                 {
