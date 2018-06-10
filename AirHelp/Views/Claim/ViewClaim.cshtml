@@ -359,12 +359,12 @@
             </div>
 
 
-            <div class="form-row-radio" style="justify-content:flex-start" first>
+            <div class="form-row-ticket" first>
                 @foreach (var doc in Model.Documents)
                 {
 
                     <a href="@doc.Url" target="_blank">
-                         @doc.DocumentName
+                        <img src="~/Content/Assets/Icon/ticket.png" width="80px" />
                     </a>
 
                 }
@@ -382,7 +382,8 @@
                     <label class="heder ">Пълномощно</label>
                     <div>
                         <label class="data ">
-                            <a href="@Model.AttorneyUrl" target="_blank"> Виж пълномощно </a>
+
+                            <a href="@Model.AttorneyUrl" target="_blank"> <img src="~/Content/Assets/Icon/pdf.png" width="100px" /> </a>
                         </label>
                     </div>
                 </div>
@@ -390,7 +391,8 @@
                     <label class="heder ">Договор</label>
                     <div>
                         <label class="data ">
-                            <a href="@Model.contractUrl" target="_blank"> Виж договор </a>
+                            
+                            <a href="@Model.contractUrl" target="_blank"> <img src="~/Content/Assets/Icon/pdf.png" width="100px" /> </a>
                         </label>
                     </div>
                 </div>

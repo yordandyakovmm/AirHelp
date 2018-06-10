@@ -464,6 +464,8 @@ namespace AirHelp.Controllers
 
                 Session["user"] = newUserBD;
 
+                FormsAuthentication.SignOut();
+
                 FormsAuthenticationTicket authTicket =
                     new FormsAuthenticationTicket(1, newUserBD.UserId, DateTime.Now, DateTime.Now.AddMinutes(200), true, newUserBD.Role, "/");
                 HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName,
@@ -559,7 +561,7 @@ namespace AirHelp.Controllers
                             claim.Documents.Add(new Document
                             {
                                 Id = Guid.NewGuid(),
-                                DocumentName = file.FileName,
+                                DocumentName = name,
                                 Url = "/документи/" + name.Split('.')[0] + "/" + name.Split('.')[1]
                             });
                         }
@@ -626,12 +628,12 @@ namespace AirHelp.Controllers
 
                         if (file != null && file.ContentLength > 0)
                         {
-                            var name = Guid.NewGuid() + "." + file.FileName.Split('.')[1];
+                            var name = Guid.NewGuid().ToString().Replace("-", "") + "." + file.FileName.Split('.')[1];
                             file.SaveAs(Server.MapPath("~/UserDocuments/" + name));
                             claim.Documents.Add(new Document
                             {
                                 Id = Guid.NewGuid(),
-                                DocumentName = file.FileName,
+                                DocumentName = name,
                                 Url = "/документи/" + name.Split('.')[0] + "/" + name.Split('.')[1]
                             });
                         }

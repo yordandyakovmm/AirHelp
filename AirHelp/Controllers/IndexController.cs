@@ -6,7 +6,6 @@ namespace AirHelp.Controllers
 
     public class IndexController : BaseController
     {
-        [Authorize]
         //[Route("{item}/{category}")]
         public ActionResult Index(string category, string item)
         {

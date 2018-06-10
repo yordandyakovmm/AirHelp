@@ -6,7 +6,6 @@ using System.Linq;
 
 namespace AirHelp.Controllers
 {
-    [Authorize]
     public class CommonController : BaseController
     {
 
@@ -95,7 +94,7 @@ namespace AirHelp.Controllers
                 var isAdmin = User.IsInRole("admin");
                 var filePath = "";
                 var fileName = "";
-                var document = dc.Documents.Where(d => d.DocumentName == docU && (d.Claim.UserId == userID || isAdmin)).SingleOrDefault();
+                var document = dc.Documents.Where(d => d.DocumentName == docF && (d.Claim.UserId == userID || isAdmin)).SingleOrDefault();
                 if (document != null)
                 {
                     filePath = $"~/UserDocuments/{docF}";

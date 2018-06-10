@@ -72,6 +72,66 @@ namespace AirHelp.Controllers
             return View("Success");
         }
 
+        [Authorize]
+        [HttpGet]
+        [Route("потребител-редакция")]
+        public ActionResult ChangeUserData()
+        {
+            ViewBag.error = false;
+            User user = null;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                user = dc.Users.Where(u => u.Email == User.Identity.Name).SingleOrDefault();
+                return View("ChangeUser", user);
+            }
+
+            return View("ChangeUser", null);
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("потребител-редакция")]
+        public ActionResult ChangeUserdataPost()
+        {
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                var userId = Request.Form["userId"];
+                var FirstName = Request.Form["FirstName"];
+                var LastName = Request.Form["LastName"];
+                var City = Request.Form["City"];
+                var Country = Request.Form["Country"];
+                var Adress = Request.Form["Adress"];
+                var Tel = Request.Form["Tel"];
+                var Password = Request.Form["Password"];
+
+
+                var user = dc.Users.Where(c => c.UserId == userId).SingleOrDefault();
+                user.FirstName = FirstName;
+                user.LastName = LastName;
+                user.Country = Country;
+                user.City = City;
+                user.Adress = Adress;
+                user.Tel = Tel;
+                user.FirstName = FirstName;
+                
+                dc.SaveChanges();
+
+                FormsAuthentication.SignOut();
+
+                FormsAuthenticationTicket authTicket =
+               new FormsAuthenticationTicket(1, user.UserId, DateTime.Now, DateTime.Now.AddMinutes(200), true, user.Role, "/");
+                HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName,
+                                                   FormsAuthentication.Encrypt(authTicket));
+
+                return View("ChangeUser", user);
+
+            }
+
+            return View("ChangeUser", null);
+
+        }
+
         [HttpPost]
         [Route("вход")]
         [Route("вход/{claimId}")]

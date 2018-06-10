@@ -616,6 +616,12 @@ html,
 .progress > div.past .circle label {
   color: white;
 }
+.progress > div.current a {
+  font-family: "PT sans";
+  font-size: 15px;
+  font-weight: 500;
+  margin: 4px 0 0 8px;
+}
 .progress > div.current .circle {
   background-color: #009fe3;
   border: 2px solid #009fe3;
@@ -623,6 +629,12 @@ html,
 }
 .progress > div.current .circle label {
   color: white;
+}
+.progress > div.empty a {
+  font-family: "PT sans";
+  font-size: 15px;
+  font-weight: 500;
+  margin: 4px 0 0 8px;
 }
 .progress > div.empty .circle {
   background-color: white;
@@ -682,6 +694,20 @@ html,
   font-family: "PT Sans", sans-serif;
   color: #141a30;
   font-size: 15px;
+}
+.form-row-ticket {
+  margin: 5px 0 0 0;
+  display: flex;
+  flex-direction: row;
+  max-width: 500px;
+}
+.form-row-ticket > a {
+  text-align: left;
+  margin: 5px 12px 0 0;
+  font-family: "PT Sans", sans-serif;
+  color: #141a30;
+  font-size: 15px;
+  max-width: 90PX;
 }
 .form-row-yes-no,
 .form-row-rodio {

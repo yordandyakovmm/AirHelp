@@ -1,0 +1,119 @@
+﻿@model AirHelp.DAL.User
+
+<div class="register-form">
+    <div class="progress">
+        @if (User.IsInRole("admin"))
+        {
+
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/обезщетение-списък"> Искове </a>
+
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/потребители"> Потребители </a>
+
+            </div>
+            <div class="current">
+                <div class="circle"><label> </label></div>
+                <label class="text"> Смяна на парола </label>
+            </div>
+
+
+        }
+        else
+        {
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/обезщетение-списък"> Искове </a>
+            </div>
+            <div class="current">
+                <div class="circle"><label> </label></div>
+                <label class="text"> Смяна на парола </label>
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/потребител-редакция"> Редакция на дании </a>
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/GDPR"> Лични данни </a>
+            </div>
+
+        }
+    </div>
+
+    <div class="center-content">
+        <form method="post" enctype="multipart/form-data" action="/потребител-редакция">
+            <input type="hidden" name="userId" value="@Model.UserId" />
+
+            <div class="form-hedar uppercase" first>
+                Промяна на лични данни
+            </div>
+
+             <div class="form-row">
+                <div class="form-box left">
+                    <label>Име<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" inputmode="latin" value="@Model.FirstName" name="FirstName" placeholder="Име" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth">
+                    <label>Фамиля<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" name="LastName" value="@Model.LastName" placeholder="Фамилия" validate /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-box left">
+                    <label>Град<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="City" name="City" value="@Model.City" placeholder="Град" validate /><i class="icon"></i>
+                    </div>
+                </div>
+                <div class="form-box rigth success">
+                    <label>Държава<span class="requared">*</span></label>
+                    <div>
+                        <input type="text" id="Country" name="Country" value="@Model.Country" placeholder="България" value="България" validate /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-box-width">
+                    <label>Адрес<span class="requared">*</span></label>
+                    <div>
+                        <textarea onchange="onChageInput(this)" id="Adress" rows="2" value="@Model.Adress" name="Adress" placeholder="Адрес" validate></textarea>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-subtext">
+                Емайлат Ви ще се използва само за връзка с вас по отношение на иска ви за обезщетение
+            </div>
+            <div class="form-row ">
+                
+                <div class="form-box rigth">
+                    <label>Телефон (опционално)</label>
+                    <div>
+                        <input type="text" id="Tel" name="Tel" value="@Model.Tel" placeholder="Телефон" /><i class="icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row" style="margin-top: 50px" post>
+                <div class="form-box">
+                    <button class="submit" type="submit" keypress="return false" onclick="return validateUserForm()"> Промени</button>
+                </div>
+                <div class="form-box">
+                    <button class="reset" type="reset" keypress="return false" onclick="clearForm()">Изчисти</button>
+                </div>
+            </div>
+    </div>
+
+
+</div>
+
+<script src="~/Scripts/main.js"></script>
+<script src="~/Scripts/RegisterUser.js"></script>
