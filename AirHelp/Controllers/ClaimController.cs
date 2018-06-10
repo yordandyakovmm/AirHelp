@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Device.Location;
 using AirHelp.Hellpers;
+using System.Web.Security;
 
 namespace AirHelp.Controllers
 {
@@ -461,6 +462,15 @@ namespace AirHelp.Controllers
                 claim.UserId = newUserBD.UserId;
                 dc.SaveChanges();
 
+                Session["user"] = newUserBD;
+
+                FormsAuthenticationTicket authTicket =
+                    new FormsAuthenticationTicket(1, newUserBD.UserId, DateTime.Now, DateTime.Now.AddMinutes(200), true, newUserBD.Role, "/");
+                HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName,
+                                                   FormsAuthentication.Encrypt(authTicket));
+                Response.Cookies.Add(cookie);
+
+
                 return View("ConfirmClaim", claim);
 
             }
@@ -558,8 +568,10 @@ namespace AirHelp.Controllers
                 claim.State = signOnEmail ? ClaimStatus.WaitForAttorny : (claim.Documents.Count > 0 ? ClaimStatus.InProgress : ClaimStatus.WaitForDocument);
                 
                 Guid newGuid = Guid.NewGuid();
-                claim.AttorneyUrl = $"/документи/attorny{string.Format("{0}:0000", claim.referalNumber)}/pdf";
-                claim.contractUrl = $"/документи/contract-{string.Format("{0}:0000", claim.referalNumber)}/pdf";
+                var attorneyName = string.Format("attorney{0}", claim.referalNumber.ToString("0000"));
+                var contractName = string.Format("contract{0}", claim.referalNumber.ToString("0000"));
+                claim.AttorneyUrl = $"/документи/{attorneyName}/pdf";
+                claim.contractUrl = $"/документи/{contractName}/pdf";
 
                 dc.SaveChanges();
 
@@ -577,11 +589,11 @@ namespace AirHelp.Controllers
                 converter.Options.PdfPageSize = SelectPdf.PdfPageSize.A4;
 
                 SelectPdf.PdfDocument doc = converter.ConvertUrl(aUrl);
-                doc.Save(Server.MapPath($"~{claim.AttorneyUrl}"));
+                doc.Save(Server.MapPath($"~/UserDocuments/{attorneyName}.pdf"));
                 doc.Close();
 
                 doc = converter.ConvertUrl(cUrl);
-                doc.Save(Server.MapPath($"~{claim.contractUrl}"));
+                doc.Save(Server.MapPath($"~/UserDocuments/{contractName}.pdf"));
                 doc.Close();
 
                 Session["claim"] = claim;
@@ -620,7 +632,7 @@ namespace AirHelp.Controllers
                             {
                                 Id = Guid.NewGuid(),
                                 DocumentName = file.FileName,
-                                Url = "/UserDocuments/" + name
+                                Url = "/документи/" + name.Split('.')[0] + "/" + name.Split('.')[1]
                             });
                         }
                     }

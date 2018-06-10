@@ -88,17 +88,18 @@ namespace AirHelp.Controllers
         public ActionResult ProtectedDocuments(string doc, string ext)
         {
             var userID = User.Identity.Name;
-            doc = doc + "." +  ext;
+            var docU = doc + "/" +  ext;
+            var docF = doc + "." + ext;
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
                 var isAdmin = User.IsInRole("admin");
                 var filePath = "";
                 var fileName = "";
-                var document = dc.Documents.Where(d => d.DocumentName == doc && (d.Claim.UserId == userID || isAdmin)).SingleOrDefault();
+                var document = dc.Documents.Where(d => d.DocumentName == docU && (d.Claim.UserId == userID || isAdmin)).SingleOrDefault();
                 if (document != null)
                 {
-                    filePath = $"~/UserDocuments/{document.DocumentName}";
-                    fileName = document.DocumentName;
+                    filePath = $"~/UserDocuments/{docF}";
+                    fileName = docF;
 
 
                     var length = new System.IO.FileInfo(Server.MapPath(filePath)).Length;
@@ -108,12 +109,12 @@ namespace AirHelp.Controllers
                 }
                 else
                 {
-                    var url = $"UserDocuments/{doc}";
+                    var url = $"/документи/{docU}";
                     var pdf = dc.Claims.Where(c => (c.UserId == userID || isAdmin) && (c.AttorneyUrl == url || c.contractUrl == url)).SingleOrDefault();
                     if (pdf != null)
                     {
-                        filePath = $"~/UserDocuments/{doc}";
-                        fileName = doc;
+                        filePath = $"~/UserDocuments/{docF}";
+                        fileName = docF;
 
                         var length = new System.IO.FileInfo(Server.MapPath(filePath)).Length;
                         Response.BufferOutput = false;

@@ -48,15 +48,28 @@
                     </a>
                 </div>
                 <div class="logo-menu">
-                    <span class='(@ViewBag.menu=="claims": "selected" : ""'><a href="/обезщетение-списък">ИСКОВЕ</a></span>
-                    <span class='(@ViewBag.menu=="faq": "selected" : ""'><a href="/проблеми-с-полета/често-задавани-въпроси">ВЪПРОСИ</a></span>
-                    <span class='(@ViewBag.menu=="claim": "selected" : ""'><a href="/обезщетение-при-полет">ПОДАЙ ИСК</a></span>
-                    <span class='(@ViewBag.menu=="aboutus": "selected" : ""'><a href="/за-нас">ЗА НАС</a></span>
-                    <span class='(@ViewBag.menu=="contact": "selected" : ""'><a href="/контакти">КОНТАКТИ</a></span>
+                    <span class='menu'><a href="/обезщетение-списък">ИСКОВЕ</a></span>
+                    <span class='menu'><a href="/проблеми-с-полета/често-задавани-въпроси">ВЪПРОСИ</a></span>
+                    <span class='menu'><a href="/обезщетение-при-полет">ПОДАЙ ИСК</a></span>
+                    <span class='menu'><a href="/за-нас">ЗА НАС</a></span>
+                    <span class='menu'><a href="/контакти">КОНТАКТИ</a></span>
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <span class="logged"><a href="/изход"> <span style="margin:  0 0 0 5px;"> @ViewBag.user.FirstName @ViewBag.user.LastName</span></a> </span>
+                       
+                        <span class="logged">
+                            <span class="sub-menu hidden" >
+                                <span class="">
+                                    <a href="/обезщетение-списък"> <span style="margin:  0 0 0 5px;"> Профил</span></a>
+                                </span>
+                                <span class="">
+                                    <a href="/изход"> <span style="margin:  0 0 0 5px;">Изход </span></a>
+                                </span>
+
+                            </span>        
+                            <span style="margin:  0 0 0 5px;" onclick="$('.sub-menu').toggleClass('hidden');" > @ViewBag.user.FirstName @ViewBag.user.LastName <span class="icon expand"></span>  </span> 
+                        </span>
+                        
                     }
                     else
                     {
