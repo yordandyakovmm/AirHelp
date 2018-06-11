@@ -110,7 +110,6 @@ function menuItemClick(_this) {
 function onChageInput() {
 
     $('.error-row').hide();
-
     var data = $(this).val();
     var result = false;
 
@@ -163,7 +162,6 @@ function onChageInput() {
     else {
         result = data.length >= 3;
     }
-
     if (result && $(this).not('[dropdown]').length > 0) {
         $(this).parent().parent().removeClass('error');
         $(this).parent().parent().addClass('success');

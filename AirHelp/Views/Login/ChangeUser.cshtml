@@ -15,9 +15,13 @@
                 <a class="text" href="/потребители"> Потребители </a>
 
             </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/смяна-на-парола"> Смяна на парола </a>
+            </div>
             <div class="current">
                 <div class="circle"><label> </label></div>
-                <label class="text"> Смяна на парола </label>
+                <label class="text">  Редакция на дании </label>
             </div>
 
 
@@ -28,13 +32,13 @@
                 <div class="circle"><label> </label></div>
                 <a class="text" href="/обезщетение-списък"> Искове </a>
             </div>
-            <div class="current">
-                <div class="circle"><label> </label></div>
-                <label class="text"> Смяна на парола </label>
-            </div>
             <div class="empty">
                 <div class="circle"><label> </label></div>
-                <a class="text" href="/потребител-редакция"> Редакция на дании </a>
+                <a class="text" href="/смяна-на-парола"> Смяна на парола </a>
+            </div>
+            <div class="current">
+                <div class="circle"><label> </label></div>
+                <label class="text">  Редакция на дании </label>
             </div>
             <div class="empty">
                 <div class="circle"><label> </label></div>
@@ -53,13 +57,13 @@
             </div>
 
              <div class="form-row">
-                <div class="form-box left">
+                <div class="form-box left success">
                     <label>Име<span class="requared">*</span></label>
                     <div>
                         <input type="text" inputmode="latin" value="@Model.FirstName" name="FirstName" placeholder="Име" validate /><i class="icon"></i>
                     </div>
                 </div>
-                <div class="form-box rigth">
+                <div class="form-box rigth success">
                     <label>Фамиля<span class="requared">*</span></label>
                     <div>
                         <input type="text" name="LastName" value="@Model.LastName" placeholder="Фамилия" validate /><i class="icon"></i>
@@ -67,7 +71,7 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-box left">
+                <div class="form-box left success">
                     <label>Град<span class="requared">*</span></label>
                     <div>
                         <input type="text" id="City" name="City" value="@Model.City" placeholder="Град" validate /><i class="icon"></i>
@@ -80,34 +84,39 @@
                     </div>
                 </div>
             </div>
-            <div class="form-row">
+            <div class="form-row success">
                 <div class="form-box-width">
                     <label>Адрес<span class="requared">*</span></label>
                     <div>
-                        <textarea onchange="onChageInput(this)" id="Adress" rows="2" value="@Model.Adress" name="Adress" placeholder="Адрес" validate></textarea>
+                        <textarea onchange="onChageInput(this)" id="Adress" rows="2" name="Adress" placeholder="Адрес" validate>@Model.Adress</textarea>
                     </div>
                 </div>
 
             </div>
-            <div class="form-subtext">
-                Емайлат Ви ще се използва само за връзка с вас по отношение на иска ви за обезщетение
-            </div>
+           
             <div class="form-row ">
                 
-                <div class="form-box rigth">
+                <div class="form-box left">
                     <label>Телефон (опционално)</label>
                     <div>
                         <input type="text" id="Tel" name="Tel" value="@Model.Tel" placeholder="Телефон" /><i class="icon"></i>
                     </div>
                 </div>
+
+                <div class="form-box rigth ">
+                    <label></label>
+                    <div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="form-row" style="margin-top: 50px" post>
                 <div class="form-box">
-                    <button class="submit" type="submit" keypress="return false" onclick="return validateUserForm()"> Промени</button>
+                    <button class="submit" type="submit" keypress="return false" onclick="return validateEditUserForm()"> Промени</button>
                 </div>
                 <div class="form-box">
-                    <button class="reset" type="reset" keypress="return false" onclick="clearForm()">Изчисти</button>
+                    <button class="reset" type="reset" keypress="return false" onclick="clearUserEditForm()">Изчисти</button>
                 </div>
             </div>
     </div>

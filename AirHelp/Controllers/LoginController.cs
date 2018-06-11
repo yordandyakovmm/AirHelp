@@ -117,7 +117,7 @@ namespace AirHelp.Controllers
                 
                 dc.SaveChanges();
 
-                FormsAuthentication.SignOut();
+                Session["user"] = user;
 
                 FormsAuthenticationTicket authTicket =
                new FormsAuthenticationTicket(1, user.UserId, DateTime.Now, DateTime.Now.AddMinutes(200), true, user.Role, "/");

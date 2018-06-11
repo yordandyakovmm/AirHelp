@@ -79,7 +79,7 @@ html,
   height: 45px;
 }
 .sub-menu {
-  margin: 76px 0 0 -8px;
+  margin: 36px 0 0 -8px;
   width: 130px;
   display: flex;
   position: absolute;
@@ -1045,13 +1045,15 @@ html,
   grid-row-end: 3;
   background-color: #444;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 60px;
 }
-.bottom-spacer .bottom span {
+.bottom-spacer .bottom span,
+.bottom-spacer .bottom a {
   font-family: "PT Sans", sans-serif;
+  margin-left: 7px;
   font-size: 16px;
   font-weight: 500;
   color: white;

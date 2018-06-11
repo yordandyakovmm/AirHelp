@@ -56,9 +56,11 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                       
-                        <span class="logged">
-                            <span class="sub-menu hidden" >
+
+                        
+
+                        <span class="logged" style="display: block">
+                            <span class="sub-menu hidden">
                                 <span class="">
                                     <a href="/обезщетение-списък"> <span style="margin:  0 0 0 5px;"> Профил</span></a>
                                 </span>
@@ -66,7 +68,7 @@
                                     <a href="/изход"> <span style="margin:  0 0 0 5px;">Изход </span></a>
                                 </span>
 
-                            </span>        
+                            </span>    
                             <span style="margin:  0 0 0 5px;" onclick="$('.sub-menu').toggleClass('hidden');" > @ViewBag.user.FirstName @ViewBag.user.LastName <span class="icon expand"></span>  </span> 
                         </span>
                         
@@ -120,7 +122,7 @@
             </div>
             <div class="bottom">
 
-                <span>@ViewBag.company като администратор на лични данни с номер @ViewBag.number</span>
+                <span>@ViewBag.company</span> <span>|</span> <a href="/общи-условия"> ОБЩИ УСЛОВИЯ </a> <span>|</span>  <a href="/пpолитика-на-поверителност"> ДЕКЛАРАЦИЯ ЗА ПОВЕРИТЕЛНОСТ </a>
 
             </div>
         </div>
@@ -150,26 +152,6 @@
             }
 
         });
-
-
-
-
-        //fixSize();
-
-
-        //$(window).resize(function () {
-        //    //fixSize();
-        //});
-
-        //function fixSize() {
-        //    var wHeigth = $(window).height();
-        //    var dHeigth = $('body').height();
-        //    if (dHeigth < wHeigth) {
-        //        $('.spacer').height(wHeigth - dHeigth);
-        //    }
-
-
-        //}
 
         function menu() {
 
