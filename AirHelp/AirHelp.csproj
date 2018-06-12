@@ -366,7 +366,7 @@
       <DependentUpon>mobile.css</DependentUpon>
     </Content>
     <Content Include="Content\css\Site.css" />
-    <Content Include="Content\Docs\eu_complaint_form_bg-261.pdf" />
+    <Content Include="Content\Docs\Regulation_EC261_2004_bg.pdf" />
     <Content Include="Content\Docs\eu_complaint_form_en.pdf" />
     <Content Include="Content\Docs\eu_complaint_form_bg.pdf" />
     <Content Include="Content\Less\grid-layout - Copy - Copy.css">
@@ -378,6 +378,7 @@
     <Content Include="Content\Less\input-style.less" />
     <Content Include="Content\css\mobile.css" />
     <Content Include="Content\Assets\Logo\logo1.xcf" />
+    <Content Include="Content\Docs\Regulation_EC261_2004.pdf" />
     <None Include="Content\Less\grid-layout.less" />
     <Content Include="Content\Less\grid-layout - Copy.css">
       <DependentUpon>input-style.less</DependentUpon>

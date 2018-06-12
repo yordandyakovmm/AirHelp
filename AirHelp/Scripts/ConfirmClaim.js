@@ -32,10 +32,13 @@ function validateConfirmClaim() {
             $("input[name='confirm']").parent().parent().removeClass('error');
         }
     }
-    if (!($('.form-box-signiture').is('.success')) && $('[name="SignViaEmail"]').val() == 'no') {
-        result = false;
-        $('.form-box-signiture').removeClass('success').addClass('error');
-    } 
+    debugger;
+    if ($('[name="SignViaEmail"]:checked').val() == 'no') {
+        if (!($('.form-box-signiture').is('.success')))  {
+            result = false;
+            $('.form-box-signiture').removeClass('success').addClass('error');
+        }
+    }
     if (!result) {
         $('html, body').animate({
             scrollTop: $(".error").first().offset().top

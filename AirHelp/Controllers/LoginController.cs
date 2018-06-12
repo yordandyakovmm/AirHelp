@@ -62,7 +62,7 @@ namespace AirHelp.Controllers
                 }
                 else
                 {
-                    user.password = GetHash(oldPassword);
+                    user.password = GetHash(Password);
                     dc.SaveChanges();
                     ViewBag.text = "Паролата Ви е сменена успешно";
                     return View("Success");
