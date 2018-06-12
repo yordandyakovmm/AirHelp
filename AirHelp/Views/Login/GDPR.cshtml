@@ -1,0 +1,183 @@
+﻿@model AirHelp.DAL.User
+
+<div class="register-form">
+    <div class="progress">
+        @if (User.IsInRole("admin"))
+        {
+
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/обезщетение-списък"> Искове </a>
+
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/потребители"> Потребители </a>
+
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/смяна-на-парола"> Смяна на парола </a>
+            </div>
+
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/потребител-редакция"> Редакция на дании </a>
+            </div>
+            <div class="current">
+                <div class="circle"><label> </label></div>
+                <label class="text">  Лични данни </label>
+            </div>
+
+        }
+        else
+        {
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/обезщетение-списък"> Искове </a>
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/смяна-на-парола"> Смяна на парола </a>
+            </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="/потребител-редакция"> Редакция на дании </a>
+            </div>
+            <div class="current">
+                <div class="circle"><label> </label></div>
+                <label class="text">  Лични данни </label>
+            </div>
+
+        }
+    </div>
+
+    <div class="center-content">
+        <div class="contact-main">
+            <div class="contact-heder">
+                @ViewBag.company съхранява и използва следните лични данни предоставени от вас
+            </div>
+            <div class="contact-data">
+
+                <div class="margin30">
+                    <label class="title uppercase">Лични имена</label>
+                    <div>
+                        <label class="value item">
+                            @Model.FirstName @Model.LastName
+                        </label>
+                    </div>
+
+                    <div style="margin-top: 5px;">
+                        <span class=" icon lock"></span>
+                        <label class="value subitem">
+                            Използват се за претенции кък авиокомпании съгласно регламент 261/2004 на ЕС,
+                            пълномощно и дговор с @ViewBag.company
+                        </label>
+                    </div>
+
+                    <div style="margin-top: 5px;">
+                        <span class=" icon lock"></span>
+                        <label class="value subitem">
+                            Данните могат да бъдат предостваени чрез @ViewBag.company на съответната авиокомпания.
+                        </label>
+                    </div>
+                    <div style="margin-top: 5px;">
+                        <span class=" icon lock"></span>
+                        <label class="value subitem">
+                            Данните могат да бъдат предостваени чрез @ViewBag.company Гражданска Въздухоплавателна Агенция (ГВA).
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="margin30">
+                    <label class="title uppercase">Адрес</label>
+                    <div>
+                        <label class="value item">
+                            @Model.Country, @Model.City, @Model.Adress
+                        </label>
+                    </div>
+                    
+                    <div style="margin-top: 5px;">
+                        <span class=" icon lock"></span>
+                        <label class="value subitem">
+                            Данните могат да бъдат предостваени чрез @ViewBag.company на съответната авиокомпания.
+                        </label>
+                    </div>
+                    <div style="margin-top: 5px;">
+                        <span class=" icon lock"></span>
+                        <label class="value subitem">
+                            Данните могат да бъдат предостваени чрез @ViewBag.company Гражданска Въздухоплавателна Агенция (ГВA).
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="margin30">
+                    <label class="title uppercase">Имейл</label>
+                    <div>
+                        <label class="value item">
+                            @Model.Email
+                        </label>
+                    </div>
+                    
+                    <div style="margin-top: 5px;">
+                        <span class=" icon lock"></span>
+                        <label class="value subitem">
+                            Използва се за връзка с Вас, само по отношение на претенции съгласано регламент 261/2004 на ЕС
+                        </label>
+                    </div>
+                </div>
+
+                <div class="margin30">
+                    <label class="title uppercase">Телефон</label>
+                    <div>
+                        <label class="value item">
+                            @Model.Tel
+                        </label>
+                    </div>
+                    
+                    <div style="margin-top: 5px;">
+                        <span class=" icon lock"></span>
+                        <label class="value subitem">
+                            Използва се за връзка с Вас, само по отношение на претенции съгласано регламент 261/2004 на ЕС
+                        </label>
+                    </div>
+                </div>
+
+                <div class="margin30">
+                    <label class="title uppercase">Копия на докумети към претенции</label>
+                    <div>
+                        <label class="value">
+
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="contact-heder" style="margin-top: 40px;">
+
+                @ViewBag.company съхранява и използва предоставените от Вас данни само по отношение на претенции към авиокомпании, съгласно регламент 261/2004.
+                След прекратяване на съответния/те иск/ове към авиокомпании, @ViewBag.company изтива вашите лични данни, <b> освен ако изрично Вие се съгласите да бъдат съхранени </b> с цел предявяване на бъдещи претенции.
+
+
+            </div>
+
+            <div class="contact-heder" style="margin-top: 40px;">
+                За въпроси относно съхраняването на личните Ви данни, да направите запитване на <a href="mailto:office@helpclaim.eu">office@helpclaim.eu</a>
+
+            </div>
+
+            <div class="contact-heder" style="margin-top: 40px;">
+                @ViewBag.company обработва и използва личните Ви данни съгласно общите усовия обявени на сайта ни, и само за целите за които сте ни упълномощили.
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+<script src="~/Scripts/main.js"></script>
+<script src="~/Scripts/RegisterUser.js"></script>

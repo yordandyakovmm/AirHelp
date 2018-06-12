@@ -961,6 +961,9 @@ html,
   font-weight: 600;
   font-size: 16px;
 }
+.contact-main .contact-data > div.margin30 {
+  margin-top: 30px;
+}
 .contact-main .contact-data > div label.value {
   color: black;
   font-size: 16px;
@@ -971,6 +974,16 @@ html,
 .contact-main .contact-data > div a {
   font-size: 16px;
   color: black;
+}
+.contact-main .contact-data > div label.item {
+  color: darkblue;
+  font-weight: 800;
+}
+.contact-main .contact-data > div .lock::before {
+  margin-left: 5px;
+  font-size: 14px;
+  color: cornflowerblue;
+  content: '\e033';
 }
 .contact-main .title {
   width: 700px;

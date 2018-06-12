@@ -90,6 +90,38 @@ namespace AirHelp.Controllers
         }
 
         [Authorize]
+        [HttpGet]
+        [Route("gdpr")]
+        [Route("gdpr/{userid}")]
+        public ActionResult GdprData(string userid)
+        {
+            var userEmail = "";
+            if (User.IsInRole("admin") && string.IsNullOrEmpty(userid))
+            {
+                userEmail = userid.Replace("34de6r", "@").Replace("43edW", ".");
+            }
+            else
+            {
+                userEmail = User.Identity.Name;
+            }
+
+            ViewBag.error = false;
+            User user = null;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                user = dc.Users
+                    .Include("claims")
+                    .Where(u => u.Email == userEmail)
+                    .SingleOrDefault();
+                return View("GDPR", user);
+            }
+
+            return View("GDPR", null);
+
+        }
+
+
+        [Authorize]
         [HttpPost]
         [Route("потребител-редакция")]
         public ActionResult ChangeUserdataPost()

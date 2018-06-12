@@ -506,6 +506,7 @@
     <Content Include="Views\Login\ForgottenPassword.cshtml" />
     <Content Include="Views\Login\ForgottenPasswordP.cshtml" />
     <Content Include="Views\Login\ChangeUser.cshtml" />
+    <Content Include="Views\Login\GDPR.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
