@@ -63,8 +63,8 @@
                         Полет #
                     </label>
                 </div>
-                <div style="grid-column-start: 3; grid-column-end: 4;">
-                    <label>
+                <div  style="grid-column-start: 3; grid-column-end: 4;">
+                    <label  class="mnone">
                         Дата на иска
                     </label>
                 </div>
@@ -73,8 +73,8 @@
                         Обещетение
                     </label>
                 </div>
-                <div style="grid-column-start: 5; grid-column-end: 6;">
-                    <label>
+                <div  style="grid-column-start: 5; grid-column-end: 6;">
+                    <label class="mnone">
                         Авиокомпания
                     </label>
                 </div>
@@ -97,8 +97,8 @@
                                 @claim.AirPorts.Where(a => a.startIssue).Select(a => a.FlightNumber).SingleOrDefault()
                             </label>
                         </div>
-                        <div style="grid-column-start: 3; grid-column-end: 4;">
-                            <label>
+                        <div  style="grid-column-start: 3; grid-column-end: 4;">
+                            <label class="mnone" >
                                 @claim.DateCreated.ToString("dd.MM.yyyy")
                             </label>
                         </div>
@@ -107,8 +107,8 @@
                                 €@claim.CompensationAmount
                             </label>
                         </div>
-                        <div style="grid-column-start: 5; grid-column-end: 6;">
-                            <label>
+                        <div  style="grid-column-start: 5; grid-column-end: 6;">
+                            <label class="mnone" >
                                 @claim.AirCompany ( @claim.AirCompanyCode )
                             </label>
                         </div>
