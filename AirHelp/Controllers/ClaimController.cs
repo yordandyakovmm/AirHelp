@@ -481,6 +481,7 @@ namespace AirHelp.Controllers
 
         // ----- 4 ---------------
         [HttpGet]
+        [Authorize]
         [Route("потвърждение-на-иск/{claimId}")]
         public ActionResult ConfirmClaim(string claimId)
         {
@@ -500,6 +501,7 @@ namespace AirHelp.Controllers
 
         // ----- 4 ---------------
         [HttpPost]
+        [Authorize]
         [Route("потвърждение-на-иск")]
         public ActionResult ConfirmClaimPost(IEnumerable<HttpPostedFileBase> UserFiles)
         {
@@ -580,8 +582,8 @@ namespace AirHelp.Controllers
 
                 string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
 
-                String aUrl = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{claim.ClaimId}";
-                String cUrl = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/contractPdf/{claim.ClaimId}";
+                String aUrl = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf-09-234-5644-34e5345-2343246/{claim.ClaimId}";
+                String cUrl = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/contractPdf-09-4565-3453-2345435-2355/{claim.ClaimId}";
 
                 SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
                 converter.Options.MarginTop = 30;
@@ -686,7 +688,7 @@ namespace AirHelp.Controllers
             return View("UserList", list);
         }
         [HttpGet]
-        [Authorize(Roles = "admin", Users = "yordan.dyakov@mentormate.com")]
+        [Authorize(Roles = "admin", Users = "manager@helpclaim.eu")]
         [Route("manager")]
         public ActionResult ClaimListYordan()
         {
@@ -704,7 +706,7 @@ namespace AirHelp.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "admin", Users = "yordan.dyakov@mentormate.com")]
+        [Authorize(Roles = "admin", Users = "manager@helpclaim.eu")]
         [Route("manager/{removeId}")]
         public ActionResult ClaimListRemove(string removeId)
         {
@@ -949,7 +951,7 @@ namespace AirHelp.Controllers
 
             string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
 
-            String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{claim.ClaimId}";
+            String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorattorneyPdf-09-234-5644-34e5345-2343246neyPdf/{claim.ClaimId}";
 
             SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
             SelectPdf.PdfDocument doc = converter.ConvertUrl(url);

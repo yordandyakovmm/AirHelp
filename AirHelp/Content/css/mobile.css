@@ -395,6 +395,9 @@
     font-family: "PT Sans", sans-serif;
     font-size: 28px;
   }
+  .form-content .contact-form-main {
+    padding: 0 10px 0 10px;
+  }
   .form-content .contact-form-main input[type=text],
   .form-content .contact-form-main textarea {
     width: 450px;

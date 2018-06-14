@@ -144,7 +144,7 @@ function flightChange(_this)
 
     $('[multinumber] .form-box.rigth >').hide(1000);
     $('[multinumber] #' + departureNubber + ' .form-box.rigth >').show(1000);
-
+    $('[multinumber] #' + departureNubber + ' .form-box.rigth').find('.sub-error').hide();
     $(_this).parent().parent().find('label').removeClass('selected');
     $(_this).parent().addClass('selected');
     $('[multinumber-row]').show(1000);

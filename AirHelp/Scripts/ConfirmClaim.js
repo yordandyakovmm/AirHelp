@@ -32,7 +32,6 @@ function validateConfirmClaim() {
             $("input[name='confirm']").parent().parent().removeClass('error');
         }
     }
-    debugger;
     if ($('[name="SignViaEmail"]:checked').val() == 'no') {
         if (!($('.form-box-signiture').is('.success')))  {
             result = false;

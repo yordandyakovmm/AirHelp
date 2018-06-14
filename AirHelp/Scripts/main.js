@@ -130,13 +130,15 @@ function onChageInput() {
         result = data.length >= 8;
     }
     else if (this.id == 'FlightNumber') {
+        var airlineCode = $(this).attr('data');
         var text = data.replace(' ', '').replace('-', '');
         if (text.length < 3) {
             result = false;
         }
         else {
-            var re = /(^[a-zA-Z]){1}([a-zA-Z]|[0-9]){1}([0-9]*$)/;
-            result = re.test(text);
+            var machCode = text.startsWith(airlineCode);
+            var re = /(^[0-9][0-9]*$)/;
+            result = re.test(text.substring(airlineCode.length)) && machCode;
             $(this).parent().parent().find('.sub-error').text('Невалиден номер');
         }
 

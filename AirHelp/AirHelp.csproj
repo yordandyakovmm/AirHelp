@@ -201,6 +201,7 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="DAL\Entities\Abstract\EntityBase.cs" />
     <Compile Include="DAL\Entities\Abstract\EntityID.cs" />
+    <Compile Include="DAL\Entities\AirPortData.cs" />
     <Compile Include="DAL\Entities\Documents.cs" />
     <Compile Include="DAL\Entities\Claim.cs" />
     <Compile Include="DAL\Entities\AirPort.cs" />
@@ -260,6 +261,26 @@
     <Compile Include="Migrations\201805182117065_password.cs" />
     <Compile Include="Migrations\201805182117065_password.Designer.cs">
       <DependentUpon>201805182117065_password.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806131700524_update-Api.cs" />
+    <Compile Include="Migrations\201806131700524_update-Api.Designer.cs">
+      <DependentUpon>201806131700524_update-Api.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806141048416_increace-mane-length.cs" />
+    <Compile Include="Migrations\201806141048416_increace-mane-length.Designer.cs">
+      <DependentUpon>201806141048416_increace-mane-length.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806141051200_update-identity.cs" />
+    <Compile Include="Migrations\201806141051200_update-identity.Designer.cs">
+      <DependentUpon>201806141051200_update-identity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806141121359_update-data.cs" />
+    <Compile Include="Migrations\201806141121359_update-data.Designer.cs">
+      <DependentUpon>201806141121359_update-data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806141134264_update-data-name.cs" />
+    <Compile Include="Migrations\201806141134264_update-data-name.Designer.cs">
+      <DependentUpon>201806141134264_update-data-name.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -567,6 +588,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805182117065_password.resx">
       <DependentUpon>201805182117065_password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806131700524_update-Api.resx">
+      <DependentUpon>201806131700524_update-Api.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141048416_increace-mane-length.resx">
+      <DependentUpon>201806141048416_increace-mane-length.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141051200_update-identity.resx">
+      <DependentUpon>201806141051200_update-identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141121359_update-data.resx">
+      <DependentUpon>201806141121359_update-data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141134264_update-data-name.resx">
+      <DependentUpon>201806141134264_update-data-name.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -178,14 +178,14 @@
         <div class="form-box left">
             <label>Номер на полета<span class="requared">*</span></label>
             <div>
-                <input type="text" validate name="FlightNumbers" onkeyup="fixNumber(this)" id="FlightNumber" data="{3}" value="{3}" placeholder="Номер на полет" validate /><i class="icon"></i>
+                <input type="text" validate name="FlightNumbers" onkeyup="fixNumber(this)" id="FlightNumber" data="{3}" value="{3}"  autocomplete="off" placeholder="Номер на полет" validate /><i class="icon"></i>
             </div>
             <label class="sub-error">Невалиден номер</label>
         </div>
         <div class="form-box rigth">
             <label>Дата на полета<span class="requared">*</span></label>
             <div>
-                <input type="text" validate id="{1}d" name="Dates" value="" placeholder="Дата на полета" validate /><i class="icon"></i>
+                <input type="text" validate id="{1}d" name="Dates" value="" placeholder="Дата на полета"  autocomplete="off" validate /><i class="icon"></i>
             </div>
             <label class="sub-error">Невалидна дата</label>
         </div>

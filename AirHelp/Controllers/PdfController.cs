@@ -12,7 +12,7 @@ namespace AirHelp.Controllers
     {
 
        
-        [Route("attorneyPdf/{id}")]
+        [Route("attorneyPdf-09-234-5644-34e5345-2343246/{id}")]
         public ActionResult AttorneyHtml(Guid id)
         {
 
@@ -32,12 +32,26 @@ namespace AirHelp.Controllers
 
         }
 
+        [Authorize]
         [Route("пълномощно/{id}")]
         public ActionResult AttorneyPdf(Guid id)
         {
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                var userID = User.Identity.Name;
+                var isAdmin = User.IsInRole("admin");
+                var claim = dc.Claims.Include("User").Where(c => c.ClaimId == id && (isAdmin || c.UserId == userID)).SingleOrDefault();
+                if (claim == null)
+                {
+                    ViewBag.text = "защитена информация";
+                    return View("Views/Login/Success.cshtml");
+                }
+
+            }
+
             string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
 
-            String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf/{id}";
+            String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/attorneyPdf-09-234-5644-34e5345-2343246/{id}";
            
             SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
 
@@ -46,7 +60,7 @@ namespace AirHelp.Controllers
             converter.Options.MarginLeft = 20;
             converter.Options.MarginRight = 20;
             converter.Options.PdfPageSize = SelectPdf.PdfPageSize.A4;
-
+            
             SelectPdf.PdfDocument doc = converter.ConvertUrl(url);
 
             Response.ContentType = "application/pdf";
@@ -57,7 +71,7 @@ namespace AirHelp.Controllers
         }
 
         
-        [Route("contractPdf/{id}")]
+        [Route("contractPdf-09-4565-3453-2345435-2355/{id}")]
         public ActionResult ContractHtml(Guid id)
         {
 
@@ -77,12 +91,25 @@ namespace AirHelp.Controllers
 
         }
 
+        [Authorize]
         [Route("договор/{id}")]
         public ActionResult ContractPdf(Guid id)
         {
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                var userID = User.Identity.Name;
+                var isAdmin = User.IsInRole("admin");
+                var claim = dc.Claims.Include("User").Where(c => c.ClaimId == id && (isAdmin || c.UserId == userID)).SingleOrDefault();
+                if (claim == null)
+                {
+                    ViewBag.text = "защитена информация";
+                    return View("Views/Login/Success.cshtml");
+                }
+
+            }
             string port = Request.Url.Port == 80 ? string.Empty : $":{Request.Url.Port.ToString()}";
 
-            String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/contractPdf/{id}";
+            String url = $"{Request.Url.Scheme}://{Request.Url.Host}{port}/contractPdf-09-4565-3453-2345435-2355/{id}";
 
             SelectPdf.HtmlToPdf converter = new SelectPdf.HtmlToPdf();
 

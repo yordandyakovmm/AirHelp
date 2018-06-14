@@ -17,8 +17,8 @@ namespace AirHelp.DAL
         public DbSet<AdditionalUser> AdditionalUsers { get; set; }
         public DbSet<AirPort> AirPorts { get; set; }
         public DbSet<Document> Documents { get; set; }
-
-
+        public DbSet<AirPortData> AirPortsData { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

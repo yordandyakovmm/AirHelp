@@ -18,16 +18,26 @@ namespace AirHelp.Controllers
     public class LoginController : BaseController
     {
         [HttpGet]
-        [Route("вход/{claimId}")]
-        public ActionResult Login()
-        {
-            return View("Login");
-        }
-
-        [HttpGet]
         [Route("вход")]
-        public ActionResult LoginDirect()
+        [Route("вход/{claimId}")]
+        public ActionResult Login(string claimId)
         {
+            if (!string.IsNullOrEmpty(claimId) && User.Identity.IsAuthenticated)
+            {
+                using (AirHelpDBContext dc = new AirHelpDBContext())
+                {
+                    var giid = Guid.Parse(claimId);
+                    var claim = dc.Claims.Where(c => c.ClaimId == giid).SingleOrDefault();
+
+                    if (claim != null)
+                    {
+                       
+                        claim.UserId = User.Identity.Name;
+                        dc.SaveChanges();
+                    }
+                }
+                return Redirect($"/потвърждение-на-иск/{claimId}");
+            }
             return View("Login");
         }
 
@@ -169,7 +179,6 @@ namespace AirHelp.Controllers
         [Route("вход/{claimId}")]
         public ActionResult LoginPost(string claimId)
         {
-
             var ReturnUrl = Request.QueryString["ReturnUrl"];
             var Email = Request.Form["Email"];
             var Password = Request.Form["Password"];
