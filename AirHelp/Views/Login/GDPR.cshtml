@@ -97,7 +97,7 @@
                             @Model.Country, @Model.City, @Model.Adress
                         </label>
                     </div>
-                    
+
                     <div style="margin-top: 5px;">
                         <span class=" icon lock"></span>
                         <label class="value subitem">
@@ -120,7 +120,7 @@
                             @Model.Email
                         </label>
                     </div>
-                    
+
                     <div style="margin-top: 5px;">
                         <span class=" icon lock"></span>
                         <label class="value subitem">
@@ -136,7 +136,7 @@
                             @Model.Tel
                         </label>
                     </div>
-                    
+
                     <div style="margin-top: 5px;">
                         <span class=" icon lock"></span>
                         <label class="value subitem">
@@ -154,12 +154,55 @@
                     </div>
                 </div>
 
+                @foreach (var claim in Model.Claims.Where(c => c.Documents.Count > 0))
+                {
+                    <div style="margin-top: 5px;">
+                        <span class=" icon lock"></span>
+                        <label class="value subitem">
+                            Иск @claim.referalNumber.ToString("0000")
+                        </label>
+                    </div>
+                    if (User.IsInRole("admin"))
+                    {
+                        <div class="form-row">
+
+                            <div class="form-box">
+                                <label class="heder ">Пълномощно</label>
+                                <div>
+                                    <label class="data ">
+
+                                        <a href="@claim.AttorneyUrl" target="_blank"> <img src="~/Content/Assets/Icon/pdf.png" width="100px" /> </a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-box" style="justify-content:flex-start">
+                                <label class="heder ">Договор</label>
+                                <div>
+                                    <label class="data ">
+
+                                        <a href="@claim.contractUrl" target="_blank"> <img src="~/Content/Assets/Icon/pdf.png" width="100px" /> </a>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                    <div class="form-row-ticket" first>
+                        @foreach (var doc in claim.Documents)
+                        {
+
+                            <a href="@doc.Url" target="_blank">
+                                <img src="~/Content/Assets/Icon/ticket.png" width="80px" />
+                            </a>
+                        }
+                    </div>
+                }
+
             </div>
             <div class="contact-heder" style="margin-top: 40px;">
 
                 @ViewBag.company съхранява и използва предоставените от Вас данни само по отношение на претенции към авиокомпании, съгласно регламент 261/2004.
                 След прекратяване на съответния/те иск/ове към авиокомпании, @ViewBag.company изтива вашите лични данни, <b> освен ако изрично Вие се съгласите да бъдат съхранени </b> с цел предявяване на бъдещи претенции.
-
 
             </div>
 

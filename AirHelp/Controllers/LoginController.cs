@@ -99,16 +99,16 @@ namespace AirHelp.Controllers
 
         }
 
-        [Authorize]
         [HttpGet]
+        [Authorize]
         [Route("gdpr")]
         [Route("gdpr/{userid}")]
         public ActionResult GdprData(string userid)
         {
             var userEmail = "";
-            if (User.IsInRole("admin") && string.IsNullOrEmpty(userid))
+            if (User.IsInRole("admin") && !string.IsNullOrEmpty(userid))
             {
-                userEmail = userid.Replace("34de6r", "@").Replace("43edW", ".");
+                userEmail = Server.UrlDecode(userid).Replace("2334", ".").Replace("2374", "-");
             }
             else
             {
@@ -121,8 +121,11 @@ namespace AirHelp.Controllers
             {
                 user = dc.Users
                     .Include("claims")
+                    .Include("claims.documents")
                     .Where(u => u.Email == userEmail)
                     .SingleOrDefault();
+
+                var doc = user.Claims.Select(c => c.Documents);
                 return View("GDPR", user);
             }
 

@@ -69,7 +69,10 @@
             </div>
             @foreach (var user in Model)
             {
-                <a href="/потрбител/@user.UserId">
+                
+                var a = @Server.UrlEncode(user.UserId.Replace(".", "2334").Replace("-", "2374"));
+                
+                <a href="/gdpr/@a" >
 
                     <div class="claim-list">
                         <div style="grid-column-start: 1; grid-column-end: 3;">
