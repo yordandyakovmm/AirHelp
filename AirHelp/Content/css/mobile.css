@@ -1,21 +1,7 @@
 ﻿@media only screen and (max-width: 720px) {
-  .logo-image a img {
-    height: 10vw;
-  }
-  .menu-button {
-    display: flex;
-    align-items: center;
-  }
-  .menu-button button {
-    width: 70px;
-    padding: 12px 5px 12px 5px;
-    border: none;
-    background-color: transparent;
-    /*.icon::before {
-                font-size: 30px;
-                content: '\0236';
-                color: #8d9db6;
-            }*/
+  .main-layout {
+    grid-template-rows: 17vw auto auto;
+    grid-template-areas: "Logo" "content" "bottom-spacer";
   }
   .logo-menu-mobile {
     display: flex;
@@ -52,8 +38,22 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }
+  .logo-flex-container .logo-image img {
+    height: 9vw;
+  }
+  .logo-flex-container .menu-button {
+    display: flex;
+    align-items: center;
+  }
+  .logo-flex-container .menu-button button {
+    border: none;
+    background-color: transparent;
+  }
+  .logo-flex-container .menu-button img {
+    height: 8vw;
   }
   .big-image {
     grid-template: "big-image";
