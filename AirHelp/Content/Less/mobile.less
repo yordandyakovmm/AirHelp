@@ -102,6 +102,14 @@
                 color: black;
             }
 
+            .off:before {
+                margin-left: 5px;
+                content: "\e017";
+                color: black;
+                font-size: 22px;
+                color: black;
+            }
+
             a {
                 margin-left: 15px;
                 display: flex;
@@ -857,6 +865,50 @@
 
             span, a {
                 color: black;
+            }
+        }
+    }
+
+    .data-content {
+        grid-template: "Content";
+        display: grid;
+        grid-template-columns: 400px;
+        grid-template-areas: "center";
+        padding: 50px 50px;
+
+        .info-page {
+            grid-area: center;
+            padding: 10px 20px;
+            font-family: "PT Sans", sans-serif;
+            font-size: 16px;
+
+            h1 {
+                margin: 15px 0 0 0;
+                font-family: "PT Sans", sans-serif;
+                font-size: 40px;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+
+            li {
+                margin: 0 0 0 40px;
+                text-align: justify;
+                font-family: "PT Sans", sans-serif;
+                font-size: 16px;
+            }
+
+            h2 {
+                margin: 15px 0 0 0;
+                font-family: "PT Sans", sans-serif;
+                font-size: 30px;
+                font-weight: 500;
+            }
+
+            p {
+                margin: 20px 0 0 0;
+                text-align: justify;
+                font-family: "PT Sans", sans-serif;
+                font-size: 16px;
             }
         }
     }
