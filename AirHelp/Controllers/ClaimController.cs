@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;
 using System.Device.Location;
 using AirHelp.Hellpers;
 using System.Web.Security;
+using System.Net.Mail;
 
 namespace AirHelp.Controllers
 {
@@ -601,6 +602,35 @@ namespace AirHelp.Controllers
                 doc.Close();
 
                 Session["claim"] = claim;
+
+
+                string bosy = $"<h1>Заявка #{claim.referalNumber.ToString("0000")}</h1><p>От: {claim.User.FirstName} {claim.User.LastName}</p><p><а href='helpclaim.eu/иск/{claim.ClaimId}'>заявка</а></p>";
+
+
+                MailMessage message = new MailMessage();
+                message.To.Add(new MailAddress("office@helpclaim.eu"));
+                message.To.Add(new MailAddress("manager@helpclaim.eu"));
+                message.To.Add(new MailAddress("consulting@helpclaim.eu"));
+                message.To.Add(new MailAddress("lawyer@helpclaim.eu"));
+                message.Subject = "message";
+                message.Body = bosy;
+                message.IsBodyHtml = true;
+
+                try
+                {
+                    using (var smtp = new SmtpClient())
+                    {
+                        smtp.Port = 25;
+                        smtp.EnableSsl = false;
+                        smtp.Credentials = new System.Net.NetworkCredential("office@helpclaim.eu", "P@ssw0rd6712");
+                        smtp.Host = "mail.helpclaim.eu";
+                        smtp.Send(message);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return View("ViewClaim", claim);
+                }
 
                 return View("ViewClaim", claim);
             }
