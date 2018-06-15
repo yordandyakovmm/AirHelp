@@ -608,10 +608,10 @@ namespace AirHelp.Controllers
 
 
                 MailMessage message = new MailMessage();
-                message.To.Add(new MailAddress("office@helpclaim.eu"));
+                //message.To.Add(new MailAddress("office@helpclaim.eu"));
                 message.To.Add(new MailAddress("manager@helpclaim.eu"));
-                message.To.Add(new MailAddress("consulting@helpclaim.eu"));
-                message.To.Add(new MailAddress("lawyer@helpclaim.eu"));
+                //message.To.Add(new MailAddress("consulting@helpclaim.eu"));
+                //message.To.Add(new MailAddress("lawyer@helpclaim.eu"));
                 message.Subject = "message";
                 message.Body = bosy;
                 message.IsBodyHtml = true;
