@@ -3,7 +3,7 @@
 <html>
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    
+
     @if (!User.Identity.IsAuthenticated)
     {
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117938824-1"></script>
@@ -57,25 +57,25 @@
                     @if (User.Identity.IsAuthenticated)
                     {
 
-                        
 
-                        <span class="logged" style="display: block">
-                            <span class="sub-menu hidden">
-                                <span class="">
-                                    <a href="/обезщетение-списък"> <span style="margin:  0 0 0 5px;"> Профил</span></a>
-                                </span>
-                                <span class="">
-                                    <a href="/изход"> <span style="margin:  0 0 0 5px;">Изход </span></a>
-                                </span>
 
-                            </span>    
-                            <span style="margin:  0 0 0 5px;" onclick="$('.sub-menu').toggleClass('hidden');" > @ViewBag.user.FirstName @ViewBag.user.LastName <span class="icon expand"></span>  </span> 
+                    <span class="logged" style="display: block">
+                        <span class="sub-menu hidden">
+                            <span class="">
+                                <a href="/обезщетение-списък"> <span style="margin:  0 0 0 5px;"> Профил</span></a>
+                            </span>
+                            <span class="">
+                                <a href="/изход"> <span style="margin:  0 0 0 5px;">Изход </span></a>
+                            </span>
+
                         </span>
-                        
+                        <span style="margin:  0 0 0 5px;" onclick="$(this).find('span').toggleClass('expand').toggleClass('colaps'); $('.sub-menu').toggleClass('hidden');"> @ViewBag.user.FirstName @ViewBag.user.LastName <span class="icon expand"></span>  </span>
+                    </span>
+
                     }
                     else
                     {
-                        <span class="enter"><a href="/вход">  <img src="~/Content/Assets/Icon/login.png" /> <span style="margin:  0 0 0 5px;"> ВХОД </span></a> </span>
+                    <span class="enter"><a href="/вход">  <img src="~/Content/Assets/Icon/login.png" /> <span style="margin:  0 0 0 5px;"> ВХОД </span></a> </span>
                     }
 
 
@@ -92,27 +92,34 @@
 
         <div class="menu" style="display:none">
             <div class="logo-menu-mobile">
-                <span class='(@ViewBag.menu=="claims": "selected" : ""'><a href="/обезщетение-списък">ИСКОВЕ</a></span>
-                <span class='(@ViewBag.menu=="faq": "selected" : ""'><a href="/проблеми-с-полета/често-задавани-въпроси">ВЪПРОСИ</a></span>
-                <span class='(@ViewBag.menu=="claim": "selected" : ""'><a href="/обезщетение-при-полет">ПОДАЙ ИСК</a></span>
-                <span class='(@ViewBag.menu=="aboutus": "selected" : ""'><a href="/за-нас">ЗА НАС</a></span>
-                <span class='(@ViewBag.menu=="contact": "selected" : ""'><a href="/контакти">КОНТАКТИ</a></span>
+                <div>
+                    <span class=''> <i class="icon claims"></i> <a href="/обезщетение-списък">ИСКОВЕ</a></span>
+                    <span class=''> <i class="icon faq"></i> <a href="/проблеми-с-полета/често-задавани-въпроси">ВЪПРОСИ</a></span>
+                    <span class=''> <i class="icon claim"></i> <a href="/обезщетение-при-полет">ПОДАЙ ИСК</a></span>
+                    <span class=''> <i class="icon us"></i> <a href="/за-нас">ЗА НАС</a></span>
+                    <span class=''> <i class="icon contact"></i> <a href="/контакти">КОНТАКТИ</a>  </span>
 
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <span class="logged"><a href="/изход"><span style="margin:  0 0 0 0;"> @ViewBag.user.FirstName @ViewBag.user.LastName</span></a> </span>
-                }
-                else
-                {
-                    <span class="enter"><a href="/вход"><span style="margin:  0 0 0 0;"> ВХОД </span></a> </span>
-                }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span class="logged" onclick="$(this).find('.d').toggleClass('open').toggleClass('close'); $('#sub-menu').toggle(500)"> <i class="icon enter"></i> <a href="javascript:void(0)"><span style="margin:  0 0 0 0;"> @ViewBag.user.FirstName @ViewBag.user.LastName</span> </a> <i class="d icon open"></i> </span>
+                    }
+                    else
+                    {
+                        <span class="enter" > <i class="icon enter"></i> <a href="/вход"><span style="margin:  0 0 0 0;"> ВХОД </span></a> </span>
+                    }
+                </div>
 
+                <div  id="sub-menu" style="padding-left: 50px; display: none" >
+                    <span class=''> <i class="icon claims"></i> <a href="/обезщетение-списък">МОЯ ПРОФИЛ</a></span>
+                    <span class=''> <i class="icon faq"></i> <a href="/смяна-на-парола">СМЯНА НА ПАРОЛА</a></span>
+                    <span class=''> <i class="icon claim"></i> <a href="/потребител-редакция">РЕДАКЦИЯ НА ЛИЧНИ ДАННИ</a></span>
+                    <span class=''> <i class="icon enter"></i> <a href="/GDPR">GDPR</a></span>
+                    <span class=''> <i class="icon enter"></i> <a href="/изход">ИЗХОД</a></span>
+                </div>
 
             </div>
 
         </div>
-
-
 
 
         @RenderBody()
@@ -122,7 +129,7 @@
             </div>
             <div class="bottom">
 
-                <span>@ViewBag.company</span> <span>|</span> <a href="/общи-условия"> ОБЩИ УСЛОВИЯ </a> <span>|</span>  <a href="/пpолитика-на-поверителност"> ДЕКЛАРАЦИЯ ЗА ПОВЕРИТЕЛНОСТ </a>
+                <span>@ViewBag.company</span> <span>|</span> <a href="/общи-условия"> ОБЩИ УСЛОВИЯ </a> <span class="mnone">|</span>  <a href="/пpолитика-на-поверителност" class="mnone"> ДЕКЛАРАЦИЯ ЗА ПОВЕРИТЕЛНОСТ </a>
 
             </div>
         </div>

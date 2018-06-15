@@ -125,7 +125,12 @@ html,
 }
 .logo-menu .logged .expand::before {
   margin-left: 5px;
-  content: '\e055';
+  content: '\e259';
+  color: white;
+}
+.logo-menu .logged .colaps::before {
+  margin-left: 5px;
+  content: '\e260';
   color: white;
 }
 .logo-menu span.menu {

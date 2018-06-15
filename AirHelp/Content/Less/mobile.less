@@ -9,12 +9,11 @@
 @media only screen and (max-width: 720px) {
 
     .main-layout {
-      
         grid-template-rows: 17vw auto auto;
         grid-template-areas: "Logo" "content" "bottom-spacer";
     }
 
-    .logo-menu-mobile {
+    .logo-menu-mobile div {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -22,7 +21,7 @@
 
         a {
             color: #444;
-            font-family: 'Armata', sans-serif;
+            font-family: 'PT Sans';
             font-size: 4vw;
             font-weight: 500;
             text-decoration: none;
@@ -30,6 +29,7 @@
 
         > span {
             width: 100%;
+            padding-left: 110px;
             margin-top: 10px !important;
             background-color: white;
             height: 12vw;
@@ -38,8 +38,72 @@
             flex-flow: row;
             align-items: center;
 
+            .open:before {
+                margin-left: 5px;
+                content: "\e259";
+                color: black;
+                font-size: 22px;
+                color: black;
+            }
+
+            .close:before {
+                margin-left: 5px;
+                content: "\e260";
+                color: black;
+                font-size: 22px;
+                color: black;
+            }
+
+            .claims:before {
+                margin-left: 5px;
+                content: "\e032";
+                color: black;
+                font-size: 22px;
+                color: black;
+            }
+
+            .faq:before {
+                margin-left: 5px;
+                content: "\e085";
+                color: black;
+                font-size: 22px;
+                color: black;
+            }
+
+            .claim:before {
+                margin-left: 5px;
+                content: "\e065";
+                color: black;
+                font-size: 22px;
+                color: black;
+            }
+
+            .us:before {
+                margin-left: 5px;
+                content: "\e086";
+                color: black;
+                font-size: 22px;
+                color: black;
+            }
+
+            .contact:before {
+                margin-left: 5px;
+                content: "\2709";
+                color: black;
+                font-size: 22px;
+                color: black;
+            }
+
+            .enter:before {
+                margin-left: 5px;
+                content: "\e033";
+                color: black;
+                font-size: 22px;
+                color: black;
+            }
+
             a {
-                margin-left: 100px;
+                margin-left: 15px;
                 display: flex;
                 flex-flow: row;
                 align-items: center;
@@ -746,6 +810,7 @@
 
     .contact-main {
         padding-left: 0;
+
         .contact-heder {
             width: 400px;
         }
@@ -781,8 +846,18 @@
             grid-template-columns: 110px 110px 0 158px 0;
         }
     }
-    
-    .mnone{
-        display:none;
+
+    .mnone {
+        display: none;
+    }
+
+    .bottom-spacer {
+        .bottom {
+            background-color: white;
+
+            span, a {
+                color: black;
+            }
+        }
     }
 }

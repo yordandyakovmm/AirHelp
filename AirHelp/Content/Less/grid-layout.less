@@ -137,72 +137,77 @@ body, html, .main-layout {
 }
 
 
-    .logo-menu {
+.logo-menu {
+    display: flex;
+    align-items: center;
+
+    a {
+        color: #444;
+        font-family: 'Armata', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .logged {
+        padding: 8px;
+        font-family: 'Armata', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        border-radius: 3px;
+        background-color: dodgerblue;
+        cursor: pointer;
+
+        .hidden {
+            display: none;
+        }
+
+        .expand::before {
+            margin-left: 5px;
+            content: '\e259';
+            color: white;
+        }
+
+        .colaps::before {
+            margin-left: 5px;
+            content: '\e260';
+            color: white;
+        }
+    }
+
+
+    span.menu {
+        padding: 7px;
+        border-style: solid;
+        border-radius: 3px;
+        border-width: 3px;
+        border-color: transparent;
+
+        &:hover {
+            border-color: dodgerblue;
+        }
+    }
+
+    > span {
         display: flex;
+        align-items: center;
+        margin: 0 0 0 5px;
+        flex-flow: row;
         align-items: center;
 
         a {
-            color: #444;
-            font-family: 'Armata', sans-serif;
-            font-size: 16px;
-            font-weight: 500;
-            text-decoration: none;
-        }
-
-        .logged {
-            padding: 8px;
-            font-family: 'Armata', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            color: white;
-            border-radius: 3px;
-            background-color: dodgerblue;
-            cursor: pointer;
-
-            .hidden {
-                display: none;
-            }
-
-            .expand::before {
-                margin-left: 5px;
-                content: '\e055';
-                color: white;
-            }
-        }
-
-
-
-        span.menu {
-            padding: 7px;
-            border-style: solid;
-            border-radius: 3px;
-            border-width: 3px;
-            border-color: transparent;
-
-            &:hover {
-                border-color: dodgerblue;
-            }
-        }
-
-        > span {
             display: flex;
-            align-items: center;
-            margin: 0 0 0 5px;
             flex-flow: row;
+            justify-content: center;
             align-items: center;
+        }
 
-            a {
-                display: flex;
-                flex-flow: row;
-                justify-content: center;
-                align-items: center;
-            }
-
-            img {
-                height: 35px;
-            }
+        img {
+            height: 35px;
         }
     }
+}
 
 
     .big-image {
