@@ -409,6 +409,194 @@ namespace AirHelp.Hellpers
             return result;
         }
 
+        public static string Metatags(string path)
+        {
+            var result = "";
+
+            result = @"<title>Закъснение при полет - Обезщетение | Отменен полет</title>
+                           <meta name='robots' content='index, follow' />
+                           <meta name='description' content='Правата ми при закъснял, отеменен полет или отказан достъп до борда. Правата ми при полет съгласно регламент 261/2004.' />
+                           <meta name='keywords' content='закъснение, отмяна, отмяна полет, отменен полет,закъснял полет, закъснение полет, обезщетение при полет,анулиране на полет,отказан достъп, 
+                            претенция към авиокомпания,правата ми при полет, обезщетение за закъснял полет,обезщетение отмяна полет, отменен полет, овърбукинг' />
+                           <meta property='og:type' content='website' />
+
+                           <meta property='og:description' content = 'Правата ми при закъснял, отеменен полет или отказан достъп до борда. Правата ми при полет съгласно регламент 261/2004.' />
+
+                           <meta property='og:title' content='Проблеми с полета | Обезщетение' />      
+                           <meta property='og:url' content='https://helpclaim.eu/' />
+                           <meta property='article:published_time' content='2018-05-04' />
+                           <meta property='article:modified_time' content='2018-06-14' />
+                           <meta property='og:site_name' content = 'Проблеми с полета | Обезщетение | HELPCLAIMS' />
+                           
+                           <meta property='og:image' content = 'https://helpclaim.eu/Content/Assets/Logo/link.png' />
+                           <meta property='article:tag' content = 'отменен' />
+                           <meta property='article:tag' content = 'полет' />
+                           <meta property='article:tag' content = 'закъснение' />
+                           <meta property='article:tag' content = 'закъснение полет' />
+                           <meta property='article:tag' content = 'отменен полет' />
+                           <meta property='article:tag' content = 'обезщетение' />
+                           <meta property='article:tag' content = 'закъснял полет' />
+                           <meta property='article:tag' content = 'пропусната връзка' />
+                           <meta property='article:tag' content = 'правата ми' />
+                           <meta property='article:tag' content = 'обезщетение' />
+                           <meta property='article:tag' content = 'закъснял полет' />
+                           <meta property='article:tag' content = 'регламент 261' />
+                           <meta property='article:tag' content = 'пропусната връзка полет' />";
+                           //<meta property='article:publisher' content='https://www.facebook.com/' />";
+
+                if (path.Contains("вход")) {
+                result = @"<title>обезщетение при поле | Вход за потребители</title>
+                           <meta name='robots' content='index, follow' />
+                           <meta name='description' content='Правата ми при проблеми с полета. Вход за потребители.' />
+                           <meta name='keywords' content='вход, потребители, отмяна полет, отменен полет,закъснял полет, закъснение полет, обезщетение при полет, потребителски профил ' />
+                           <meta property='og:type' content='article' />
+                           <meta property='og:description' content = 'Правата ми при закъснял, отеменен полет или отказан достъп до борда. Правата ми при полет съгласно регламент 261/2004.' />
+                           <meta property='og:title' content='Проблеми с полета | Обезщетение' />      
+                           <meta property='og:url' content='https://helpclaim.eu/вход' />
+                           <meta property='article:published_time' content='2018-05-04' />
+                           <meta property='article:modified_time' content='2018-06-14' />
+                           <meta property='og:site_name' content = 'Проблеми с полета | Обезщетение | HELPCLAIMS' />
+                           <meta property='og:image' content = 'https://helpclaim.eu/Content/Assets/Logo/link.png' />
+                           <meta property='article:tag' content = 'отменен' />
+                           <meta property='article:tag' content = 'полет' />
+                           <meta property='article:tag' content = 'закъснение' />
+                           <meta property='article:tag' content = 'вход' />";
+                           //<meta property='article:publisher' content='https://www.facebook.com/' />";
+                }
+                else if (path.Contains("често-задавани-въпроси"))
+                {
+                result = @"<title>обезщетение при полет | често задавани въпроси</title>
+                           <meta name='robots' content='index, follow' />
+                           <meta name='description' content='Правата ми при проблеми с полета. Често задавани въпроси.' />
+                           <meta name='keywords' content='вход, потребители, отмяна полет, отменен полет,закъснял полет, закъснение полет,faq ,обезщетение при полет, потребителски профил ' />
+                           <meta property='og:type' content='article' />
+                           <meta property='og:description' content = 'Правата ми при закъснял, отеменен полет или отказан достъп до борда. Правата ми при полет съгласно регламент 261/2004.' />
+                           <meta property='og:title' content='Проблеми с полета | Обезщетение' />      
+                           <meta property='og:url' content='https://helpclaim.eu/проблеми-с-полета/често-задавани-въпроси' />
+                           <meta property='article:published_time' content='2018-05-04' />
+                           <meta property='article:modified_time' content='2018-06-14' />
+                           <meta property='og:site_name' content = 'Проблеми с полета | често задавани въпроси | HELPCLAIMS' />
+                           <meta property='og:image' content = 'https://helpclaim.eu/Content/Assets/Logo/link.png' />
+                           <meta property='article:tag' content = 'отменен' />
+                           <meta property='article:tag' content = 'полет' />
+                           <meta property='article:tag' content = 'закъснение' />
+                           <meta property='article:tag' content = 'въпроси' />
+                           <meta property='article:tag' content = 'въпроси обезщетение' />";
+                           //<meta property='article:publisher' content='https://www.facebook.com/' />";
+                }
+                else if (path.Contains("за-нас"))
+                {
+                    result = @"<title>обезщетение при полет | често задавани въпроси</title>
+                           <meta name='robots' content='index, follow' />
+                           <meta name='description' content='Правата ми при проблеми с полета. Често задавани въпроси.' />
+                           <meta name='keywords' content='вход, потребители, отмяна полет, отменен полет,закъснял полет, закъснение полет,faq ,обезщетение при полет, потребителски профил ' />
+                           <meta property='og:type' content='article' />
+                           <meta property='og:description' content = 'Правата ми при закъснял, отеменен полет или отказан достъп до борда. Правата ми при полет съгласно регламент 261/2004.' />
+                           <meta property='og:title' content='Проблеми с полета | Обезщетение' />      
+                           <meta property='og:url' content='https://helpclaim.eu/за-нас' />
+                           <meta property='article:published_time' content='2018-05-04' />
+                           <meta property='article:modified_time' content='2018-06-14' />
+                           <meta property='og:site_name' content = 'Проблеми с полета | често задавани въпроси | HELPCLAIMS' />
+                           <meta property='og:image' content = 'https://helpclaim.eu/Content/Assets/Logo/link.png' />
+                           <meta property='article:tag' content = 'отменен' />
+                           <meta property='article:tag' content = 'полет' />
+                           <meta property='article:tag' content = 'закъснение' />
+                           <meta property='article:tag' content = 'въпроси' />
+                           <meta property='article:tag' content = 'въпроси обезщетение' />";
+                           
+                }
+                else if (path.Contains("контакти"))
+                {
+                    result = @"<title>обезщетение при полет | често задавани въпроси</title>
+                           <meta name='robots' content='index, follow' />
+                           <meta name='description' content='Правата ми при проблеми с полета. Често задавани въпроси.' />
+                           <meta name='keywords' content='вход, потребители, отмяна полет, отменен полет,закъснял полет, закъснение полет,faq ,обезщетение при полет, потребителски профил ' />
+                           <meta property='og:type' content='article' />
+                           <meta property='og:description' content = 'Контакти с нас. Правата ми при полет съгласно регламент 261/2004.' />
+                           <meta property='og:title' content='Проблеми с полета | Обезщетение' />      
+                           <meta property='og:url' content='https://helpclaim.eu/контакти' />
+                           <meta property='article:published_time' content='2018-05-04' />
+                           <meta property='article:modified_time' content='2018-06-14' />
+                           <meta property='og:site_name' content = 'Проблеми с полета | контакти с ХЕЛПКЛЕЙМС' />
+                           <meta property='og:image' content = 'https://helpclaim.eu/Content/Assets/Logo/link.png' />
+                           <meta property='article:tag' content = 'отменен' />
+                           <meta property='article:tag' content = 'полет' />
+                           <meta property='article:tag' content = 'закъснение' />
+                           <meta property='article:tag' content = 'въпроси' />
+                           <meta property='article:tag' content = 'контакти с нас' />";
+                           
+            }
+            else if (path.Contains("контакти"))
+            {
+                result = @"<title>обезщетение при полет | общи условия</title>
+                           <meta name='robots' content='index, follow' />
+                           <meta name='description' content='Правата ми при проблеми с полета. Често задавани въпроси.' />
+                           <meta name='keywords' content='вход, потребители, отмяна полет, отменен полет,закъснял полет, закъснение полет,faq ,обезщетение при полет, потребителски профил ' />
+                           <meta property='og:type' content='article' />
+                           <meta property='og:description' content = 'Правата ми при закъснял, отеменен полет или отказан достъп до борда. Правата ми при полет съгласно регламент 261/2004.' />
+                           <meta property='og:title' content='HELPCLAIMS | общи условия' />      
+                           <meta property='og:url' content='https://helpclaim.eu/общи-условия' />
+                           <meta property='article:published_time' content='2018-05-01' />
+                           <meta property='article:modified_time' content='2018-06-04' />
+                           <meta property='og:site_name' content = 'Проблеми с полета | общи условия ХЕЛПКЛЕЙМС' />
+                           <meta property='og:image' content = 'https://helpclaim.eu/Content/Assets/Logo/link.png' />
+                           <meta property='article:tag' content = 'искове' />
+                           <meta property='article:tag' content = 'претенции' />
+                           <meta property='article:tag' content = 'полети' />
+                           <meta property='article:tag' content = 'общи условия' />";
+                           
+
+            }
+            else if (path.Contains("контакти"))
+            {
+                result = @"<title>обезщетение при полет | подаване  на иск</title>
+                           <meta name='robots' content='index, follow' />
+                           <meta name='description' content='Подаване на иск за обезщетение при полет.' />
+                           <meta name='keywords' content='закъснял полет, отменен полет, Подаване на иск за, отменен полет, отказан достъп до борда или. ' />
+                           <meta property='og:type' content='article' />
+                           <meta property='og:description' content = 'Правата ми при закъснял, отеменен полет или отказан достъп до борда. Правата ми при полет съгласно регламент 261/2004.' />
+                           <meta property='og:title' content='HELPCLAIMS | общи условия' />      
+                           <meta property='og:url' content='https://helpclaim.eu/обезщетение-при-полет' />
+                           <meta property='article:published_time' content='2018-05-01' />
+                           <meta property='article:modified_time' content='2018-06-04' />
+                           <meta property='og:site_name' content = 'Проблеми с полета | общи условия ХЕЛПКЛЕЙМС' />
+                           <meta property='og:image' content = 'https://helpclaim.eu/Content/Assets/Logo/link.png' />
+                           <meta property='article:tag' content = 'иск за обезщетени' />
+                           <meta property='article:tag' content = 'претенция' />
+                           <meta property='article:tag' content = 'полет' />
+                           <meta property='article:tag' content = 'закъснял полет' />
+                           <meta property='article:tag' content = 'отменен полет' />
+                           <meta property='article:tag' content = 'отказан досъп до борда' />";
+                          
+
+            }
+            else if (path.Contains("калкулиране-на-обезщетение"))
+            {
+                result = @"<title>Калкулиране на обезщетение при полет </title>
+                           <meta name='robots' content='index, follow' />
+                           <meta name='description' content='Калкулиране на обезщетение при полет.' />
+                           <meta name='keywords' content='калкулиране на обезщетение, обезщетение закъснял полет,обезщетение отменен полет, размер, обезщетение, право на обезщетение' />
+                           <meta property='og:type' content='article' />
+                           <meta property='og:description' content = 'Правата ми при закъснял, отеменен полет или отказан достъп до борда. Правата ми при полет съгласно регламент 261/2004.' />
+                           <meta property='og:title' content='HELPCLAIMS | общи условия' />      
+                           <meta property='og:url' content='https://helpclaim.eu/калкулиране-на-обезщетение' />
+                           <meta property='article:published_time' content='2018-05-01' />
+                           <meta property='article:modified_time' content='2018-06-04' />
+                           <meta property='og:site_name' content = 'Проблеми с полета | общи условия ХЕЛПКЛЕЙМС' />
+                           <meta property='og:image' content = 'https://helpclaim.eu/Content/Assets/Logo/link.png' />
+                           <meta property='article:tag' content = 'право' />
+                           <meta property='article:tag' content = 'право на обезщетение' />
+                           <meta property='article:tag' content = 'размер' />
+                           <meta property='article:tag' content = 'размер на обезщетение' />
+                           <meta property='article:tag' content = 'рамер на обезщетение' />
+                           <meta property='article:tag' content = 'калулиране на обезщетение' />
+                           <meta property='article:tag' content = 'калулиране на обезщетение голямо закъснение' />
+                          <meta property='article:tag' content = 'калулиране на обезщетение отмене н полет' />";
+
+            }
+
+            return result.Replace('\'', '"');
+        }
     }
 
 }

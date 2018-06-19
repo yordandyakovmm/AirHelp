@@ -1,8 +1,10 @@
 ﻿@using AirHelp.Models
+@using AirHelp.Hellpers
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    @Html.Raw(CommonHeppler.Metatags(Request.Path))  
 
     @if (!User.Identity.IsAuthenticated)
     {

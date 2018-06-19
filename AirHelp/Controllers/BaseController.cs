@@ -31,6 +31,9 @@ namespace AirHelp.Controllers
             ViewBag.manager = ConfigurationManager.AppSettings["manager"].ToString();
             ViewBag.managerEn = ConfigurationManager.AppSettings["managerEn"].ToString();
 
+            //var a = this.Request.Url.ToString();
+
+
             base.Initialize(requestContext);
 
             if (Session != null && Session["user"] != null)

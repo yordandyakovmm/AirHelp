@@ -350,8 +350,9 @@
     <Content Include="Content\Assets\Icon\time-left.png" />
     <Content Include="Content\Assets\Logo\45-512.bmp" />
     <Content Include="Content\Assets\Logo\45-512.png" />
+    <Content Include="Content\Assets\Logo\link.png" />
     <Content Include="Content\Assets\Logo\logo1.bmp" />
-    <Content Include="Content\Assets\Logo\logo1.png" />
+    <Content Include="Content\Assets\logo1.png" />
     <Content Include="Content\Assets\overbooking.jpg" />
     <Content Include="Content\Assets\woman-watch.jpeg" />
     <Content Include="Content\Assets\yellow-cloud-plaine.jpg" />
@@ -458,6 +459,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="googleb98e407ba9794108.html" />
     <Content Include="Scripts\datepicker-bg.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -548,7 +550,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="UserDocuments\" />
-    <Folder Include="well-known\acme-challenge\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803262023038_initial.resx">
