@@ -47,11 +47,46 @@ namespace AirHelp.Hellpers
             return flight;
         }
 
-        public static string GetAirport(string text)
+        public static object GetAirport(string text)
         {
             var result = "";
-            var url = "https://openflights.org/php/apsearch.php";
-            var values = new Dictionary<string, string>
+
+            if (ConfigurationManager.AppSettings["useLocalData"].ToString() == "true")
+            {
+
+                using (AirHelpDBContext dc = new AirHelpDBContext())
+                {
+                    var airport = dc.AirPortsData.Where(a => a.name.StartsWith(text) || a.city.StartsWith(text) || a.country.StartsWith(text) || a.iata.StartsWith(text)).Select(a => new Airportss {
+                        apid = a.Id.ToString(),
+                        iata = a .iata,
+                        city = a.city,
+                        country = a.country,
+                        name = a.name,
+                        ap_name = a.name,
+                        x = a.x.ToString(),
+                        y = a.y.ToString(),
+                        elevation = a.elevation.ToString()
+                    });
+                    var resultData = new ResultAirportData() {
+                        status = 0
+                    };
+
+                    resultData.airports = airport.ToArray();
+                    resultData.status = airport.Count() > 0 ? 1 : 0;
+
+
+                    return resultData;
+
+                }
+
+            }
+            else
+            {
+
+
+
+                var url = "https://openflights.org/php/apsearch.php";
+                var values = new Dictionary<string, string>
                 {
                       {"name" , text},
                       {"country", "ALL"},
@@ -59,18 +94,18 @@ namespace AirHelp.Hellpers
                       {"offset", "0"}
                 };
 
-            var content = new FormUrlEncodedContent(values);
+                var content = new FormUrlEncodedContent(values);
 
-            var response = client.PostAsync(url, content).Result;
+                var response = client.PostAsync(url, content).Result;
 
-            if (response.IsSuccessStatusCode)
-            {
-                var responseContent = response.Content;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = response.Content;
 
-                result = responseContent.ReadAsStringAsync().Result;
+                    result = responseContent.ReadAsStringAsync().Result;
 
+                }
             }
-
             return result;
         }
 

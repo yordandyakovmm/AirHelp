@@ -358,6 +358,15 @@ button.claim-reset {
     border-top-style: none;
     //box-shadow: 0 0 8px @blue-color;
     li {
+        &.airport-list{
+            display: flex;
+            flex-direction: column;
+            span.city{
+                margin-top: 4px;
+                font-size: 13px;
+            }
+        }
+            
         &.selected {
             color: #fff;
             background-color: @blue-color;

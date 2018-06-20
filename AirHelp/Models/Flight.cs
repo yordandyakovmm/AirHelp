@@ -6,6 +6,40 @@ using System.Web;
 namespace AirHelp.Models
 {
 
+
+
+
+    public class ResultAirportData
+    {
+        public int status { get; set; }
+        public int offset { get; set; }
+        public string max { get; set; }
+        public Airportss[] airports { get; set; }
+    }
+
+    public class Airportss
+    {
+        public string name { get; set; }
+        public string city { get; set; }
+        public string country { get; set; }
+        public string iata { get; set; }
+        public string icao { get; set; }
+        public string x { get; set; }
+        public string y { get; set; }
+        public string elevation { get; set; }
+        public string apid { get; set; }
+        public string timezone { get; set; }
+        public string dst { get; set; }
+        public string tz_id { get; set; }
+        public string type { get; set; }
+        public string source { get; set; }
+        public object ap_uid { get; set; }
+        public string ap_name { get; set; }
+    }
+
+
+
+
     public class FlightStatus
     {
         public Request request { get; set; }

@@ -228,12 +228,20 @@ function ddKeyUp(_this, e) {
 
         var url = (isAirtport ? '/api/airports?text=' : '/api/airline?text=') + $this.val();
         $.get(url, function (data) {
-            data = JSON.parse(data);
+            data = (isAirtport ? data : JSON.parse(data));
             if (data.status == 1) {
                 $dropDown.html('');
                 for (i = 0; i < data.airports.length; i++) {
+
                     var li = '<li index="' + (i + 1) + '" onclick="menuItemClick(this)" ' + (i == data.airports.length - 1 ? 'last' : '') + '>' +
                         (data.airports[i].name || data.airports[i][i].city) + ' (' + data.airports[i].iata + ')' + '</li>';
+
+                    if (isAirtport) {
+                        li = '<li class="airport-list" index="' + (i + 1) + '" onclick="menuItemClick(this)" ' + (i == data.airports.length - 1 ? 'last' : '') + '>' +
+                         '<span>' + data.airports[i].name + ' (' + data.airports[i].iata + ')' + '</span>' +
+                         '<span class="city">' + data.airports[i].city + ' (' + data.airports[i].country + ')' + '</span>' +
+                       '</li>';
+                    }
                     var $li = $(li).data('data', data.airports[i]);
                     $dropDown.append($li);
                 }

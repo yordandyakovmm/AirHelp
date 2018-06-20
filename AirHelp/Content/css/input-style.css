@@ -275,6 +275,14 @@ button.claim-reset .icon::before {
 .lSuggestoin li {
   padding: 12px 0 12px 20px;
 }
+.lSuggestoin li.airport-list {
+  display: flex;
+  flex-direction: column;
+}
+.lSuggestoin li.airport-list span.city {
+  margin-top: 4px;
+  font-size: 13px;
+}
 .lSuggestoin li.selected {
   color: #fff;
   background-color: #009fe3;
