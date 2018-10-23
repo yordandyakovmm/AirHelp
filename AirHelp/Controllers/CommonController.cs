@@ -21,7 +21,7 @@ namespace AirHelp.Controllers
         public ActionResult ContactPost()
         {
             var email = Request.Form["Email"];
-            var name = Request.Form["name"];
+            var name = Request.Form["Name"];
             var text = Request.Form["Text"];
 
             string bosy = $"<h1>Запитване</h1><p>Име: {name}</p><p>email: {email}</p><p>----------</p><p>{text}</p>";
