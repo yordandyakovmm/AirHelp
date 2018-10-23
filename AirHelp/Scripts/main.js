@@ -100,7 +100,7 @@ function cbBlur(_this) {
 
 function menuItemClick(_this) {
     var $parent = $(_this).parent();
-    $parent.parent().find('input').val($(_this).text()).removeClass('remove-shadow');
+    $parent.parent().find('input').val($(_this).data('data').name + ' (' + $(_this).data('data').iata +')').removeClass('remove-shadow');
     $parent.parent().find('input').data('data', $(_this).data('data'));
     $(_this).parent().parent().parent().addClass('success');
     $parent.hide();
@@ -185,7 +185,7 @@ function ddKeyUp(_this, e) {
     if (e.which == 13) {
         var $selected = $dropDown.find('li.selected');
         if ($selected.length > 0) {
-            $this.parent().find('input').val($selected.text());
+            $this.parent().find('input').val($selected.data('data').name + ' (' + $selected.data('data').iata + ')');
             $this.parent().find('input').data('data', $selected.data('data'));
             $this.parent().parent().addClass('success');
 
