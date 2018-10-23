@@ -82,6 +82,9 @@
         }
     </style>
 </head>
+@{
+    var account = System.Configuration.ConfigurationManager.AppSettings["appId"].ToString().ToLower() == "true";
+}
 <body>
     <div class="main">
         <div class="container">
@@ -118,10 +121,20 @@
                     Да извършва съдопроизводствени действия,да сключва спогодби,
                     да извършва действия с предмета на делото.
                 </p>
-                <p class="content">
-                    Да получи в пълен размер и от мое име паричното обезщетение съгласно Регламент ЕО 261 2004,
-                    дължимо и платимо в резултат на гореизброените действия по сметка на @ViewBag.company @ViewBag.bankAccount.
-                </p>
+                @if (account)
+                {
+                    <p class="content">
+                        Да получи в пълен размер и от мое име паричното обезщетение съгласно Регламент ЕО 261 2004,
+                        дължимо и платимо в резултат на гореизброените действия по сметка на @ViewBag.company @ViewBag.bankAccount.
+                    </p>
+                }
+                else
+                {
+                    <p class="content">
+                        Да получи в пълен размер и от мое име паричното обезщетение съгласно Регламент ЕО 261 2004,
+                        дължимо и платимо в резултат на гореизброените действия.
+                    </p>
+                }
                 <p class="content">
                     Във връзка с описаните по – горе действия от мое име да получава и подписва всякакви документи,
                     да декларира всякакви обстоятелства и да извършва всички правни и фактически действия, където е необходимо.
@@ -152,13 +165,13 @@
                     Bulgaria, @ViewBag.addressEn, represented by @ViewBag.managerEn.
                 </p>
                 <p class="content">
-                    To represent me in front of the corresponding airline carrier @Model.AirCompany or another airline carrier that issued the ticket or 
-                    made the booking number @Model.BookCode for a flight scheduled to: take off on @Model.Date from @Model.DepartureAirport airport, 
-                    land at @Model.DestinationAirports airport, third parties or/and organizations with respect to 
+                    To represent me in front of the corresponding airline carrier @Model.AirCompany or another airline carrier that issued the ticket or
+                    made the booking number @Model.BookCode for a flight scheduled to: take off on @Model.Date from @Model.DepartureAirport airport,
+                    land at @Model.DestinationAirports airport, third parties or/and organizations with respect to
                     payment of compensation according to Regulation EC 261/2004.
                 </p>
                 <p class="content">
-                    To contact the competent Civil Aviation Administration and take any action in order to 
+                    To contact the competent Civil Aviation Administration and take any action in order to
                     obtain the compensation according to Regulation EC 261/2004.
                 </p>
                 <p class="content">
@@ -169,7 +182,7 @@
                     To state and declare any data and circumstances.
                 </p>
                 <p class="content">
-                    To represent me in front of all courts and all private enforcement 
+                    To represent me in front of all courts and all private enforcement
                     agents and file an application for execution order and statement of claim.
                 </p>
                 <p class="content">
@@ -181,8 +194,8 @@
                 </p>
                 <p class="content">
                     In connection with the actions described above on my behalf, to receive and
-                    sign any documents, to declare any circumstances and to carry out all legal and factual actions where necessary. 
-                    I, the undersigned, declare that I am aware of and accept the Terms and Conditions, 
+                    sign any documents, to declare any circumstances and to carry out all legal and factual actions where necessary.
+                    I, the undersigned, declare that I am aware of and accept the Terms and Conditions,
                     I agree my personal data to be stored, used and processed in connection with the above actions.
                 </p>
                 <p class="content">
@@ -204,11 +217,11 @@
                     <span><b>Дата/Date: @Model.DateCreated.ToString("dd.MM.yyyy") </b></span>
                 </div>
                 <div class="span-2">
-                    <span><b>Упълномощител / Principal:</b>&nbsp;</span><div style="display: inline-block; position:absolute"> 
-                    @if (!string.IsNullOrEmpty(@Model.SignitureImage))
-                    {
-                        <img src="@Model.SignitureImage" style="margin: -70px 0 0 10px; width: 200px; height:150px;" /> 
-                    }
+                    <span><b>Упълномощител / Principal:</b>&nbsp;</span><div style="display: inline-block; position:absolute">
+                        @if (!string.IsNullOrEmpty(@Model.SignitureImage))
+                        {
+                            <img src="@Model.SignitureImage" style="margin: -70px 0 0 10px; width: 200px; height:150px;" />
+                        }
                     </div>
                 </div>
 
