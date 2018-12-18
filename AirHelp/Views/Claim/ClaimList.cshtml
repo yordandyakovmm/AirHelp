@@ -21,6 +21,10 @@
                 <div class="circle"><label> </label></div>
                 <a class="text" href="/потребител-редакция"> Редакция на дании </a>
             </div>
+            <div class="empty">
+                <div class="circle"><label> </label></div>
+                <a class="text" href="http://mail.helpclaim.eu" target="_blank"> EMAIL </a>
+            </div>
         }
         else
         {
@@ -81,9 +85,11 @@
             </div>
             @foreach (var claim in Model)
             {
-                <a href="/иск/@claim.ClaimId">
-
-                    <div class="claim-list">
+                var missingUser = claim.UserId == null;
+                var url = missingUser ? "javascript:void(0)" : "/иск/" + claim.ClaimId.ToString();
+                var style = missingUser ? "red" : "";
+                <a href='@url'>
+                    <div class="claim-list @style">
                         <div style="grid-column-start: 1; grid-column-end: 2;">
 
                             <label>

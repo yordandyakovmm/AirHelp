@@ -459,6 +459,9 @@ label.data {
   font-size: 18px;
   color: #008dca;
 }
+.red label {
+  color: red;
+}
 p.left {
   font-size: 16px;
   color: #009fe3;

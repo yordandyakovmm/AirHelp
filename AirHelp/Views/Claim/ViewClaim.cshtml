@@ -391,7 +391,7 @@
                     <label class="heder ">Договор</label>
                     <div>
                         <label class="data ">
-                            
+
                             <a href="@Model.contractUrl" target="_blank"> <img src="~/Content/Assets/Icon/pdf.png" width="100px" /> </a>
                         </label>
                     </div>
@@ -399,11 +399,46 @@
 
             </div>
 
+           
+
+
 
             <div class="form-row">
                 &nbsp;
             </div>
         </form>
+
+        @*@if (User.IsInRole("admin"))
+            {
+            <form method="post" action="/sendEmail">
+                <div class="form-row" id="Info" style="flex-flow: column;">
+
+                    <input type="hidden" name="email" value="@Model.User.Email" />
+
+                    <div class="form-box-width">
+                        <label>Email subject</label>
+                        <div>
+                            <textarea contenteditable="true" id="subject" name="subject" placeholder=""></textarea>
+                        </div>
+                    </div>
+                    <div class="form-box-width">
+                        <label>Email Text</label>
+                        <div>
+                            <textarea rows="6" cols="80" id="text" name="text" placeholder=""></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-box-upload upload-box">
+                        <div>
+                            <button class="submit" type="submit" onclick="">Изпрати</button><i class="icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        }*@
+
     </div>
 
 

@@ -56,6 +56,43 @@ namespace AirHelp.Controllers
             return View("Success");
         }
 
+        [HttpPost]
+        [Route("sendEmail")]
+        public bool sendEmail(string email, string subject, string text)
+        {
+            
+
+            MailMessage message = new MailMessage();
+            //message.To.Add(new MailAddress("office@helpclaim.eu"));
+            message.To.Add(new MailAddress(email));
+            message.Bcc.Add(new MailAddress("manager@helpclaim.eu"));
+            //message.To.Add(new MailAddress("consulting@helpclaim.eu"));
+            //message.To.Add(new MailAddress("lawyer@helpclaim.eu"));
+            message.Subject = subject;
+            message.Body = text;
+            message.IsBodyHtml = true;
+            
+            try
+            {
+                using (var smtp = new SmtpClient())
+                {
+                    smtp.Port = 25;
+                    smtp.EnableSsl = false;
+                    smtp.Credentials = new System.Net.NetworkCredential("office@helpclaim.eu", "P@ssw0rd6712");
+                    smtp.Host = "mail.helpclaim.eu";
+                    smtp.Send(message);
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+           
+            return true;
+        }
+
+
 
         [HttpGet]
         [Route("за-нас")]
