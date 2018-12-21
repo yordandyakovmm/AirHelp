@@ -138,7 +138,15 @@
                             </div>
                             <div style="grid-column-start: 7; grid-column-end: 8;">
                                 <label class="mnone">
-                                    @(claim.AttorneyUrl != null ? " Подписано " : " -- ")
+                                    @if (claim.AttorneyUrl != null)
+                                    {
+                                        <img src="@claim.SignitureImage" style="margin: -70px 0 0 10px; width: 20px; height:15px;" />
+                                    }
+                                    else
+                                    {
+                                        @("--")
+                                    }
+                                    
                                 </label>
                             </div>
                         </div>
