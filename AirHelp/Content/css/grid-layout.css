@@ -910,6 +910,9 @@ html,
   grid-template-rows: 35px;
   grid-gap: 1px;
 }
+.list-container .claim-list.admin {
+  grid-template-columns: 60px 100px 100px 100px 160px 150px 100px;
+}
 .list-container .claim-list > div {
   display: flex;
   align-content: center;
@@ -930,6 +933,9 @@ html,
   grid-template-rows: 35px;
   grid-gap: 1px;
   background-color: dimgray;
+}
+.list-container .claim-list-heder.admin {
+  grid-template-columns: 60px 100px 100px 100px 160px 150px 100px;
 }
 .list-container .claim-list-heder > div {
   display: flex;

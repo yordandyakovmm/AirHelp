@@ -83,7 +83,7 @@
     </style>
 </head>
 @{
-    var account = System.Configuration.ConfigurationManager.AppSettings["appId"].ToString().ToLower() == "true";
+    var account = System.Configuration.ConfigurationManager.AppSettings["hasBankAcount"].ToString().ToLower() == "true";
 }
 <body>
     <div class="main">
@@ -125,7 +125,7 @@
                 {
                     <p class="content">
                         Да получи в пълен размер и от мое име паричното обезщетение съгласно Регламент ЕО 261 2004,
-                        дължимо и платимо в резултат на гореизброените действия по сметка на @ViewBag.company @ViewBag.bankAccount.
+                        дължимо и платимо в резултат на гореизброените действия по сметка на @ViewBag.bankAccount
                     </p>
                 }
                 else
@@ -188,10 +188,20 @@
                 <p class="content">
                     To take legal actions, to enter into agreements, to act with the subject matter of the case.
                 </p>
-                <p class="content">
-                    To receive on my behalf the entire cash benefit under Regulation EC
-                    261/2004, due and payable as a result of the above actions to the @ViewBag.companyEn @ViewBag.bankAccount account.
-                </p>
+                @if (account)
+                {
+                    <p class="content">
+                        To receive on my behalf the entire cash benefit under Regulation EC
+                        261/2004, due and payable as a result of the above actions to the @ViewBag.companyEn @ViewBag.bankAccount accoun.
+                    </p>
+                }
+                else
+                {
+                    <p class="content">
+                        To receive on my behalf the entire cash benefit under Regulation EC
+                        261/2004, due and payable as a result of the above actions to the @ViewBag.companyEn.
+                    </p>
+                }
                 <p class="content">
                     In connection with the actions described above on my behalf, to receive and
                     sign any documents, to declare any circumstances and to carry out all legal and factual actions where necessary.

@@ -52,76 +52,173 @@
         <div class="form-hedar uppercase">
             @ViewBag.user.FirstName  @ViewBag.user.LastName
         </div>
-        <div class="list-container">
-            <div class="claim-list-heder">
-                <div style="grid-column-start: 1; grid-column-end: 2;">
+        @if (User.IsInRole("admin"))
+        {
 
-                    <label>
-                        Иск #
-                    </label>
+            <div class="list-container">
+                <div class="claim-list-heder admin">
+                    <div style="grid-column-start: 1; grid-column-end: 2;">
 
-                </div>
+                        <label>
+                            Иск #
+                        </label>
 
-                <div style="grid-column-start: 2; grid-column-end: 3;">
-                    <label>
-                        Полет #
-                    </label>
-                </div>
-                <div  style="grid-column-start: 3; grid-column-end: 4;">
-                    <label  class="mnone">
-                        Дата на иска
-                    </label>
-                </div>
-                <div style="grid-column-start: 4; grid-column-end: 5;">
-                    <label>
-                        Обещетение
-                    </label>
-                </div>
-                <div  style="grid-column-start: 5; grid-column-end: 6;">
-                    <label class="mnone">
-                        Авиокомпания
-                    </label>
-                </div>
-            </div>
-            @foreach (var claim in Model)
-            {
-                var missingUser = claim.UserId == null;
-                var url = missingUser ? "javascript:void(0)" : "/иск/" + claim.ClaimId.ToString();
-                var style = missingUser ? "red" : "";
-                <a href='@url'>
-                    <div class="claim-list @style">
-                        <div style="grid-column-start: 1; grid-column-end: 2;">
-
-                            <label>
-                                #@claim.referalNumber
-                            </label>
-
-                        </div>
-
-                        <div style="grid-column-start: 2; grid-column-end: 3;">
-                            <label>
-                                @claim.AirPorts.Where(a => a.startIssue).Select(a => a.FlightNumber).SingleOrDefault()
-                            </label>
-                        </div>
-                        <div  style="grid-column-start: 3; grid-column-end: 4;">
-                            <label class="mnone" >
-                                @claim.DateCreated.ToString("dd.MM.yyyy")
-                            </label>
-                        </div>
-                        <div style="grid-column-start: 4; grid-column-end: 5;">
-                            <label>
-                                €@claim.CompensationAmount
-                            </label>
-                        </div>
-                        <div  style="grid-column-start: 5; grid-column-end: 6;">
-                            <label class="mnone" >
-                                @claim.AirCompany ( @claim.AirCompanyCode )
-                            </label>
-                        </div>
                     </div>
-                </a>
-            }
-        </div>
+
+                    <div style="grid-column-start: 2; grid-column-end: 3;">
+                        <label>
+                            Полет #
+                        </label>
+                    </div>
+                    <div style="grid-column-start: 3; grid-column-end: 4;">
+                        <label class="mnone">
+                            Дата на иска
+                        </label>
+                    </div>
+                    <div style="grid-column-start: 4; grid-column-end: 5;">
+                        <label>
+                            Обещетение
+                        </label>
+                    </div>
+                    <div style="grid-column-start: 5; grid-column-end: 6;">
+                        <label class="mnone">
+                            Авиокомпания
+                        </label>
+                    </div>
+                    <div style="grid-column-start: 6; grid-column-end: 7;">
+                        <label class="mnone">
+                            Име
+                        </label>
+                    </div>
+                    <div style="grid-column-start: 7; grid-column-end: 8;">
+                        <label class="mnone">
+                            Пълномощно
+                        </label>
+                    </div>
+                </div>
+                @foreach (var claim in Model)
+                {
+                    var missingUser = claim.UserId == null;
+                    var url = missingUser ? "javascript:void(0)" : "/иск/" + claim.ClaimId.ToString();
+                    var style = missingUser ? "red" : "";
+                    <a href='@url'>
+                        <div class="claim-list admin @style">
+                            <div style="grid-column-start: 1; grid-column-end: 2;">
+
+                                <label>
+                                    #@claim.referalNumber
+                                </label>
+
+                            </div>
+
+                            <div style="grid-column-start: 2; grid-column-end: 3;">
+                                <label>
+                                    @claim.AirPorts.Where(a => a.startIssue).Select(a => a.FlightNumber).SingleOrDefault()
+                                </label>
+                            </div>
+                            <div style="grid-column-start: 3; grid-column-end: 4;">
+                                <label class="mnone">
+                                    @claim.DateCreated.ToString("dd.MM.yyyy")
+                                </label>
+                            </div>
+                            <div style="grid-column-start: 4; grid-column-end: 5;">
+                                <label>
+                                    €@claim.CompensationAmount
+                                </label>
+                            </div>
+                            <div style="grid-column-start: 5; grid-column-end: 6;">
+                                <label class="mnone">
+                                    @claim.AirCompany ( @claim.AirCompanyCode )
+                                </label>
+                            </div>
+                            <div style="grid-column-start: 6; grid-column-end: 7;">
+                                <label class="mnone">
+                                    @(claim.UserId != null ? claim.User.FirstName + " " +  claim.User.LastName: " -- ")
+                                </label>
+                            </div>
+                            <div style="grid-column-start: 7; grid-column-end: 8;">
+                                <label class="mnone">
+                                    @(claim.AttorneyUrl != null ? " Подписано " : " -- ")
+                                </label>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="list-container">
+                <div class="claim-list-heder">
+                    <div style="grid-column-start: 1; grid-column-end: 2;">
+
+                        <label>
+                            Иск #
+                        </label>
+
+                    </div>
+
+                    <div style="grid-column-start: 2; grid-column-end: 3;">
+                        <label>
+                            Полет #
+                        </label>
+                    </div>
+                    <div style="grid-column-start: 3; grid-column-end: 4;">
+                        <label class="mnone">
+                            Дата на иска
+                        </label>
+                    </div>
+                    <div style="grid-column-start: 4; grid-column-end: 5;">
+                        <label>
+                            Обещетение
+                        </label>
+                    </div>
+                    <div style="grid-column-start: 5; grid-column-end: 6;">
+                        <label class="mnone">
+                            Авиокомпания
+                        </label>
+                    </div>
+                </div>
+                @foreach (var claim in Model)
+                {
+                    var missingUser = claim.UserId == null;
+                    var url = missingUser ? "javascript:void(0)" : "/иск/" + claim.ClaimId.ToString();
+                    var style = missingUser ? "red" : "";
+                    <a href='@url'>
+                        <div class="claim-list @style">
+                            <div style="grid-column-start: 1; grid-column-end: 2;">
+
+                                <label>
+                                    #@claim.referalNumber
+                                </label>
+
+                            </div>
+
+                            <div style="grid-column-start: 2; grid-column-end: 3;">
+                                <label>
+                                    @claim.AirPorts.Where(a => a.startIssue).Select(a => a.FlightNumber).SingleOrDefault()
+                                </label>
+                            </div>
+                            <div style="grid-column-start: 3; grid-column-end: 4;">
+                                <label class="mnone">
+                                    @claim.DateCreated.ToString("dd.MM.yyyy")
+                                </label>
+                            </div>
+                            <div style="grid-column-start: 4; grid-column-end: 5;">
+                                <label>
+                                    €@claim.CompensationAmount
+                                </label>
+                            </div>
+                            <div style="grid-column-start: 5; grid-column-end: 6;">
+                                <label class="mnone">
+                                    @claim.AirCompany ( @claim.AirCompanyCode )
+                                </label>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        }
 
     </div>
 

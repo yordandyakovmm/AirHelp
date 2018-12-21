@@ -28,6 +28,7 @@ namespace AirHelp.Controllers
             ViewBag.email = ConfigurationManager.AppSettings["email"].ToString();
             ViewBag.tel = ConfigurationManager.AppSettings["tel"].ToString();
             ViewBag.bankAccount = ConfigurationManager.AppSettings["bankAccount"].ToString();
+            ViewBag.hasBankAcount = ConfigurationManager.AppSettings["hasBankAcount"].ToString() == "true";
             ViewBag.manager = ConfigurationManager.AppSettings["manager"].ToString();
             ViewBag.managerEn = ConfigurationManager.AppSettings["managerEn"].ToString();
 

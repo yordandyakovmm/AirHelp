@@ -517,7 +517,7 @@ namespace AirHelp.Controllers
                 var Name = Request.Form["Name"];
                 var Family = Request.Form["Family"];
 
-                bool signOnEmail = Request.Form["SignViaEmail"] == "yes" ? true: false;
+                bool signOnEmail = Request.Form["SignViaEmail"] == "yes" ? true : false;
 
                 var ClaimId = Guid.Parse(claimId);
                 var claim = dc.Claims
@@ -532,14 +532,15 @@ namespace AirHelp.Controllers
                     var url = $"/иск/{claim.ClaimId}";
                     Response.Redirect(url);
                 }
-                
+
                 if (!string.IsNullOrEmpty(Name))
                 {
                     var arrN = Name.Split(',');
                     var arrF = Family.Split(',');
                     for (var i = 0; i < arrN.Length; i++)
                     {
-                        AdditionalUser user = new AdditionalUser {
+                        AdditionalUser user = new AdditionalUser
+                        {
                             AdditionalUserId = Guid.NewGuid(),
                             FirstName = arrN[i],
                             LastName = arrF[i]
@@ -571,7 +572,7 @@ namespace AirHelp.Controllers
                     }
                 }
                 claim.State = signOnEmail ? ClaimStatus.WaitForAttorny : (claim.Documents.Count > 0 ? ClaimStatus.InProgress : ClaimStatus.WaitForDocument);
-                
+
                 Guid newGuid = Guid.NewGuid();
                 var attorneyName = string.Format("attorney{0}", claim.referalNumber.ToString("0000"));
                 var contractName = string.Format("contract{0}", claim.referalNumber.ToString("0000"));
@@ -644,7 +645,7 @@ namespace AirHelp.Controllers
             using (AirHelpDBContext dc = new AirHelpDBContext())
             {
                 var claimId = Request.Form["claimId"] ?? id;
-                
+
                 var ClaimId = Guid.Parse(claimId);
                 var claim = dc.Claims
                     .Include("User")
@@ -695,11 +696,13 @@ namespace AirHelp.Controllers
             {
                 list = dc.Claims
                     .Include("AirPorts")
+                    .Include("User")
                     .Where(c => c.Type != ProblemType.Pending && (c.UserId == User.Identity.Name || isAdmin)).Select(c => c)
                     .OrderByDescending(c => c.DateCreated)
                     .ToList();
             }
             return View("ClaimList", list);
+
         }
 
         [Authorize(Roles = "admin")]
@@ -730,7 +733,7 @@ namespace AirHelp.Controllers
                     .Include("AirPorts")
                     .ToList();
             }
-            
+
             return View("ClaimListYordan", list);
         }
 
