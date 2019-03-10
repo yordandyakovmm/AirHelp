@@ -55,103 +55,30 @@
         @if (User.IsInRole("admin"))
         {
 
-            <div class="list-container">
-                <div class="claim-list-heder admin">
-                    <div style="grid-column-start: 1; grid-column-end: 2;">
+            <div class="list-container" style="margin-top: 10px;">
 
-                        <label>
-                            Иск #
-                        </label>
-
+                <div class="form-row" style="margin: 8px 0 12px 0; flex-flow: row;">
+                    <div class="form-box">
+                        <div>
+                            <input type="text"  id="searchText" name="search" autocomplete="off"  placeholder="Търсене" />
+                            
+                        </div>
                     </div>
-
-                    <div style="grid-column-start: 2; grid-column-end: 3;">
-                        <label>
-                            Полет #
+                    <div class="form-box"  style="display:flex; flex-flow: row;">
+                        @*<label class="checkbox" style="display:flex; flex-flow: row; margin-right: 20px;">
+                            <input type="radio" id="searchAll" name="all" onclick="$(this).parent().toggleClass('selected'); search();">
+                            <span>Всички</span>
                         </label>
-                    </div>
-                    <div style="grid-column-start: 3; grid-column-end: 4;">
-                        <label class="mnone">
-                            Дата на иска
-                        </label>
-                    </div>
-                    <div style="grid-column-start: 4; grid-column-end: 5;">
-                        <label>
-                            Обещетение
-                        </label>
-                    </div>
-                    <div style="grid-column-start: 5; grid-column-end: 6;">
-                        <label class="mnone">
-                            Авиокомпания
-                        </label>
-                    </div>
-                    <div style="grid-column-start: 6; grid-column-end: 7;">
-                        <label class="mnone">
-                            Име
-                        </label>
-                    </div>
-                    <div style="grid-column-start: 7; grid-column-end: 8;">
-                        <label class="mnone">
-                            Пълномощно
-                        </label>
+                        <label class="checkbox" style="display:flex; flex-flow: row;">
+                            <input type="radio"  id="searchFull" name="document" onclick="$(this).parent().toggleClass('selected'); search();">
+                            <span>Пълни</span>
+                        </label>*@
                     </div>
                 </div>
-                @foreach (var claim in Model)
-                {
-                    var missingUser = claim.UserId == null;
-                    var url = missingUser ? "javascript:void(0)" : "/иск/" + claim.ClaimId.ToString();
-                    var style = missingUser ? "red" : "";
-                    <a href='@url'>
-                        <div class="claim-list admin @style">
-                            <div style="grid-column-start: 1; grid-column-end: 2;">
-
-                                <label>
-                                    #@claim.referalNumber
-                                </label>
-
-                            </div>
-
-                            <div style="grid-column-start: 2; grid-column-end: 3;">
-                                <label>
-                                    @claim.AirPorts.Where(a => a.startIssue).Select(a => a.FlightNumber).SingleOrDefault()
-                                </label>
-                            </div>
-                            <div style="grid-column-start: 3; grid-column-end: 4;">
-                                <label class="mnone">
-                                    @claim.DateCreated.ToString("dd.MM.yyyy")
-                                </label>
-                            </div>
-                            <div style="grid-column-start: 4; grid-column-end: 5;">
-                                <label>
-                                    €@claim.CompensationAmount
-                                </label>
-                            </div>
-                            <div style="grid-column-start: 5; grid-column-end: 6;">
-                                <label class="mnone">
-                                    @claim.AirCompany ( @claim.AirCompanyCode )
-                                </label>
-                            </div>
-                            <div style="grid-column-start: 6; grid-column-end: 7;">
-                                <label class="mnone">
-                                    @(claim.UserId != null ? claim.User.FirstName + " " +  claim.User.LastName: " -- ")
-                                </label>
-                            </div>
-                            <div style="grid-column-start: 7; grid-column-end: 8;">
-                                <label class="mnone">
-                                    @if (claim.AttorneyUrl != null)
-                                    {
-                                        <img src="@claim.SignitureImage" style="margin: -70px 0 0 10px; width: 20px; height:15px;" />
-                                    }
-                                    else
-                                    {
-                                        @("--")
-                                    }
-                                    
-                                </label>
-                            </div>
-                        </div>
-                    </a>
-                }
+                <div id="searchResult">
+                    @Html.Partial("_partialClaim", Model)
+                </div>
+                
             </div>
         }
         else
@@ -232,3 +159,4 @@
 
 
 </div>
+<script src="~/Scripts/search.js"></script>

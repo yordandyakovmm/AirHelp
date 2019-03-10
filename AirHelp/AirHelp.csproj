@@ -282,6 +282,10 @@
     <Compile Include="Migrations\201806141134264_update-data-name.Designer.cs">
       <DependentUpon>201806141134264_update-data-name.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903091616249_deleteClaim.cs" />
+    <Compile Include="Migrations\201903091616249_deleteClaim.Designer.cs">
+      <DependentUpon>201903091616249_deleteClaim.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -460,6 +464,7 @@
     <Compile Include="DAL\AirHelpDBContext.cs" />
     <Content Include="Scripts\ConfirmClaim.js" />
     <Content Include="Scripts\ChangePassword.js" />
+    <Content Include="Scripts\search.js" />
     <Content Include="Scripts\Signiture.js" />
     <Content Include="Scripts\RegisterUser.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -526,6 +531,7 @@
     <Content Include="Views\Login\ForgottenPasswordP.cshtml" />
     <Content Include="Views\Login\ChangeUser.cshtml" />
     <Content Include="Views\Login\GDPR.cshtml" />
+    <Content Include="Views\Claim\_partialClaim.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -599,6 +605,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806141134264_update-data-name.resx">
       <DependentUpon>201806141134264_update-data-name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903091616249_deleteClaim.resx">
+      <DependentUpon>201903091616249_deleteClaim.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

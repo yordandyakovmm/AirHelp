@@ -102,6 +102,8 @@ namespace AirHelp.DAL
         
         public bool isDurtyuser { get; set; }
 
+        public bool isDeleted { get; set; }
+
 
     }
 

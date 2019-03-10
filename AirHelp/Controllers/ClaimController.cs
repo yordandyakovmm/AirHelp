@@ -697,7 +697,7 @@ namespace AirHelp.Controllers
                 list = dc.Claims
                     .Include("AirPorts")
                     .Include("User")
-                    .Where(c => c.Type != ProblemType.Pending && (c.UserId == User.Identity.Name || isAdmin)).Select(c => c)
+                    .Where(c => c.isDeleted == false && c.Type != ProblemType.Pending && (c.UserId == User.Identity.Name || isAdmin)).Select(c => c)
                     .OrderByDescending(c => c.DateCreated)
                     .ToList();
             }
@@ -705,6 +705,69 @@ namespace AirHelp.Controllers
 
         }
 
+        [Authorize(Roles = "admin")]
+        [Route("search")]
+        public ActionResult ClaimListSearcg(string searchText)
+        {
+            var isAdmin = User.IsInRole("admin");
+            List<Claim> list = null;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                list = dc.Claims
+                    .Include("AirPorts")
+                    .Include("User")
+                    .Where(c => 
+                            ( searchText =="" 
+                            || c.FlightNumber.ToLower().Contains(searchText) 
+                            || c.AirCompany.Contains(searchText)
+                            || c.User.FirstName.Contains(searchText)
+                            || c.User.LastName.Contains(searchText)
+                            || c.AirPorts.Any(a => a.FlightNumber.Contains(searchText) || a.country.Contains(searchText)))
+                            && c.isDeleted == false 
+                            && c.Type != ProblemType.Pending)
+                    .Select(c => c)
+                    .OrderByDescending(c => c.DateCreated)
+                    .ToList();
+            }
+            return PartialView("_partialClaim", list);
+               
+        }
+
+        [Authorize(Roles = "admin")]
+        [Route("deleteClaim")]
+        public ActionResult deleteClaim(Guid id, string searchText)
+        {
+            
+            List<Claim> list = null;
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+
+                var claim = dc.Claims.Where(c => c.ClaimId == id).SingleOrDefault();
+
+               
+               
+                claim.isDeleted = true;
+                dc.SaveChanges();
+
+                list = dc.Claims
+                    .Include("AirPorts")
+                    .Include("User")
+                    .Where(c => 
+                            ( searchText =="" 
+                            || c.FlightNumber.ToLower().Contains(searchText) 
+                            || c.AirCompany.Contains(searchText)
+                            || c.User.FirstName.Contains(searchText)
+                            || c.User.LastName.Contains(searchText)
+                            || c.AirPorts.Any(a => a.FlightNumber.Contains(searchText) || a.country.Contains(searchText)))
+                            && c.isDeleted == false 
+                            && c.Type != ProblemType.Pending)
+                    .Select(c => c)
+                    .OrderByDescending(c => c.DateCreated)
+                    .ToList();
+            }
+            return PartialView("_partialClaim", list);
+               
+        }
         [Authorize(Roles = "admin")]
         [Route("потребители")]
         public ActionResult UserList(string category)
