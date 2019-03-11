@@ -37,7 +37,17 @@
     </div>
     <div style="grid-column-start: 7; grid-column-end: 8;">
         <label class="mnone">
-            
+
+        </label>
+    </div>
+    <div style="grid-column-start: 8; grid-column-end: 9;">
+        <label class="mnone">
+
+        </label>
+    </div>
+    <div style="grid-column-start: 9; grid-column-end: 10;">
+        <label class="mnone">
+
         </label>
     </div>
 </div>
@@ -81,7 +91,19 @@
                     @(claim.UserId != null ? claim.User.FirstName + " " + claim.User.LastName : " -- ")
                 </label>
             </div>
-            <div style="grid-column-start: 7; grid-column-end: 8;">
+            <div style="grid-column-start: 7; grid-column-end: 8; padding-top: 2px" >
+                @if (claim.Documents.Count > 0)
+                {
+                    <img src="~/Content/Assets/tickets.png" style=" height: 30px" />
+                }
+            </div>
+            <div style="grid-column-start: 8; grid-column-end: 9; padding-top: 2px">
+                @if (claim.AttorneyUrl != null)
+                {
+                    <img src="~/Content/Assets/sing1.jpg" style=" height: 30px" />
+                }
+            </div>
+            <div style="grid-column-start: 9; grid-column-end: 10;">
                 <button class="bDelete" onclick="deleteClaim('@claim.ClaimId', '@claim.AirPorts.Where(a => a.startIssue).Select(a => a.FlightNumber).SingleOrDefault()')"><i class="icon"></i></button>
             </div>
         </div>

@@ -697,6 +697,7 @@ namespace AirHelp.Controllers
                 list = dc.Claims
                     .Include("AirPorts")
                     .Include("User")
+                    .Include("Documents")
                     .Where(c => c.isDeleted == false && c.Type != ProblemType.Pending && (c.UserId == User.Identity.Name || isAdmin)).Select(c => c)
                     .OrderByDescending(c => c.DateCreated)
                     .ToList();
@@ -716,6 +717,7 @@ namespace AirHelp.Controllers
                 list = dc.Claims
                     .Include("AirPorts")
                     .Include("User")
+                    .Include("Documents")
                     .Where(c => 
                             ( searchText =="" 
                             || c.FlightNumber.ToLower().Contains(searchText) 
@@ -752,6 +754,7 @@ namespace AirHelp.Controllers
                 list = dc.Claims
                     .Include("AirPorts")
                     .Include("User")
+                    .Include("Documents")
                     .Where(c => 
                             ( searchText =="" 
                             || c.FlightNumber.ToLower().Contains(searchText) 

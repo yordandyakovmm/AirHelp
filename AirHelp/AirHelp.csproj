@@ -358,6 +358,9 @@
     <Content Include="Content\Assets\Logo\logo1.bmp" />
     <Content Include="Content\Assets\logo1.png" />
     <Content Include="Content\Assets\overbooking.jpg" />
+    <Content Include="Content\Assets\sing.jpg" />
+    <Content Include="Content\Assets\sing1.jpg" />
+    <Content Include="Content\Assets\tickets.png" />
     <Content Include="Content\Assets\woman-watch.jpeg" />
     <Content Include="Content\Assets\yellow-cloud-plaine.jpg" />
     <Content Include="Content\Assets\five-green-stars.png" />
