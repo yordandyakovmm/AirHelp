@@ -254,6 +254,9 @@ namespace AirHelp.Hellpers
                 case ClaimStatus.WaitForAttorny:
                     result = "Изчакване на пълномощно";
                     break;
+                case ClaimStatus.Pending:
+                    result = "Не потвърдена";
+                    break;
                 case ClaimStatus.Accepted:
                     result = "Приета";
                     break;

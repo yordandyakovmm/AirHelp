@@ -1,0 +1,86 @@
+﻿@model AirHelp.DAL.Claim
+
+<div class="register-form">
+    <div class="progress">
+        <div class="past">
+            <div class="circle"><label>1</label></div>
+            <label class="text">Данни за полета</label>
+        </div>
+        <div class="past">
+            <div class="circle"><label>2</label></div>
+            <label class="text">Описание на проблема</label>
+        </div>
+        <div class="past">
+            <div class="circle"><label>3</label></div>
+            <label class="text">Регистрация</label>
+        </div>
+        <div class="current">
+            <div class="circle"><label>4</label></div>
+            <label class="text">Подписване</label>
+        </div>
+
+    </div>
+    <div class="center-content width-550">
+        <form method="post" enctype="multipart/form-data" action="/потвърждение-на-иск">
+            <input type="hidden" name="claimId" value="@Model.ClaimId" />
+            <input type="hidden" name="SignitureImage" value="" />
+            <div class="form-hedar">
+                Потвърждаване на иск за полет @Model.AirPorts.Where(a => a.startIssue).Select(a => a.FlightNumber).SingleOrDefault()
+            </div>
+
+            <div class="form-subtext">
+                С подписването на настоящото <a href="/пълномощно/@Model.ClaimId" target="_blank">пълномощно </a> и <a href="/договор/@Model.ClaimId" target="_blank">договор</a> се съгласявам с <a href="/общи-условия" target="_blank">общите условия</a>
+            </div>
+            
+            <div class="form-hedar">
+                Подпис на документи
+            </div>
+            
+            <div class="form-hedar">
+            </div>
+            <div class="form-subtext" signiture>
+                Моля подпишете <b> @Model.User.FirstName @Model.User.LastName </b>
+            </div>
+            <div class="form-row" signiture>
+                <div class="form-box-signiture">
+                    <label>Подпис</label>
+                    <div class="convas-holder">
+                        <canvas id="signiture" width="500px" height="300px"></canvas>
+                        <img name="signiture-img" style="display:none;">
+                    </div>
+                    <label class="sub-error">Подписа е твърде кратък</label>
+                    <div>
+                        <button class="clear" type="button" onclick="return clearSignature(this); return false;"><span>Изчисти</span></button>
+                    </div>
+                </div>
+            </div>
+                                
+            <div class="form-hedar"  style="margin-top: 40px;">
+            </div>
+                      
+            <div class="form-row-yes-no" style="grid-template-columns: auto">
+                <label class="checkbox">
+                    <input type="radio" name="confirm">
+                    <span>Потвърждавам, че давам съгласието си @ViewBag.company да обработи претенцията от мое име</span>
+                </label>
+            </div>
+            <div class="form-row">
+                <div class="form-box">
+                    <button class="submit" type="submit" keypress="alert(1); return false" onclick="return validateConfirmClaim()"><i class="icon"></i><span>Изпрати</span></button>
+                </div>
+                <div class="form-box">
+                    <button class="reset" type="reset" keypress="return false" onclick="clearForm()"><i class="icon"></i><span>Изчисти</span></button>
+                </div>
+            </div>
+            <div class="form-row">
+                &nbsp;
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+<script src="~/Scripts/main.js"></script>
+<script src="~/Scripts/ConfirmClaim.js"></script>
+<script src="~/Scripts/Signiture.js"></script>

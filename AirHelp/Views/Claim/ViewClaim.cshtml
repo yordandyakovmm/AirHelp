@@ -372,7 +372,6 @@
             </div>
 
 
-
             <div class="form-subheder">
                 Документи
             </div>
@@ -398,8 +397,40 @@
                 </div>
 
             </div>
+            @{
 
-           
+                string port = Request.Url.Port == 80 ? string.Empty : string.Format(":{0}", Request.Url.Port.ToString());
+
+                String link = string.Format("{0}://{1}{2}/подпис/{3}", Request.Url.Scheme, Request.Url.Host, port, Model.ClaimId);
+            }
+            @if (User.IsInRole("admin") && Model.State == AirHelp.Models.ClaimStatus.Pending)
+            {
+                <div class="form-subheder">
+                    Искът е непотвърден
+                </div>
+                <div class="form-subtext">
+                    Генериране на  <b><a href="/пълномощно/@Model.ClaimId" target="_blank">пълномощно </a> </b> | генериране на <b> <a href="/договор/@Model.ClaimId" target="_blank">договор</a> </b>
+                </div>
+                <div class="form-subheder">
+                    Линк за подписване
+                </div>
+                <div class="form-subtext">
+                    <b>
+                        <a href="javascript:void(0)" onclick="copy()">  копиране на линка </a>
+                    </b>
+                </div>
+
+                <script type="text/javascript">
+                    function copy() {
+                        var el = document.createElement('textarea');
+                        el.value = "@link";
+                        document.body.appendChild(el);
+                        el.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(el);
+                    }
+                </script>
+            }
 
 
 

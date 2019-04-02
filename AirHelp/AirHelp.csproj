@@ -535,6 +535,7 @@
     <Content Include="Views\Login\ChangeUser.cshtml" />
     <Content Include="Views\Login\GDPR.cshtml" />
     <Content Include="Views\Claim\_partialClaim.cshtml" />
+    <Content Include="Views\Claim\OnlySingClaim.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

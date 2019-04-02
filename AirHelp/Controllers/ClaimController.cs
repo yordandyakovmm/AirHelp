@@ -637,6 +637,27 @@ namespace AirHelp.Controllers
             }
         }
 
+        // ----- 4 ---------------
+        [HttpGet]
+        [Route("подпис/{claimId}")]
+        public ActionResult SingClaim(string claimId)
+        {
+            using (AirHelpDBContext dc = new AirHelpDBContext())
+            {
+                var ClaimId = Guid.Parse(claimId);
+                var claim = dc.Claims
+                    .Include("User")
+                    .Include("AirPorts")
+                    .Where(c => c.ClaimId == ClaimId).SingleOrDefault();
+                if (claim.State > ClaimStatus.Pending)
+                {
+                    var url = $"/иск/{claim.ClaimId}";
+                    Response.Redirect(url);
+                }
+                return View("OnlySingClaim", claim);
+            }
+        }
+
         // commom View / Update claim 
         [Route("иск")]
         [Route("иск/{id}")]
